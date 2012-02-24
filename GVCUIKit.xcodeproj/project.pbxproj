@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05CA0AF014F7F69E001C8A68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEF14F7F69E001C8A68 /* Foundation.framework */; };
+		05CA0AF614F7F69F001C8A68 /* GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA0AF514F7F69F001C8A68 /* GVCUIKit.m */; };
+		05CA0AFE14F7F69F001C8A68 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AFD14F7F69F001C8A68 /* SenTestingKit.framework */; };
+		05CA0B0014F7F69F001C8A68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AFF14F7F69F001C8A68 /* UIKit.framework */; };
+		05CA0B0114F7F69F001C8A68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEF14F7F69E001C8A68 /* Foundation.framework */; };
+		05CA0B0414F7F69F001C8A68 /* libGVCUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */; };
+		05CA0B0A14F7F69F001C8A68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05CA0B0814F7F69F001C8A68 /* InfoPlist.strings */; };
+		05CA0B0D14F7F6A0001C8A68 /* GVCUIKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA0B0C14F7F6A0001C8A68 /* GVCUIKitTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		05CA0B0214F7F69F001C8A68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05CA0AE314F7F69E001C8A68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05CA0AEB14F7F69E001C8A68;
+			remoteInfo = GVCUIKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGVCUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		05CA0AEF14F7F69E001C8A68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		05CA0AF314F7F69E001C8A68 /* GVCUIKit-Prefix.pch */ = {isa = PBXFileReference; path = "GVCUIKit-Prefix.pch"; sourceTree = "<group>"; };
+		05CA0AF414F7F69E001C8A68 /* GVCUIKit.h */ = {isa = PBXFileReference; path = GVCUIKit.h; sourceTree = "<group>"; };
+		05CA0AF514F7F69F001C8A68 /* GVCUIKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GVCUIKit.m; sourceTree = "<group>"; };
+		05CA0AFC14F7F69F001C8A68 /* GVCUIKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GVCUIKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		05CA0AFD14F7F69F001C8A68 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		05CA0AFF14F7F69F001C8A68 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		05CA0B0714F7F69F001C8A68 /* GVCUIKitTests-Info.plist */ = {isa = PBXFileReference; path = "GVCUIKitTests-Info.plist"; sourceTree = "<group>"; };
+		05CA0B0914F7F69F001C8A68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		05CA0B0B14F7F6A0001C8A68 /* GVCUIKitTests.h */ = {isa = PBXFileReference; path = GVCUIKitTests.h; sourceTree = "<group>"; };
+		05CA0B0C14F7F6A0001C8A68 /* GVCUIKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GVCUIKitTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05CA0AE914F7F69E001C8A68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05CA0AF014F7F69E001C8A68 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05CA0AF814F7F69F001C8A68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05CA0AFE14F7F69F001C8A68 /* SenTestingKit.framework in Frameworks */,
+				05CA0B0014F7F69F001C8A68 /* UIKit.framework in Frameworks */,
+				05CA0B0114F7F69F001C8A68 /* Foundation.framework in Frameworks */,
+				05CA0B0414F7F69F001C8A68 /* libGVCUIKit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05CA0AE114F7F69E001C8A68 = {
+			isa = PBXGroup;
+			children = (
+				05CA0AF114F7F69E001C8A68 /* GVCUIKit */,
+				05CA0B0514F7F69F001C8A68 /* GVCUIKitTests */,
+				05CA0AEE14F7F69E001C8A68 /* Frameworks */,
+				05CA0AED14F7F69E001C8A68 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05CA0AED14F7F69E001C8A68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */,
+				05CA0AFC14F7F69F001C8A68 /* GVCUIKitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05CA0AEE14F7F69E001C8A68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05CA0AEF14F7F69E001C8A68 /* Foundation.framework */,
+				05CA0AFD14F7F69F001C8A68 /* SenTestingKit.framework */,
+				05CA0AFF14F7F69F001C8A68 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		05CA0AF114F7F69E001C8A68 /* GVCUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				05CA0AF414F7F69E001C8A68 /* GVCUIKit.h */,
+				05CA0AF514F7F69F001C8A68 /* GVCUIKit.m */,
+				05CA0AF214F7F69E001C8A68 /* Supporting Files */,
+			);
+			path = GVCUIKit;
+			sourceTree = "<group>";
+		};
+		05CA0AF214F7F69E001C8A68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				05CA0AF314F7F69E001C8A68 /* GVCUIKit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		05CA0B0514F7F69F001C8A68 /* GVCUIKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				05CA0B0B14F7F6A0001C8A68 /* GVCUIKitTests.h */,
+				05CA0B0C14F7F6A0001C8A68 /* GVCUIKitTests.m */,
+				05CA0B0614F7F69F001C8A68 /* Supporting Files */,
+			);
+			path = GVCUIKitTests;
+			sourceTree = "<group>";
+		};
+		05CA0B0614F7F69F001C8A68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				05CA0B0714F7F69F001C8A68 /* GVCUIKitTests-Info.plist */,
+				05CA0B0814F7F69F001C8A68 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		05CA0AEA14F7F69E001C8A68 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		05CA0AEB14F7F69E001C8A68 /* GVCUIKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05CA0B1014F7F6A0001C8A68 /* Build configuration list for PBXNativeTarget "GVCUIKit" */;
+			buildPhases = (
+				05CA0AE814F7F69E001C8A68 /* Sources */,
+				05CA0AE914F7F69E001C8A68 /* Frameworks */,
+				05CA0AEA14F7F69E001C8A68 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GVCUIKit;
+			productName = GVCUIKit;
+			productReference = 05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		05CA0AFB14F7F69F001C8A68 /* GVCUIKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05CA0B1314F7F6A0001C8A68 /* Build configuration list for PBXNativeTarget "GVCUIKitTests" */;
+			buildPhases = (
+				05CA0AF714F7F69F001C8A68 /* Sources */,
+				05CA0AF814F7F69F001C8A68 /* Frameworks */,
+				05CA0AF914F7F69F001C8A68 /* Resources */,
+				05CA0AFA14F7F69F001C8A68 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05CA0B0314F7F69F001C8A68 /* PBXTargetDependency */,
+			);
+			name = GVCUIKitTests;
+			productName = GVCUIKitTests;
+			productReference = 05CA0AFC14F7F69F001C8A68 /* GVCUIKitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05CA0AE314F7F69E001C8A68 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 05CA0AE614F7F69E001C8A68 /* Build configuration list for PBXProject "GVCUIKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 05CA0AE114F7F69E001C8A68;
+			productRefGroup = 05CA0AED14F7F69E001C8A68 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05CA0AEB14F7F69E001C8A68 /* GVCUIKit */,
+				05CA0AFB14F7F69F001C8A68 /* GVCUIKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05CA0AF914F7F69F001C8A68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05CA0B0A14F7F69F001C8A68 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05CA0AFA14F7F69F001C8A68 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05CA0AE814F7F69E001C8A68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05CA0AF614F7F69F001C8A68 /* GVCUIKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05CA0AF714F7F69F001C8A68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05CA0B0D14F7F6A0001C8A68 /* GVCUIKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05CA0B0314F7F69F001C8A68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05CA0AEB14F7F69E001C8A68 /* GVCUIKit */;
+			targetProxy = 05CA0B0214F7F69F001C8A68 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		05CA0B0814F7F69F001C8A68 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05CA0B0914F7F69F001C8A68 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		05CA0B0E14F7F6A0001C8A68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		05CA0B0F14F7F6A0001C8A68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		05CA0B1114F7F6A0001C8A68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/GVCUIKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		05CA0B1214F7F6A0001C8A68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/GVCUIKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		05CA0B1414F7F6A0001C8A68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
+				INFOPLIST_FILE = "GVCUIKitTests/GVCUIKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		05CA0B1514F7F6A0001C8A68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
+				INFOPLIST_FILE = "GVCUIKitTests/GVCUIKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05CA0AE614F7F69E001C8A68 /* Build configuration list for PBXProject "GVCUIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05CA0B0E14F7F6A0001C8A68 /* Debug */,
+				05CA0B0F14F7F6A0001C8A68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05CA0B1014F7F6A0001C8A68 /* Build configuration list for PBXNativeTarget "GVCUIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05CA0B1114F7F6A0001C8A68 /* Debug */,
+				05CA0B1214F7F6A0001C8A68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		05CA0B1314F7F6A0001C8A68 /* Build configuration list for PBXNativeTarget "GVCUIKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05CA0B1414F7F6A0001C8A68 /* Debug */,
+				05CA0B1514F7F6A0001C8A68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 05CA0AE314F7F69E001C8A68 /* Project object */;
+}
