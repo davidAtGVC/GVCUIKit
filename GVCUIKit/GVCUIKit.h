@@ -1,6 +1,5 @@
 /**
  * Header for GVCUIKit
- * Date:  Sat Mar 3 22:05:35 EST 2012
  * Author: daspinall
  */
 

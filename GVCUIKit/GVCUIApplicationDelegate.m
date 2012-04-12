@@ -22,6 +22,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
+    // set uncaught exception handler - from GVCFoundation/GVCFunctions
+    NSSetUncaughtExceptionHandler(&gvc_UncaughtException);
+
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
     {

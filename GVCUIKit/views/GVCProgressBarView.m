@@ -7,6 +7,7 @@
 //
 
 #import "GVCProgressBarView.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @implementation GVCProgressBarView
@@ -52,6 +53,13 @@
 		progress = p;
 		[self setNeedsDisplay];
 	}
+}
+
+- (void)layoutSubviews
+{
+	[super layoutSubviews];
+	[self setBackgroundColor:[UIColor clearColor]];
+	[[self layer] setMasksToBounds:YES];
 }
 
 - (void) drawRect:(CGRect)rect borderRadius:(CGFloat)rad borderWidth:(CGFloat)thickness barRadius:(CGFloat)barRadius barInset:(CGFloat)barInset
