@@ -80,13 +80,13 @@
 - (NSArray *)applicationResourcesOfType:(NSString *)extension inDirectory:(NSString *)subfolder
 {
 	GVC_ASSERT( (gvc_IsEmpty(extension) == YES) || (gvc_IsEmpty(subfolder) == YES), @"Finding resources requires an extension or a subfolder" );
-	return [[NSBundle mainBundle] pathsForResourcesOfType:extension inDirectory:subfolder];
+	return [[NSBundle bundleForClass:[self class]] pathsForResourcesOfType:extension inDirectory:subfolder];
 }
 
 - (NSString *)applicationResourcePathForName:(NSString *)apath ofType:(NSString *)extension inDirectory:(NSString *)subfolder
 {
 	GVC_ASSERT( gvc_IsEmpty(apath) == NO, @"Finding resources requires an a path" );
-	return [[NSBundle mainBundle] pathForResource:apath ofType:extension inDirectory:subfolder];
+	return [[NSBundle bundleForClass:[self class]] pathForResource:apath ofType:extension inDirectory:subfolder];
 }
 
 #pragma mark -

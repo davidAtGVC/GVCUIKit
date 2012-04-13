@@ -25,12 +25,18 @@
 /* 
  * cells 
  */
+#import "GVCEditCell.h"
+#import "GVCEditTextFieldCell.h"
+#import "GVCMultiLineTableViewCell.h"
 #import "GVCUITableViewCell.h"
 
 /* 
  * controllers 
  */
+#import "GVCDatePickerTableViewController.h"
+#import "GVCUIDatePickerViewController.h"
 #import "GVCUITableViewController.h"
+#import "GVCUIViewController.h"
 
 /* 
  * prototyping 

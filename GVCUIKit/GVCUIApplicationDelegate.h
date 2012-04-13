@@ -11,7 +11,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 - (NSString *)applicationName;
-- (NSURL *)applicationDocumentsDirectory;
+- (NSString *)applicationDocumentsDirectory;
 
 - (NSArray *)applicationResourcesOfType:(NSString *)extension inDirectory:(NSString *)subfolder;
 - (NSString *)applicationResourcePathForName:(NSString *)apath ofType:(NSString *)extension inDirectory:(NSString *)subfolder;
