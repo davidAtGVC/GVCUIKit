@@ -15,10 +15,10 @@
 - (id) initWithMode:(UIDatePickerMode) m;
 
 @property (assign)	UIDatePickerMode mode;
-@property (retain,nonatomic) UIDatePicker *datePicker;
+@property (strong, nonatomic) UIDatePicker *datePicker;
 
-@property (retain,nonatomic) NSDate *minimumDate;
-@property (retain,nonatomic) NSDate *maximumDate;
+@property (strong, nonatomic) NSDate *minimumDate;
+@property (strong, nonatomic) NSDate *maximumDate;
 
 - (IBAction)dateChanged:sender;
 

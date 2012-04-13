@@ -11,15 +11,15 @@
 @interface GVCUIViewController : UIViewController
 
 @property (nonatomic, assign) UIBarStyle navigationBarStyle;
-@property (nonatomic, retain) UIColor *navigationBarTintColor;
+@property (nonatomic, strong) UIColor *navigationBarTintColor;
 @property (nonatomic, assign) UIStatusBarStyle statusBarStyle;	
 
-@property (nonatomic, readonly) BOOL hasViewAppeared;
-@property (nonatomic, readonly) BOOL isViewAppearing;
+@property (nonatomic, assign) BOOL hasViewAppeared;
+@property (nonatomic, assign) BOOL isViewAppearing;
 
 @property (nonatomic, assign) BOOL autoresizesForKeyboard;
 
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (weak, nonatomic) id callbackDelegate;
 
 - (UINavigationBar *)navigationBar;

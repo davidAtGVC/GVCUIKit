@@ -25,7 +25,9 @@
 /* 
  * cells 
  */
+#import "GVCButtonCell.h"
 #import "GVCEditCell.h"
+#import "GVCEditDateCell.h"
 #import "GVCEditTextFieldCell.h"
 #import "GVCMultiLineTableViewCell.h"
 #import "GVCUITableViewCell.h"

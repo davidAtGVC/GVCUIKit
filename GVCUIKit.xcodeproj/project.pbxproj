@@ -48,6 +48,10 @@
 		05CA0B0414F7F69F001C8A68 /* libGVCUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */; };
 		05CA0B0A14F7F69F001C8A68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05CA0B0814F7F69F001C8A68 /* InfoPlist.strings */; };
 		05CA0B0D14F7F6A0001C8A68 /* GVCUIKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA0B0C14F7F6A0001C8A68 /* GVCUIKitTests.m */; };
+		05D576231538B6B000BE1135 /* GVCEditDateCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D576211538B6B000BE1135 /* GVCEditDateCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05D576241538B6B000BE1135 /* GVCEditDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D576221538B6B000BE1135 /* GVCEditDateCell.m */; };
+		05D576291538BA6F00BE1135 /* GVCButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D576271538BA6F00BE1135 /* GVCButtonCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05D5762A1538BA6F00BE1135 /* GVCButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D576281538BA6F00BE1135 /* GVCButtonCell.m */; };
 		05F6477D15385E0100EFF492 /* GVCEditTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05F6477B15385E0100EFF492 /* GVCEditTextFieldCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05F6477E15385E0100EFF492 /* GVCEditTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F6477C15385E0100EFF492 /* GVCEditTextFieldCell.m */; };
 		05F6478315385E2A00EFF492 /* GVCEditCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05F6478115385E2A00EFF492 /* GVCEditCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -147,6 +151,10 @@
 		05CA0B0914F7F69F001C8A68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05CA0B0B14F7F6A0001C8A68 /* GVCUIKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GVCUIKitTests.h; sourceTree = "<group>"; };
 		05CA0B0C14F7F6A0001C8A68 /* GVCUIKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GVCUIKitTests.m; sourceTree = "<group>"; };
+		05D576211538B6B000BE1135 /* GVCEditDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCEditDateCell.h; sourceTree = "<group>"; };
+		05D576221538B6B000BE1135 /* GVCEditDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCEditDateCell.m; sourceTree = "<group>"; };
+		05D576271538BA6F00BE1135 /* GVCButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCButtonCell.h; sourceTree = "<group>"; };
+		05D576281538BA6F00BE1135 /* GVCButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCButtonCell.m; sourceTree = "<group>"; };
 		05F6477B15385E0100EFF492 /* GVCEditTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCEditTextFieldCell.h; sourceTree = "<group>"; };
 		05F6477C15385E0100EFF492 /* GVCEditTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCEditTextFieldCell.m; sourceTree = "<group>"; };
 		05F6478115385E2A00EFF492 /* GVCEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCEditCell.h; sourceTree = "<group>"; };
@@ -251,6 +259,10 @@
 				0563F58C1537EBC500BC7D2D /* GVCMultiLineTableViewCell.m */,
 				05F6477B15385E0100EFF492 /* GVCEditTextFieldCell.h */,
 				05F6477C15385E0100EFF492 /* GVCEditTextFieldCell.m */,
+				05D576211538B6B000BE1135 /* GVCEditDateCell.h */,
+				05D576221538B6B000BE1135 /* GVCEditDateCell.m */,
+				05D576271538BA6F00BE1135 /* GVCButtonCell.h */,
+				05D576281538BA6F00BE1135 /* GVCButtonCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -403,6 +415,8 @@
 				05F6478315385E2A00EFF492 /* GVCEditCell.h in Headers */,
 				05F64790153861AD00EFF492 /* GVCUIDatePickerViewController.h in Headers */,
 				05F6477D15385E0100EFF492 /* GVCEditTextFieldCell.h in Headers */,
+				05D576231538B6B000BE1135 /* GVCEditDateCell.h in Headers */,
+				05D576291538BA6F00BE1135 /* GVCButtonCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +575,8 @@
 				05F6478415385E2A00EFF492 /* GVCEditCell.m in Sources */,
 				05F6478D153860D100EFF492 /* GVCDatePickerTableViewController.m in Sources */,
 				05F64791153861AD00EFF492 /* GVCUIDatePickerViewController.m in Sources */,
+				05D576241538B6B000BE1135 /* GVCEditDateCell.m in Sources */,
+				05D5762A1538BA6F00BE1135 /* GVCButtonCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

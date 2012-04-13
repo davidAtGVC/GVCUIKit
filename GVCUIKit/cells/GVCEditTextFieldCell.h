@@ -11,7 +11,7 @@
 
 @interface GVCEditTextFieldCell : GVCEditCell <UITextFieldDelegate> 
 
-@property (nonatomic, retain) IBOutlet UITextField *textField;
+@property (nonatomic, strong) IBOutlet UITextField *textField;
 @property (nonatomic, assign) BOOL isSecure;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;

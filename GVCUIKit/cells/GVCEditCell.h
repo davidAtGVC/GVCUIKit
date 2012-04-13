@@ -10,7 +10,7 @@
 
 @interface GVCEditCell : GVCUITableViewCell
 
-@property (retain, nonatomic) NSIndexPath *editPath;
+@property (strong, nonatomic) NSIndexPath *editPath;
 @property (nonatomic, assign) BOOL canSelectCell;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;

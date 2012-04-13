@@ -122,7 +122,6 @@
 	
 	[cropped saveImageToFile:@"/tmp/cropped.png"];
 
-	//Note: this is autoreleased
 	return cropped;
 	
 }
