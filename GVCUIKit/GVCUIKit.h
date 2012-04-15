@@ -20,6 +20,7 @@
 /* 
  * 
  */
+#import "GVCAlertMessageCenter.h"
 #import "GVCUIApplicationDelegate.h"
 
 /* 
@@ -51,5 +52,6 @@
 #import "GVCBadgeView.h"
 #import "GVCProgressBarView.h"
 #import "GVCRoundBorderView.h"
+#import "GVCStatusView.h"
 
 #endif // GVCUIKit_h
