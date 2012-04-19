@@ -33,7 +33,7 @@
 		[self setBorderColor:[UIColor whiteColor]];
 		[self setContentColor:[UIColor darkGrayColor]];
 		
-		[self setBorderWidth:5];
+		[self setBorderWidth:2];
 		[self setCornerRadius:10];
     }
     return self;

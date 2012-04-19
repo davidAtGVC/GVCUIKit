@@ -5,24 +5,43 @@
 //  Copyright 2010 Global Village Consulting Inc. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "GVCStatusView.h"
 #import "GVCTextLayer.h"
 #import "GVCProgressBarLayer.h"
 #import "GVCAlertMessageCenter.h"
 
 #import "NSAttributedString+GVCUIKit.h"
+#import "UIView+GVCUIKit.h"
 
 @interface GVCStatusView ()
 @property (strong, nonatomic) GVCStatusItem *currentItem;
+@property (weak, nonatomic) id currentAccessory;
+@property (assign, nonatomic) CGRect calculatedViewRect;
+@property (assign, nonatomic) CGRect calculatedAccessoryRect;
+@property (assign, nonatomic) CGRect calculatedMessageRect;
 @end
 
 
+static float ACCESSOR_MARGIN = 8.0;
+//static float TOP_MARGIN = 4.0;
+static float BOX_MARGIN = 24.0;
+static float MIN_H = 40.0;
+static float MIN_W = 160.0;
+
+
 @implementation GVCStatusView
+
 @synthesize currentItem;
 @synthesize messageLayer;
 @synthesize progressLayer;
 @synthesize imageLayer;
 @synthesize activityView;
+@synthesize currentAccessory;
+@synthesize calculatedViewRect;
+@synthesize calculatedAccessoryRect;
+@synthesize calculatedMessageRect;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -54,26 +73,14 @@
 		[[self layer] addSublayer:imageLayer];
         
         [self setBorderColor:[UIColor lightGrayColor]];
+        [self setContentColor:[UIColor blueColor]];
+        [self setAlpha:0.0];
     }
 	
     return self;
 }
 
-- (CGSize)sizeForItem:(GVCStatusItem *)item
-{
-    CGSize fullSize = CGSizeZero;
-    
-    fullSize = CGSizeMake(280, 148);
-    
-    return fullSize;
-}
-
-static float ACCESSOR_MARGIN = 8.0;
-static float BOX_MARGIN = 24.0;
-static float MIN_H = 40.0;
-static float MIN_W = 160.0;
-
-- (void)layoutSubviews
+- (void)calculateViewFrames
 {
     CGRect superFrame = [[self superview] bounds];
     CGRect boxRect = CGRectZero;
@@ -117,6 +124,7 @@ static float MIN_W = 160.0;
                 accessory = [self progressLayer];
                 [[self activityView] stopAnimating];
                 [[self activityView] removeFromSuperview];
+                [[self imageLayer] removeFromSuperlayer];
                 
                 if ( [[[self layer] sublayers] containsObject:[self progressLayer]] == NO )
                 {
@@ -149,50 +157,59 @@ static float MIN_W = 160.0;
         
         switch ([currentItem accessoryPosition]) {
             case GVC_StatusItemPosition_LEFT:
-                itemSize = CGSizeMake(floorf(accessorySize.width + messageSize.width + ACCESSOR_MARGIN + BOX_MARGIN), floorf(MAX(accessorySize.height,messageSize.height) + BOX_MARGIN));
-                itemSize = CGSizeMake(floorf(MAX(itemSize.width, MIN_W)), floorf(MAX(itemSize.height, MIN_H)));
+                itemSize = CGSizeMake(accessorySize.width + messageSize.width + ACCESSOR_MARGIN + BOX_MARGIN, 
+                                      MAX(accessorySize.height,messageSize.height) + BOX_MARGIN);
+                itemSize = CGSizeMake(MAX(itemSize.width, MIN_W), MAX(itemSize.height, MIN_H));
                 
                 accessoryRect = CGRectMake(BOX_MARGIN / 2, BOX_MARGIN / 2, accessorySize.width, accessorySize.height);
                 messageRect = CGRectMake((BOX_MARGIN / 2) + accessorySize.width + ACCESSOR_MARGIN, BOX_MARGIN / 2, messageSize.width, messageSize.height);
                 break;
             case GVC_StatusItemPosition_RIGHT:
-                itemSize = CGSizeMake(floorf(accessorySize.width + messageSize.width + ACCESSOR_MARGIN + BOX_MARGIN), floorf(MAX(accessorySize.height,messageSize.height) + BOX_MARGIN));
-                itemSize = CGSizeMake(floorf(MAX(itemSize.width, MIN_W)), floorf(MAX(itemSize.height, MIN_H)));
+                itemSize = CGSizeMake(accessorySize.width + messageSize.width + ACCESSOR_MARGIN + BOX_MARGIN, 
+                                      MAX(accessorySize.height,messageSize.height) + BOX_MARGIN);
+                itemSize = CGSizeMake(MAX(itemSize.width, MIN_W), MAX(itemSize.height, MIN_H));
                 
                 messageRect = CGRectMake(BOX_MARGIN / 2, BOX_MARGIN / 2, messageSize.width, messageSize.height);
                 accessoryRect = CGRectMake(BOX_MARGIN / 2 + messageSize.width + ACCESSOR_MARGIN, BOX_MARGIN / 2, accessorySize.width, accessorySize.height);
                 break;
                 
             case GVC_StatusItemPosition_TOP:
-                itemSize = CGSizeMake(floorf(MAX(accessorySize.width, messageSize.width) + BOX_MARGIN), floorf(accessorySize.height + messageSize.height + ACCESSOR_MARGIN + BOX_MARGIN));
-                itemSize = CGSizeMake(floorf(MAX(itemSize.width, MIN_W)), floorf(MAX(itemSize.height, MIN_H)));
+                itemSize = CGSizeMake(MAX(accessorySize.width, messageSize.width) + BOX_MARGIN, 
+                                      accessorySize.height + messageSize.height + ACCESSOR_MARGIN + BOX_MARGIN);
+                itemSize = CGSizeMake(MAX(itemSize.width, MIN_W), MAX(itemSize.height, MIN_H));
                 
-                accessoryRect = CGRectMake(floorf((itemSize.width - accessorySize.width) / 2),
+                accessoryRect = CGRectMake((itemSize.width - accessorySize.width) / 2,
                                            BOX_MARGIN / 2,
                                            accessorySize.width, accessorySize.height);
-                messageRect = CGRectMake(floorf((itemSize.width - messageSize.width) / 2),
+                messageRect = CGRectMake((itemSize.width - messageSize.width) / 2,
                                          BOX_MARGIN / 2 + ACCESSOR_MARGIN + accessorySize.height,
                                          messageSize.width, messageSize.height);
                 break;
             case GVC_StatusItemPosition_BOTTOM:
             default:
-                itemSize = CGSizeMake(floorf(MAX(accessorySize.width, messageSize.width) + BOX_MARGIN), floorf(accessorySize.height + messageSize.height + ACCESSOR_MARGIN + BOX_MARGIN));
-                itemSize = CGSizeMake(floorf(MAX(itemSize.width, MIN_W)), floorf(MAX(itemSize.height, MIN_H)));
+                itemSize = CGSizeMake(MAX(accessorySize.width, messageSize.width) + BOX_MARGIN, 
+                                      accessorySize.height + messageSize.height + ACCESSOR_MARGIN + BOX_MARGIN);
+                itemSize = CGSizeMake(MAX(itemSize.width, MIN_W), MAX(itemSize.height, MIN_H));
                 
-                messageRect = CGRectMake(floorf((itemSize.width - messageSize.width) / 2),
+                messageRect = CGRectMake((itemSize.width - messageSize.width) / 2,
                                          BOX_MARGIN / 2,
                                          messageSize.width, messageSize.height);
-                accessoryRect = CGRectMake(floorf((itemSize.width - accessorySize.width) / 2),
+                accessoryRect = CGRectMake((itemSize.width - accessorySize.width) / 2,
                                            BOX_MARGIN / 2 + ACCESSOR_MARGIN + messageSize.height,
                                            accessorySize.width, accessorySize.height);
                 break;
         }
         
-        boxRect = CGRectMake(floorf((superFrame.size.width - itemSize.width) / 2), floorf((superFrame.size.height - itemSize.height) / 2), floorf(itemSize.width), floorf(itemSize.height));
+        boxRect = CGRectMake((superFrame.size.width - itemSize.width) / 2, 
+                             (superFrame.size.height - itemSize.height) / 2, 
+                             itemSize.width, 
+                             itemSize.height
+                             );
     }
-    [self setFrame:boxRect];
-    [messageLayer setFrame:messageRect];
-    [accessory setFrame:accessoryRect];
+    [self setCurrentAccessory:accessory];
+    [self setCalculatedViewRect:[UIView gvc_SharpenRect:boxRect]];
+    [self setCalculatedAccessoryRect:[UIView gvc_SharpenRect:accessoryRect]];
+    [self setCalculatedMessageRect:[UIView gvc_SharpenRect:messageRect]];
 }
 
 - (void)displayItem:(GVCStatusItem *)item
@@ -205,12 +222,38 @@ static float MIN_W = 160.0;
 {
 	if ([NSThread isMainThread]) 
 	{
+        [self calculateViewFrames];
+        if ( CGRectEqualToRect([self frame], CGRectZero) == YES )
+        {
+            [self setFrame:calculatedViewRect];
+        }
+
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        [CATransaction setCompletionBlock:^{
+            [UIView animateWithDuration:.4 animations:^{ 
+                if ( CGRectEqualToRect([self frame], calculatedViewRect) == NO )
+                {
+                    [self setFrame:calculatedViewRect];
+                    [self setNeedsDisplay];
+                }
+                
+                [messageLayer setFrame:calculatedMessageRect];
+                [currentAccessory setFrame:calculatedAccessoryRect];
+                [self setAlpha:1.0];
+            } completion:^(BOOL finished) {
+                if (finished == YES) 
+                {
+                    [[self superview] setUserInteractionEnabled:YES];
+                }
+            }];
+        }];
+        
         [[self progressLayer] setProgress:[currentItem progress]];
         [[self progressLayer] setNeedsDisplay];
-        
         [[self messageLayer] setString:[currentItem message]];
-		[self setNeedsLayout];
-		[self setNeedsDisplay];
+
+        [CATransaction commit];
 	}
 	else
 	{
@@ -218,5 +261,63 @@ static float MIN_W = 160.0;
 	}
 }
 
+- (void)show
+{
+    [self setAlpha:0.0];
+    [self update];
+}
+
+- (void)hide
+{
+	if ([NSThread isMainThread]) 
+	{
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        [CATransaction setCompletionBlock:^{
+            [UIView animateWithDuration:.6 animations:^{ 
+                [self setAlpha:0.0];
+            } completion:^(BOOL finished) {
+                if (finished == YES) 
+                {
+                    [[self superview] setUserInteractionEnabled:NO];
+                }
+            }];
+        }];
+        
+        [CATransaction commit];
+	}
+	else
+	{
+		[self performSelectorOnMainThread:@selector(hide) withObject:nil waitUntilDone:NO];
+	}
+}
+
+- (void)drawRect:(CGRect)rect 
+{
+//	[self gvc_drawRoundRectangleInRect:rect withRadius:[self cornerRadius] borderWidth:[self borderWidth] color:[self contentColor] borderColor:[self borderColor]];
+    
+    [super drawRect:rect];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGRect rrect = [UIView gvc_SharpenRect:CGRectInset(rect, [self borderWidth]-1, [self borderWidth]-1)];
+
+    CGContextSaveGState(context);
+    [self gvc_addRoundRectangleToContext:context inRect:rrect withRadius:[self cornerRadius]];
+    CGContextClip(context);
+    
+    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
+    UIColor *shineMinor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
+    NSArray *colors = [NSArray arrayWithObjects:(id)[self contentColor].CGColor, (id)shineMinor.CGColor, nil];
+    CGFloat locations[2] = { 0.0, 1.0 };
+    
+    CGGradientRef gradient = CGGradientCreateWithColors(space, (__bridge CFArrayRef)colors, locations);
+    CGPoint start = CGPointMake(0, rrect.origin.y);
+    CGPoint end = CGPointMake(0, rrect.origin.y+(rrect.size.height/3));
+    CGContextDrawLinearGradient (context, gradient, start, end, 0);
+    
+    CGColorSpaceRelease(space);
+    CGGradientRelease(gradient);
+    CGContextRestoreGState(context);
+}
 
 @end

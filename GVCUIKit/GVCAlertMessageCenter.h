@@ -43,7 +43,6 @@ typedef enum {
 GVC_SINGLETON_HEADER(GVCAlertMessageCenter);
 
 
-- (void) timedAlert:(NSTimeInterval)interval withMessage:(NSString *)message;
 - (void) startAlertWithMessage:(NSString *)message;
 - (void) stopAlert;
 

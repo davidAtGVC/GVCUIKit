@@ -25,6 +25,8 @@
 @property (nonatomic, strong) UIActivityIndicatorView *activityView;
 
 - (void)displayItem:(GVCStatusItem *)item;
-
+- (void)show;
+- (void)update;
+- (void)hide;
 
 @end

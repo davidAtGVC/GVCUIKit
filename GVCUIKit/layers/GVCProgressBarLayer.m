@@ -9,6 +9,7 @@
 #import "GVCProgressBarLayer.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "UIView+GVCUIKit.h"
 
 @implementation GVCProgressBarLayer
 
@@ -55,7 +56,7 @@
 	UIGraphicsPushContext(context);
 	if (progress >= 0) 
     {
-        CGRect rrect = CGRectInset([self bounds], borderWidth, borderWidth);
+        CGRect rrect = [UIView gvc_SharpenRect:CGRectInset([self bounds], borderWidth/2, borderWidth/2)];
         CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
         CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
         
@@ -72,7 +73,7 @@
         CGContextDrawPath(context, kCGPathStroke);
         
         // draw the progress bar
-        rrect = CGRectInset(rrect, barInset, barInset);
+        rrect = [UIView gvc_SharpenRect:CGRectInset(rrect, barInset, barInset)];
         rrect.size.width = rrect.size.width * [self progress];
         minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
         miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);

@@ -14,9 +14,9 @@
 @property (nonatomic, strong) NSMutableArray *alerts;
 @property (nonatomic, strong) GVCStatusView *alertView;
 @property (nonatomic, assign) BOOL active;
-- (void)showNextAlertMessage:(NSTimeInterval)animation;
+- (void)showNextAlertMessage;
 - (void)processMessageQueue;
-- (void)hideAlertView;
+//- (void)hideAlertView;
 @end
 
 
@@ -35,22 +35,30 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 	{
 		[self setAlerts:[[NSMutableArray alloc] init]];
 		[self setActive:NO];
-        [self setAlertView:[[GVCStatusView alloc] initWithFrame:CGRectZero]];
-        [[self alertView] setAlpha:0];
-        [[self alertView] setBorderWidth:4];
-        [[self alertView] setAutoresizingMask:(UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin)];
         
-        UIView *base = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        [base setBackgroundColor:[UIColor clearColor]];
-        [base setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-        [base setUserInteractionEnabled:NO];
-        [base addSubview:[self alertView]];
-		[base setAlpha:0];
-
-
-        [self setView:base];
+        [self setAlertView:[[GVCStatusView alloc] initWithFrame:CGRectZero]];
+        [[self alertView] setAutoresizingMask:(UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin)];
 	}
 	return self;
+}
+
+- (void)loadView 
+{
+    UIView *base = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [base setBackgroundColor:[UIColor clearColor]];
+    [base setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    [base setUserInteractionEnabled:NO];
+    [base addSubview:[self alertView]];
+    //[base setAlpha:0];
+    
+    [self setView:base];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -64,21 +72,69 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 		if ( yesNo == YES )
 		{
 			if ( active == NO )
-				[[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            {
+                [self setTransformForCurrentOrientation];
+                UIWindow *keyWindow  = [[UIApplication sharedApplication] keyWindow];
+                [keyWindow addSubview:[self view]];
+                [keyWindow bringSubviewToFront:[self view]];
+
+                [[self view] setNeedsDisplay];
+            }
 		}
 		else
 		{
 			if ( active == YES )
-				[[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            {
+                [alertView hide];
+                [[self view] removeFromSuperview];
+            }
 		}
 		
 		active = yesNo;
 	});
 }
 
-- (void) timedAlert:(NSTimeInterval)interval withMessage:(NSString *)message
+#define RADIANS(degrees) ((degrees * M_PI) / 180.0)
+- (void)setTransformForCurrentOrientation
 {
+	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+	NSInteger degrees = 0;
 	
+	if (UIInterfaceOrientationIsLandscape(orientation))
+	{
+		if (orientation == UIInterfaceOrientationLandscapeLeft)
+		{
+			degrees = -90;
+		} 
+		else
+		{ 
+			degrees = 90; 
+		}
+	}
+	else
+	{
+		if (orientation == UIInterfaceOrientationPortraitUpsideDown)
+		{ 
+			degrees = 180;
+		} 
+		else
+		{ 
+			degrees = 0; 
+		}
+	}
+    [UIView beginAnimations:nil context:nil];
+	[[self view] setTransform:CGAffineTransformMakeRotation(RADIANS(degrees))];
+    [[self view] setFrame:[[UIScreen mainScreen] bounds]]; 
+    [UIView commitAnimations];
+}
+
+- (void)deviceOrientationDidChange:(NSNotification *)notification 
+{ 
+    if ( [self active] == YES )
+    {
+        [self setTransformForCurrentOrientation];
+		[alertView update];
+    }
 }
 
 - (void)keyWindowChanged:(NSNotification *)notification
@@ -94,40 +150,18 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 - (void) stopAlert
 {
 	[self clearQueue];
-	if ( active == YES )
-	{
-		[UIView beginAnimations:nil context:nil];
-		[UIView setAnimationDuration:1.0];
-		[UIView setAnimationDelegate:self];
-		[UIView setAnimationDidStopSelector:@selector(hideAlertView)];
-		[alertView setAlpha:0];
-		[[self view] setAlpha:0];
-		[UIView commitAnimations];
-	}
+    [self setActive:NO];
 }
 
-- (void)hideAlertView
-{
-	[self setActive:NO];
-    [[self view] removeFromSuperview];
-}
-
-
-- (void)showNextAlertMessage:(NSTimeInterval)animation
+- (void)showNextAlertMessage
 {
 	if ( [alerts count] > 0 )
 	{
+        [self setActive:YES];
+
 		GVCStatusItem *item = [alerts objectAtIndex:0];
 		[alerts removeObjectAtIndex:0];
-		
-		[UIView beginAnimations:nil context:nil];
-		[UIView setAnimationDuration:animation];
-		[UIView setAnimationDelegate:self];
-		[UIView setAnimationDidStopSelector:@selector(processMessageQueue)];
 		[alertView displayItem:item];
-		[alertView setAlpha:1];
-		[[self view] setAlpha:1];
-		[UIView commitAnimations];
 	}
     else
     {
@@ -139,7 +173,7 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 {
 	if ([alerts count] > 0) 
 	{
-		[self showNextAlertMessage:1.0];
+		[self showNextAlertMessage];
 	}
 }
 
@@ -169,18 +203,7 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
     GVC_ASSERT(item != nil, @"Status Item is nil");
     
     [alerts addObject:item];
-    
-    if ( active == NO )
-    {
-        [self setActive:YES];
-        
-        [alertView setAlpha:0.0];
-        UIWindow *keyWindow  = [[UIApplication sharedApplication] keyWindow];
-        
-        [keyWindow addSubview:[self view]];
-        [keyWindow bringSubviewToFront:[self view]];
-    }
-    [self showNextAlertMessage:0.4];
+    [self showNextAlertMessage];
 }
 
 - (void)clearQueue
