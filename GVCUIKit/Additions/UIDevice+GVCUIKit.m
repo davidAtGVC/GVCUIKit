@@ -13,12 +13,12 @@
 
 @implementation UIDevice (UIDeviceGVCUIKit)
 
-- (NSString *)userInterfaceIdiomString
+- (NSString *)gvc_userInterfaceIdiomString
 {
 	return ([self userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? @"iPad" : @"iPhone";
 }
 
-- (double)availableMemory 
+- (double)gvc_availableMemory 
 {
     vm_statistics_data_t vmStats;
     mach_msg_type_number_t infoCount = HOST_VM_INFO_COUNT;
@@ -32,7 +32,7 @@
     return ((vm_page_size * vmStats.free_count) / 1024.0) / 1024.0;
 }
 
-- (NSString *)phoneNumber 
+- (NSString *)gvc_phoneNumber 
 {
     return [[NSUserDefaults standardUserDefaults] stringForKey:@"SBFormattedPhoneNumber"];
 }

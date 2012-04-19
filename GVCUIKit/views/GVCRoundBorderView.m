@@ -45,7 +45,7 @@
     if (self != nil) 
 	{
 		[self setContentColor:[self backgroundColor]];
-		[self setBorderColor:[[self backgroundColor] reverseColor]];
+		[self setBorderColor:[[self backgroundColor] gvc_reverseColor]];
 
 		[self setBackgroundColor:[UIColor clearColor]];
 		
@@ -66,7 +66,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect 
 {
-	[self drawRoundRectangleInRect:rect withRadius:[self cornerRadius] borderWidth:[self borderWidth] color:[self contentColor] borderColor:[self borderColor]];
+	[self gvc_drawRoundRectangleInRect:rect withRadius:[self cornerRadius] borderWidth:[self borderWidth] color:[self contentColor] borderColor:[self borderColor]];
 }
 
 

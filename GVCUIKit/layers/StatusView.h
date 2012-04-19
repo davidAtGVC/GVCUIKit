@@ -1,21 +1,21 @@
-//
-//  GVCStatusView.h
-//
-//  Created by David Aspinall on 10-12-13.
-//  Copyright 2010 Global Village Consulting Inc. All rights reserved.
-//
-
-#import <UIKit/UIKit.h>
-#import <QuartzCore/CALayer.h>
-#import <QuartzCore/CATextLayer.h>
+/*
+ * StatusView.h
+ * 
+ * Created by David Aspinall on 12-04-17. 
+ * Copyright (c) 2012 Global Village Consulting. All rights reserved.
+ *
+ */
 
 #import "GVCRoundBorderView.h"
+
+#import <QuartzCore/CALayer.h>
+#import <QuartzCore/CATextLayer.h>
 
 @class GVCTextLayer;
 @class GVCProgressBarLayer;
 @class GVCStatusItem;
 
-@interface GVCStatusView : GVCRoundBorderView 
+@interface StatusView : GVCRoundBorderView
 
 - (id)initWithFrame:(CGRect)frame;
 
@@ -25,6 +25,5 @@
 @property (nonatomic, strong) UIActivityIndicatorView *activityView;
 
 - (void)displayItem:(GVCStatusItem *)item;
-
 
 @end

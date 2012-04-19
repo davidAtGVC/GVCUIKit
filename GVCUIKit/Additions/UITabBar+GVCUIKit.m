@@ -10,12 +10,12 @@
 
 @implementation UITabBar (GVCUIKit)
 
-- (NSUInteger)selectedIndex 
+- (NSUInteger)gvc_selectedIndex 
 {
     return [[self items] indexOfObject:[self selectedItem]];
 }
 
-- (void)setSelectedIndex:(NSUInteger)newIndex 
+- (void)gvc_setSelectedIndex:(NSUInteger)newIndex 
 {
     [self setSelectedItem:[[self items] objectAtIndex:newIndex]];
 }

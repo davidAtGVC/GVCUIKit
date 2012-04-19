@@ -13,7 +13,7 @@
  */
 @implementation UIViewController (GVCUIKit)
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView 
+- (void)gvc_scrollViewDidEndDecelerating:(UIScrollView *)scrollView 
 {
 	if ( [self conformsToProtocol:@protocol(UITableViewDynamicContentController)] == YES )
 	{
@@ -23,7 +23,7 @@
 	}
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate 
+- (void)gvc_scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate 
 {
 	if ( [self conformsToProtocol:@protocol(UITableViewDynamicContentController)] == YES )
 	{

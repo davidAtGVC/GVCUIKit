@@ -10,9 +10,9 @@
 
 @interface UIDevice (UIDeviceGVCUIKit)
 
-@property(readonly) NSString *userInterfaceIdiomString;
-@property(readonly) NSString *phoneNumber;
-@property(readonly) double availableMemory;
+@property(readonly) NSString *gvc_userInterfaceIdiomString;
+@property(readonly) NSString *gvc_phoneNumber;
+@property(readonly) double gvc_availableMemory;
 
 @end
 

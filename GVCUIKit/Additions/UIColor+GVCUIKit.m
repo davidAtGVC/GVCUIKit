@@ -11,75 +11,75 @@
 
 @implementation UIColor (GVCUIKit)
 
--(BOOL)isMonochrome 
+-(BOOL)gvc_isMonochrome 
 {
 	return CGColorSpaceGetModel(CGColorGetColorSpace([self CGColor])) == kCGColorSpaceModelMonochrome;
 }
 
--(CGFloat)red 
+-(CGFloat)gvc_red 
 {
 	return CGColorGetComponents([self CGColor])[0];
 }
 
--(CGFloat)green 
+-(CGFloat)gvc_green 
 {
 	const CGFloat *colors = CGColorGetComponents([self CGColor]);
-	return [self isMonochrome] ? colors[0] : colors[1];
+	return [self gvc_isMonochrome] ? colors[0] : colors[1];
 }
 
--(CGFloat)blue 
+-(CGFloat)gvc_blue 
 {
 	const CGFloat *colors = CGColorGetComponents([self CGColor]);
-	return [self isMonochrome] ? colors[0] : colors[2];
+	return [self gvc_isMonochrome] ? colors[0] : colors[2];
 }
 
--(CGFloat)hue 
+-(CGFloat)gvc_hue 
 {
 	float hfa[4];
-	[self hsba:hfa];
+	[self gvc_hsba:hfa];
 	return hfa[0];
 }
 
--(CGFloat)saturation 
+-(CGFloat)gvc_saturation 
 {
 	float hfa[4];
-	[self hsba:hfa];
+	[self gvc_hsba:hfa];
 	return hfa[1];
 }
 
--(CGFloat)brightness 
+-(CGFloat)gvc_brightness 
 {
 	float hfa[4];
-	[self hsba:hfa];
+	[self gvc_hsba:hfa];
 	return hfa[2];
 }
 
 
--(CGFloat)alpha 
+-(CGFloat)gvc_alpha 
 {
 	return CGColorGetAlpha([self CGColor]);
 }
 
--(void)rgba:(float[4])arr 
+-(void)gvc_rgba:(float[4])arr 
 {
-	arr[0]=[self red];
-	arr[1]=[self green];
-	arr[2]=[self blue];
-	arr[3]=[self alpha];
+	arr[0]=[self gvc_red];
+	arr[1]=[self gvc_green];
+	arr[2]=[self gvc_blue];
+	arr[3]=[self gvc_alpha];
 }
 
--(void)hsba:(float[4])arr 
+-(void)gvc_hsba:(float[4])arr 
 {
-	arr[3]=[self alpha];
-	RGB2HSL([self red], [self green], [self blue], &arr[0],&arr[1],&arr[2]);
+	arr[3]=[self gvc_alpha];
+	GVC_RGB2HSL([self gvc_red], [self gvc_green], [self gvc_blue], &arr[0],&arr[1],&arr[2]);
 }
 
--(UIColor *)reverseColor 
+-(UIColor *)gvc_reverseColor 
 {
-	return [UIColor colorWithRed:1-[self red] green:1-[self green] blue:1-[self blue] alpha:[self alpha]];
+	return [UIColor colorWithRed:1-[self gvc_red] green:1-[self gvc_green] blue:1-[self gvc_blue] alpha:[self gvc_alpha]];
 }
 
-void RGB2HSL(float r, float g, float b, float* outH, float *outS, float *outV) 
+void GVC_RGB2HSL(float r, float g, float b, float* outH, float *outS, float *outV) 
 {
 	float minC,maxC;
 	minC = fminf(r, g);
@@ -109,7 +109,7 @@ void RGB2HSL(float r, float g, float b, float* outH, float *outS, float *outV)
 }
 
 
-void HSL2RGB(float h, float s, float l, float* outR, float* outG, float* outB) 
+void GVC_HSL2RGB(float h, float s, float l, float* outR, float* outG, float* outB) 
 {
 	float			temp1,
 	temp2;

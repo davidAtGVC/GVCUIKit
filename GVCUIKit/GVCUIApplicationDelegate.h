@@ -8,10 +8,11 @@
 
 @interface GVCUIApplicationDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) IBOutlet UIWindow *window;
 
 - (NSString *)applicationName;
-- (NSString *)applicationDocumentsDirectory;
+- (NSString *)applicationDocumentsPath;
+- (NSURL *)applicationDocumentsURL;
 
 - (NSArray *)applicationResourcesOfType:(NSString *)extension inDirectory:(NSString *)subfolder;
 - (NSString *)applicationResourcePathForName:(NSString *)apath ofType:(NSString *)extension inDirectory:(NSString *)subfolder;

@@ -1,23 +1,25 @@
-//
-//  GVCStatusView.m
-//
-//  Created by David Aspinall on 10-12-13.
-//  Copyright 2010 Global Village Consulting Inc. All rights reserved.
-//
+/*
+ * StatusView.m
+ * 
+ * Created by David Aspinall on 12-04-17. 
+ * Copyright (c) 2012 Global Village Consulting. All rights reserved.
+ *
+ */
 
-#import "GVCStatusView.h"
+
+#import "StatusView.h"
 #import "GVCTextLayer.h"
 #import "GVCProgressBarLayer.h"
 #import "GVCAlertMessageCenter.h"
 
 #import "NSAttributedString+GVCUIKit.h"
 
-@interface GVCStatusView ()
+@interface StatusView ()
 @property (strong, nonatomic) GVCStatusItem *currentItem;
 @end
 
+@implementation StatusView
 
-@implementation GVCStatusView
 @synthesize currentItem;
 @synthesize messageLayer;
 @synthesize progressLayer;
@@ -34,11 +36,11 @@
 		[messageLayer setAnchorPoint:CGPointMake(0, 0)];
         [messageLayer setBackgroundColor:[UIColor clearColor].CGColor];
         [messageLayer setFont:CGFontCreateWithFontName((__bridge CFStringRef)[UIFont boldSystemFontOfSize:14].fontName)];
-        
+
         [messageLayer setFontSize:14];
         [messageLayer setWrapped:YES];
 		[[self layer] addSublayer:messageLayer];
-        
+
         [self setProgressLayer:[[GVCProgressBarLayer alloc] init]];
 		[progressLayer setContentsScale:[[UIScreen mainScreen] scale]];
 		[progressLayer setAnchorPoint:CGPointMake(0, 0)];
@@ -48,11 +50,11 @@
         
         [self setActivityView:[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]];
         [[self activityView] setHidesWhenStopped:YES];
-        
+
         [self setImageLayer:[[CALayer alloc] init]];
 		[imageLayer setAnchorPoint:CGPointMake(0, 0)];
 		[[self layer] addSublayer:imageLayer];
-        
+
         [self setBorderColor:[UIColor lightGrayColor]];
     }
 	
@@ -62,7 +64,7 @@
 - (CGSize)sizeForItem:(GVCStatusItem *)item
 {
     CGSize fullSize = CGSizeZero;
-    
+
     fullSize = CGSizeMake(280, 148);
     
     return fullSize;
@@ -88,7 +90,7 @@ static float MIN_W = 160.0;
         CGSize messageSize = [attrString gvc_sizeConstrainedToWidth:MIN_W];
         CGSize accessorySize = CGSizeZero;
         CGSize itemSize = CGSizeZero;
-        
+
         if (([currentItem accessoryPosition] == GVC_StatusItemPosition_LEFT) || ([currentItem accessoryPosition] == GVC_StatusItemPosition_RIGHT))
         {
             // progress bars can only be top or bottom
@@ -122,7 +124,7 @@ static float MIN_W = 160.0;
                 {
                     [[self layer] addSublayer:[self progressLayer]];
                 }
-                
+
                 break;
                 
             case GVC_StatusItemAccessory_IMAGE:
@@ -130,16 +132,16 @@ static float MIN_W = 160.0;
                 accessorySize = [[currentItem image] size];
                 accessory = [self imageLayer];
                 [[self imageLayer] setContents:(id)[currentItem image].CGImage];
-                
+
                 [[self activityView] stopAnimating];
                 [[self activityView] removeFromSuperview];
                 [[self progressLayer] removeFromSuperlayer];
-                
+
                 if ( [[[self layer] sublayers] containsObject:[self imageLayer]] == NO )
                 {
                     [[self layer] addSublayer:[self imageLayer]];
                 }
-                
+
                 break;
                 
             case GVC_StatusItemAccessory_NONE:
@@ -151,34 +153,34 @@ static float MIN_W = 160.0;
             case GVC_StatusItemPosition_LEFT:
                 itemSize = CGSizeMake(floorf(accessorySize.width + messageSize.width + ACCESSOR_MARGIN + BOX_MARGIN), floorf(MAX(accessorySize.height,messageSize.height) + BOX_MARGIN));
                 itemSize = CGSizeMake(floorf(MAX(itemSize.width, MIN_W)), floorf(MAX(itemSize.height, MIN_H)));
-                
+
                 accessoryRect = CGRectMake(BOX_MARGIN / 2, BOX_MARGIN / 2, accessorySize.width, accessorySize.height);
                 messageRect = CGRectMake((BOX_MARGIN / 2) + accessorySize.width + ACCESSOR_MARGIN, BOX_MARGIN / 2, messageSize.width, messageSize.height);
                 break;
             case GVC_StatusItemPosition_RIGHT:
                 itemSize = CGSizeMake(floorf(accessorySize.width + messageSize.width + ACCESSOR_MARGIN + BOX_MARGIN), floorf(MAX(accessorySize.height,messageSize.height) + BOX_MARGIN));
                 itemSize = CGSizeMake(floorf(MAX(itemSize.width, MIN_W)), floorf(MAX(itemSize.height, MIN_H)));
-                
+
                 messageRect = CGRectMake(BOX_MARGIN / 2, BOX_MARGIN / 2, messageSize.width, messageSize.height);
                 accessoryRect = CGRectMake(BOX_MARGIN / 2 + messageSize.width + ACCESSOR_MARGIN, BOX_MARGIN / 2, accessorySize.width, accessorySize.height);
                 break;
-                
+
             case GVC_StatusItemPosition_TOP:
                 itemSize = CGSizeMake(floorf(MAX(accessorySize.width, messageSize.width) + BOX_MARGIN), floorf(accessorySize.height + messageSize.height + ACCESSOR_MARGIN + BOX_MARGIN));
                 itemSize = CGSizeMake(floorf(MAX(itemSize.width, MIN_W)), floorf(MAX(itemSize.height, MIN_H)));
-                
+
                 accessoryRect = CGRectMake(floorf((itemSize.width - accessorySize.width) / 2),
                                            BOX_MARGIN / 2,
                                            accessorySize.width, accessorySize.height);
                 messageRect = CGRectMake(floorf((itemSize.width - messageSize.width) / 2),
-                                         BOX_MARGIN / 2 + ACCESSOR_MARGIN + accessorySize.height,
-                                         messageSize.width, messageSize.height);
+                                           BOX_MARGIN / 2 + ACCESSOR_MARGIN + accessorySize.height,
+                                           messageSize.width, messageSize.height);
                 break;
             case GVC_StatusItemPosition_BOTTOM:
             default:
                 itemSize = CGSizeMake(floorf(MAX(accessorySize.width, messageSize.width) + BOX_MARGIN), floorf(accessorySize.height + messageSize.height + ACCESSOR_MARGIN + BOX_MARGIN));
                 itemSize = CGSizeMake(floorf(MAX(itemSize.width, MIN_W)), floorf(MAX(itemSize.height, MIN_H)));
-                
+
                 messageRect = CGRectMake(floorf((itemSize.width - messageSize.width) / 2),
                                          BOX_MARGIN / 2,
                                          messageSize.width, messageSize.height);
@@ -201,13 +203,35 @@ static float MIN_W = 160.0;
     [self update];
 }
 
+
+- (void)updateMessage:(NSString *)msg andProgress:(float)progress
+{
+    BOOL needUpdate = NO;
+//    if ( [[self text] isEqualToString:msg] == NO )
+    {
+        [[self messageLayer] setString:msg];
+        needUpdate = YES;
+    }
+    if (progress <= 1.0) // && (currentProgress != progress))
+    {
+        [[self progressLayer] setProgress:progress];
+//        currentProgress = progress;
+        needUpdate = YES;
+    }
+    
+    if (needUpdate == YES)
+    {
+        [self update];
+    }
+}
+
 - (void)update
 {
 	if ([NSThread isMainThread]) 
 	{
         [[self progressLayer] setProgress:[currentItem progress]];
         [[self progressLayer] setNeedsDisplay];
-        
+
         [[self messageLayer] setString:[currentItem message]];
 		[self setNeedsLayout];
 		[self setNeedsDisplay];

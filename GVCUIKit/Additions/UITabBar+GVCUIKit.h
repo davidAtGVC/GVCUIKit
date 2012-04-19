@@ -10,6 +10,6 @@
 
 
 @interface UITabBar(GVCUIKit)
-- (NSUInteger)selectedIndex;
-- (void)setSelectedIndex:(NSUInteger)newIndex;
+- (NSUInteger)gvc_selectedIndex;
+- (void)gvc_setSelectedIndex:(NSUInteger)newIndex;
 @end

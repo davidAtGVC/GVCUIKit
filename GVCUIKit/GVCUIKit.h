@@ -10,6 +10,7 @@
 /* 
  * Additions 
  */
+#import "NSAttributedString+GVCUIKit.h"
 #import "UIColor+GVCUIKit.h"
 #import "UIDevice+GVCUIKit.h"
 #import "UIImage+GVCUIKit.h"
@@ -40,6 +41,13 @@
 #import "GVCUIDatePickerViewController.h"
 #import "GVCUITableViewController.h"
 #import "GVCUIViewController.h"
+
+/* 
+ * layers 
+ */
+#import "GVCProgressBarLayer.h"
+#import "GVCTextLayer.h"
+#import "StatusView.h"
 
 /* 
  * prototyping 

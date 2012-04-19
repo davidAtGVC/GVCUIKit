@@ -12,7 +12,7 @@
 @implementation UIView (GVCUIKit)
 
 
-- (CGRect)rectForString:(NSString *)contents atOrigin:(CGPoint)origin constrainedToSize:(CGSize)constrainedSize forFont:(UIFont *)font
+- (CGRect)gvc_rectForString:(NSString *)contents atOrigin:(CGPoint)origin constrainedToSize:(CGSize)constrainedSize forFont:(UIFont *)font
 {
 	GVC_ASSERT( (origin.x >= 0.0) && (origin.y >= 0.0), @"Origin point is invalid" );
 	GVC_ASSERT( font != nil, @"Unable to calculate string size without a valid font" );
@@ -31,7 +31,7 @@
 	return CGRectMake(x, y, width, height);
 }
 
-- (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color
+- (void)gvc_drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color
 {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	[color set];
@@ -49,7 +49,7 @@
 	CGContextDrawPath(context, kCGPathFill);
 }
 
-- (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)rad borderWidth:(CGFloat)thickness color:(UIColor*)color borderColor:(UIColor*)border
+- (void)gvc_drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)rad borderWidth:(CGFloat)thickness color:(UIColor*)color borderColor:(UIColor*)border
 {
 	if ( color == nil )
 		color = [UIColor darkGrayColor];
@@ -58,7 +58,7 @@
 		border = [UIColor whiteColor];
 	
 	CGRect rrect = CGRectInset(rect, thickness/2, thickness/2);
-	[self drawRoundRectangleInRect:rrect withRadius:rad color:color];
+	[self gvc_drawRoundRectangleInRect:rrect withRadius:rad color:color];
 
 	CGFloat radius = rad;
 	CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);

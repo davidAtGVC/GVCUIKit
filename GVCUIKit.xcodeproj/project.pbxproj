@@ -30,6 +30,9 @@
 		0563F58E1537EBC500BC7D2D /* GVCMultiLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0563F58C1537EBC500BC7D2D /* GVCMultiLineTableViewCell.m */; };
 		056A14E4150310B500B50027 /* GVCDictionaryTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 056A14E2150310B500B50027 /* GVCDictionaryTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		056A14E5150310B500B50027 /* GVCDictionaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056A14E3150310B500B50027 /* GVCDictionaryTableViewController.m */; };
+		0585C55115401DFA00659B22 /* NSAttributedString+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0585C55215401DFA00659B22 /* NSAttributedString+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */; };
+		0585C556154028B600659B22 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0585C555154028B600659B22 /* CoreText.framework */; };
 		058B64E115005F41007F27A1 /* GVCUIApplicationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 058B64DD15005F40007F27A1 /* GVCUIApplicationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		058B64E215005F41007F27A1 /* GVCUIApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 058B64DE15005F40007F27A1 /* GVCUIApplicationDelegate.m */; };
 		058B65DE1500696B007F27A1 /* GVCBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 058B65D81500696B007F27A1 /* GVCBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,6 +49,13 @@
 		059C61901502894B00E18973 /* GVCUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C618E1502894B00E18973 /* GVCUITableViewController.m */; };
 		059C619315028A2000E18973 /* GVCUITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 059C619115028A2000E18973 /* GVCUITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		059C619415028A2000E18973 /* GVCUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C619215028A2000E18973 /* GVCUITableViewCell.m */; };
+		05ABB548153E45E500D039F2 /* GVCProgressBarLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 05ABB544153E45E500D039F2 /* GVCProgressBarLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05ABB549153E45E500D039F2 /* GVCProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ABB545153E45E500D039F2 /* GVCProgressBarLayer.m */; };
+		05ABB54A153E45E500D039F2 /* GVCTextLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 05ABB546153E45E500D039F2 /* GVCTextLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05ABB54B153E45E500D039F2 /* GVCTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ABB547153E45E500D039F2 /* GVCTextLayer.m */; };
+		05ABB54E153E48AA00D039F2 /* StatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05ABB54C153E48AA00D039F2 /* StatusView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05ABB54F153E48AA00D039F2 /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ABB54D153E48AA00D039F2 /* StatusView.m */; };
+		05ABB551153E5CFC00D039F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05ABB550153E5CFC00D039F2 /* QuartzCore.framework */; };
 		05CA0AF014F7F69E001C8A68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEF14F7F69E001C8A68 /* Foundation.framework */; };
 		05CA0AFE14F7F69F001C8A68 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AFD14F7F69F001C8A68 /* SenTestingKit.framework */; };
 		05CA0B0114F7F69F001C8A68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEF14F7F69E001C8A68 /* Foundation.framework */; };
@@ -135,6 +145,9 @@
 		0563F58C1537EBC500BC7D2D /* GVCMultiLineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCMultiLineTableViewCell.m; sourceTree = "<group>"; };
 		056A14E2150310B500B50027 /* GVCDictionaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCDictionaryTableViewController.h; sourceTree = "<group>"; };
 		056A14E3150310B500B50027 /* GVCDictionaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCDictionaryTableViewController.m; sourceTree = "<group>"; };
+		0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+GVCUIKit.h"; sourceTree = "<group>"; };
+		0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+GVCUIKit.m"; sourceTree = "<group>"; };
+		0585C555154028B600659B22 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		058B64DD15005F40007F27A1 /* GVCUIApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUIApplicationDelegate.h; sourceTree = "<group>"; };
 		058B64DE15005F40007F27A1 /* GVCUIApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUIApplicationDelegate.m; sourceTree = "<group>"; };
 		058B65D81500696B007F27A1 /* GVCBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCBadgeView.h; sourceTree = "<group>"; };
@@ -150,6 +163,13 @@
 		059C618E1502894B00E18973 /* GVCUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUITableViewController.m; sourceTree = "<group>"; };
 		059C619115028A2000E18973 /* GVCUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUITableViewCell.h; sourceTree = "<group>"; };
 		059C619215028A2000E18973 /* GVCUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUITableViewCell.m; sourceTree = "<group>"; };
+		05ABB544153E45E500D039F2 /* GVCProgressBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCProgressBarLayer.h; sourceTree = "<group>"; };
+		05ABB545153E45E500D039F2 /* GVCProgressBarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCProgressBarLayer.m; sourceTree = "<group>"; };
+		05ABB546153E45E500D039F2 /* GVCTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTextLayer.h; sourceTree = "<group>"; };
+		05ABB547153E45E500D039F2 /* GVCTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCTextLayer.m; sourceTree = "<group>"; };
+		05ABB54C153E48AA00D039F2 /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
+		05ABB54D153E48AA00D039F2 /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
+		05ABB550153E5CFC00D039F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGVCUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CA0AEF14F7F69E001C8A68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05CA0AF314F7F69E001C8A68 /* GVCUIKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GVCUIKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -178,6 +198,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0585C556154028B600659B22 /* CoreText.framework in Frameworks */,
+				05ABB551153E5CFC00D039F2 /* QuartzCore.framework in Frameworks */,
 				059C617715011B5600E18973 /* CoreData.framework in Frameworks */,
 				059C617815011B5600E18973 /* UIKit.framework in Frameworks */,
 				05CA0AF014F7F69E001C8A68 /* Foundation.framework in Frameworks */,
@@ -252,6 +274,8 @@
 				055D8E5B14FF0A3700E85A94 /* UIView+GVCUIKit.m */,
 				055D8E5C14FF0A3700E85A94 /* UIViewController+GVCUIKit.h */,
 				055D8E5D14FF0A3700E85A94 /* UIViewController+GVCUIKit.m */,
+				0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */,
+				0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -323,6 +347,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		05ABB543153E44C600D039F2 /* layers */ = {
+			isa = PBXGroup;
+			children = (
+				05ABB544153E45E500D039F2 /* GVCProgressBarLayer.h */,
+				05ABB545153E45E500D039F2 /* GVCProgressBarLayer.m */,
+				05ABB546153E45E500D039F2 /* GVCTextLayer.h */,
+				05ABB547153E45E500D039F2 /* GVCTextLayer.m */,
+				05ABB54C153E48AA00D039F2 /* StatusView.h */,
+				05ABB54D153E48AA00D039F2 /* StatusView.m */,
+			);
+			path = layers;
+			sourceTree = "<group>";
+		};
 		05CA0AE114F7F69E001C8A68 = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +384,8 @@
 		05CA0AEE14F7F69E001C8A68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0585C555154028B600659B22 /* CoreText.framework */,
+				05ABB550153E5CFC00D039F2 /* QuartzCore.framework */,
 				059C617515011B5600E18973 /* CoreData.framework */,
 				059C617615011B5600E18973 /* UIKit.framework */,
 				05CA0AEF14F7F69E001C8A68 /* Foundation.framework */,
@@ -363,6 +402,7 @@
 				058B64DB15005F40007F27A1 /* cells */,
 				058B64DC15005F40007F27A1 /* controllers */,
 				058B64DF15005F41007F27A1 /* prototyping */,
+				05ABB543153E44C600D039F2 /* layers */,
 				058B64E015005F41007F27A1 /* views */,
 				058B64DD15005F40007F27A1 /* GVCUIApplicationDelegate.h */,
 				058B64DE15005F40007F27A1 /* GVCUIApplicationDelegate.m */,
@@ -430,7 +470,11 @@
 				0553E549153A075C006F54FF /* GVCAlertMessageCenter.h in Headers */,
 				0553E54F153A078D006F54FF /* GVCStatusView.h in Headers */,
 				05D576231538B6B000BE1135 /* GVCEditDateCell.h in Headers */,
+				05ABB548153E45E500D039F2 /* GVCProgressBarLayer.h in Headers */,
+				05ABB54A153E45E500D039F2 /* GVCTextLayer.h in Headers */,
+				05ABB54E153E48AA00D039F2 /* StatusView.h in Headers */,
 				05D576291538BA6F00BE1135 /* GVCButtonCell.h in Headers */,
+				0585C55115401DFA00659B22 /* NSAttributedString+GVCUIKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +637,10 @@
 				05D5762A1538BA6F00BE1135 /* GVCButtonCell.m in Sources */,
 				0553E54A153A075C006F54FF /* GVCAlertMessageCenter.m in Sources */,
 				0553E552153A07C7006F54FF /* GVCStatusView.m in Sources */,
+				05ABB549153E45E500D039F2 /* GVCProgressBarLayer.m in Sources */,
+				05ABB54B153E45E500D039F2 /* GVCTextLayer.m in Sources */,
+				05ABB54F153E48AA00D039F2 /* StatusView.m in Sources */,
+				0585C55215401DFA00659B22 /* NSAttributedString+GVCUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

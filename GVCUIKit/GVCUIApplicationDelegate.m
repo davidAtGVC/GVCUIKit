@@ -10,7 +10,7 @@
 
 @implementation GVCUIApplicationDelegate
 
-@synthesize window = gvc_window;
+@synthesize window;
 
 - (NSString *)applicationName
 {
@@ -71,10 +71,17 @@
 /**
  Returns the path to the application's Documents directory.
  */
-- (NSString *)applicationDocumentsDirectory
+- (NSString *)applicationDocumentsPath
 {
 	NSFileManager *filemgr = [NSFileManager defaultManager];
-	return [filemgr gvc_documentsDirectory];
+	return [filemgr gvc_documentsDirectoryPath];
+}
+
+// Returns the URL to the application's Documents directory.
+- (NSURL *)applicationDocumentsURL
+{
+	NSFileManager *filemgr = [NSFileManager defaultManager];
+	return [filemgr gvc_documentsDirectoryURL];
 }
 
 - (NSArray *)applicationResourcesOfType:(NSString *)extension inDirectory:(NSString *)subfolder

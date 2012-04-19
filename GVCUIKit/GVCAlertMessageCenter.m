@@ -8,7 +8,6 @@
 
 #import "GVCAlertMessageCenter.h"
 #import "UIView+GVCUIKit.h"
-
 #import "GVCStatusView.h"
 
 @interface GVCAlertMessageCenter()
@@ -35,10 +34,28 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 	if(self != nil)
 	{
 		[self setAlerts:[[NSMutableArray alloc] init]];
-		[self setAlertView:[[GVCStatusView alloc] init]];
 		[self setActive:NO];
+        [self setAlertView:[[GVCStatusView alloc] initWithFrame:CGRectZero]];
+        [[self alertView] setAlpha:0];
+        [[self alertView] setBorderWidth:4];
+        [[self alertView] setAutoresizingMask:(UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin)];
+        
+        UIView *base = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        [base setBackgroundColor:[UIColor clearColor]];
+        [base setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        [base setUserInteractionEnabled:NO];
+        [base addSubview:[self alertView]];
+		[base setAlpha:0];
+
+
+        [self setView:base];
 	}
 	return self;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 
 - (void)setActive:(BOOL)yesNo
@@ -66,33 +83,17 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 
 - (void)keyWindowChanged:(NSNotification *)notification
 {
-
-	[self setActive:NO];
+	[self stopAlert];
 }
 
 - (void) startAlertWithMessage:(NSString *)message
 {
-	GVC_ASSERT_VALID_STRING( message );
-	
-	if ( [alerts containsObject:message] == NO )
-		[alerts addObject:message];
-
-	if ( active == NO )
-	{
-		[self setActive:YES];
-
-		[alertView setAlpha:0.0];
-		UIWindow *keyWindow  = [[UIApplication sharedApplication] keyWindow];
-
-		[keyWindow addSubview:alertView];
-		[keyWindow bringSubviewToFront:alertView];
-	}
-	[self showNextAlertMessage:0.4];
+    [self enqueueMessage:message];
 }
 
 - (void) stopAlert
 {
-	[alerts removeAllObjects];
+	[self clearQueue];
 	if ( active == YES )
 	{
 		[UIView beginAnimations:nil context:nil];
@@ -100,6 +101,7 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(hideAlertView)];
 		[alertView setAlpha:0];
+		[[self view] setAlpha:0];
 		[UIView commitAnimations];
 	}
 }
@@ -107,8 +109,7 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 - (void)hideAlertView
 {
 	[self setActive:NO];
-	[[[UIApplication sharedApplication] keyWindow] sendSubviewToBack:alertView];
-	[alertView removeFromSuperview];
+    [[self view] removeFromSuperview];
 }
 
 
@@ -116,17 +117,22 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 {
 	if ( [alerts count] > 0 )
 	{
-		NSString *message = [alerts objectAtIndex:0];
+		GVCStatusItem *item = [alerts objectAtIndex:0];
 		[alerts removeObjectAtIndex:0];
 		
 		[UIView beginAnimations:nil context:nil];
 		[UIView setAnimationDuration:animation];
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(processMessageQueue)];
-		[alertView updateMessage:message];
+		[alertView displayItem:item];
 		[alertView setAlpha:1];
+		[[self view] setAlpha:1];
 		[UIView commitAnimations];
 	}
+    else
+    {
+        [self stopAlert];
+    }
 }
 
 - (void)processMessageQueue
@@ -137,6 +143,63 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 	}
 }
 
+- (void)enqueueMessage:(NSString *)message
+{
+    [self enqueueMessage:message accessory:GVC_StatusItemAccessory_ACTIVITY position:GVC_StatusItemPosition_TOP];
+}
+
+- (void)enqueueMessage:(NSString *)message accessory:(GVC_StatusItemAccessory)type
+{
+    [self enqueueMessage:message accessory:type position:GVC_StatusItemPosition_TOP];
+}
+
+- (void)enqueueMessage:(NSString *)message accessory:(GVC_StatusItemAccessory)type position:(GVC_StatusItemPosition)pos
+{
+    GVC_ASSERT_VALID_STRING( message );
+	GVCStatusItem *item = [[GVCStatusItem alloc] init];
+    [item setMessage:message];
+    [item setAccessoryType:type];
+    [item setAccessoryPosition:pos];
+
+    [self enqueue:item];
+}
+
+- (void)enqueue:(GVCStatusItem *)item
+{
+    GVC_ASSERT(item != nil, @"Status Item is nil");
+    
+    [alerts addObject:item];
+    
+    if ( active == NO )
+    {
+        [self setActive:YES];
+        
+        [alertView setAlpha:0.0];
+        UIWindow *keyWindow  = [[UIApplication sharedApplication] keyWindow];
+        
+        [keyWindow addSubview:[self view]];
+        [keyWindow bringSubviewToFront:[self view]];
+    }
+    [self showNextAlertMessage:0.4];
+}
+
+- (void)clearQueue
+{
+    [alerts removeAllObjects];
+}
+
 @end
 
 
+
+@implementation GVCStatusItem
+
+@synthesize message;
+@synthesize progress;
+@synthesize image;
+
+@synthesize accessoryType;
+@synthesize accessoryPosition;
+@synthesize activityStyle;
+
+@end

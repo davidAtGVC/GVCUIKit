@@ -67,7 +67,7 @@ GVC_DEFINE_STRVALUE( GVCDictionaryTableViewController_id, ident);
 #pragma mark - demo data
 - (NSArray *)sectionNames
 {
-	return [[demoData allKeys] gvc_sortedArray];
+	return [[demoData allKeys] gvc_sortedStringArray];
 }
             
 

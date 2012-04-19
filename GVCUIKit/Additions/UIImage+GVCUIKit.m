@@ -15,12 +15,12 @@
 
 @implementation UIImage (UIImageGVCUIKit)
 
-+ (UIImage *)newImageFromResource:(NSString *)filename {
++ (UIImage *)gvc_newImageFromResource:(NSString *)filename {
     NSString *imageFile = [[NSString alloc] initWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], filename];
     return [[UIImage alloc] initWithContentsOfFile:imageFile];
 }
 
-+ (UIImage*)imageWithContentsOfURL:(NSURL*)url {
++ (UIImage*)gvc_imageWithContentsOfURL:(NSURL*)url {
     NSError* error;
     NSData* data = [NSData dataWithContentsOfURL:url options:0 error:&error];
     if(error || !data) {
@@ -30,7 +30,7 @@
     }
 }
 
-- (UIImage*)scaleToSize:(CGSize)size
+- (UIImage*)gvc_scaleToSize:(CGSize)size
 {
     UIGraphicsBeginImageContext(size);
     
@@ -60,7 +60,7 @@
  cropleft = (scaledwidth - maxwidth) / 2
  cropright = (scaledwidth - maxwidth) - cropleft
  */
-- (UIImage*)scaleAndCropToSize:(CGSize)size 
+- (UIImage*)gvc_scaleAndCropToSize:(CGSize)size 
 {
 	CGFloat scale = MAX(size.width/self.size.width, size.height/self.size.height);
 	CGFloat scaledWidth = self.size.width * scale;
@@ -93,12 +93,12 @@
     
     UIGraphicsEndImageContext();
 	
-	[scaledImage saveImageToFile:@"/tmp/scaled.png"];
+	[scaledImage gvc_saveImageToFile:@"/tmp/scaled.png"];
     
-	return [scaledImage cropToRect:cropRect];
+	return [scaledImage gvc_cropToRect:cropRect];
 }
 
-- (UIImage *)cropToRect:(CGRect)rect
+- (UIImage *)gvc_cropToRect:(CGRect)rect
 {
 	//create a context to do our clipping in
 	UIGraphicsBeginImageContext(rect.size);
@@ -120,25 +120,27 @@
 	//pop the context to get back to the default
 	UIGraphicsEndImageContext();
 	
-	[cropped saveImageToFile:@"/tmp/cropped.png"];
+	[cropped gvc_saveImageToFile:@"/tmp/cropped.png"];
 
 	return cropped;
 	
 }
 
-- (UIImage*)scaleHeightAndCropWidthToSize:(CGSize)size 
+- (UIImage*)gvc_scaleHeightAndCropWidthToSize:(CGSize)size 
 {
     float newWidth = (self.size.width * size.height) / self.size.height;
-    return [self scaleToSize:size withOffset:CGPointMake((newWidth - size.width) / 2, 0.0f)];
+    return [self gvc_scaleToSize:size withOffset:CGPointMake((newWidth - size.width) / 2, 0.0f)];
 }
 
-- (UIImage*)scaleWidthAndCropHeightToSize:(CGSize)size {
+- (UIImage*)gvc_scaleWidthAndCropHeightToSize:(CGSize)size 
+{
     float newHeight = (self.size.height * size.width) / self.size.width;
-    return [self scaleToSize:size withOffset:CGPointMake(0, (newHeight - size.height) / 2)];
+    return [self gvc_scaleToSize:size withOffset:CGPointMake(0, (newHeight - size.height) / 2)];
 }
 
-- (UIImage*)scaleToSize:(CGSize)size withOffset:(CGPoint)offset {
-    UIImage* scaledImage = [self scaleToSize:CGSizeMake(size.width + (offset.x * -2), size.height + (offset.y * -2))];
+- (UIImage*)gvc_scaleToSize:(CGSize)size withOffset:(CGPoint)offset 
+{
+    UIImage* scaledImage = [self gvc_scaleToSize:CGSizeMake(size.width + (offset.x * -2), size.height + (offset.y * -2))];
     
     UIGraphicsBeginImageContext(size);
     
@@ -166,21 +168,21 @@
     return croppedImage;
 }
 
-- (NSString *)saveAsUUIDInDirectory:(NSString *)dir
+- (NSString *)gvc_saveAsUUIDInDirectory:(NSString *)dir
 {
 	NSString *uuid = [[NSString gvc_StringWithUUID] stringByAppendingPathExtension:@"png"];
 	NSFileManager *mgr = [NSFileManager defaultManager];
 	
 	if ( [mgr gvc_directoryExists:dir] == YES)
 	{
-		if ([self saveImageToFile:[dir stringByAppendingPathComponent:uuid]] == YES)
+		if ([self gvc_saveImageToFile:[dir stringByAppendingPathComponent:uuid]] == YES)
 			return uuid;
 	}
 	return nil;
 }
 
 /** saves as a PNG */
-- (BOOL)saveImageToFile:(NSString *)path
+- (BOOL)gvc_saveImageToFile:(NSString *)path
 {
     NSError* error;
     NSData* data = UIImagePNGRepresentation(self);

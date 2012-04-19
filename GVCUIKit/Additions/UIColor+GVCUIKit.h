@@ -11,24 +11,24 @@
 
 @interface UIColor (GVCUIKit)
 
--(BOOL)isMonochrome;
+-(BOOL)gvc_isMonochrome;
 
--(CGFloat)red;
--(CGFloat)green;
--(CGFloat)blue;
+-(CGFloat)gvc_red;
+-(CGFloat)gvc_green;
+-(CGFloat)gvc_blue;
 
--(CGFloat)hue;
--(CGFloat)saturation;
--(CGFloat)brightness;
+-(CGFloat)gvc_hue;
+-(CGFloat)gvc_saturation;
+-(CGFloat)gvc_brightness;
 
--(CGFloat)alpha;
+-(CGFloat)gvc_alpha;
 
--(void)rgba:(float[4])arr;
--(void)hsba:(float[4])arr;
+-(void)gvc_rgba:(float[4])arr;
+-(void)gvc_hsba:(float[4])arr;
 
--(UIColor *)reverseColor;
+-(UIColor *)gvc_reverseColor;
 
 @end
 
-void RGB2HSL(float r, float g, float b, float* outH, float *outS, float *outV);
-void HSL2RGB(float h, float s, float l, float* outR, float* outG, float* outB);
+void GVC_RGB2HSL(float r, float g, float b, float* outH, float *outS, float *outV);
+void GVC_HSL2RGB(float h, float s, float l, float* outR, float* outG, float* outB);
