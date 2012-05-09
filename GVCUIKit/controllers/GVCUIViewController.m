@@ -63,6 +63,7 @@
 -(void) loadView 
 {
 	[super loadView];
+    [self setAutoresizesForKeyboard:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated 

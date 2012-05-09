@@ -8,9 +8,14 @@
 #import "GVCUIApplicationDelegate.h"
 #import "GVCFoundation.h"
 
+@interface GVCUIApplicationDelegate ()
+@property (strong, nonatomic, readwrite) NSOperationQueue *operationQueue;
+@end
+
 @implementation GVCUIApplicationDelegate
 
 @synthesize window;
+@synthesize operationQueue;
 
 - (NSString *)applicationName
 {
@@ -24,6 +29,9 @@
 {
     // set uncaught exception handler - from GVCFoundation/GVCFunctions
     NSSetUncaughtExceptionHandler(&gvc_UncaughtException);
+    
+    // initialize the operation queue
+    [self setOperationQueue:[[NSOperationQueue alloc] init]];
 
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 

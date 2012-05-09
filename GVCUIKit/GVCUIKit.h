@@ -39,6 +39,8 @@
  */
 #import "GVCDatePickerTableViewController.h"
 #import "GVCUIDatePickerViewController.h"
+#import "GVCUINavigationController.h"
+#import "GVCUITabBarController.h"
 #import "GVCUITableViewController.h"
 #import "GVCUIViewController.h"
 
@@ -58,6 +60,7 @@
  * views 
  */
 #import "GVCBadgeView.h"
+#import "GVCMultiTextFieldView.h"
 #import "GVCProgressBarView.h"
 #import "GVCRoundBorderView.h"
 #import "GVCStatusView.h"

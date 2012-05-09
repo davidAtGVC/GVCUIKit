@@ -10,6 +10,8 @@
 
 @interface GVCUITableViewController : UITableViewController <UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, assign) BOOL autoresizesForKeyboard;
+
 @property (strong, nonatomic) IBOutlet UIView *tableHeaderView;
 @property (strong, nonatomic) IBOutlet UIView *tableFooterView;
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellTemplate;
@@ -20,5 +22,18 @@
 
 - (UITableViewCell *)dequeueOrLoadReusableCellFromClass:(Class)cellClass forTable:(UITableView *)tv withIdentifier:(NSString *)identifier;
 - (UITableViewCell *)dequeueOrLoadReusableCellFromNib:(NSString *)cellNibName forTable:(UITableView *)tv withIdentifier:(NSString *)identifier;
+
+
+/* Keyboard notifications */
+-(void) resizeForKeyboard:(NSNotification *)notification appearing:(BOOL)appearing;
+
+-(void) keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds;
+-(void) keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds animationDuration:(NSTimeInterval)aDuration;
+
+-(void) keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds;
+-(void) keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds animationDuration:(NSTimeInterval)aDuration;
+
+-(void) keyboardDidAppear:(BOOL)animated withBounds:(CGRect)bounds;
+-(void) keyboardDidDisappear:(BOOL)animated withBounds:(CGRect)bounds;
 
 @end

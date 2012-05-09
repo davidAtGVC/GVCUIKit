@@ -9,6 +9,7 @@
 @interface GVCUIApplicationDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWindow *window;
+@property (strong, nonatomic, readonly) NSOperationQueue *operationQueue;
 
 - (NSString *)applicationName;
 - (NSString *)applicationDocumentsPath;

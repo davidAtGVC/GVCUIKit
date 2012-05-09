@@ -15,6 +15,7 @@
 @synthesize tableHeaderView;
 @synthesize tableFooterView;
 @synthesize cellTemplate;
+@synthesize autoresizesForKeyboard;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,6 +31,12 @@
 	return @"viewTitle";
 }
 
+-(void) loadView 
+{
+	[super loadView];
+    [self setAutoresizesForKeyboard:YES];
+}
+
 - (IBAction)reload:(id)sender
 {
 	[[self tableView] reloadData];
@@ -40,6 +47,19 @@
 	[super viewDidDisappear:animated];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([self autoresizesForKeyboard] == YES) 
+	{
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:)  name:UIKeyboardDidShowNotification  object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:)  name:UIKeyboardDidHideNotification  object:nil];
+	}
+
+}
 - (void)viewDidAppear:(BOOL)animated 
 {
     [super viewDidAppear:animated];
@@ -47,6 +67,16 @@
 	// set default title
 	[[self tableView] reloadData];
 	[[self navigationItem] setTitle:GVC_LocalizedClassString([self viewTitleKey], GVC_CLASSNAME(self))];
+}
+
+
+-(void) viewWillDisappear:(BOOL)animated 
+{
+	[super viewWillDisappear:animated];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification  object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification  object:nil];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -66,11 +96,14 @@
 	[[self tableView] setAutoresizesSubviews:YES];
 }
 
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+-(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
 {
-    // Return YES for supported orientations
-    return YES;
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+	{
+		return YES;
+	}
+    
+	return [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
 }
 
 - (void)didReceiveMemoryWarning 
@@ -78,6 +111,120 @@
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 }
+
+
+
+#pragma mark [UIKeyboardNotifications]
+
+-(void) resizeForKeyboard:(NSNotification *)notification appearing:(BOOL)appearing 
+{
+	NSDictionary *userInfo = [notification userInfo];
+	
+	// Get the ending frame rect
+	NSValue *frameEndValue	= [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+	CGRect keyboardRect = [frameEndValue CGRectValue];
+	
+	// Convert to window coordinates
+	CGRect keyboardFrame = [[self view] convertRect:keyboardRect fromView:nil];
+	
+	NSNumber *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+	BOOL animated = ([animationDurationValue doubleValue] > 0.0) ? YES : NO; 
+    
+	if (animated == YES) 
+	{
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationDuration:[animationDurationValue doubleValue]];
+	}
+	
+	if (appearing == YES) 
+	{
+		[self keyboardWillAppear:animated withBounds:keyboardFrame];
+		[self keyboardWillAppear:animated withBounds:keyboardFrame animationDuration:[animationDurationValue doubleValue]];
+	}
+	else 
+	{
+		[self keyboardDidDisappear:animated withBounds:keyboardFrame];
+	}
+	
+	if (animated == YES) 
+	{
+		[UIView commitAnimations];
+	}
+}
+
+-(void) keyboardWillShow:(NSNotification *)notification 
+{
+    [self resizeForKeyboard:notification appearing:YES];
+}
+
+-(void) keyboardDidShow:(NSNotification *)notification 
+{
+	CGRect frameStart;
+	[[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&frameStart];
+	
+	CGRect keyboardBounds = CGRectMake(0, 0, frameStart.size.width, frameStart.size.height);
+	[self keyboardDidAppear:YES withBounds:keyboardBounds];
+}
+
+-(void) keyboardDidHide:(NSNotification *)notification 
+{
+    [self resizeForKeyboard:notification appearing:NO];
+}
+
+-(void) keyboardWillHide:(NSNotification *)notification 
+{
+	CGRect frameEnd;
+	[[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&frameEnd];
+	CGRect keyboardBounds = CGRectMake(0, 0, frameEnd.size.width, frameEnd.size.height);
+	
+	NSTimeInterval animationDuration;
+	NSValue *animationDurationValue = [[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+	[animationDurationValue getValue:&animationDuration];
+	[self keyboardWillDisappear:YES withBounds:keyboardBounds];
+	[self keyboardWillDisappear:YES withBounds:keyboardBounds animationDuration:animationDuration];
+}
+
+
+#pragma mark API
+
+-(void) keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds 
+{
+	if ( [[self view] isKindOfClass:[UIScrollView class]] == YES )
+	{
+		UIEdgeInsets e = UIEdgeInsetsMake(0, 0, bounds.size.height, 0);
+		
+		[(UIScrollView *)[self view] setContentInset:e];
+		[(UIScrollView *)[self view] setScrollIndicatorInsets:e];
+	}
+}
+
+-(void) keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds animationDuration:(NSTimeInterval)aDuration 
+{
+    
+}
+
+-(void) keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds 
+{
+	if ( [[self view] isKindOfClass:[UIScrollView class]] == YES )
+	{
+		[(UIScrollView *)[self view] setContentInset:UIEdgeInsetsZero];
+		[(UIScrollView *)[self view] setScrollIndicatorInsets:UIEdgeInsetsZero];
+	}
+}
+
+-(void) keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds animationDuration:(NSTimeInterval)aDuration 
+{
+    
+}
+
+-(void) keyboardDidAppear:(BOOL)animated withBounds:(CGRect)bounds 
+{
+}
+
+-(void) keyboardDidDisappear:(BOOL)animated withBounds:(CGRect)bounds 
+{
+}
+
 
 #pragma mark - Table view methods
 
