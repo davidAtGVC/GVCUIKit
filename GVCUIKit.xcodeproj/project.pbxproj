@@ -66,6 +66,12 @@
 		05CA0B0414F7F69F001C8A68 /* libGVCUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */; };
 		05CA0B0A14F7F69F001C8A68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05CA0B0814F7F69F001C8A68 /* InfoPlist.strings */; };
 		05CA0B0D14F7F6A0001C8A68 /* GVCUIKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA0B0C14F7F6A0001C8A68 /* GVCUIKitTests.m */; };
+		05D00F91155BCBA7009F2837 /* GVCUIViewWithTableController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D00F8F155BCBA7009F2837 /* GVCUIViewWithTableController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05D00F92155BCBA7009F2837 /* GVCUIViewWithTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D00F90155BCBA7009F2837 /* GVCUIViewWithTableController.m */; };
+		05D00FC6155BFE4D009F2837 /* GVCPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D00FC4155BFE4C009F2837 /* GVCPageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05D00FC7155BFE4D009F2837 /* GVCPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D00FC5155BFE4C009F2837 /* GVCPageController.m */; };
+		05D00FCA155BFE6E009F2837 /* GVCPageScrollviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D00FC8155BFE6D009F2837 /* GVCPageScrollviewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05D00FCB155BFE6E009F2837 /* GVCPageScrollviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D00FC9155BFE6D009F2837 /* GVCPageScrollviewController.m */; };
 		05D576231538B6B000BE1135 /* GVCEditDateCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D576211538B6B000BE1135 /* GVCEditDateCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05D576241538B6B000BE1135 /* GVCEditDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D576221538B6B000BE1135 /* GVCEditDateCell.m */; };
 		05D576291538BA6F00BE1135 /* GVCButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D576271538BA6F00BE1135 /* GVCButtonCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -189,6 +195,12 @@
 		05CA0B0914F7F69F001C8A68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05CA0B0B14F7F6A0001C8A68 /* GVCUIKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GVCUIKitTests.h; sourceTree = "<group>"; };
 		05CA0B0C14F7F6A0001C8A68 /* GVCUIKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GVCUIKitTests.m; sourceTree = "<group>"; };
+		05D00F8F155BCBA7009F2837 /* GVCUIViewWithTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUIViewWithTableController.h; sourceTree = "<group>"; };
+		05D00F90155BCBA7009F2837 /* GVCUIViewWithTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUIViewWithTableController.m; sourceTree = "<group>"; };
+		05D00FC4155BFE4C009F2837 /* GVCPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCPageController.h; sourceTree = "<group>"; };
+		05D00FC5155BFE4C009F2837 /* GVCPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCPageController.m; sourceTree = "<group>"; };
+		05D00FC8155BFE6D009F2837 /* GVCPageScrollviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCPageScrollviewController.h; sourceTree = "<group>"; };
+		05D00FC9155BFE6D009F2837 /* GVCPageScrollviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCPageScrollviewController.m; sourceTree = "<group>"; };
 		05D576211538B6B000BE1135 /* GVCEditDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCEditDateCell.h; sourceTree = "<group>"; };
 		05D576221538B6B000BE1135 /* GVCEditDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCEditDateCell.m; sourceTree = "<group>"; };
 		05D576271538BA6F00BE1135 /* GVCButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCButtonCell.h; sourceTree = "<group>"; };
@@ -326,6 +338,12 @@
 				051B26171559859C001B4377 /* GVCUINavigationController.m */,
 				051B261C1559C8BD001B4377 /* GVCUITabBarController.h */,
 				051B261D1559C8BE001B4377 /* GVCUITabBarController.m */,
+				05D00F8F155BCBA7009F2837 /* GVCUIViewWithTableController.h */,
+				05D00F90155BCBA7009F2837 /* GVCUIViewWithTableController.m */,
+				05D00FC4155BFE4C009F2837 /* GVCPageController.h */,
+				05D00FC5155BFE4C009F2837 /* GVCPageController.m */,
+				05D00FC8155BFE6D009F2837 /* GVCPageScrollviewController.h */,
+				05D00FC9155BFE6D009F2837 /* GVCPageScrollviewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -495,6 +513,9 @@
 				05D576291538BA6F00BE1135 /* GVCButtonCell.h in Headers */,
 				05E7BA2F155A8024006BA6BE /* GVCMultiTextFieldView.h in Headers */,
 				0585C55115401DFA00659B22 /* NSAttributedString+GVCUIKit.h in Headers */,
+				05D00F91155BCBA7009F2837 /* GVCUIViewWithTableController.h in Headers */,
+				05D00FC6155BFE4D009F2837 /* GVCPageController.h in Headers */,
+				05D00FCA155BFE6E009F2837 /* GVCPageScrollviewController.h in Headers */,
 				051B26181559859C001B4377 /* GVCUINavigationController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,6 +686,9 @@
 				051B26191559859C001B4377 /* GVCUINavigationController.m in Sources */,
 				051B261F1559C8BE001B4377 /* GVCUITabBarController.m in Sources */,
 				05E7BA30155A8024006BA6BE /* GVCMultiTextFieldView.m in Sources */,
+				05D00F92155BCBA7009F2837 /* GVCUIViewWithTableController.m in Sources */,
+				05D00FC7155BFE4D009F2837 /* GVCPageController.m in Sources */,
+				05D00FCB155BFE6E009F2837 /* GVCPageScrollviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,10 +788,16 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers/GVCFoundation\"/**",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "../../Headers/${TARGET_NAME}";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "${TARGET_BUILD_DIR}/usr/local/include/**";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -777,10 +807,16 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers/GVCFoundation\"/**",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "../../Headers/${TARGET_NAME}";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "${TARGET_BUILD_DIR}/usr/local/include/**";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

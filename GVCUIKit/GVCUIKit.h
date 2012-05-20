@@ -38,11 +38,14 @@
  * controllers 
  */
 #import "GVCDatePickerTableViewController.h"
+#import "GVCPageController.h"
+#import "GVCPageScrollviewController.h"
 #import "GVCUIDatePickerViewController.h"
 #import "GVCUINavigationController.h"
 #import "GVCUITabBarController.h"
 #import "GVCUITableViewController.h"
 #import "GVCUIViewController.h"
+#import "GVCUIViewWithTableController.h"
 
 /* 
  * layers 
