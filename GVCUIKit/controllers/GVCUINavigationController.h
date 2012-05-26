@@ -9,6 +9,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GVCUIModalViewControllerModalDismiss <UINavigationControllerDelegate>
+@optional
+- (void)willDismissModalController;
+@end
+
 @interface GVCUINavigationController : UINavigationController
 
 - (IBAction)dismissModalViewController:(id)sender;

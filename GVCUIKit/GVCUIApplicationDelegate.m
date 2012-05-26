@@ -33,10 +33,8 @@
     // initialize the operation queue
     [self setOperationQueue:[[NSOperationQueue alloc] init]];
 
-    // start the confguration load
-    GVCConfiguration *config = [GVCConfiguration sharedGVCConfiguration];
-    [config setOperationQueue:[self operationQueue]];
-    [config reloadConfiguration];
+    [[GVCConfiguration sharedGVCConfiguration] setOperationQueue:[self operationQueue]];
+    [[GVCConfiguration sharedGVCConfiguration] reloadConfiguration];
 
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 
@@ -76,7 +74,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
 }
-
 
 #pragma mark -
 #pragma mark Application's Documents directory

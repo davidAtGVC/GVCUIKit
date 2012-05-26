@@ -58,7 +58,7 @@
 	return @"viewTitle";
 }
 
-#pragma mark @UIViewController
+#pragma mark - UIViewController
 
 -(void) loadView 
 {
@@ -90,7 +90,8 @@
 	[super viewDidAppear:animated];
 	hasViewAppeared = YES;
 	
-	[[[self navigationBar] topItem] setTitle:GVC_LocalizedString([self viewTitleKey], [self viewTitleKey])];
+	[[[self navigationBar] topItem] setTitle:GVC_LocalizedClassString([self viewTitleKey], GVC_CLASSNAME(self))];
+//	[[[self navigationBar] topItem] setTitle:GVC_LocalizedString([self viewTitleKey], [self viewTitleKey])];
 }
 
 -(void) viewWillDisappear:(BOOL)animated 
@@ -134,7 +135,7 @@
 	return [[self navigationController] navigationBar];
 }
 
-#pragma mark [UIKeyboardNotifications]
+#pragma mark - UIKeyboardNotifications
 
 -(void) resizeForKeyboard:(NSNotification *)notification appearing:(BOOL)appearing 
 {
@@ -211,7 +212,7 @@
 }
 
 
-#pragma mark API
+#pragma mark - API
 
 -(void) keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds 
 {

@@ -20,6 +20,7 @@
 @property (nonatomic, assign) CGFloat lastScrolledXPosition;
 
 - (NSUInteger)pageCount;
+- (NSArray *)allPageControllers;
 - (void)addPageController:(GVCPageController *)page;
 - (GVCPageController *)pageControllerAtIndex:(NSUInteger)idx;
 - (GVCPageController *)removePageControllerAtIndex:(NSUInteger)idx;

@@ -12,8 +12,26 @@
 @synthesize useDarkBackground;
 @synthesize delegate;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    
++ (NSString *)defaultCellIdentifier 
+{
+    return NSStringFromClass([self class]);
+}
+
+
++ (id)cellWithStyle:(UITableViewCellStyle)style forTableView:(UITableView *)tableView 
+{
+    NSString *cellIdentifier = [self defaultCellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) 
+    {
+        cell = [[self alloc] initWithStyle:style reuseIdentifier:cellIdentifier];
+    }
+    return cell;    
+}
+
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier 
+{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code.

@@ -9,6 +9,7 @@
 #import "GVCUINavigationController.h"
 #import "GVCFoundation.h"
 
+
 @implementation GVCUINavigationController
 
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
@@ -23,6 +24,11 @@
 
 - (IBAction)dismissModalViewController:(id)sender
 {
+    if (([self delegate] != nil) && ([[self delegate] respondsToSelector:@selector(willDismissModalController)] == YES))
+    {
+        [(id <GVCUIModalViewControllerModalDismiss>)[self delegate] willDismissModalController];
+    }
+        
     [self dismissModalViewControllerAnimated:YES];
 }
 

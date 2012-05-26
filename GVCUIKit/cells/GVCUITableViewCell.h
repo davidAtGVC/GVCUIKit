@@ -12,4 +12,8 @@
 @property (assign,nonatomic) BOOL useDarkBackground;
 @property (weak,nonatomic) id delegate;
 
++ (NSString *)defaultCellIdentifier;
+
++ (id)cellWithStyle:(UITableViewCellStyle)style forTableView:(UITableView *)tableView;
+
 @end

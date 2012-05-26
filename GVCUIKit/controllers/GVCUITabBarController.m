@@ -7,6 +7,7 @@
  */
 
 #import "GVCUITabBarController.h"
+#import "GVCUINavigationController.h"
 
 @implementation GVCUITabBarController
 
@@ -22,7 +23,15 @@
 
 - (IBAction)dismissModalViewController:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    UINavigationController *nav = [self navigationController];
+    if ((nav != nil) && ([nav isKindOfClass:[GVCUINavigationController class]] == YES))
+    {
+        [(GVCUINavigationController *)[self navigationController] dismissModalViewController:sender];
+    }
+    else 
+    {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 @end

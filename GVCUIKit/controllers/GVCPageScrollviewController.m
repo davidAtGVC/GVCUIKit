@@ -59,6 +59,11 @@
     [self tilePages];
 }
 
+- (NSArray *)allPageControllers
+{
+    return [[self pageControllers] copy];
+}
+
 - (GVCPageController *)pageControllerAtIndex:(NSUInteger)idx
 {
     GVCPageController *page = nil;
@@ -94,12 +99,10 @@
 #pragma mark -
 #pragma mark Tiling and page configuration
 
-#define CONTENT_WIDTH 500000.0
-
 - (CGSize)contentSizeForPagingScrollView 
 {
     CGRect bounds = [[self scrollView] bounds];
-    return CGSizeMake(CONTENT_WIDTH, bounds.size.height);
+    return CGSizeMake(bounds.size.width * [self pageCount], bounds.size.height);
 }
 
 #define PADDING  10
@@ -138,8 +141,10 @@
         // Calculate which pages are visible
         CGRect visibleBounds = [self scrollView].bounds;
         CGFloat visibleWidth = CGRectGetWidth(visibleBounds);
-        NSUInteger firstNeededPageIndex = floorf(CGRectGetMinX(visibleBounds) / visibleWidth);
-        NSUInteger lastNeededPageIndex  = floorf((CGRectGetMaxX(visibleBounds)-1) / visibleWidth);
+        CGFloat minx = MAX(CGRectGetMinX(visibleBounds), 0);
+        CGFloat maxx = MAX(CGRectGetMaxX(visibleBounds), 0);
+        NSUInteger firstNeededPageIndex = floorf(minx / visibleWidth);
+        NSUInteger lastNeededPageIndex  = floorf((maxx - 1) / visibleWidth);
         firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
         
         // START:TileChanges
@@ -232,24 +237,47 @@
     }    
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 
 {
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    [self tilePages];
+
     // recalculate contentSize based on current orientation
     [[self scrollView] setContentSize:[self contentSizeForPagingScrollView]];
     
     // adjust frames and configuration of each visible page
     for (GVCPageController *page in visiblePages) 
     {
-//        CGPoint restorePoint = [[page view] pointToCenterAfterRotation];
-//        CGFloat restoreScale = [[page view] scaleToRestoreAfterRotation];
+        //        CGPoint restorePoint = [[page view] pointToCenterAfterRotation];
+        //        CGFloat restoreScale = [[page view] scaleToRestoreAfterRotation];
         [[page view] setFrame:[self frameForPageAtIndex:[self pageIndex:page]]];
     }
     
     // adjust contentOffset to preserve page location based on values collected prior to location
     CGFloat pageWidth = [[self scrollView] bounds].size.width;
-    CGFloat newOffset = (firstVisiblePageIndexBeforeRotation * pageWidth) + (percentScrolledIntoFirstVisiblePage * pageWidth);
+    CGFloat newOffset = (firstVisiblePageIndexBeforeRotation * pageWidth);// + (percentScrolledIntoFirstVisiblePage * pageWidth);
     [[self scrollView] setContentOffset:CGPointMake(newOffset, 0)];
 }
+
+//- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+//{
+//    // recalculate contentSize based on current orientation
+//    [[self scrollView] setContentSize:[self contentSizeForPagingScrollView]];
+//    
+//    // adjust frames and configuration of each visible page
+//    for (GVCPageController *page in visiblePages) 
+//    {
+////        CGPoint restorePoint = [[page view] pointToCenterAfterRotation];
+////        CGFloat restoreScale = [[page view] scaleToRestoreAfterRotation];
+//        [[page view] setFrame:[self frameForPageAtIndex:[self pageIndex:page]]];
+//    }
+//    
+//    // adjust contentOffset to preserve page location based on values collected prior to location
+//    CGFloat pageWidth = [[self scrollView] bounds].size.width;
+//    CGFloat newOffset = (firstVisiblePageIndexBeforeRotation * pageWidth);// + (percentScrolledIntoFirstVisiblePage * pageWidth);
+//    [[self scrollView] setContentOffset:CGPointMake(newOffset, 0)];
+//    [self tilePages];
+//}
 
 #pragma mark - Scrollview support
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

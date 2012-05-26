@@ -6,6 +6,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class GVCConfiguration;
+
 @interface GVCUIApplicationDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWindow *window;
