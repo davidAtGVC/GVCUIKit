@@ -27,23 +27,10 @@
 }
 
 
-- (void) loadView 
-{
-	[super loadView];
-	
-	//self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-	
-	[self setDatePicker:[[UIDatePicker alloc] init]];
-	[datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
-		
-	[[self view] addSubview:datePicker];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	[datePicker setDatePickerMode:mode];
-	[datePicker sizeToFit];
 	[datePicker setMinimumDate:[self minimumDate]];
 	[datePicker setMaximumDate:[self maximumDate]];
 }

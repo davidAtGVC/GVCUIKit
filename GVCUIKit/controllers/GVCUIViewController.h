@@ -25,6 +25,8 @@
 - (UINavigationBar *)navigationBar;
 - (NSString *)viewTitleKey;
 
+- (IBAction)dismissModalViewController:(id)sender;
+
 #pragma mark -
 
 /* Keyboard notifications */

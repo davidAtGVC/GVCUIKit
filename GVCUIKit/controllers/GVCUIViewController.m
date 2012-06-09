@@ -135,6 +135,27 @@
 	return [[self navigationController] navigationBar];
 }
 
+- (IBAction)dismissModalViewController:(id)sender
+{
+    UINavigationController *navController = [self navigationController] ;
+    if ( navController == nil )
+    {
+        UIViewController *uivcParent = [self parentViewController];
+        UIViewController *uivcPresent = [self presentingViewController];
+        GVCLogError(@"%@ %@", uivcParent, uivcPresent);
+        if (([self parentViewController] != nil) && ([[self parentViewController] isKindOfClass:[UINavigationController class]] == YES ))
+        {
+            navController = (UINavigationController *)[self parentViewController];
+        }
+        else if (([self presentingViewController] != nil) && ([[self presentingViewController] isKindOfClass:[UINavigationController class]] == YES ))
+        {
+            navController = (UINavigationController *)[self presentingViewController];
+        }
+    }
+    [navController dismissModalViewControllerAnimated:YES];
+}
+
+
 #pragma mark - UIKeyboardNotifications
 
 -(void) resizeForKeyboard:(NSNotification *)notification appearing:(BOOL)appearing 
