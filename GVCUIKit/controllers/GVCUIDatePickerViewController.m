@@ -16,12 +16,15 @@
 @synthesize minimumDate;
 @synthesize maximumDate;
 
+@synthesize callbackKey;
+
 - (id) initWithMode:(UIDatePickerMode) m
 {
 	self = [super init];
 	if (self != nil) 
 	{
 		[self setMode:m];
+        [self setCallbackKey:@"dateOfBirth"];
 	}
 	return self;
 }
@@ -39,7 +42,14 @@
 {
 	if ( [self callbackDelegate] != nil )
 	{
-		[[self callbackDelegate] setValue:[datePicker date] forKey:@"dateOfBirth"];//[self labelKey]];
+        if ( [[self callbackDelegate] conformsToProtocol:@protocol(GVCUIDatePickerCallbackProtocol)]  == YES )
+        {
+            [(id <GVCUIDatePickerCallbackProtocol>)[self callbackDelegate] setDate:[datePicker date] forKey:[self callbackKey]];
+        }
+        else 
+        {
+            [[self callbackDelegate] setValue:[datePicker date] forKey:[self callbackKey]];
+        }
 	}
 }
 

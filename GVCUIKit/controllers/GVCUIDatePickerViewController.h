@@ -10,6 +10,11 @@
 
 #import "GVCUIViewController.h"
 
+@protocol GVCUIDatePickerCallbackProtocol <NSObject>
+@optional
+- (void)setDate:(NSDate *)current forKey:(NSString *)callbackKey;
+@end
+
 @interface GVCUIDatePickerViewController : GVCUIViewController 
 
 - (id) initWithMode:(UIDatePickerMode) m;
@@ -19,6 +24,8 @@
 
 @property (strong, nonatomic) NSDate *minimumDate;
 @property (strong, nonatomic) NSDate *maximumDate;
+
+@property (strong, nonatomic) NSString *callbackKey;
 
 - (IBAction)dateChanged:sender;
 
