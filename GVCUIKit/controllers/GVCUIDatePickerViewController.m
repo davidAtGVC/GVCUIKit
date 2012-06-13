@@ -42,6 +42,11 @@
 {
 	if ( [self callbackDelegate] != nil )
 	{
+        if ( gvc_IsEmpty([self callbackKey]) == YES )
+        {
+            [self setCallbackKey:@"dateOfBirth"];
+        }
+        
         if ( [[self callbackDelegate] conformsToProtocol:@protocol(GVCUIDatePickerCallbackProtocol)]  == YES )
         {
             [(id <GVCUIDatePickerCallbackProtocol>)[self callbackDelegate] setDate:[datePicker date] forKey:[self callbackKey]];
