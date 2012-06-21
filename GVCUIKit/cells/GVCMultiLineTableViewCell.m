@@ -82,6 +82,14 @@
 	return(size.height > 44 ? size.height + 10.0 : 44);
 }
 
+- (void)prepareForReuse 
+{
+    [super prepareForReuse];
+    
+    [[self textLabel] setText:nil];
+    [[self textView] setText:nil];
+}
+
 - (void)layoutSubviews 
 {
     [super layoutSubviews];

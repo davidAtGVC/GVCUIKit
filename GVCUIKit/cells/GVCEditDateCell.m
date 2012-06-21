@@ -12,12 +12,22 @@
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
-	self = [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:reuseIdentifier];
+    return [self initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:reuseIdentifier];
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self != nil)
 	{
 		[self setCanSelectCell:YES];
     }
     return self;
+}
+
+- (void)prepareForReuse 
+{
+    [super prepareForReuse];
 }
 
 @end

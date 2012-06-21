@@ -20,10 +20,11 @@
 - (id) initWithMode:(UIDatePickerMode) m;
 
 @property (assign)	UIDatePickerMode mode;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @property (strong, nonatomic) NSDate *minimumDate;
 @property (strong, nonatomic) NSDate *maximumDate;
+@property (strong, nonatomic) NSDate *currentDate;
 
 @property (strong, nonatomic) NSString *callbackKey;
 

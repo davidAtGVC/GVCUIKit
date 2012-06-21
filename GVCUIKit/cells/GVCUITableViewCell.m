@@ -6,21 +6,17 @@
 //
 
 #import "GVCUITableViewCell.h"
+#import "UITableViewCell+GVCUIKit.h"
 
 @implementation GVCUITableViewCell
 
 @synthesize useDarkBackground;
 @synthesize delegate;
 
-+ (NSString *)defaultCellIdentifier 
-{
-    return NSStringFromClass([self class]);
-}
-
 
 + (id)cellWithStyle:(UITableViewCellStyle)style forTableView:(UITableView *)tableView 
 {
-    NSString *cellIdentifier = [self defaultCellIdentifier];
+    NSString *cellIdentifier = [self gvc_DefaultCellIdentifier];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) 
     {
@@ -53,6 +49,9 @@
     }
 }
 
-
+- (void)prepareForReuse 
+{
+    [super prepareForReuse];
+}
 
 @end

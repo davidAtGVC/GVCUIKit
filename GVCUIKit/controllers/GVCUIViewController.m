@@ -23,21 +23,6 @@
 @synthesize managedObjectContext;
 @synthesize callbackDelegate;
 
--(id) init 
-{
-	self = [self initWithNibName:nil bundle:nil];
-	if (self != nil)
-	{
-		navigationBarStyle		= UIBarStyleDefault;
-		navigationBarTintColor	= nil;
-		statusBarStyle			= [[UIApplication sharedApplication] statusBarStyle];
-		hasViewAppeared			= NO;
-		isViewAppearing			= NO;
-		[self setAutoresizesForKeyboard:NO];
-	}
-	return self;
-}
-
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -71,10 +56,10 @@
 	[super viewWillAppear:animated];
 	isViewAppearing = YES;
 
-	UINavigationBar *bar	= [self navigationBar];
-	[bar setTintColor:[self navigationBarTintColor]];
-	[bar setBarStyle:[self navigationBarStyle]];
-	[[UIApplication sharedApplication] setStatusBarStyle:[self statusBarStyle] animated:YES];
+//	UINavigationBar *bar	= [self navigationBar];
+//	[bar setTintColor:[self navigationBarTintColor]];
+//	[bar setBarStyle:[self navigationBarStyle]];
+//	[[UIApplication sharedApplication] setStatusBarStyle:[self statusBarStyle] animated:YES];
 	
 	if (autoresizesForKeyboard == YES) 
 	{

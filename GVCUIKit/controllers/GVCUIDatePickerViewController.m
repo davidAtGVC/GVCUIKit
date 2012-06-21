@@ -15,6 +15,7 @@
 @synthesize mode;
 @synthesize minimumDate;
 @synthesize maximumDate;
+@synthesize currentDate;
 
 @synthesize callbackKey;
 
@@ -25,6 +26,9 @@
 	{
 		[self setMode:m];
         [self setCallbackKey:@"dateOfBirth"];
+        [self setDatePicker:[[UIDatePicker alloc] init]];
+        [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+        [[self view] addSubview:datePicker];
 	}
 	return self;
 }
@@ -36,10 +40,20 @@
 	[datePicker setDatePickerMode:mode];
 	[datePicker setMinimumDate:[self minimumDate]];
 	[datePicker setMaximumDate:[self maximumDate]];
+
+    if ( [self currentDate] != nil )
+        [datePicker setDate:[self currentDate]];
+}
+
+- (void)viewDidLoad 
+{
+	[super viewDidLoad];
+	[datePicker sizeToFit];
 }
 
 - (IBAction)dateChanged:sender
 {
+    [self setCurrentDate:[[self datePicker] date]];
 	if ( [self callbackDelegate] != nil )
 	{
         if ( gvc_IsEmpty([self callbackKey]) == YES )
@@ -49,11 +63,11 @@
         
         if ( [[self callbackDelegate] conformsToProtocol:@protocol(GVCUIDatePickerCallbackProtocol)]  == YES )
         {
-            [(id <GVCUIDatePickerCallbackProtocol>)[self callbackDelegate] setDate:[datePicker date] forKey:[self callbackKey]];
+            [(id <GVCUIDatePickerCallbackProtocol>)[self callbackDelegate] setDate:[self currentDate] forKey:[self callbackKey]];
         }
         else 
         {
-            [[self callbackDelegate] setValue:[datePicker date] forKey:[self callbackKey]];
+            [[self callbackDelegate] setValue:[self currentDate] forKey:[self callbackKey]];
         }
 	}
 }
