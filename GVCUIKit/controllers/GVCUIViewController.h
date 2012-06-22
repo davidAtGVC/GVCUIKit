@@ -20,7 +20,7 @@
 @property (nonatomic, assign) BOOL autoresizesForKeyboard;
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (weak, nonatomic) id callbackDelegate;
+@property (weak, nonatomic) IBOutlet id callbackDelegate;
 
 - (UINavigationBar *)navigationBar;
 - (NSString *)viewTitleKey;

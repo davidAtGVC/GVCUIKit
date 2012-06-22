@@ -10,6 +10,8 @@
 
 @interface GVCUITableViewController : UITableViewController <UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet id callbackDelegate;
+
 @property (nonatomic, assign) BOOL autoresizesForKeyboard;
 
 @property (strong, nonatomic) IBOutlet UIView *tableHeaderView;

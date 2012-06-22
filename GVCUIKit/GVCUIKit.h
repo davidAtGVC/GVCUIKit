@@ -24,6 +24,7 @@
  */
 #import "GVCAlertMessageCenter.h"
 #import "GVCUIApplicationDelegate.h"
+#import "GVCUIProtocols.h"
 
 /* 
  * cells 
@@ -70,6 +71,13 @@
  * prototyping 
  */
 #import "GVCDictionaryTableViewController.h"
+
+/* 
+ * security 
+ */
+#import "GVCLockViewController.h"
+#import "GVCLoginLockViewController.h"
+#import "GVCPinLockViewController.h"
 
 /* 
  * views 

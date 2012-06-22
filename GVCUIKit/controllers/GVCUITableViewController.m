@@ -12,6 +12,7 @@
 
 @implementation GVCUITableViewController
 
+@synthesize callbackDelegate;
 @synthesize tableHeaderView;
 @synthesize tableFooterView;
 @synthesize cellTemplate;
