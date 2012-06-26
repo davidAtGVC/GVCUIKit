@@ -10,10 +10,12 @@
 
 typedef enum {
     GVCDataFormFieldType_STRING,
+	GVCDataFormFieldType_PASSWORD,
     GVCDataFormFieldType_URL,
     GVCDataFormFieldType_DATE,
     GVCDataFormFieldType_INT,
     GVCDataFormFieldType_FLOAT,
+    GVCDataFormFieldType_BUTTON,
     GVCDataFormFieldType_CUSTOM
 } GVCDataFormFieldType;
 
