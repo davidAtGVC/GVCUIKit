@@ -10,7 +10,6 @@
 #import "GVCFoundation.h"
 
 @interface GVCLockViewController ()
-
 @end
 
 @implementation GVCLockViewController
@@ -19,12 +18,18 @@
 @synthesize lastError;
 @synthesize successBlock;
 @synthesize failBlock;
+@synthesize lockMode;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    return [self initForMode:GVCLockViewControllerMode_UNLOCK nibName:nibNameOrNil bundle:nibBundleOrNil];
+}
+- (id)initForMode:(GVCLockViewControllerMode)mode nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self != nil) 
     {
+        [self setLockMode:mode];
     }
     return self;
 }
@@ -44,14 +49,18 @@
 
 - (IBAction)loginAction:(id)sender 
 {
-    GVC_ASSERT_NOT_NIL(successBlock);
-    self.successBlock(nil);
+    if ( self.successBlock != nil )
+    {
+        self.successBlock(nil);
+    }
 }
 
 - (IBAction)cancelAction:(id)sender
 {
-    GVC_ASSERT_NOT_NIL(failBlock);
-    self.failBlock([self lastError]);
+    if ( self.failBlock != nil )
+    {
+        self.failBlock([self lastError]);
+    }
 }
 
 @end
