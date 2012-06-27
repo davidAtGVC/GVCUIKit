@@ -16,3 +16,11 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end
+
+
+@protocol GVCEditTextCellDelegate <NSObject>
+@optional
+- (void) gvcEditCellDidBeginEditing:(GVCEditCell *)editableCell;
+- (BOOL) gvcEditCellShouldReturn:(GVCEditCell *)editableCell;
+- (void) gvcEditCell:(GVCEditCell *)editableCell textChangedTo:(NSString *)newText;
+@end

@@ -30,4 +30,8 @@
     [super prepareForReuse];
 }
 
+- (CGFloat)gvc_heightForCell
+{
+    return [super gvc_heightForCell];
+}
 @end

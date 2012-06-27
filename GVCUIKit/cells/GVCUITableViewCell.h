@@ -14,4 +14,6 @@
 
 + (id)cellWithStyle:(UITableViewCellStyle)style forTableView:(UITableView *)tableView;
 
+- (CGFloat)gvc_heightForCell;
+
 @end

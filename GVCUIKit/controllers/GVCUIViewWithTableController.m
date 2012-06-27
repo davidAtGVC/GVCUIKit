@@ -7,6 +7,7 @@
  */
 
 #import "GVCUIViewWithTableController.h"
+#import "UITableViewCell+GVCUIKit.h"
 #import "GVCFoundation.h"
 
 @implementation GVCUIViewWithTableController
@@ -31,6 +32,28 @@
 {
     [super viewDidLoad];
 	[[self tableView] setAutoresizesSubviews:YES];
+}
+
+#pragma mark - keyboard resize
+-(void) keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds 
+{
+	if ( [self tableView] != nil)
+	{
+		UIEdgeInsets e = UIEdgeInsetsMake(0, 0, bounds.size.height, 0);
+		
+		[[self tableView] setContentInset:e];
+		[[self tableView] setScrollIndicatorInsets:e];
+//        [[self tableView] scrollToRowAtIndexPath:[[self tableView] indexPathForSelectedRow] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+	}
+}
+
+-(void) keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds 
+{
+	if ( [self tableView] != nil)
+	{
+		[[self tableView] setContentInset:UIEdgeInsetsZero];
+		[[self tableView] setScrollIndicatorInsets:UIEdgeInsetsZero];
+	}
 }
 
 #pragma mark - Table view methods
@@ -128,5 +151,13 @@
 //		[(GVCUITableViewCell *)cell setUseDarkBackground:([indexPath row] % 2 == 0)];
 //	}
 //}
+
+- (CGFloat)tableView:(UITableView*)tv heightForRowAtIndexPath:(NSIndexPath*)indexPath 
+{
+	UITableViewCell *cell = [self tableView:tv cellForRowAtIndexPath:indexPath];
+    return [cell gvc_heightForCell];
+}
+
+
 
 @end

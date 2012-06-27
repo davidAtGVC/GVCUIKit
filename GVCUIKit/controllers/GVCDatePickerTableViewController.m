@@ -7,7 +7,8 @@
 
 #import "GVCDatePickerTableViewController.h"
 #import "GVCFoundation.h"
-#import "GVCMultiLineTableViewCell.h"
+#import "UITableViewCell+GVCUIKit.h"
+#import "GVCUITableViewCell.h"
 
 @implementation GVCDatePickerTableViewController
 
@@ -87,18 +88,13 @@
 	return 1;	
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath  
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath  
 {
-    static NSString *CellId = @"GVCDateEditorCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
-    if (cell == nil) 
-    {
-        cell = [[GVCMultiLineTableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellId];
-		[[cell textLabel] setAdjustsFontSizeToFitWidth:YES];
-        [[cell textLabel] setFont:[UIFont systemFontOfSize:17.0]];
-        [[cell textLabel] setTextColor:[UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0]];
-    }
+    UITableViewCell *cell = [GVCUITableViewCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
+    [[cell textLabel] setLineBreakMode:UILineBreakModeWordWrap];
+    [[cell textLabel] setNumberOfLines:0];
+    [[cell detailTextLabel] setLineBreakMode:UILineBreakModeWordWrap];
+    [[cell detailTextLabel] setNumberOfLines:0];
 	
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];

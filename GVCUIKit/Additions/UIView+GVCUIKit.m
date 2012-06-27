@@ -93,4 +93,9 @@
 	CGContextDrawPath(context, kCGPathStroke);
 }
 
+- (CGFloat)gvc_heightForCell
+{
+    return [self bounds].size.height;
+}
+
 @end

@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GVCUITableViewCell.h"
+#import "GVCEditCell.h"
 
-@interface GVCEditTextViewCell : GVCUITableViewCell
+@interface GVCEditTextViewCell : GVCEditCell <UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
 @end
+

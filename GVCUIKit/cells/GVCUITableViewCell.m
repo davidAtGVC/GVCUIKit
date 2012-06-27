@@ -35,6 +35,10 @@
     return self;
 }
 
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
 
 - (void)setUseDarkBackground:(BOOL)flag
 {
@@ -52,6 +56,11 @@
 - (void)prepareForReuse 
 {
     [super prepareForReuse];
+}
+
+- (CGFloat)gvc_heightForCell
+{
+    return [super gvc_heightForCell];
 }
 
 @end

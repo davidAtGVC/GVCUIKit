@@ -141,6 +141,10 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    //	((UITableView*)[self superview]).scrollEnabled = YES;
+    UITableView *tv = (UITableView *) [self superview];
+    [tv scrollToRowAtIndexPath:[tv indexPathForCell:self] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+
 	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCellDidBeginEditing:)])
 	{
 		[[self delegate] gvcEditCellDidBeginEditing:self];
@@ -151,6 +155,9 @@
 - (void)textFieldDidEndEditing:(UITextField *)txtField
 {
 //	((UITableView*)[self superview]).scrollEnabled = YES;
+    UITableView *tv = (UITableView *) [self superview];
+    [tv scrollToRowAtIndexPath:[tv indexPathForCell:self] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+
 	
 	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCell:textChangedTo:)])
 	{

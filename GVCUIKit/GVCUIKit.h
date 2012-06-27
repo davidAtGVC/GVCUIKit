@@ -14,8 +14,10 @@
 #import "UIColor+GVCUIKit.h"
 #import "UIDevice+GVCUIKit.h"
 #import "UIImage+GVCUIKit.h"
+#import "UILabel+GVCUIKit.h"
 #import "UITabBar+GVCUIKit.h"
 #import "UITableViewCell+GVCUIKit.h"
+#import "UITextView+GVCUIKit.h"
 #import "UIView+GVCUIKit.h"
 #import "UIViewController+GVCUIKit.h"
 

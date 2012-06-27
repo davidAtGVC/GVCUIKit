@@ -7,7 +7,7 @@
 
 #import "GVCUITableViewController.h"
 #import "GVCUITableViewCell.h"
-
+#import "UITableViewCell+GVCUIKit.h"
 #import "GVCFoundation.h"
 
 @implementation GVCUITableViewController
@@ -30,12 +30,6 @@
 - (NSString *)viewTitleKey
 {
 	return @"viewTitle";
-}
-
--(void) loadView 
-{
-	[super loadView];
-    [self setAutoresizesForKeyboard:YES];
 }
 
 - (IBAction)reload:(id)sender
@@ -322,6 +316,12 @@
 //		[(GVCUITableViewCell *)cell setUseDarkBackground:([indexPath row] % 2 == 0)];
 //	}
 //}
+
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath 
+{
+	UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    return [cell gvc_heightForCell];
+}
 
 - (UITableViewCell *)dequeueOrLoadReusableCellFromClass:(Class)cellClass forTable:(UITableView *)tv withIdentifier:(NSString *)identifier
 {

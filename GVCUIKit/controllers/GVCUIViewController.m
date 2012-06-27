@@ -45,12 +45,6 @@
 
 #pragma mark - UIViewController
 
--(void) loadView 
-{
-	[super loadView];
-    [self setAutoresizesForKeyboard:YES];
-}
-
 -(void) viewWillAppear:(BOOL)animated 
 {
 	[super viewWillAppear:animated];
@@ -122,22 +116,46 @@
 
 - (IBAction)dismissModalViewController:(id)sender
 {
+    UIViewController *target = self;
     UINavigationController *navController = [self navigationController] ;
     if ( navController == nil )
     {
-        UIViewController *uivcParent = [self parentViewController];
-        UIViewController *uivcPresent = [self presentingViewController];
-        GVCLogError(@"%@ %@", uivcParent, uivcPresent);
-        if (([self parentViewController] != nil) && ([[self parentViewController] isKindOfClass:[UINavigationController class]] == YES ))
+        target = [self parentViewController];
+        if (target != nil)
         {
-            navController = (UINavigationController *)[self parentViewController];
+            if ([target isKindOfClass:[UINavigationController class]] == YES )
+            {
+                navController = (UINavigationController *)target;
+            }
+            else
+            {
+                navController = [target navigationController];
+            }
         }
-        else if (([self presentingViewController] != nil) && ([[self presentingViewController] isKindOfClass:[UINavigationController class]] == YES ))
+        else
         {
-            navController = (UINavigationController *)[self presentingViewController];
+            target = [self presentingViewController];
+            if (target != nil)
+            {
+                if ([target isKindOfClass:[UINavigationController class]] == YES )
+                {
+                    navController = (UINavigationController *)target;
+                }
+                else if ( [target navigationController] != nil )
+                {
+                    navController = [target navigationController];
+                }
+            }
         }
     }
-    [navController dismissModalViewControllerAnimated:YES];
+    [navController dismissViewControllerAnimated:YES completion:^(){
+        if ([[self callbackDelegate] respondsToSelector:NSSelectorFromString(@"tableView")] == YES ) 
+        {
+            id tv = [[self callbackDelegate] valueForKey:@"tableView"];
+            if ((tv != nil) && ([tv isKindOfClass:[UITableView class]] == YES))
+                [(UITableView *)tv reloadData];
+        }
+    }];
 }
 
 
@@ -181,7 +199,7 @@
 
 -(void) keyboardWillShow:(NSNotification *)notification 
 {
-	if ([self isViewAppearing] == YES) 
+//	if ([self isViewAppearing] == YES) 
 	{
 		[self resizeForKeyboard:notification appearing:YES];
 	}
@@ -198,7 +216,7 @@
 
 -(void) keyboardDidHide:(NSNotification *)notification 
 {
-	if ([self isViewAppearing] == YES) 
+//	if ([self isViewAppearing] == YES) 
 	{
 		[self resizeForKeyboard:notification appearing:NO];
 	}

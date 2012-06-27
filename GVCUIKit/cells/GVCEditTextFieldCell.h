@@ -27,9 +27,9 @@
 
 @end
 
-@protocol GVCEditTextFieldCellDelegate <NSObject>
-@optional
-- (void) gvcEditCellDidBeginEditing:(GVCEditTextFieldCell *)editableCell;
-- (BOOL) gvcEditCellShouldReturn:(GVCEditTextFieldCell *)editableCell;
-- (void) gvcEditCell:(GVCEditTextFieldCell *)editableCell textChangedTo:(NSString *)newText;
-@end
+//@protocol GVCEditTextFieldCellDelegate <NSObject>
+//@optional
+//- (void) gvcEditCellDidBeginEditing:(GVCEditTextFieldCell *)editableCell;
+//- (BOOL) gvcEditCellShouldReturn:(GVCEditTextFieldCell *)editableCell;
+//- (void) gvcEditCell:(GVCEditTextFieldCell *)editableCell textChangedTo:(NSString *)newText;
+//@end

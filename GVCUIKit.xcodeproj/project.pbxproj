@@ -13,6 +13,10 @@
 		051B261F1559C8BE001B4377 /* GVCUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051B261D1559C8BE001B4377 /* GVCUITabBarController.m */; };
 		052A74701592B294006497A7 /* GVCColumnContainerCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 052A746E1592B294006497A7 /* GVCColumnContainerCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		052A74711592B294006497A7 /* GVCColumnContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 052A746F1592B294006497A7 /* GVCColumnContainerCell.m */; };
+		0549F0C4159A512100A93F3A /* UILabel+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0549F0C2159A512100A93F3A /* UILabel+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0549F0C5159A512100A93F3A /* UILabel+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */; };
+		0550C537159B403A00E43AD3 /* UITextView+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0550C538159B403A00E43AD3 /* UITextView+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0550C536159B403A00E43AD3 /* UITextView+GVCUIKit.m */; };
 		0553E549153A075C006F54FF /* GVCAlertMessageCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0553E547153A075C006F54FF /* GVCAlertMessageCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0553E54A153A075C006F54FF /* GVCAlertMessageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0553E548153A075C006F54FF /* GVCAlertMessageCenter.m */; };
 		0553E54F153A078D006F54FF /* GVCStatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0553E54D153A078D006F54FF /* GVCStatusView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -156,6 +160,10 @@
 		051B261D1559C8BE001B4377 /* GVCUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUITabBarController.m; sourceTree = "<group>"; };
 		052A746E1592B294006497A7 /* GVCColumnContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCColumnContainerCell.h; sourceTree = "<group>"; };
 		052A746F1592B294006497A7 /* GVCColumnContainerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCColumnContainerCell.m; sourceTree = "<group>"; };
+		0549F0C2159A512100A93F3A /* UILabel+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+GVCUIKit.h"; sourceTree = "<group>"; };
+		0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+GVCUIKit.m"; sourceTree = "<group>"; };
+		0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+GVCUIKit.h"; sourceTree = "<group>"; };
+		0550C536159B403A00E43AD3 /* UITextView+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+GVCUIKit.m"; sourceTree = "<group>"; };
 		0553E547153A075C006F54FF /* GVCAlertMessageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCAlertMessageCenter.h; sourceTree = "<group>"; };
 		0553E548153A075C006F54FF /* GVCAlertMessageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCAlertMessageCenter.m; sourceTree = "<group>"; };
 		0553E54D153A078D006F54FF /* GVCStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCStatusView.h; sourceTree = "<group>"; };
@@ -348,6 +356,10 @@
 				0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */,
 				05BA45661590F0ED00F5AF5A /* UITableViewCell+GVCUIKit.h */,
 				05BA45671590F0ED00F5AF5A /* UITableViewCell+GVCUIKit.m */,
+				0549F0C2159A512100A93F3A /* UILabel+GVCUIKit.h */,
+				0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */,
+				0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */,
+				0550C536159B403A00E43AD3 /* UITextView+GVCUIKit.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -613,6 +625,8 @@
 				05E091E31594EDF000C6B1A0 /* GVCPinLockViewController.h in Headers */,
 				05E091E71594EE0C00C6B1A0 /* GVCLoginLockViewController.h in Headers */,
 				052A74701592B294006497A7 /* GVCColumnContainerCell.h in Headers */,
+				0549F0C4159A512100A93F3A /* UILabel+GVCUIKit.h in Headers */,
+				0550C537159B403A00E43AD3 /* UITextView+GVCUIKit.h in Headers */,
 				055E7287159514D700C8DCC4 /* GVCUIProtocols.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -797,6 +811,8 @@
 				05E091E01594EDBD00C6B1A0 /* GVCLockViewController.m in Sources */,
 				05E091E41594EDF000C6B1A0 /* GVCPinLockViewController.m in Sources */,
 				05E091E81594EE0C00C6B1A0 /* GVCLoginLockViewController.m in Sources */,
+				0549F0C5159A512100A93F3A /* UILabel+GVCUIKit.m in Sources */,
+				0550C538159B403A00E43AD3 /* UITextView+GVCUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
