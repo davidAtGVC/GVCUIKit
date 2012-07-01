@@ -67,6 +67,8 @@
 		05ABB54E153E48AA00D039F2 /* StatusView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05ABB54C153E48AA00D039F2 /* StatusView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05ABB54F153E48AA00D039F2 /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ABB54D153E48AA00D039F2 /* StatusView.m */; };
 		05ABB551153E5CFC00D039F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05ABB550153E5CFC00D039F2 /* QuartzCore.framework */; };
+		05B1454E159E372900702FB4 /* UITableView+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 05B1454C159E372900702FB4 /* UITableView+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05B1454F159E372900702FB4 /* UITableView+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B1454D159E372900702FB4 /* UITableView+GVCUIKit.m */; };
 		05BA452B1590CF7700F5AF5A /* GVCUIContainerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05BA45291590CF7700F5AF5A /* GVCUIContainerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05BA452C1590CF7700F5AF5A /* GVCUIContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BA452A1590CF7700F5AF5A /* GVCUIContainerViewController.m */; };
 		05BA45681590F0ED00F5AF5A /* UITableViewCell+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 05BA45661590F0ED00F5AF5A /* UITableViewCell+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -220,6 +222,8 @@
 		05ABB54C153E48AA00D039F2 /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
 		05ABB54D153E48AA00D039F2 /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
 		05ABB550153E5CFC00D039F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		05B1454C159E372900702FB4 /* UITableView+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+GVCUIKit.h"; sourceTree = "<group>"; };
+		05B1454D159E372900702FB4 /* UITableView+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+GVCUIKit.m"; sourceTree = "<group>"; };
 		05BA45291590CF7700F5AF5A /* GVCUIContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUIContainerViewController.h; sourceTree = "<group>"; };
 		05BA452A1590CF7700F5AF5A /* GVCUIContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUIContainerViewController.m; sourceTree = "<group>"; };
 		05BA45661590F0ED00F5AF5A /* UITableViewCell+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+GVCUIKit.h"; sourceTree = "<group>"; };
@@ -360,6 +364,8 @@
 				0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */,
 				0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */,
 				0550C536159B403A00E43AD3 /* UITextView+GVCUIKit.m */,
+				05B1454C159E372900702FB4 /* UITableView+GVCUIKit.h */,
+				05B1454D159E372900702FB4 /* UITableView+GVCUIKit.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -627,6 +633,7 @@
 				052A74701592B294006497A7 /* GVCColumnContainerCell.h in Headers */,
 				0549F0C4159A512100A93F3A /* UILabel+GVCUIKit.h in Headers */,
 				0550C537159B403A00E43AD3 /* UITextView+GVCUIKit.h in Headers */,
+				05B1454E159E372900702FB4 /* UITableView+GVCUIKit.h in Headers */,
 				055E7287159514D700C8DCC4 /* GVCUIProtocols.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -813,6 +820,7 @@
 				05E091E81594EE0C00C6B1A0 /* GVCLoginLockViewController.m in Sources */,
 				0549F0C5159A512100A93F3A /* UILabel+GVCUIKit.m in Sources */,
 				0550C538159B403A00E43AD3 /* UITextView+GVCUIKit.m in Sources */,
+				05B1454F159E372900702FB4 /* UITableView+GVCUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
