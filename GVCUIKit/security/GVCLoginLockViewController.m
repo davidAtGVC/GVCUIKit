@@ -14,6 +14,7 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 @interface GVCLoginLockViewController ()
 - (void)simulatedSuccess:(id)sender;
 - (void)simulatedFail:(id)sender;
+@property (assign, nonatomic) NSUInteger failCount;
 @end
 
 @implementation GVCLoginLockViewController
@@ -26,6 +27,8 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 @synthesize passwordField;
 @synthesize passwordConfirmField;
 @synthesize loginButton;
+@synthesize failCount;
+@synthesize resetButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +42,7 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	failCount = 0;
 	// Do any additional setup after loading the view.
 }
 
@@ -52,7 +56,8 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
     [self setPasswordConfirmLabel:nil];
     [self setPasswordConfirmField:nil];
     [self setLoginButton:nil];
-
+	[self setResetButton:nil];
+	
     [super viewDidUnload];
 }
 
@@ -89,6 +94,8 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 	[[self passwordField] setDelegate:self];
 
 	[[self loginButton] setEnabled:YES];
+	[[self resetButton] setEnabled:NO];
+	[[self resetButton] setHidden:YES];
 	
     NSString *username = [[GVCKeychain sharedGVCKeychain] secureObjectForKey:GVCLoginLockViewController_USERNAME_KEY];
 	if ( username != nil )
@@ -202,6 +209,7 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 
 - (void)simulatedSuccess:(NSString *)message 
 {
+	failCount = 0;
     [[self usernameField] setEnabled:YES];
 	[[self passwordField] setEnabled:YES];
 	[[self passwordConfirmField] setEnabled:YES];
@@ -224,6 +232,15 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 	[[self statusLabel] setTextColor:[UIColor redColor]];
 	[[self statusLabel] setText:(gvc_IsEmpty(message) ? @"Fail" : message)];
     [passwordField becomeFirstResponder];
+	
+	failCount++;
+
+	if ( failCount > 3 )
+	{
+		[[self resetButton] setTitle:@"Reset login" forState:UIControlStateNormal];
+		[[self resetButton] setEnabled:YES];
+		[[self resetButton] setHidden:NO];
+	}
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -248,6 +265,13 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
         [self loginAction:textField];
     }
     return YES;
+}
+
+- (IBAction)removeLockAction:(id)sender
+{
+	[[GVCKeychain sharedGVCKeychain] removeSecureObjectForKey:GVCLoginLockViewController_USERNAME_KEY];
+	[[GVCKeychain sharedGVCKeychain] removeSecureObjectForKey:GVCLoginLockViewController_PASSWORD_KEY];
+	[self performSelector:@selector(simulatedSuccess:) withObject:nil afterDelay:0.5];
 }
 
 @end

@@ -31,5 +31,6 @@ typedef enum {
 
 - (IBAction)loginAction:(id)sender;
 - (IBAction)cancelAction:(id)sender;
+- (IBAction)removeLockAction:(id)sender;
 
 @end

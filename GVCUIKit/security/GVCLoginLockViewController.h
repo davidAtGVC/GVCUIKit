@@ -24,4 +24,6 @@ GVC_DEFINE_EXTERN_STR(GVCLoginLockViewController_PASSWORD_KEY);
 @property (weak, nonatomic) IBOutlet UITextField *passwordConfirmField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
+
 @end

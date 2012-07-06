@@ -63,4 +63,8 @@
     }
 }
 
+- (IBAction)removeLockAction:(id)sender
+{
+}
+
 @end
