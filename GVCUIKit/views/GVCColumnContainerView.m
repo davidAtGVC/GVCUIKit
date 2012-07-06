@@ -1,26 +1,27 @@
-//
-//  GVCColumnContainerCell.m
-//
-//  Created by David Aspinall on 12-06-20.
-//  Copyright (c) 2012 Global Village Consulting. All rights reserved.
-//
+/*
+ * GVCColumnContainerView.m
+ * 
+ * Created by David Aspinall on 12-07-06. 
+ * Copyright (c) 2012 Global Village Consulting. All rights reserved.
+ *
+ */
 
-#import "GVCColumnContainerCell.h"
+#import "GVCColumnContainerView.h"
 #import "GVCSizedColumn.h"
+#import "GVCFoundation.h"
 
-@interface GVCColumnContainerCell ()
+@interface GVCColumnContainerView ()
 @property (nonatomic, strong) NSMutableArray *widths;
 - (BOOL)reconcileViewsAndSizes;
 @end
 
-
-@implementation GVCColumnContainerCell
+@implementation GVCColumnContainerView
 
 @synthesize widths;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithFrame:frame];
     if (self != nil)
     {
     }
@@ -28,9 +29,9 @@
 }
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style forUILabelSizes:(NSArray *)set reuseIdentifier:(NSString *)reuseIdentifier;
+- (id)initWithFrame:(CGRect)frame forUILabelSizes:(NSArray *)set
 {
-    self = [self initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithFrame:frame];
     if (self != nil)
     {
         for ( NSObject *obj in set )
@@ -56,14 +57,14 @@
 - (void)addUILabel:(NSUInteger)idx forSize:(CGFloat)percent
 {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-//    [label setBackgroundColor:[self backgroundColor]];
+    //    [label setBackgroundColor:[self backgroundColor]];
     [label setFont:[UIFont boldSystemFontOfSize:14]];
     [label setTextColor:[UIColor blackColor]];
     [label setHighlightedTextColor:[UIColor whiteColor]];
     [label setTextAlignment:UITextAlignmentLeft];
     [label setAdjustsFontSizeToFitWidth:YES];
     [label setBaselineAdjustment:UIBaselineAdjustmentNone];
-
+    
     [self addView:label atIndex:idx forSize:percent];
 }
 
@@ -74,11 +75,11 @@
         [self setWidths:[[NSMutableArray alloc] initWithCapacity:10]];
     }
     [[self widths] addObject:part];
-    if ( [[[self contentView] subviews] containsObject:[part columnView]] == NO )
+    if ( [[self subviews] containsObject:[part columnView]] == NO )
     {
-        [[self contentView] addSubview:[part columnView]];
+        [self addSubview:[part columnView]];
     }
-
+    
     [self setNeedsLayout];
 }
 
@@ -105,19 +106,12 @@
 }
 
 
-
-#pragma mark - UITableView overrides
-- (void)prepareForReuse 
-{
-    [super prepareForReuse];
-}
-
 #pragma mark - reconcile and layout
 - (BOOL)reconcileViewsAndSizes
 {
     BOOL success = NO;
     
-    NSArray *columnViews = [[self contentView] subviews];
+    NSArray *columnViews = [self subviews];
     if ([[self widths] count] != [columnViews count])
     {
         // both have values, but mismatched, abandon current widths
@@ -137,7 +131,7 @@
                 CGFloat boundWidth = [view bounds].size.width;
                 if ( boundWidth <= 0.0 )
                 {
-                    boundWidth = [[self contentView] bounds].size.width / [columnViews count];
+                    boundWidth = [self bounds].size.width / [columnViews count];
                 }
                 maxWidth += boundWidth;
             }];
@@ -148,7 +142,7 @@
                 CGFloat boundWidth = [view bounds].size.width;
                 if ( boundWidth <= 0.0 )
                 {
-                    boundWidth = [[self contentView] bounds].size.width / [columnViews count];
+                    boundWidth = [self bounds].size.width / [columnViews count];
                 }
                 [self addView:view atIndex:[columnViews indexOfObject:view] forSize:(boundWidth / maxWidth) * 100];
             }];
@@ -191,10 +185,8 @@
     if ( [self reconcileViewsAndSizes] == YES )
     {
         float insetWidth = 10;
-        if ( [self accessoryType] != UITableViewCellAccessoryNone )
-            insetWidth = 40;
         UIEdgeInsets inset = UIEdgeInsetsMake( 0, 5, 0, insetWidth);
-        CGRect myBounds = UIEdgeInsetsInsetRect([[self contentView] bounds], inset);
+        CGRect myBounds = UIEdgeInsetsInsetRect([self bounds], inset);
         CGFloat nextLabelPosition = myBounds.origin.x;
         
         for (GVCSizedColumn *portion in [self widths])
@@ -214,17 +206,6 @@
             }
         }
     }
-}
-
-- (CGFloat)gvc_heightForCell
-{
-    CGFloat height = MAX(44.0, [[self contentView] bounds].size.height);
-    NSArray *columnViews = [[self contentView] subviews];
-    for ( UIView *aview in columnViews )
-    {
-        height = MAX([aview gvc_heightForCell], height);
-    }
-    return height;
 }
 
 @end

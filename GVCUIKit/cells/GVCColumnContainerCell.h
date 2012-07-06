@@ -9,12 +9,7 @@
 #import "GVCUIKit.h"
 #import "GVCUITableViewCell.h"
 
-@interface GVCSizedColumn : NSObject
-- (id)init:(UIView *)view atIndex:(NSUInteger)idx forSize:(CGFloat)percent;
-@property (weak, nonatomic) UIView *columnView;
-@property (assign, nonatomic) NSUInteger columnIndex;
-@property (assign, nonatomic) CGFloat sizePercentage;
-@end
+@class GVCSizedColumn;
 
 @interface GVCColumnContainerCell : GVCUITableViewCell
 
