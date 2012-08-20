@@ -34,6 +34,12 @@
 	[[self tableView] setAutoresizesSubviews:YES];
 }
 
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 
+{
+    [self reload:nil];
+	return [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
 #pragma mark - keyboard resize
 -(void) keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds 
 {

@@ -101,6 +101,12 @@
 	return [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
 }
 
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 
+{
+    [self reload:nil];
+	return [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
 - (void)didReceiveMemoryWarning 
 {
 	// Releases the view if it doesn't have a superview.

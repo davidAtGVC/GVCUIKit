@@ -99,7 +99,7 @@
         float val = [slider value];
         
         int progress = ((val - min) / (max - min)) * 100;
-        [self setText:GVC_SPRINTF(@"%d %", progress)];
+        [self setText:GVC_SPRINTF(@"%d %%", progress)];
     }
 
 }
