@@ -26,7 +26,9 @@
  * 
  */
 #import "GVCAlertMessageCenter.h"
+#import "GVCSizedColumn.h"
 #import "GVCUIApplicationDelegate.h"
+#import "GVCUIKitFunctions.h"
 #import "GVCUIProtocols.h"
 
 /* 
@@ -86,6 +88,7 @@
  * views 
  */
 #import "GVCBadgeView.h"
+#import "GVCColumnContainerView.h"
 #import "GVCMultiTextFieldView.h"
 #import "GVCProgressBarView.h"
 #import "GVCRoundBorderView.h"

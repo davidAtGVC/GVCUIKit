@@ -52,7 +52,7 @@ static float MIN_W = 160.0;
 		[messageLayer setContentsScale:[[UIScreen mainScreen] scale]];
 		[messageLayer setAnchorPoint:CGPointMake(0, 0)];
         [messageLayer setBackgroundColor:[UIColor clearColor].CGColor];
-        [messageLayer setFont:CGFontCreateWithFontName((__bridge CFStringRef)[UIFont boldSystemFontOfSize:14].fontName)];
+        [messageLayer setFont:CGFontCreateWithFontName((__bridge_retained CFStringRef)[UIFont boldSystemFontOfSize:14].fontName)];
         
         [messageLayer setFontSize:14];
         [messageLayer setWrapped:YES];
