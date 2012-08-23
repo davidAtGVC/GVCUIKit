@@ -135,8 +135,8 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
         {
             case GVCLockViewControllerMode_CHANGE:
             {
-                GVC_ASSERT_VALID_STRING(username);
-                GVC_ASSERT_VALID_STRING(password);
+                GVC_ASSERT_NOT_EMPTY(username);
+                GVC_ASSERT_NOT_EMPTY(password);
                 
                 if ( [enteredPassword isEqualToString:enteredConfirm] == YES )
                 {
@@ -164,8 +164,8 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
                 break;
             case GVCLockViewControllerMode_UNLOCK:
             {
-                GVC_ASSERT_VALID_STRING(username);
-                GVC_ASSERT_VALID_STRING(password);
+                GVC_ASSERT_NOT_EMPTY(username);
+                GVC_ASSERT_NOT_EMPTY(password);
                 
                 success = (([[[self usernameField] text] isEqualToString:username]) && ([[[self passwordField] text] isEqualToString:password]));
                 if ( success == NO )

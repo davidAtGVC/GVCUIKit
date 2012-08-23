@@ -189,7 +189,7 @@ GVC_SINGLETON_CLASS(GVCAlertMessageCenter);
 
 - (void)enqueueMessage:(NSString *)message accessory:(GVC_StatusItemAccessory)type position:(GVC_StatusItemPosition)pos
 {
-    GVC_ASSERT_VALID_STRING( message );
+    GVC_ASSERT_NOT_EMPTY( message );
 	GVCStatusItem *item = [[GVCStatusItem alloc] init];
     [item setMessage:message];
     [item setAccessoryType:type];
