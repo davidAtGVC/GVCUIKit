@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		05F94D0D15EAB5520066BF2E /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 05F94D0E15EAB5530066BF2E /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				05F94D1115EAB5570066BF2E /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		051B26181559859C001B4377 /* GVCUINavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 051B26161559859C001B4377 /* GVCUINavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		051B26191559859C001B4377 /* GVCUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051B26171559859C001B4377 /* GVCUINavigationController.m */; };
@@ -207,6 +221,8 @@
 		056CD8D915A7307F00647244 /* GVCColumnContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCColumnContainerView.m; sourceTree = "<group>"; };
 		056CD8DE15A733AD00647244 /* GVCSizedColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCSizedColumn.h; sourceTree = "<group>"; };
 		056CD8DF15A733AD00647244 /* GVCSizedColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCSizedColumn.m; sourceTree = "<group>"; };
+		0582A15715EAB4980042C09E /* BuildDoxygen.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = BuildDoxygen.sh; sourceTree = "<group>"; };
+		0582A15815EAB4980042C09E /* doxygen.config */ = {isa = PBXFileReference; lastKnownFileType = text; path = doxygen.config; sourceTree = "<group>"; };
 		0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+GVCUIKit.h"; sourceTree = "<group>"; };
 		0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+GVCUIKit.m"; sourceTree = "<group>"; };
 		0585C555154028B600659B22 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -319,6 +335,8 @@
 			isa = PBXGroup;
 			children = (
 				0554498814F7F9C500ABB310 /* BuildKitHeader.sh */,
+				0582A15715EAB4980042C09E /* BuildDoxygen.sh */,
+				0582A15815EAB4980042C09E /* doxygen.config */,
 				0554498914F7F9C500ABB310 /* GitIgnore.txt */,
 				0554498A14F7F9C500ABB310 /* GVCDebug.xcconfig */,
 				0554498B14F7F9C500ABB310 /* GVCRelease.xcconfig */,
@@ -729,6 +747,7 @@
 			targets = (
 				05CA0AEB14F7F69E001C8A68 /* GVCUIKit */,
 				05CA0AFB14F7F69F001C8A68 /* GVCUIKitTests */,
+				05F94D0D15EAB5520066BF2E /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -787,6 +806,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		05F94D1115EAB5570066BF2E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/Resources/BuildDoxygen.sh";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1006,6 +1039,20 @@
 			};
 			name = Release;
 		};
+		05F94D0F15EAB5530066BF2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		05F94D1015EAB5530066BF2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1035,6 +1082,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		05F94D0E15EAB5530066BF2E /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05F94D0F15EAB5530066BF2E /* Debug */,
+				05F94D1015EAB5530066BF2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
