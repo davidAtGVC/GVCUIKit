@@ -1,15 +1,15 @@
 /*
- * ___FILENAME___
- * 
- * Created by ___FULLUSERNAME___ on ___DATE___. 
- * Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+ *  ___FILENAME___
  *
+ *  Created by ___FULLUSERNAME___ on ___DATE___.
+ *  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
  */
 
 #import <UIKit/UIKit.h>
-#import "GVCUIKit.h"
-___IMPORTHEADER_cocoaTouchSubclass___
 
+/**
+ * <#description#>
+ */
 @interface ___FILEBASENAMEASIDENTIFIER___ : ___VARIABLE_cocoaSubclass___
 
 @end

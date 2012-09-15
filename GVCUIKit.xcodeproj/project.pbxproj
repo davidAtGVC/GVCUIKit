@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		059939C316050FF60020BDD9 /* Install Templates */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 059939C416050FF60020BDD9 /* Build configuration list for PBXAggregateTarget "Install Templates" */;
+			buildPhases = (
+				059939C716050FFC0020BDD9 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Install Templates";
+			productName = "Install Templates";
+		};
 		05F94D0D15EAB5520066BF2E /* Documentation */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 05F94D0E15EAB5530066BF2E /* Build configuration list for PBXAggregateTarget "Documentation" */;
@@ -234,6 +245,15 @@
 		058B65DB1500696B007F27A1 /* GVCProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCProgressBarView.m; sourceTree = "<group>"; };
 		058B65DC1500696B007F27A1 /* GVCRoundBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCRoundBorderView.h; sourceTree = "<group>"; };
 		058B65DD1500696B007F27A1 /* GVCRoundBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCRoundBorderView.m; sourceTree = "<group>"; };
+		059939C81605103F0020BDD9 /* BuildDocs.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildDocs.sh; sourceTree = "<group>"; };
+		059939CB160510A80020BDD9 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
+		059939CC160510A80020BDD9 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
+		059939CE160510A80020BDD9 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
+		059939CF160510A80020BDD9 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
+		059939D1160510A80020BDD9 /* ___FILEBASENAME___.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "___FILEBASENAME___.h"; sourceTree = "<group>"; };
+		059939D2160510A80020BDD9 /* ___FILEBASENAME___.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___FILEBASENAME___.m"; sourceTree = "<group>"; };
+		059939D3160510A80020BDD9 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TemplateIcon.icns; sourceTree = "<group>"; };
+		059939D4160510A80020BDD9 /* TemplateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TemplateInfo.plist; sourceTree = "<group>"; };
 		059C616615011AFF00E18973 /* GVCFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GVCFoundation.xcodeproj; path = ../GVCFoundation/GVCFoundation.xcodeproj; sourceTree = "<group>"; };
 		059C617515011B5600E18973 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		059C617615011B5600E18973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -336,6 +356,7 @@
 			children = (
 				0554498814F7F9C500ABB310 /* BuildKitHeader.sh */,
 				0582A15715EAB4980042C09E /* BuildDoxygen.sh */,
+				059939C81605103F0020BDD9 /* BuildDocs.sh */,
 				0582A15815EAB4980042C09E /* doxygen.config */,
 				0554498914F7F9C500ABB310 /* GitIgnore.txt */,
 				0554498A14F7F9C500ABB310 /* GVCDebug.xcconfig */,
@@ -367,6 +388,7 @@
 		0554498F14F7F9C500ABB310 /* GVC UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				059939C9160510A80020BDD9 /* GVC View Controller.xctemplate */,
 			);
 			path = "GVC UIKit";
 			sourceTree = "<group>";
@@ -478,6 +500,45 @@
 				056CD8D915A7307F00647244 /* GVCColumnContainerView.m */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		059939C9160510A80020BDD9 /* GVC View Controller.xctemplate */ = {
+			isa = PBXGroup;
+			children = (
+				059939CA160510A80020BDD9 /* GVCUITableViewCell */,
+				059939CD160510A80020BDD9 /* GVCUITableViewController */,
+				059939D0160510A80020BDD9 /* GVCUIViewController */,
+				059939D3160510A80020BDD9 /* TemplateIcon.icns */,
+				059939D4160510A80020BDD9 /* TemplateInfo.plist */,
+			);
+			path = "GVC View Controller.xctemplate";
+			sourceTree = "<group>";
+		};
+		059939CA160510A80020BDD9 /* GVCUITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				059939CB160510A80020BDD9 /* ___FILEBASENAME___.h */,
+				059939CC160510A80020BDD9 /* ___FILEBASENAME___.m */,
+			);
+			path = GVCUITableViewCell;
+			sourceTree = "<group>";
+		};
+		059939CD160510A80020BDD9 /* GVCUITableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				059939CE160510A80020BDD9 /* ___FILEBASENAME___.h */,
+				059939CF160510A80020BDD9 /* ___FILEBASENAME___.m */,
+			);
+			path = GVCUITableViewController;
+			sourceTree = "<group>";
+		};
+		059939D0160510A80020BDD9 /* GVCUIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				059939D1160510A80020BDD9 /* ___FILEBASENAME___.h */,
+				059939D2160510A80020BDD9 /* ___FILEBASENAME___.m */,
+			);
+			path = GVCUIViewController;
 			sourceTree = "<group>";
 		};
 		059C616715011AFF00E18973 /* Products */ = {
@@ -748,6 +809,7 @@
 				05CA0AEB14F7F69E001C8A68 /* GVCUIKit */,
 				05CA0AFB14F7F69F001C8A68 /* GVCUIKitTests */,
 				05F94D0D15EAB5520066BF2E /* Documentation */,
+				059939C316050FF60020BDD9 /* Install Templates */,
 			);
 		};
 /* End PBXProject section */
@@ -794,6 +856,20 @@
 			shellPath = /bin/sh;
 			shellScript = "${PROJECT_DIR}/Resources/BuildKitHeader.sh";
 		};
+		059939C716050FFC0020BDD9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/Resources/Templates/templateInstall.sh";
+			showEnvVarsInLog = 0;
+		};
 		05CA0AFA14F7F69F001C8A68 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -818,7 +894,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PROJECT_DIR}/Resources/BuildDoxygen.sh";
+			shellScript = "# build documents using Doxygen\n# ${PROJECT_DIR}/Resources/BuildDoxygen.sh\n\n# build documents using appledocs\n${PROJECT_DIR}/Resources/BuildDocs.sh";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -921,6 +997,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		059939C516050FF60020BDD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		059939C616050FF60020BDD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		05CA0B0E14F7F6A0001C8A68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0554498A14F7F9C500ABB310 /* GVCDebug.xcconfig */;
@@ -1056,6 +1146,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		059939C416050FF60020BDD9 /* Build configuration list for PBXAggregateTarget "Install Templates" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				059939C516050FF60020BDD9 /* Debug */,
+				059939C616050FF60020BDD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		05CA0AE614F7F69E001C8A68 /* Build configuration list for PBXProject "GVCUIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1090,6 +1188,7 @@
 				05F94D1015EAB5530066BF2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
