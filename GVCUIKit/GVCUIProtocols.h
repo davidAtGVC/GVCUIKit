@@ -6,7 +6,7 @@
  *
  */
 
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 #ifndef GVCUIKit_GVCUIProtocols_h
 #define GVCUIKit_GVCUIProtocols_h
