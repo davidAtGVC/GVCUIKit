@@ -19,17 +19,6 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 
 @implementation GVCLoginLockViewController
 
-@synthesize activityIndicator;
-@synthesize usernameLabel;
-@synthesize passwordLabel;
-@synthesize passwordConfirmLabel;
-@synthesize usernameField;
-@synthesize passwordField;
-@synthesize passwordConfirmField;
-@synthesize loginButton;
-@synthesize failCount;
-@synthesize resetButton;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,7 +31,7 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	failCount = 0;
+	[self setFailCount:0];
 	// Do any additional setup after loading the view.
 }
 
@@ -209,13 +198,13 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 
 - (void)simulatedSuccess:(NSString *)message 
 {
-	failCount = 0;
+	[self setFailCount:0];
     [[self usernameField] setEnabled:YES];
 	[[self passwordField] setEnabled:YES];
 	[[self passwordConfirmField] setEnabled:YES];
 	[[self loginButton] setEnabled:YES];
 
-	[activityIndicator stopAnimating];
+	[[self activityIndicator] stopAnimating];
 	[[self statusLabel] setTextColor:[UIColor darkGrayColor]];
     [[self statusLabel] setText:(gvc_IsEmpty(message) ? @"Success" : message)];
     [super loginAction:nil];
@@ -228,14 +217,14 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 	[[self passwordConfirmField] setEnabled:YES];
 	[[self loginButton] setEnabled:YES];
     
-	[activityIndicator stopAnimating];
+	[[self activityIndicator] stopAnimating];
 	[[self statusLabel] setTextColor:[UIColor redColor]];
 	[[self statusLabel] setText:(gvc_IsEmpty(message) ? @"Fail" : message)];
-    [passwordField becomeFirstResponder];
+    [[self passwordField] becomeFirstResponder];
 	
-	failCount++;
+	[self setFailCount:[self failCount]+1];
 
-	if ( failCount > 3 )
+	if ( [self failCount] > 3 )
 	{
 		[[self resetButton] setTitle:@"Reset login" forState:UIControlStateNormal];
 		[[self resetButton] setEnabled:YES];
@@ -245,19 +234,19 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if ( textField == usernameField )
+    if ( textField == [self usernameField] )
     {
-        [passwordField becomeFirstResponder];
+        [[self passwordField] becomeFirstResponder];
     }
-    else if ( textField == passwordField )
+    else if ( textField == [self passwordField] )
     {
-        if ( passwordConfirmField == nil )
+        if ( [self passwordConfirmField] == nil )
         {
             [self loginAction:textField];
         }
         else
         {
-            [passwordConfirmField becomeFirstResponder];
+            [[self passwordConfirmField] becomeFirstResponder];
         }
     }
     else 

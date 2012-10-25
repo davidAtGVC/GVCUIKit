@@ -33,44 +33,34 @@ static float MIN_W = 160.0;
 
 @implementation GVCStatusView
 
-@synthesize currentItem;
-@synthesize messageLayer;
-@synthesize progressLayer;
-@synthesize imageLayer;
-@synthesize activityView;
-@synthesize currentAccessory;
-@synthesize calculatedViewRect;
-@synthesize calculatedAccessoryRect;
-@synthesize calculatedMessageRect;
-
 - (id)initWithFrame:(CGRect)frame
 {
 	self = [super initWithFrame:frame];
 	if ( self != nil )
 	{
         [self setMessageLayer:[[CATextLayer alloc] init]];
-		[messageLayer setContentsScale:[[UIScreen mainScreen] scale]];
-		[messageLayer setAnchorPoint:CGPointMake(0, 0)];
-        [messageLayer setBackgroundColor:[UIColor clearColor].CGColor];
-        [messageLayer setFont:CGFontCreateWithFontName((__bridge_retained CFStringRef)[UIFont boldSystemFontOfSize:14].fontName)];
+		[[self messageLayer] setContentsScale:[[UIScreen mainScreen] scale]];
+		[[self messageLayer] setAnchorPoint:CGPointMake(0, 0)];
+        [[self messageLayer] setBackgroundColor:[UIColor clearColor].CGColor];
+        [[self messageLayer] setFont:CGFontCreateWithFontName((__bridge_retained CFStringRef)[UIFont boldSystemFontOfSize:14].fontName)];
         
-        [messageLayer setFontSize:14];
-        [messageLayer setWrapped:YES];
-		[[self layer] addSublayer:messageLayer];
+        [[self messageLayer] setFontSize:14];
+        [[self messageLayer] setWrapped:YES];
+		[[self layer] addSublayer:[self messageLayer]];
         
         [self setProgressLayer:[[GVCProgressBarLayer alloc] init]];
-		[progressLayer setContentsScale:[[UIScreen mainScreen] scale]];
-		[progressLayer setAnchorPoint:CGPointMake(0, 0)];
-        [progressLayer setBackgroundColor:[UIColor clearColor].CGColor];
-        [progressLayer setBarProgressColor:[UIColor whiteColor]];
-		[[self layer] addSublayer:progressLayer];
+		[[self progressLayer] setContentsScale:[[UIScreen mainScreen] scale]];
+		[[self progressLayer] setAnchorPoint:CGPointMake(0, 0)];
+        [[self progressLayer] setBackgroundColor:[UIColor clearColor].CGColor];
+        [[self progressLayer] setBarProgressColor:[UIColor whiteColor]];
+		[[self layer] addSublayer:[self progressLayer]];
         
         [self setActivityView:[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]];
         [[self activityView] setHidesWhenStopped:YES];
         
         [self setImageLayer:[[CALayer alloc] init]];
-		[imageLayer setAnchorPoint:CGPointMake(0, 0)];
-		[[self layer] addSublayer:imageLayer];
+		[[self imageLayer] setAnchorPoint:CGPointMake(0, 0)];
+		[[self layer] addSublayer:[self imageLayer]];
         
         [self setBorderColor:[UIColor lightGrayColor]];
         [self setContentColor:[UIColor blueColor]];
@@ -88,24 +78,24 @@ static float MIN_W = 160.0;
     CGRect messageRect = CGRectZero;
     id accessory = nil;
     
-    if ( currentItem != nil )
+    if ( [self currentItem] != nil )
     {
         //CGSize messageSize = [[currentItem message] sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(MIN_W, MIN_H) lineBreakMode:UILineBreakModeWordWrap];
-        NSAttributedString *attrString = [NSMutableAttributedString gvc_MutableAttributed:[currentItem message] font:[UIFont boldSystemFontOfSize:14] color:[UIColor blackColor] alignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap];
+        NSAttributedString *attrString = [NSMutableAttributedString gvc_MutableAttributed:[[self currentItem] message] font:[UIFont boldSystemFontOfSize:14] color:[UIColor blackColor] alignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap];
         CGSize messageSize = [attrString gvc_sizeConstrainedToWidth:MIN_W];
         CGSize accessorySize = CGSizeZero;
         CGSize itemSize = CGSizeZero;
         
-        if (([currentItem accessoryPosition] == GVC_StatusItemPosition_LEFT) || ([currentItem accessoryPosition] == GVC_StatusItemPosition_RIGHT))
+        if (([[self currentItem] accessoryPosition] == GVC_StatusItemPosition_LEFT) || ([[self currentItem] accessoryPosition] == GVC_StatusItemPosition_RIGHT))
         {
             // progress bars can only be top or bottom
-            if ( [currentItem accessoryType] == GVC_StatusItemAccessory_PROGRESS )
+            if ( [[self currentItem] accessoryType] == GVC_StatusItemAccessory_PROGRESS )
             {
-                [currentItem setAccessoryPosition:GVC_StatusItemPosition_BOTTOM];
+                [[self currentItem] setAccessoryPosition:GVC_StatusItemPosition_BOTTOM];
             }
         }
         
-        switch ([currentItem accessoryType]) {
+        switch ([[self currentItem] accessoryType]) {
             case GVC_StatusItemAccessory_ACTIVITY:
                 accessorySize = CGSizeMake(37, 37);
                 accessory = [self activityView];
@@ -135,9 +125,9 @@ static float MIN_W = 160.0;
                 
             case GVC_StatusItemAccessory_IMAGE:
                 // size image or scale to max
-                accessorySize = [[currentItem image] size];
+                accessorySize = [[[self currentItem] image] size];
                 accessory = [self imageLayer];
-                [[self imageLayer] setContents:(id)[currentItem image].CGImage];
+                [[self imageLayer] setContents:(id)[[self currentItem] image].CGImage];
                 
                 [[self activityView] stopAnimating];
                 [[self activityView] removeFromSuperview];
@@ -155,7 +145,7 @@ static float MIN_W = 160.0;
                 break;
         }
         
-        switch ([currentItem accessoryPosition]) {
+        switch ([[self currentItem] accessoryPosition]) {
             case GVC_StatusItemPosition_LEFT:
                 itemSize = CGSizeMake(accessorySize.width + messageSize.width + ACCESSOR_MARGIN + BOX_MARGIN, 
                                       MAX(accessorySize.height,messageSize.height) + BOX_MARGIN);
@@ -225,21 +215,21 @@ static float MIN_W = 160.0;
         [self calculateViewFrames];
         if ( CGRectEqualToRect([self frame], CGRectZero) == YES )
         {
-            [self setFrame:calculatedViewRect];
+            [self setFrame:[self calculatedViewRect]];
         }
 
         [CATransaction begin];
         [CATransaction setDisableActions:YES];
         [CATransaction setCompletionBlock:^{
             [UIView animateWithDuration:.4 animations:^{ 
-                if ( CGRectEqualToRect([self frame], calculatedViewRect) == NO )
+                if ( CGRectEqualToRect([self frame], [self calculatedViewRect]) == NO )
                 {
-                    [self setFrame:calculatedViewRect];
+                    [self setFrame:[self calculatedViewRect]];
                     [self setNeedsDisplay];
                 }
                 
-                [messageLayer setFrame:calculatedMessageRect];
-                [currentAccessory setFrame:calculatedAccessoryRect];
+                [[self messageLayer] setFrame:[self calculatedMessageRect]];
+                [[self currentAccessory] setFrame:[self calculatedAccessoryRect]];
                 [self setAlpha:1.0];
             } completion:^(BOOL finished) {
                 if (finished == YES) 
@@ -249,9 +239,9 @@ static float MIN_W = 160.0;
             }];
         }];
         
-        [[self progressLayer] setProgress:[currentItem progress]];
+        [[self progressLayer] setProgress:[[self currentItem] progress]];
         [[self progressLayer] setNeedsDisplay];
-        [[self messageLayer] setString:[currentItem message]];
+        [[self messageLayer] setString:[[self currentItem] message]];
 
         [CATransaction commit];
 	}

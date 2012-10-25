@@ -1,6 +1,5 @@
 /**
  * Header for GVCUIKit
- * Author: daspinall
  */
 
 #ifndef GVCUIKit_h

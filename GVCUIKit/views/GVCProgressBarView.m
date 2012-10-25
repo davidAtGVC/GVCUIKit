@@ -43,14 +43,15 @@
 
 - (void) setProgress:(float)p
 {
-	p = MIN(MAX(0.0,p),1.0);
+	float maxP = MAX(0.0, p);
+	float localp = MIN(maxP, 1.0);
 	
-	if ((p > 0.0) && (p < 0.08)) 
-		p = 0.08;
+	if ((localp > 0.0) && (localp < 0.08))
+		localp = 0.08;
 
-	if (p != progress)
+	if (localp != progress)
 	{
-		progress = p;
+		progress = localp;
 		[self setNeedsDisplay];
 	}
 }

@@ -145,7 +145,7 @@
         CGFloat maxx = MAX(CGRectGetMaxX(visibleBounds), 0);
         NSUInteger firstNeededPageIndex = floorf(minx / visibleWidth);
         NSUInteger lastNeededPageIndex  = floorf((maxx - 1) / visibleWidth);
-        firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
+        firstNeededPageIndex = MAX(firstNeededPageIndex, 0U);
         
         // START:TileChanges
         NSUInteger maxPage = ([self scrollView].contentSize.width / visibleWidth);
@@ -170,7 +170,7 @@
         [visiblePages minusSet:recycledPages];
         
         // add missing pages
-        for (int index = firstNeededPageIndex; index <= lastNeededPageIndex; index++)
+        for (NSUInteger index = firstNeededPageIndex; index <= lastNeededPageIndex; index++)
         {
             if ( [self isDisplayingPageForIndex:index] == NO) 
             {

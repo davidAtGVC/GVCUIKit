@@ -40,7 +40,8 @@
 
 - (void) setProgress:(float)p
 {
-	p = MIN(MAX(0.0,p),1.0);
+	float maxP = MAX(0.0, p);
+	p = MIN(maxP, 1.0);
 	
 	if ((p > 0.0) && (p < 0.04)) 
 		p = 0.04;

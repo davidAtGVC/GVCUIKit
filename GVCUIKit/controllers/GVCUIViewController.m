@@ -116,7 +116,7 @@
 
 - (IBAction)dismissModalViewController:(id)sender
 {
-    UIViewController *target = self;
+    UIViewController *target = nil;
     UINavigationController *navController = [self navigationController] ;
     if ( navController == nil )
     {

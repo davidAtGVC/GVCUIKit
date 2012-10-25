@@ -1153,6 +1153,7 @@
 				059939C616050FF60020BDD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05CA0AE614F7F69E001C8A68 /* Build configuration list for PBXProject "GVCUIKit" */ = {
 			isa = XCConfigurationList;
