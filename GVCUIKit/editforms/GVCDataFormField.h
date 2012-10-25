@@ -6,7 +6,7 @@
  *
  */
 
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 typedef enum {
     GVCDataFormFieldType_STRING,

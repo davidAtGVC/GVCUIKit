@@ -6,7 +6,7 @@
  *
  */
 
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @class GVCDataFormSection;
 @class GVCDataFormField;

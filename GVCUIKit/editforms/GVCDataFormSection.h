@@ -6,7 +6,7 @@
  *
  */
 
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 #import "GVCDataFormField.h"
 #import "GVCDataFormModel.h"

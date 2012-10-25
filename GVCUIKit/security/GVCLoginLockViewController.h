@@ -7,7 +7,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 #import "GVCLockViewController.h"
 
 GVC_DEFINE_EXTERN_STR(GVCLoginLockViewController_USERNAME_KEY);

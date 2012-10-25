@@ -6,8 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GVCFoundation/GVCFoundation.h>
 #import "GVCUITableViewController.h"
-#import "GVCFoundation.h"
 
 GVC_DEFINE_EXTERN_STR( GVCDictionaryTableViewController_image );
 GVC_DEFINE_EXTERN_STR( GVCDictionaryTableViewController_label );
