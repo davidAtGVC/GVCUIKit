@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <dispatch/dispatch.h>
 
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 typedef enum {
 	GVC_StatusItemPosition_TOP = 0,

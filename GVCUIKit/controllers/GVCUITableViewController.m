@@ -231,13 +231,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv 
 {
-	GVC_SUBCLASS_RESPONSIBLE;
     return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
 {
-	GVC_SUBCLASS_RESPONSIBLE;
 	return nil;
 }
 
