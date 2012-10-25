@@ -35,7 +35,10 @@
 		[messageLayer setContentsScale:[[UIScreen mainScreen] scale]];
 		[messageLayer setAnchorPoint:CGPointMake(0, 0)];
         [messageLayer setBackgroundColor:[UIColor clearColor].CGColor];
-        [messageLayer setFont:CGFontCreateWithFontName((__bridge CFStringRef)[UIFont boldSystemFontOfSize:14].fontName)];
+		
+		CGFontRef boldSystemFont = CGFontCreateWithFontName((__bridge CFStringRef)[UIFont boldSystemFontOfSize:14].fontName);
+        [messageLayer setFont:boldSystemFont];
+		CFRelease(boldSystemFont);
 
         [messageLayer setFontSize:14];
         [messageLayer setWrapped:YES];
