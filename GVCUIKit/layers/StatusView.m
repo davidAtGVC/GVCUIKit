@@ -36,9 +36,8 @@
 		[messageLayer setAnchorPoint:CGPointMake(0, 0)];
         [messageLayer setBackgroundColor:[UIColor clearColor].CGColor];
 		
-		CGFontRef boldSystemFont = CGFontCreateWithFontName((__bridge CFStringRef)[UIFont boldSystemFontOfSize:14].fontName);
-        [messageLayer setFont:boldSystemFont];
-		CFRelease(boldSystemFont);
+		UIFont *systemBoldFont = [UIFont boldSystemFontOfSize:14];
+        [[self messageLayer] setFont:(CGFontRef)systemBoldFont];
 
         [messageLayer setFontSize:14];
         [messageLayer setWrapped:YES];
