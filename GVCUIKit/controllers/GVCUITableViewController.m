@@ -321,11 +321,11 @@
 //	}
 //}
 
-- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath 
-{
-	UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    return [cell gvc_heightForCell];
-}
+//- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath 
+//{
+////	UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+////    return [cell gvc_heightForCell];
+//}
 
 - (UITableViewCell *)dequeueOrLoadReusableCellFromClass:(Class)cellClass forTable:(UITableView *)tv withIdentifier:(NSString *)identifier
 {
