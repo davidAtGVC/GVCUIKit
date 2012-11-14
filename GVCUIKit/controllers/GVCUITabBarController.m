@@ -8,6 +8,7 @@
 
 #import "GVCUITabBarController.h"
 #import "GVCUINavigationController.h"
+#import "GVCUIKitFunctions.h"
 
 @implementation GVCUITabBarController
 
@@ -33,5 +34,17 @@
         [self dismissModalViewControllerAnimated:YES];
     }
 }
+
+- (NSString *)viewTitleKey
+{
+	NSString *viewTitle = GVC_DEFAULT_VIEW_TITLE;
+	if (([self selectedViewController] != nil) && ([[self selectedViewController] conformsToProtocol:@protocol(GVCViewTitleProtocol)] == YES))
+	{
+		viewTitle = [(id <GVCViewTitleProtocol>)[self selectedViewController] viewTitleKey];
+	}
+	
+	return viewTitle;
+}
+
 
 @end

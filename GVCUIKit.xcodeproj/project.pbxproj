@@ -614,6 +614,7 @@
 			isa = PBXGroup;
 			children = (
 				055D8E2914FF058E00E85A94 /* GVCUIKit.h */,
+				055E7286159514D700C8DCC4 /* GVCUIProtocols.h */,
 				05D3163115A0E3AF00042460 /* GVCUIKitFunctions.h */,
 				05D3163215A0E3AF00042460 /* GVCUIKitFunctions.m */,
 				055D8E2714FF058000E85A94 /* Additions */,
@@ -631,7 +632,6 @@
 				056CD8DE15A733AD00647244 /* GVCSizedColumn.h */,
 				056CD8DF15A733AD00647244 /* GVCSizedColumn.m */,
 				05CA0AF214F7F69E001C8A68 /* Supporting Files */,
-				055E7286159514D700C8DCC4 /* GVCUIProtocols.h */,
 			);
 			path = GVCUIKit;
 			sourceTree = "<group>";

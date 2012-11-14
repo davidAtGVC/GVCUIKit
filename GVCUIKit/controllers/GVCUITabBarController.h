@@ -7,8 +7,9 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "GVCUIProtocols.h"
 
-@interface GVCUITabBarController : UITabBarController
+@interface GVCUITabBarController : UITabBarController <GVCViewTitleProtocol>
 
 - (IBAction)dismissModalViewController:(id)sender;
 

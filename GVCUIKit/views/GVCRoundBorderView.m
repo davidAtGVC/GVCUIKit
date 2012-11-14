@@ -30,8 +30,8 @@
 	{
         // Initialization code.
 		[self setBackgroundColor:[UIColor clearColor]];
-		[self setBorderColor:[UIColor whiteColor]];
-		[self setContentColor:[UIColor darkGrayColor]];
+		[self setBorderColor:[UIColor darkGrayColor]];
+		[self setContentColor:[UIColor lightGrayColor]];
 		
 		[self setBorderWidth:2];
 		[self setCornerRadius:10];
@@ -44,12 +44,11 @@
     self = [super initWithCoder:coder];
     if (self != nil) 
 	{
-		[self setContentColor:[self backgroundColor]];
-		[self setBorderColor:[[self backgroundColor] gvc_reverseColor]];
-
 		[self setBackgroundColor:[UIColor clearColor]];
+		[self setBorderColor:[UIColor darkGrayColor]];
+		[self setContentColor:[UIColor lightGrayColor]];
 		
-		[self setBorderWidth:5];
+		[self setBorderWidth:2];
 		[self setCornerRadius:10];
     }
     return self;

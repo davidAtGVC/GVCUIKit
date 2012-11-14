@@ -15,4 +15,10 @@
 - (void)dismissPopover:sender;
 @end
 
+
+@protocol GVCViewTitleProtocol <NSObject>
+- (NSString *)viewTitleKey;
+@end
+
+
 #endif

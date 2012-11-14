@@ -7,7 +7,7 @@
  */
 
 #import "GVCUINavigationController.h"
-#import "GVCFoundation.h"
+#import "GVCUIKitFunctions.h"
 
 
 @implementation GVCUINavigationController
@@ -30,6 +30,17 @@
     }
         
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (NSString *)viewTitleKey
+{
+	NSString *viewTitle = GVC_DEFAULT_VIEW_TITLE;
+	if (([self topViewController] != nil) && ([[self topViewController] conformsToProtocol:@protocol(GVCViewTitleProtocol)] == YES))
+	{
+		viewTitle = [(id <GVCViewTitleProtocol>)[self topViewController] viewTitleKey];
+	}
+	
+	return viewTitle;
 }
 
 @end

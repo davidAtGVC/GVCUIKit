@@ -6,9 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
+#import "GVCUIProtocols.h"
 
-@interface GVCUIViewController : UIViewController
+@interface GVCUIViewController : UIViewController <GVCViewTitleProtocol>
 
 @property (nonatomic, assign) UIBarStyle navigationBarStyle;
 @property (nonatomic, strong) UIColor *navigationBarTintColor;

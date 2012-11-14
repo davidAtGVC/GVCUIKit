@@ -8,3 +8,5 @@
 
 #import <Foundation/Foundation.h>
 #import "GVCUIKitFunctions.h"
+
+GVC_DEFINE_STRVALUE(GVC_DEFAULT_VIEW_TITLE, viewTitle);

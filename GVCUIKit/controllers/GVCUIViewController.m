@@ -1,6 +1,6 @@
 
 #import "GVCUIViewController.h"
-#import "GVCFoundation.h"
+#import "GVCUIKitFunctions.h"
 
 @interface GVCUIViewController ()
 -(void) keyboardWillShow:(NSNotification *)notification;
@@ -40,7 +40,7 @@
 
 - (NSString *)viewTitleKey
 {
-	return @"viewTitle";
+	return GVC_DEFAULT_VIEW_TITLE;
 }
 
 #pragma mark - UIViewController

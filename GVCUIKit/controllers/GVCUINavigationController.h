@@ -8,14 +8,18 @@
 
 
 #import <UIKit/UIKit.h>
+#import "GVCUIProtocols.h"
 
 @protocol GVCUIModalViewControllerModalDismiss <UINavigationControllerDelegate>
 @optional
 - (void)willDismissModalController;
 @end
 
-@interface GVCUINavigationController : UINavigationController
+@interface GVCUINavigationController : UINavigationController <GVCViewTitleProtocol>
 
 - (IBAction)dismissModalViewController:(id)sender;
+
+/** Passes this message to the current top view controller, if it is a GVCUIViewController */
+- (NSString *)viewTitleKey;
 
 @end

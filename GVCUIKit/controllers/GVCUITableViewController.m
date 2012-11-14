@@ -8,7 +8,7 @@
 #import "GVCUITableViewController.h"
 #import "GVCUITableViewCell.h"
 #import "UITableViewCell+GVCUIKit.h"
-#import "GVCFoundation.h"
+#import "GVCUIKitFunctions.h"
 
 @implementation GVCUITableViewController
 
@@ -29,7 +29,7 @@
 
 - (NSString *)viewTitleKey
 {
-	return @"viewTitle";
+	return GVC_DEFAULT_VIEW_TITLE;
 }
 
 - (IBAction)reload:(id)sender
@@ -61,7 +61,8 @@
 
 	// set default title
 	[[self tableView] reloadData];
-	[[self navigationItem] setTitle:GVC_LocalizedClassString([self viewTitleKey], GVC_CLASSNAME(self))];
+	UINavigationItem *item = [self navigationItem];
+	[item setTitle:GVC_LocalizedClassString([self viewTitleKey], GVC_CLASSNAME(self))];
 }
 
 
