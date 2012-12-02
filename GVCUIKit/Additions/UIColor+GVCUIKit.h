@@ -28,6 +28,12 @@
 
 -(UIColor *)gvc_reverseColor;
 
+/** convert a HEX style color code into a UIColor */
++ (UIColor *)gvc_ColorFromHexString:(NSString *)colorString;
+
+/** convert a color name like 'red' into [UIColor redColor] */
++ (UIColor *)gvc_ColorForColorName:(NSString *)colorString;
+
 @end
 
 void GVC_RGB2HSL(float r, float g, float b, float* outH, float *outS, float *outV);

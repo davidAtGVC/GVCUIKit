@@ -7,7 +7,7 @@
  */
 
 #import "UIColor+GVCUIKit.h"
-
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation UIColor (GVCUIKit)
 
@@ -172,5 +172,45 @@ void GVC_HSL2RGB(float h, float s, float l, float* outR, float* outG, float* out
 	if(outB)
 		*outB = temp[2];
 }
+
+
++ (UIColor *)gvc_ColorFromHexString:(NSString *)colorString
+{
+	GVC_DBC_FACT_NOT_EMPTY(colorString);
+	GVC_DBC_FACT([colorString hasPrefix:@"#"]);
+	
+	UIColor *color = nil;
+	NSScanner *scanner = [NSScanner scannerWithString:[colorString substringFromIndex:1]];
+	unsigned long long hexValue;
+	if ([scanner scanHexLongLong:&hexValue])
+	{
+		CGFloat red = ((hexValue & 0xFF0000) >> 16) / 255.0f;
+		CGFloat green = ((hexValue & 0x00FF00) >> 8) / 255.0f;
+		CGFloat blue = (hexValue & 0x0000FF) / 255.0f;
+		
+		color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+	}
+	
+	return color;
+}
+
++ (UIColor *)gvc_ColorForColorName:(NSString *)colorString
+{
+	GVC_DBC_FACT_NOT_EMPTY(colorString);
+
+    if ([colorString hasSuffix:@"Color"] == NO)
+	{
+        colorString = [colorString stringByAppendingString:@"Color"];
+    }
+    
+	UIColor *color = nil;
+    SEL colorSelector = NSSelectorFromString(colorString);
+    if ([UIColor respondsToSelector:colorSelector] == YES)
+	{
+        color = [UIColor performSelector:colorSelector];
+    }
+	return color;
+}
+
 
 @end

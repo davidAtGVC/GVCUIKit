@@ -18,7 +18,7 @@
 
 // progress value in range of 0 to 100
 @property (assign,nonatomic) float progress; 
-@property (strong,nonatomic) UIColor *barProgressColor;
+@property (strong,nonatomic) UIColor *barProgressColor UI_APPEARANCE_SELECTOR;
 
 - (IBAction)updateProgress:(id)sender;
 

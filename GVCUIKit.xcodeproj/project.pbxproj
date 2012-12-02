@@ -112,6 +112,8 @@
 		05BA4585159100A600F5AF5A /* GVCDataFormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BA457F159100A600F5AF5A /* GVCDataFormModel.m */; };
 		05BA4586159100A600F5AF5A /* GVCDataFormSection.h in Headers */ = {isa = PBXBuildFile; fileRef = 05BA4580159100A600F5AF5A /* GVCDataFormSection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05BA4587159100A600F5AF5A /* GVCDataFormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BA4581159100A600F5AF5A /* GVCDataFormSection.m */; };
+		05C2E31D1668604400FDEE0D /* GVCAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C2E31B1668604400FDEE0D /* GVCAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05C2E31E1668604400FDEE0D /* GVCAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C2E31C1668604400FDEE0D /* GVCAppearance.m */; };
 		05CA0AF014F7F69E001C8A68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEF14F7F69E001C8A68 /* Foundation.framework */; };
 		05CA0AFE14F7F69F001C8A68 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AFD14F7F69F001C8A68 /* SenTestingKit.framework */; };
 		05CA0B0114F7F69F001C8A68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEF14F7F69E001C8A68 /* Foundation.framework */; };
@@ -284,6 +286,8 @@
 		05BA457F159100A600F5AF5A /* GVCDataFormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCDataFormModel.m; sourceTree = "<group>"; };
 		05BA4580159100A600F5AF5A /* GVCDataFormSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCDataFormSection.h; sourceTree = "<group>"; };
 		05BA4581159100A600F5AF5A /* GVCDataFormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCDataFormSection.m; sourceTree = "<group>"; };
+		05C2E31B1668604400FDEE0D /* GVCAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCAppearance.h; sourceTree = "<group>"; };
+		05C2E31C1668604400FDEE0D /* GVCAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCAppearance.m; sourceTree = "<group>"; };
 		05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGVCUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CA0AEF14F7F69E001C8A68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05CA0AF314F7F69E001C8A68 /* GVCUIKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GVCUIKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -617,6 +621,8 @@
 				055E7286159514D700C8DCC4 /* GVCUIProtocols.h */,
 				05D3163115A0E3AF00042460 /* GVCUIKitFunctions.h */,
 				05D3163215A0E3AF00042460 /* GVCUIKitFunctions.m */,
+				05C2E31B1668604400FDEE0D /* GVCAppearance.h */,
+				05C2E31C1668604400FDEE0D /* GVCAppearance.m */,
 				055D8E2714FF058000E85A94 /* Additions */,
 				058B64DB15005F40007F27A1 /* cells */,
 				05BA457B159100A500F5AF5A /* editforms */,
@@ -734,6 +740,7 @@
 				05D3163315A0E3AF00042460 /* GVCUIKitFunctions.h in Headers */,
 				055E7287159514D700C8DCC4 /* GVCUIProtocols.h in Headers */,
 				056CD8DA15A7307F00647244 /* GVCColumnContainerView.h in Headers */,
+				05C2E31D1668604400FDEE0D /* GVCAppearance.h in Headers */,
 				056CD8E015A733AD00647244 /* GVCSizedColumn.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -954,6 +961,7 @@
 				05D3163415A0E3AF00042460 /* GVCUIKitFunctions.m in Sources */,
 				056CD8DB15A7307F00647244 /* GVCColumnContainerView.m in Sources */,
 				056CD8E115A733AD00647244 /* GVCSizedColumn.m in Sources */,
+				05C2E31E1668604400FDEE0D /* GVCAppearance.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

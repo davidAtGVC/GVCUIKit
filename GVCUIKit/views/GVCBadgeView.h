@@ -14,8 +14,8 @@
 - (id)initWithFrame:(CGRect)frame;
 
 @property (strong,nonatomic) NSString *text;
-@property (strong,nonatomic) UIColor *badgeColor;
-@property (strong,nonatomic) UIFont *textFont;
+@property (strong,nonatomic) UIColor *badgeColor UI_APPEARANCE_SELECTOR;
+@property (strong,nonatomic) UIFont *textFont UI_APPEARANCE_SELECTOR;
 
 - (IBAction)updateBadgeText:(id)sender;
 

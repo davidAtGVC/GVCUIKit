@@ -6,7 +6,8 @@
 //
 
 #import "GVCUIApplicationDelegate.h"
-#import "GVCFoundation.h"
+#import "GVCAppearance.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @interface GVCUIApplicationDelegate ()
 @property (strong, nonatomic, readwrite) NSOperationQueue *operationQueue;
@@ -33,6 +34,8 @@
     // initialize the operation queue
     [self setOperationQueue:[[NSOperationQueue alloc] init]];
 
+	[[GVCAppearance sharedGVCAppearance] applyDefaultAppearance];
+	
     [[GVCConfiguration sharedGVCConfiguration] setOperationQueue:[self operationQueue]];
     [[GVCConfiguration sharedGVCConfiguration] reloadConfiguration];
 

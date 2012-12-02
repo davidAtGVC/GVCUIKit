@@ -25,6 +25,7 @@
  * 
  */
 #import "GVCAlertMessageCenter.h"
+#import "GVCAppearance.h"
 #import "GVCSizedColumn.h"
 #import "GVCUIApplicationDelegate.h"
 #import "GVCUIKitFunctions.h"
