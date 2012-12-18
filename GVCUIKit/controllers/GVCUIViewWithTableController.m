@@ -31,7 +31,7 @@
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-	[[self tableView] setAutoresizesSubviews:YES];
+//	[[self tableView] setAutoresizesSubviews:YES];
 }
 
 -(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 

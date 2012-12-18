@@ -9,7 +9,7 @@
 #import "GVCBadgeView.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation GVCBadgeView
 

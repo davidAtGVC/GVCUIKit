@@ -6,7 +6,7 @@
 //
 
 #import "GVCMultiLineTableViewCell.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 #define TITLE_LEFT_OFFSET 10
 #define TITLE_TOP_OFFSET 6
@@ -40,7 +40,6 @@
 		textView.numberOfLines = 0;
 		
 		[self.contentView addSubview: textView];
-		[self setAutoresizesSubviews:YES];
 	}
 	return self;
 }

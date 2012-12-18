@@ -29,7 +29,6 @@
 
 		[[self button] setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
 		[[self button] setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
-		[[self button] setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
 
 		[[self button] setTitle:title forState:UIControlStateNormal];	
 		if (darkTextColor == YES)

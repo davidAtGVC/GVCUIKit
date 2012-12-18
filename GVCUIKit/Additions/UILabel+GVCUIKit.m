@@ -7,22 +7,55 @@
  */
 
 #import "UILabel+GVCUIKit.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation UILabel (GVCUIKit)
 
-- (CGFloat)gvc_heightForCell;
+- (CGFloat)gvc_heightForCell
+{
+	return [self gvc_heightForText];
+}
+
+- (CGFloat)gvc_heightForText
 {
     CGFloat height = 0.0;
-    CGFloat boundWidth = [self bounds].size.width;
-    if (([self numberOfLines] != 1) && (boundWidth > 0.0))
-    {
-        CGSize size = [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(boundWidth, CGFLOAT_MAX) lineBreakMode:[self lineBreakMode]];
-        height = MAX(size.height + 12, height);
-        if ( height > 100 )
-            NSLog(@"err");
-
-    }
+	if (gvc_IsEmpty([self text]) == NO)
+	{
+		CGFloat frameWidth = [self frame].size.width;
+		CGSize sizeFor1Line = [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(frameWidth, 1) lineBreakMode:[self lineBreakMode]];
+		CGSize size = [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(frameWidth, sizeFor1Line.height * self.numberOfLines) lineBreakMode:[self lineBreakMode]];
+		height = size.height;
+	}
     return height;
+}
+
+
+- (void)gvc_setTextAttributes:(NSDictionary *)attributes
+{
+    UIFont *font = [attributes objectForKey:UITextAttributeFont];
+    if (font != nil)
+	{
+        [self setFont:font];
+    }
+	
+    UIColor *textColor = [attributes objectForKey:UITextAttributeTextColor];
+    if (textColor != nil)
+	{
+        [self setTextColor:textColor];
+    }
+	
+    UIColor *textShadowColor = [attributes objectForKey:UITextAttributeTextShadowColor];
+    if (textShadowColor != nil)
+	{
+		[self setShadowColor:textShadowColor];
+    }
+	
+    NSValue *shadowOffsetValue = [attributes objectForKey:UITextAttributeTextShadowOffset];
+    if (shadowOffsetValue != nil)
+	{
+        UIOffset shadowOffset = [shadowOffsetValue UIOffsetValue];
+		[self setShadowOffset:CGSizeMake(shadowOffset.horizontal, shadowOffset.vertical)];
+    }
 }
 
 @end

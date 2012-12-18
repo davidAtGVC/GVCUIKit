@@ -59,6 +59,11 @@
 #import "GVCUIViewWithTableController.h"
 
 /* 
+ * controls 
+ */
+#import "GVCAlertView.h"
+
+/* 
  * editforms 
  */
 #import "GVCDataFormField.h"

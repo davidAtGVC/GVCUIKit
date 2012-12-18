@@ -12,4 +12,10 @@
 
 - (CGFloat)gvc_heightForCell;
 
+- (CGFloat)gvc_heightForText;
+
+/** UI Appearance method 
+ */
+- (void)gvc_setTextAttributes:(NSDictionary *)attributes UI_APPEARANCE_SELECTOR;
+
 @end

@@ -89,7 +89,7 @@
 	{
         [[self tableView] setTableFooterView:tableFooterView];
     }
-	[[self tableView] setAutoresizesSubviews:YES];
+//	[[self tableView] setAutoresizesSubviews:YES];
 }
 
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 

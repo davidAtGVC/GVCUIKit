@@ -132,6 +132,8 @@
 		05D576241538B6B000BE1135 /* GVCEditDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D576221538B6B000BE1135 /* GVCEditDateCell.m */; };
 		05D576291538BA6F00BE1135 /* GVCButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D576271538BA6F00BE1135 /* GVCButtonCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05D5762A1538BA6F00BE1135 /* GVCButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D576281538BA6F00BE1135 /* GVCButtonCell.m */; };
+		05DCB1E0167F688A0055697D /* GVCAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DCB1DE167F688A0055697D /* GVCAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05DCB1E1167F688A0055697D /* GVCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DCB1DF167F688A0055697D /* GVCAlertView.m */; };
 		05E091DF1594EDBD00C6B1A0 /* GVCLockViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05E091DD1594EDBD00C6B1A0 /* GVCLockViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05E091E01594EDBD00C6B1A0 /* GVCLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E091DE1594EDBD00C6B1A0 /* GVCLockViewController.m */; };
 		05E091E31594EDF000C6B1A0 /* GVCPinLockViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05E091E11594EDF000C6B1A0 /* GVCPinLockViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -309,6 +311,8 @@
 		05D576221538B6B000BE1135 /* GVCEditDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCEditDateCell.m; sourceTree = "<group>"; };
 		05D576271538BA6F00BE1135 /* GVCButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCButtonCell.h; sourceTree = "<group>"; };
 		05D576281538BA6F00BE1135 /* GVCButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCButtonCell.m; sourceTree = "<group>"; };
+		05DCB1DE167F688A0055697D /* GVCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCAlertView.h; sourceTree = "<group>"; };
+		05DCB1DF167F688A0055697D /* GVCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCAlertView.m; sourceTree = "<group>"; };
 		05E091DD1594EDBD00C6B1A0 /* GVCLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCLockViewController.h; sourceTree = "<group>"; };
 		05E091DE1594EDBD00C6B1A0 /* GVCLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCLockViewController.m; sourceTree = "<group>"; };
 		05E091E11594EDF000C6B1A0 /* GVCPinLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCPinLockViewController.h; sourceTree = "<group>"; };
@@ -627,6 +631,7 @@
 				058B64DB15005F40007F27A1 /* cells */,
 				05BA457B159100A500F5AF5A /* editforms */,
 				058B64DC15005F40007F27A1 /* controllers */,
+				05DCB1DD167F685D0055697D /* controls */,
 				058B64DF15005F41007F27A1 /* prototyping */,
 				05ABB543153E44C600D039F2 /* layers */,
 				058B64E015005F41007F27A1 /* views */,
@@ -667,6 +672,15 @@
 				05CA0B0814F7F69F001C8A68 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		05DCB1DD167F685D0055697D /* controls */ = {
+			isa = PBXGroup;
+			children = (
+				05DCB1DE167F688A0055697D /* GVCAlertView.h */,
+				05DCB1DF167F688A0055697D /* GVCAlertView.m */,
+			);
+			path = controls;
 			sourceTree = "<group>";
 		};
 		05E091DA1594ED9200C6B1A0 /* security */ = {
@@ -741,6 +755,7 @@
 				055E7287159514D700C8DCC4 /* GVCUIProtocols.h in Headers */,
 				056CD8DA15A7307F00647244 /* GVCColumnContainerView.h in Headers */,
 				05C2E31D1668604400FDEE0D /* GVCAppearance.h in Headers */,
+				05DCB1E0167F688A0055697D /* GVCAlertView.h in Headers */,
 				056CD8E015A733AD00647244 /* GVCSizedColumn.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -962,6 +977,7 @@
 				056CD8DB15A7307F00647244 /* GVCColumnContainerView.m in Sources */,
 				056CD8E115A733AD00647244 /* GVCSizedColumn.m in Sources */,
 				05C2E31E1668604400FDEE0D /* GVCAppearance.m in Sources */,
+				05DCB1E1167F688A0055697D /* GVCAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
