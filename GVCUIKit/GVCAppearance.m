@@ -47,7 +47,12 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 {
 	NSError *error;
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-	if ( gvc_IsEmpty(dictionary) == NO )
+	
+	if ( gvc_IsEmpty(dictionary) == YES )
+	{
+		GVCLogNSError(GVCLoggerLevel_ERROR, error);
+	}
+	else
 	{
 		GVCStack *stack = [[GVCStack alloc] init];
 		[self setJsonDictionary:dictionary];
@@ -112,6 +117,67 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 	}
 }
 
+- (NSArray *)colorArgumentValues:(NSObject *)object
+{
+	NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:10];
+
+	if ( [object isKindOfClass:[NSString class]] == YES)
+	{
+		NSString *value = (NSString *)object;
+		if ([value hasPrefix:@"#"])
+		{
+			[arguments addObject:[UIColor gvc_ColorFromHexString:value]];
+		}
+		else
+		{
+			// must be a color name like 'red'
+			[arguments addObject:[UIColor gvc_ColorForColorName:value]];
+		}
+	}
+	else if ([object isKindOfClass:[NSArray class]] == YES)
+	{
+		// array in the format ( rr, gg, bb ) or an array in an array [["blue"],[rr,gg,bb]]
+		NSArray *colorArray = (NSArray *)object;
+		if ( [[colorArray objectAtIndex:0] isKindOfClass:[NSArray class]] == YES )
+		{
+			NSMutableArray *nestedArguments = [NSMutableArray arrayWithCapacity:[colorArray count]];
+			for (NSArray *arg in colorArray)
+			{
+				// each one should be a color
+				NSArray *parsed = [self colorArgumentValues:arg];
+				if ( gvc_IsEmpty(parsed) == NO )
+				{
+					[nestedArguments addObjectsFromArray:parsed];
+				}
+			}
+			[arguments addObject:nestedArguments];
+		}
+		else if ( [colorArray count] == 3 )
+		{
+			CGFloat red = [[colorArray objectAtIndex:0] floatValue];
+			CGFloat green = [[colorArray objectAtIndex:1] floatValue];
+			CGFloat blue = [[colorArray objectAtIndex:2] floatValue];
+			
+			if ( red > 1.0 )
+			{
+				red = red / 255.0f;
+			}
+			if ( green > 1.0 )
+			{
+				green = green / 255.0f;
+			}
+			if ( blue > 1.0 )
+			{
+				blue = blue / 255.0f;
+			}
+			
+			[arguments addObject:[UIColor colorWithRed:red green:green blue:blue alpha:1.0]];
+		}
+	}
+
+	return arguments;
+}
+
 - (NSArray *)argumentValues:(NSObject *)object forInvocation:(GVCInvocation *)invoker propertyName:(NSString *)propertyName
 {
 	GVC_DBC_REQUIRE(
@@ -129,18 +195,10 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 	{
 		if ( [[propertyName lowercaseString] hasSuffix:@"color"] == YES )
 		{
-			if ( [object isKindOfClass:[NSString class]] == YES)
+			NSArray *parsed = [self colorArgumentValues:object];
+			if ( gvc_IsEmpty(parsed) == NO )
 			{
-				NSString *value = (NSString *)object;
-				if ([value hasPrefix:@"#"])
-				{
-					[arguments addObject:[UIColor gvc_ColorFromHexString:value]];
-				}
-				else
-				{
-					// must be a color name like 'red'
-					[arguments addObject:[UIColor gvc_ColorForColorName:value]];
-				}
+				[arguments addObjectsFromArray:parsed];
 			}
 		}
 		else if ( [[propertyName lowercaseString] hasSuffix:@"image"] == YES )
@@ -148,14 +206,12 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 			if ( [object isKindOfClass:[NSString class]] == YES)
 			{
 				[arguments addObject:[UIImage imageNamed:(NSString *)object]];
-				
 			}
 			else if ([object isKindOfClass:[NSArray class]] == YES)
 			{
 				GVC_DBC_FACT_NOT_EMPTY(object);
 				NSString *name = [(NSArray *)object objectAtIndex:0];
 				[arguments addObject:[UIImage imageNamed:name]];
-
 			}
 			
 			if ( [arguments count] < 2)
