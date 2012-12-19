@@ -54,6 +54,7 @@
 //	[bar setTintColor:[self navigationBarTintColor]];
 //	[bar setBarStyle:[self navigationBarStyle]];
 //	[[UIApplication sharedApplication] setStatusBarStyle:[self statusBarStyle] animated:YES];
+	[[[self navigationBar] topItem] setTitle:GVC_LocalizedClassString([self viewTitleKey], GVC_CLASSNAME(self))];
 	
 	if (autoresizesForKeyboard == YES) 
 	{
@@ -68,9 +69,6 @@
 {
 	[super viewDidAppear:animated];
 	hasViewAppeared = YES;
-	
-	[[[self navigationBar] topItem] setTitle:GVC_LocalizedClassString([self viewTitleKey], GVC_CLASSNAME(self))];
-//	[[[self navigationBar] topItem] setTitle:GVC_LocalizedString([self viewTitleKey], [self viewTitleKey])];
 }
 
 -(void) viewWillDisappear:(BOOL)animated 
