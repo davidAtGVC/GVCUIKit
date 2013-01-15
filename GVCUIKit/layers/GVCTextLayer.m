@@ -47,10 +47,10 @@
 	shadow.origin.y -= 1;
 	
 	[[self textColor] set];
-	[[self displayText] drawInRect:bounds withFont:[self textFont] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+	[[self displayText] drawInRect:bounds withFont:[self textFont] lineBreakMode:NSLineBreakByWordWrapping alignment:UITextAlignmentCenter];
 	
 	[[self textShadowColor] set];
-	[[self displayText] drawInRect:shadow withFont:[self textFont] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+	[[self displayText] drawInRect:shadow withFont:[self textFont] lineBreakMode:NSLineBreakByWordWrapping alignment:UITextAlignmentCenter];
 	
 	UIGraphicsPopContext();
 }

@@ -87,8 +87,8 @@ static float MIN_W = 160.0;
     
     if ( currentItem != nil )
     {
-        //CGSize messageSize = [[currentItem message] sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(MIN_W, MIN_H) lineBreakMode:UILineBreakModeWordWrap];
-        NSAttributedString *attrString = [NSMutableAttributedString gvc_MutableAttributed:[currentItem message] font:[UIFont boldSystemFontOfSize:14] color:[UIColor blackColor] alignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap];
+        //CGSize messageSize = [[currentItem message] sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(MIN_W, MIN_H) lineBreakMode:NSLineBreakByWordWrapping];
+        NSAttributedString *attrString = [NSMutableAttributedString gvc_MutableAttributed:[currentItem message] font:[UIFont boldSystemFontOfSize:14] color:[UIColor blackColor] alignment:UITextAlignmentLeft lineBreakMode:NSLineBreakByWordWrapping];
         CGSize messageSize = [attrString gvc_sizeConstrainedToWidth:MIN_W];
         CGSize accessorySize = CGSizeZero;
         CGSize itemSize = CGSizeZero;

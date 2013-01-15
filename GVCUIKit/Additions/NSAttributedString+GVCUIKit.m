@@ -35,7 +35,7 @@
     CTLineBreakMode ctMode = kCTLineBreakByWordWrapping;
 	switch (lineBreakMode) 
     {
-		case UILineBreakModeWordWrap:
+		case NSLineBreakByWordWrapping:
             ctMode = kCTLineBreakByWordWrapping;
             break;
 		case UILineBreakModeCharacterWrap:

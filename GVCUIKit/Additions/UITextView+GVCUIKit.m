@@ -16,7 +16,7 @@
     CGFloat boundWidth = [self bounds].size.width;
     if (boundWidth > 0.0)
     {
-        CGSize size = [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(boundWidth, CGFLOAT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+        CGSize size = [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(boundWidth, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
         height = MAX(size.height + 12, height);
         if ( height > 150 )
             NSLog(@"err");

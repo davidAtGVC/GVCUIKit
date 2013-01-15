@@ -36,7 +36,7 @@
 		textView.textColor = [UIColor blackColor];
 		textView.text = [NSString gvc_EmptyString];
 		textView.textAlignment = UITextAlignmentLeft;
-		textView.lineBreakMode = UILineBreakModeWordWrap;
+		textView.lineBreakMode = NSLineBreakByWordWrapping;
 		textView.numberOfLines = 0;
 		
 		[self.contentView addSubview: textView];

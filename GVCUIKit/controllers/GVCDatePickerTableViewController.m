@@ -91,9 +91,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath  
 {
     UITableViewCell *cell = [GVCUITableViewCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
-    [[cell textLabel] setLineBreakMode:UILineBreakModeWordWrap];
+    [[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
     [[cell textLabel] setNumberOfLines:0];
-    [[cell detailTextLabel] setLineBreakMode:UILineBreakModeWordWrap];
+    [[cell detailTextLabel] setLineBreakMode:NSLineBreakByWordWrapping];
     [[cell detailTextLabel] setNumberOfLines:0];
 	
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

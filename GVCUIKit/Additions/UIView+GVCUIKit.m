@@ -39,7 +39,7 @@
 	
 	if ( gvc_IsEmpty(contents) == NO)
 	{
-		CGSize textSize = [contents sizeWithFont:font constrainedToSize:constrainedSize lineBreakMode:UILineBreakModeWordWrap];
+		CGSize textSize = [contents sizeWithFont:font constrainedToSize:constrainedSize lineBreakMode:NSLineBreakByWordWrapping];
 		width = textSize.width;
 		height = textSize.height + 2.0;			
 	}
