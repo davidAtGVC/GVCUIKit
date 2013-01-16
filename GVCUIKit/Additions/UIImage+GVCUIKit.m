@@ -9,7 +9,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 #import "UIImage+GVCUIKit.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 // Credit: http://github.com/enormego/cocoa-helpers
 

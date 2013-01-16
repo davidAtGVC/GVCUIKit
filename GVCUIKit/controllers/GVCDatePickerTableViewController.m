@@ -6,7 +6,7 @@
 //
 
 #import "GVCDatePickerTableViewController.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 #import "UITableViewCell+GVCUIKit.h"
 #import "GVCUITableViewCell.h"
 

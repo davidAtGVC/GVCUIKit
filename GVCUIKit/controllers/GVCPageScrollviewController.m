@@ -8,7 +8,7 @@
 
 #import "GVCPageScrollviewController.h"
 #import "GVCPageController.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @interface GVCPageScrollviewController ()
 @property (assign, nonatomic) int firstVisiblePageIndexBeforeRotation;

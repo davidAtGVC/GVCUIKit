@@ -7,7 +7,7 @@
  */
 
 #import "GVCLockViewController.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @interface GVCLockViewController ()
 @end

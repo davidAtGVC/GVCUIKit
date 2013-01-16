@@ -8,7 +8,7 @@
 
 #import "GVCColumnContainerView.h"
 #import "GVCSizedColumn.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @interface GVCColumnContainerView ()
 @property (nonatomic, strong) NSMutableArray *widths;

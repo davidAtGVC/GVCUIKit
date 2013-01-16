@@ -42,6 +42,7 @@ static float MIN_W = 160.0;
 		[[self messageLayer] setContentsScale:[[UIScreen mainScreen] scale]];
 		[[self messageLayer] setAnchorPoint:CGPointMake(0, 0)];
         [[self messageLayer] setBackgroundColor:[UIColor clearColor].CGColor];
+        [[self messageLayer] setForegroundColor:[UIColor whiteColor].CGColor];
 
 		UIFont *systemBoldFont = [UIFont boldSystemFontOfSize:14];
         [[self messageLayer] setFont:(CGFontRef)systemBoldFont];

@@ -6,7 +6,7 @@
 //
 
 #import "GVCTextLayer.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation GVCTextLayer
 

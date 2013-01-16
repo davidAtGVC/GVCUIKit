@@ -6,7 +6,7 @@
 //
 
 #import "NSAttributedString+GVCUIKit.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation NSAttributedString (GVCUIKit)
 

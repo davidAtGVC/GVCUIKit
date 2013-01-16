@@ -7,7 +7,7 @@
  */
 
 #import "UIView+GVCUIKit.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation UIView (GVCUIKit)
 

@@ -8,7 +8,7 @@
 
 #import "GVCMultiTextFieldView.h"
 
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @interface GVCMultiTextFieldView ()
 @property (nonatomic, strong) NSMutableArray *multiTextFields;

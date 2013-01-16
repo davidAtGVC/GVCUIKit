@@ -8,7 +8,7 @@
 
 #import "GVCUIViewWithTableController.h"
 #import "UITableViewCell+GVCUIKit.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation GVCUIViewWithTableController
 

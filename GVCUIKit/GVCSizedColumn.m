@@ -7,7 +7,7 @@
  */
 
 #import "GVCSizedColumn.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 
 @interface GVCSizedColumn ()

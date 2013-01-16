@@ -808,7 +808,7 @@
 		05CA0AE314F7F69E001C8A68 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 05CA0AE614F7F69E001C8A68 /* Build configuration list for PBXProject "GVCUIKit" */;
 			compatibilityVersion = "Xcode 3.2";

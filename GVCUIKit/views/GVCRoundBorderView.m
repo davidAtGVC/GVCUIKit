@@ -9,7 +9,7 @@
 #import "GVCRoundBorderView.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 #import "UIColor+GVCUIKit.h"
 #import "UIView+GVCUIKit.h"

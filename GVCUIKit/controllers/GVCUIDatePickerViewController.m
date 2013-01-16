@@ -7,7 +7,7 @@
 //
 
 #import "GVCUIDatePickerViewController.h"
-#import "GVCFoundation.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation GVCUIDatePickerViewController
 
