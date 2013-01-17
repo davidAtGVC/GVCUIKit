@@ -12,4 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UISwitch *switchControl;
 
+- (BOOL)switchValue;
+- (void)setSwitchValue:(BOOL)val;
+
 @end
