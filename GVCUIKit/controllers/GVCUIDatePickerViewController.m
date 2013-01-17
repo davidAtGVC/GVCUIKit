@@ -70,6 +70,11 @@
             [[self callbackDelegate] setValue:[self currentDate] forKey:[self callbackKey]];
         }
 	}
+	
+	if ( [self dateChangeBlock] != nil )
+	{
+		self.dateChangeBlock([self currentDate]);
+	}
 }
 
 @end

@@ -50,13 +50,8 @@
 	[super viewWillAppear:animated];
 	isViewAppearing = YES;
 
-//	UINavigationBar *bar	= [self navigationBar];
-//	[bar setTintColor:[self navigationBarTintColor]];
-//	[bar setBarStyle:[self navigationBarStyle]];
-//	[[UIApplication sharedApplication] setStatusBarStyle:[self statusBarStyle] animated:YES];
 	[[[self navigationBar] topItem] setTitle:GVC_LocalizedClassString([self viewTitleKey], GVC_CLASSNAME(self))];
-	
-	if (autoresizesForKeyboard == YES) 
+	if (autoresizesForKeyboard == YES)
 	{
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -159,6 +154,11 @@
 
 #pragma mark - UIKeyboardNotifications
 
+- (UIView *)keyboardResizeView
+{
+	return [self view];
+}
+
 -(void) resizeForKeyboard:(NSNotification *)notification appearing:(BOOL)appearing 
 {
 	NSDictionary *userInfo = [notification userInfo];
@@ -168,7 +168,7 @@
 	CGRect keyboardRect = [frameEndValue CGRectValue];
 	
 	// Convert to window coordinates
-	CGRect keyboardFrame = [[self view] convertRect:keyboardRect fromView:nil];
+	CGRect keyboardFrame = [[self keyboardResizeView] convertRect:keyboardRect fromView:nil];
 	
 	NSNumber *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
 	BOOL animated = ([animationDurationValue doubleValue] > 0.0) ? YES : NO; 
@@ -238,12 +238,12 @@
 
 -(void) keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds 
 {
-	if ( [[self view] isKindOfClass:[UIScrollView class]] == YES )
+	if ( [[self keyboardResizeView] isKindOfClass:[UIScrollView class]] == YES )
 	{
 		UIEdgeInsets e = UIEdgeInsetsMake(0, 0, bounds.size.height, 0);
 		
-		[(UIScrollView *)[self view] setContentInset:e];
-		[(UIScrollView *)[self view] setScrollIndicatorInsets:e];
+		[(UIScrollView *)[self keyboardResizeView] setContentInset:e];
+		[(UIScrollView *)[self keyboardResizeView] setScrollIndicatorInsets:e];
 	}
 }
 
@@ -254,10 +254,10 @@
 
 -(void) keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds 
 {
-	if ( [[self view] isKindOfClass:[UIScrollView class]] == YES )
+	if ( [[self keyboardResizeView] isKindOfClass:[UIScrollView class]] == YES )
 	{
-		[(UIScrollView *)[self view] setContentInset:UIEdgeInsetsZero];
-		[(UIScrollView *)[self view] setScrollIndicatorInsets:UIEdgeInsetsZero];
+		[(UIScrollView *)[self keyboardResizeView] setContentInset:UIEdgeInsetsZero];
+		[(UIScrollView *)[self keyboardResizeView] setScrollIndicatorInsets:UIEdgeInsetsZero];
 	}
 }
 

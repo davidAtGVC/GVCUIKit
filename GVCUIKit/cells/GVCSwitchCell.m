@@ -14,22 +14,19 @@
 
 @implementation GVCSwitchCell
 
-@synthesize switchControl;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self != nil)
     {
-        [self setSwitchControl:[[UISwitch alloc] init]];
+		UISwitch *mySwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+		[mySwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+
+        [self setSwitchControl:mySwitch];
         [self setAccessoryView:[self switchControl]];
     }
     return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
 }
 
 - (void)prepareForReuse 
@@ -38,5 +35,27 @@
     [[self switchControl] setOn:NO];
 }
 
+#pragma mark - UISwitch methods
+- (BOOL)switchValue
+{
+	return [[self switchControl] isOn];
+}
+
+- (void)setSwitchValue:(BOOL)val
+{
+	[[self switchControl] setOn:val];
+}
+
+- (void)switchChanged:(id) sender
+{
+//	if (delegate && [delegate respondsToSelector:@selector(daBooleanCellSwitched:)])
+//	{
+//		[delegate daBooleanCellSwitched:self];
+//	}
+	if ( [self dataChangeBlock] != nil )
+	{
+		self.dataChangeBlock([NSNumber numberWithBool:[self switchValue]]);
+	}
+}
 
 @end

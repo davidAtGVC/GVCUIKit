@@ -15,6 +15,12 @@
 - (void)setDate:(NSDate *)current forKey:(NSString *)callbackKey;
 @end
 
+/**
+ * Alternate method to update values using blocks instead of delgates
+ */
+typedef void (^GVCUIDatePickerBlock)(NSDate *selectedDate);
+
+
 @interface GVCUIDatePickerViewController : GVCUIViewController 
 
 - (id) initWithMode:(UIDatePickerMode) m;
@@ -27,6 +33,8 @@
 @property (strong, nonatomic) NSDate *currentDate;
 
 @property (strong, nonatomic) NSString *callbackKey;
+
+@property (readwrite, copy) GVCUIDatePickerBlock dateChangeBlock;
 
 - (IBAction)dateChanged:sender;
 

@@ -30,6 +30,8 @@
 #pragma mark -
 
 /* Keyboard notifications */
+- (UIView *)keyboardResizeView;
+
 -(void) resizeForKeyboard:(NSNotification *)notification appearing:(BOOL)appearing;
 
 -(void) keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds;

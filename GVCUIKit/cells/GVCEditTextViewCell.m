@@ -113,7 +113,12 @@
 	{
 		[[self delegate] gvcEditCell:self textChangedTo:[txtView text]];
 	}
-}	
+
+	if ( [self dataChangeBlock] != nil )
+	{
+		self.dataChangeBlock([txtView text]);
+	}
+}
 
 - (CGFloat)gvc_heightForCell
 {

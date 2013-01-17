@@ -6,9 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GVCUITableViewCell.h"
+#import "GVCEditCell.h"
 
-@interface GVCSwitchCell : GVCUITableViewCell
+@interface GVCSwitchCell : GVCEditCell
 
 @property (strong, nonatomic) IBOutlet UISwitch *switchControl;
 

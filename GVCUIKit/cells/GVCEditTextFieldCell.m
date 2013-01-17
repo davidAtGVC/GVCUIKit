@@ -83,7 +83,9 @@
 - (void)prepareForReuse 
 {
     [super prepareForReuse];
+    [[self textLabel] setText:nil];
     [[self textField] setText:nil];
+    [[self textField] setPlaceholder:nil];
 }
 
 - (void)layoutSubviews
@@ -158,11 +160,15 @@
     UITableView *tv = (UITableView *) [self superview];
     [tv scrollToRowAtIndexPath:[tv indexPathForCell:self] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 
-	
 	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCell:textChangedTo:)])
 	{
 		[[self delegate] gvcEditCell:self textChangedTo:[txtField text]];
 	}
-}	
+	
+	if ( [self dataChangeBlock] != nil )
+	{
+		self.dataChangeBlock([txtField text]);
+	}
+}
 
 @end
