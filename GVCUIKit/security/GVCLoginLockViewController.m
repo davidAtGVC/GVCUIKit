@@ -55,65 +55,197 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
 {
 	[super viewWillAppear:animated];
 	
-    [[self statusLabel] setHidden:YES];
-
-	[[self usernameLabel] setText:GVC_LocalizedString(@"Username", @"Username")];
-	[[self passwordLabel] setText:GVC_LocalizedString(@"Password", @"Password")];
-	[[self usernameField] setPlaceholder:GVC_LocalizedString(@"UsernamePlaceholder", @"john")];
-	[[self passwordField] setPlaceholder:GVC_LocalizedString(@"PasswordPlaceholder", @"password")];
-	[[self passwordField] setSecureTextEntry:YES];
-
+    UILabel *strongStatusLabel = [self statusLabel];
+    
+    UILabel *strongUserNameLabel = [self usernameLabel];
+    UILabel *strongPasswordLabel = [self passwordLabel];
+    
+    UITextField *strongUsernameField = [self usernameField];
+    
+    UITextField *strongPasswordField = [self passwordConfirmField];
+    UITextField *strongPasswordConfirmField = [self passwordConfirmField];
+    
+    UILabel *strongPasswordConfirmLabel = [self passwordConfirmLabel];
+    
+    UIButton *strongLoginButton = [self loginButton];
+    UIButton *strongResetButton = [self resetButton];
+    
+    if (strongStatusLabel != nil)
+    {
+        [strongStatusLabel setHidden:YES];
+    }
+    
+    if (strongUserNameLabel != nil)
+    {
+        [strongUserNameLabel setText:GVC_LocalizedString(@"Username", @"Username")];
+        [self setUsernameLabel:strongUserNameLabel];
+    }
+    
+    if (strongPasswordLabel != nil)
+    {
+        [strongPasswordLabel setText:GVC_LocalizedString(@"Password", @"Password")];
+        [self setPasswordLabel:strongPasswordLabel];
+    }
+    
+    if (strongUsernameField != nil)
+    {
+        [strongUsernameField setPlaceholder:GVC_LocalizedString(@"UsernamePlaceholder", @"john")];
+    }
+    
+    if (strongPasswordField != nil)
+    {
+        [strongPasswordField setPlaceholder:GVC_LocalizedString(@"PasswordPlaceholder", @"password")];
+    }
+	
 	if (([self lockMode] == GVCLockViewControllerMode_SET) || ([self lockMode] == GVCLockViewControllerMode_CHANGE))
     {
-        [[self passwordConfirmLabel] setText:GVC_LocalizedString(@"PasswordConfirm", @"Confirm Password")];
-        [[self passwordConfirmField] setPlaceholder:GVC_LocalizedString(@"PasswordConfirmPlaceholder", @"password")];
-        [[self passwordConfirmField] setSecureTextEntry:YES];
-        [[self passwordConfirmField] setEnabled:YES];
-    	[[self passwordConfirmField] setDelegate:self];
-        [[self loginButton] setTitle:GVC_SAVE_LABEL forState:UIControlStateNormal];
+        if (strongPasswordConfirmLabel != nil)
+        {
+            [strongPasswordConfirmLabel setText:GVC_LocalizedString(@"PasswordConfirm", @"Confirm Password")];
+            [self setPasswordConfirmLabel:strongPasswordLabel];
+        }
+        
+        if (strongPasswordConfirmField != nil)
+        {
+            [strongPasswordConfirmField setPlaceholder:GVC_LocalizedString(@"PasswordConfirmPlaceholder", @"password")];
+            [strongPasswordConfirmField setSecureTextEntry:YES];
+            [strongPasswordConfirmField setEnabled:YES];
+            [strongPasswordConfirmField setDelegate:self];
+            [self setPasswordConfirmField:strongPasswordConfirmField];
+        }
+        
+        if (strongLoginButton != nil)
+        {
+            [strongLoginButton setTitle:GVC_SAVE_LABEL forState:UIControlStateNormal];
+            [self setLoginButton:strongLoginButton];
+        }
     }
     else
     {
-        [[self loginButton] setTitle:GVC_LOGIN_LABEL forState:UIControlStateNormal];
+        if (strongLoginButton != nil)
+        {
+            [strongLoginButton setTitle:GVC_LOGIN_LABEL forState:UIControlStateNormal];
+        }
     }
 	
-	[[self usernameField] setEnabled:YES];
-	[[self usernameField] setDelegate:self];
-	[[self passwordField] setEnabled:YES];
-	[[self passwordField] setDelegate:self];
+    
+    if (strongStatusLabel != nil)
+    {
+        [self setStatusLabel:strongStatusLabel];
+    }
+    
+    if (strongUsernameField != nil)
+    {
+        [strongUsernameField setEnabled:YES];
+        [strongUsernameField setDelegate:self];
+    }
+    
+    if (strongPasswordField != nil)
+    {
+        [strongPasswordField setEnabled:YES];
+        [strongPasswordField setDelegate:self];
+        [strongPasswordField setSecureTextEntry:YES];
+    }
 
-	[[self loginButton] setEnabled:YES];
-	[[self resetButton] setEnabled:NO];
-	[[self resetButton] setHidden:YES];
+    if (strongLoginButton != nil)
+    {
+        [strongLoginButton setEnabled:YES];
+    }
+
+    if (strongResetButton != nil)
+    {
+        [strongResetButton setEnabled:NO];
+        [strongResetButton setHidden:YES];
+    }
+    
+	
 	
     NSString *username = [[GVCKeychain sharedGVCKeychain] secureObjectForKey:GVCLoginLockViewController_USERNAME_KEY];
 	if ( username != nil )
 	{
-		[[self usernameField] setText:username];
+		[strongUsernameField setText:username];
 	}
+    
+    
+    if (strongUsernameField != nil)
+    {
+        [self setUsernameField:strongUsernameField];
+    }
+    
+    if (strongPasswordField != nil)
+    {
+        [self setPasswordField:strongPasswordField];
+    }
+    
+    if (strongLoginButton != nil)
+    {
+        [self setLoginButton:strongLoginButton];
+    }
+    
+    if (strongResetButton != nil)
+    {
+        [self setResetButton:strongResetButton];
+    }
+    
+    if (strongPasswordConfirmField != nil)
+    {
+        [self setPasswordConfirmField:strongPasswordConfirmField];
+    }
+    
 }
 
 
-- (IBAction)loginAction:(id)sender 
+- (IBAction)loginAction:(id)sender
 {
     [[self view] resignFirstResponder];
-    [[self activityIndicator] startAnimating];
-	[[self statusLabel] setHidden:NO];
-	[[self statusLabel] setTextColor:[UIColor blackColor]];
-	[[self statusLabel] setText:GVC_LocalizedString(@"VerifyLogin", @"Verifying ..")];
+    
+       
+    UITextField *strongUsernameField = [self usernameField];
+    UITextField *strongPasswordField = [self passwordField];
+    UITextField *strongPasswordConfirmField = [self passwordConfirmField];
+    UIActivityIndicatorView *strongActivityIndicator = [self activityIndicator];
+    
+    UILabel *strongStatusLabel = [self statusLabel];
 
-    [[self usernameField] setEnabled:NO];
-	[[self passwordField] setEnabled:NO];
-	[[self loginButton] setEnabled:NO];
+    
+    UIButton *strongLoginButton = [self loginButton];
+    
+    if (strongActivityIndicator != nil)
+    {
+        [strongActivityIndicator startAnimating];
+    }
+    
+    if (strongStatusLabel != nil)
+    {
+        [strongStatusLabel setHidden:NO];
+        [strongStatusLabel setTextColor:[UIColor blackColor]];
+        [strongStatusLabel setText:GVC_LocalizedString(@"VerifyLogin", @"Verifying ..")];
+    }
+    
+    if (strongUsernameField != nil)
+    {
+        [strongUsernameField setEnabled:NO];        
+    }
+    
+    if (strongPasswordField != nil)
+    {
+        [strongPasswordField setEnabled:NO];
+    }
+    
+    if (strongLoginButton != nil)
+    {
+        [strongLoginButton setEnabled:NO];
+    }
+    
     if (([self lockMode] == GVCLockViewControllerMode_SET) || ([self lockMode] == GVCLockViewControllerMode_CHANGE))
     {
-        [[self passwordConfirmField] setEnabled:NO];
+        [strongPasswordConfirmField setEnabled:NO];
     }
 
     NSString *failMessage = nil;
-    NSString *enteredUsername = [[self usernameField] text];
-    NSString *enteredPassword = [[self passwordField] text];
-    NSString *enteredConfirm = [[self passwordConfirmField] text];
+    NSString *enteredUsername = [strongUsernameField text];
+    NSString *enteredPassword = [strongPasswordField text];
+    NSString *enteredConfirm = [strongPasswordConfirmField text];
     NSString *username = [[GVCKeychain sharedGVCKeychain] secureObjectForKey:GVCLoginLockViewController_USERNAME_KEY];
     NSString *password = [[GVCKeychain sharedGVCKeychain] secureObjectForKey:GVCLoginLockViewController_PASSWORD_KEY];
     BOOL success = NO;
@@ -156,7 +288,7 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
                 GVC_ASSERT_NOT_EMPTY(username);
                 GVC_ASSERT_NOT_EMPTY(password);
                 
-                success = (([[[self usernameField] text] isEqualToString:username]) && ([[[self passwordField] text] isEqualToString:password]));
+                success = (([[strongUsernameField text] isEqualToString:username]) && ([[strongPasswordField text] isEqualToString:password]));
                 if ( success == NO )
                 {
                     failMessage = GVC_LocalizedString(@"LoginFailed", @"Login Failed");
@@ -164,7 +296,7 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
                 break;
             }
             case GVCLockViewControllerMode_REMOVE:
-                if (([[[self usernameField] text] isEqualToString:username]) && ([[[self passwordField] text] isEqualToString:password]))
+                if (([[strongUsernameField text] isEqualToString:username]) && ([[strongPasswordField text] isEqualToString:password]))
                 {
                     [[GVCKeychain sharedGVCKeychain] removeSecureObjectForKey:GVCLoginLockViewController_USERNAME_KEY];
                     [[GVCKeychain sharedGVCKeychain] removeSecureObjectForKey:GVCLoginLockViewController_PASSWORD_KEY];
@@ -194,65 +326,195 @@ GVC_DEFINE_STRVALUE(GVCLoginLockViewController_PASSWORD_KEY, password);
     {
         [self performSelector:@selector(simulatedFail:) withObject:failMessage afterDelay:1.5];
 	}
+    
+//   Set instance variables based on strong local variables
+
+    if (strongActivityIndicator != nil)
+    {
+        [self setActivityIndicator:strongActivityIndicator];
+    }
+
+    if (strongUsernameField != nil)
+    {
+        [self setUsernameField:strongUsernameField];
+    }
+
+    if (strongStatusLabel != nil)
+    {
+        [self setStatusLabel:strongStatusLabel];
+    }
+
+    if (strongPasswordField != nil)
+    {
+        [self setPasswordField:strongPasswordField];
+    }
+
+    if (strongPasswordConfirmField != nil)
+    {
+        [self setPasswordConfirmField:strongPasswordConfirmField];
+    }
+
+    if (strongLoginButton != nil)
+    {
+        [self setLoginButton:strongLoginButton];
+    }
+
+
 }
 
-- (void)simulatedSuccess:(NSString *)message 
+- (void)simulatedSuccess:(NSString *)message
 {
 	[self setFailCount:0];
-    [[self usernameField] setEnabled:YES];
-	[[self passwordField] setEnabled:YES];
-	[[self passwordConfirmField] setEnabled:YES];
-	[[self loginButton] setEnabled:YES];
+    
+    
+    UITextField *strongUsernameField = [self usernameField];
+    UITextField *strongPasswordField = [self passwordField];
+    UITextField *strongPasswordConfirmField = [self passwordConfirmField];
+    UIButton *strongLoginButton = [self loginButton];
 
-	[[self activityIndicator] stopAnimating];
-	[[self statusLabel] setTextColor:[UIColor darkGrayColor]];
-    [[self statusLabel] setText:(gvc_IsEmpty(message) ? @"Success" : message)];
+    UIActivityIndicatorView *strongActivityIndicator = [self activityIndicator];
+    
+    UILabel *strongStatusLabel = [self statusLabel];
+
+    if (strongUsernameField != nil)
+    {
+        [strongUsernameField setEnabled:YES];
+        [self setUsernameField:strongUsernameField];
+    }
+  
+    if (strongPasswordField != nil)
+    {
+        [strongPasswordField setEnabled:YES];
+        [self setPasswordField:strongPasswordField];
+    }
+  
+    if (strongPasswordConfirmField != nil)
+    {
+        [strongPasswordConfirmField setEnabled:YES];
+        [self setPasswordConfirmField:strongPasswordConfirmField];
+    }
+  
+    if (strongLoginButton != nil)
+    {
+        [strongLoginButton setEnabled:YES];
+        [self setLoginButton:strongLoginButton];
+    }
+
+    if (strongActivityIndicator != nil)
+    {
+        [strongActivityIndicator stopAnimating];
+        [self setActivityIndicator:strongActivityIndicator];
+    }
+    
+    if (strongStatusLabel != nil)
+    {
+        [strongStatusLabel setTextColor:[UIColor darkGrayColor]];
+        [strongStatusLabel setText:(gvc_IsEmpty(message) ? @"Success" : message)];
+        [self setStatusLabel:strongStatusLabel];
+    }
+
     [super loginAction:nil];
 }
 
 - (void)simulatedFail:(NSString *)message 
 {
-    [[self usernameField] setEnabled:YES];
-	[[self passwordField] setEnabled:YES];
-	[[self passwordConfirmField] setEnabled:YES];
-	[[self loginButton] setEnabled:YES];
     
-	[[self activityIndicator] stopAnimating];
-	[[self statusLabel] setTextColor:[UIColor redColor]];
-	[[self statusLabel] setText:(gvc_IsEmpty(message) ? @"Fail" : message)];
-    [[self passwordField] becomeFirstResponder];
-	
+    UITextField *strongUsernameField = [self usernameField];
+    UITextField *strongPasswordField = [self passwordField];
+    UITextField *strongPasswordConfirmField = [self passwordConfirmField];
+    
+    UIButton *strongLoginButton = [self loginButton];
+    UIButton *strongResetButton = [self resetButton];
+    
+    UIActivityIndicatorView *strongActivityIndicator = [self activityIndicator];
+    
+    UILabel *strongStatusLabel = [self statusLabel];
+    
+    if (strongUsernameField != nil)
+    {
+        [strongUsernameField setEnabled:YES];
+        [self setUsernameField:strongUsernameField];
+    }
+    
+    if (strongPasswordField != nil)
+    {
+        [strongPasswordField setEnabled:YES];
+        [strongPasswordField becomeFirstResponder];
+        [self setPasswordField:strongPasswordField];
+    }
+    
+    if (strongPasswordConfirmField != nil)
+    {
+        [strongPasswordConfirmField setEnabled:YES];
+        [self setPasswordConfirmField:strongPasswordConfirmField];
+    }
+    
+    if (strongLoginButton != nil)
+    {
+        [strongLoginButton setEnabled:YES];
+        [self setLoginButton:strongLoginButton];
+    }
+    
+    if (strongActivityIndicator != nil)
+    {
+        [strongActivityIndicator stopAnimating];
+        [self setActivityIndicator:strongActivityIndicator];
+    }
+    
+    if (strongStatusLabel != nil)
+    {
+        [strongStatusLabel setTextColor:[UIColor redColor]];
+        [strongStatusLabel setText:(gvc_IsEmpty(message) ? @"Fail" : message)];
+        [self setStatusLabel:strongStatusLabel];
+    }
+
 	[self setFailCount:[self failCount]+1];
 
 	if ( [self failCount] > 3 )
 	{
-		[[self resetButton] setTitle:@"Reset login" forState:UIControlStateNormal];
-		[[self resetButton] setEnabled:YES];
-		[[self resetButton] setHidden:NO];
+        if (strongResetButton != nil)
+        {
+            [strongResetButton setTitle:@"Reset login" forState:UIControlStateNormal];
+            [strongResetButton setEnabled:YES];
+            [strongResetButton setHidden:NO];
+            [self setResetButton:strongResetButton];
+        }
+       
 	}
 }
 
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    UITextField *strongPasswordField = [self passwordField];
+    UITextField *strongPasswordConfirmField = [self passwordConfirmField];
+    
     if ( textField == [self usernameField] )
     {
-        [[self passwordField] becomeFirstResponder];
+        if (strongPasswordField != nil)
+        {
+            [strongPasswordField becomeFirstResponder];
+        }
     }
     else if ( textField == [self passwordField] )
     {
-        if ( [self passwordConfirmField] == nil )
+        if ( strongPasswordConfirmField == nil )
         {
             [self loginAction:textField];
         }
         else
         {
-            [[self passwordConfirmField] becomeFirstResponder];
+            [strongPasswordConfirmField becomeFirstResponder];
         }
     }
     else 
     {
         [self loginAction:textField];
     }
+    
+    [self setPasswordField:strongPasswordField];
+    [self setPasswordConfirmField:strongPasswordConfirmField];
+    
     return YES;
 }
 

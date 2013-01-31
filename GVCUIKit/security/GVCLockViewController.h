@@ -25,7 +25,7 @@ typedef enum {
 @property (readwrite, copy) GVCLockViewBlock successBlock;
 @property (readwrite, copy) GVCLockViewBlock failBlock;
 
-@property (nonatomic, strong) IBOutlet UILabel *statusLabel;
+@property (nonatomic, weak) IBOutlet UILabel *statusLabel;
 @property (nonatomic, strong) NSError *lastError;
 @property (nonatomic, assign) GVCLockViewControllerMode lockMode;
 

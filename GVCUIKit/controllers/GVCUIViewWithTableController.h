@@ -11,7 +11,7 @@
 
 @interface GVCUIViewWithTableController : GVCUIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)reload:(id)sender;
 
 @end

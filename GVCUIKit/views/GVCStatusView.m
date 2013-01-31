@@ -232,7 +232,12 @@ static float MIN_W = 160.0;
                 }
                 
                 [[self messageLayer] setFrame:[self calculatedMessageRect]];
-                [[self currentAccessory] setFrame:[self calculatedAccessoryRect]];
+                
+                id strongAccessory = [self currentAccessory];
+                if ( strongAccessory != nil )
+                {
+                    [strongAccessory setFrame:[self calculatedAccessoryRect]];
+                }
                 [self setAlpha:1.0];
             } completion:^(BOOL finished) {
                 if (finished == YES) 
