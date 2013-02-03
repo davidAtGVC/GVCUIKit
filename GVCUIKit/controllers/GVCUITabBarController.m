@@ -35,12 +35,17 @@
     }
 }
 
-- (NSString *)viewTitleKey
+- (NSString *)viewTitle
 {
-	NSString *viewTitle = GVC_DEFAULT_VIEW_TITLE;
+	NSString *viewTitle = nil;
 	if (([self selectedViewController] != nil) && ([[self selectedViewController] conformsToProtocol:@protocol(GVCViewTitleProtocol)] == YES))
 	{
-		viewTitle = [(id <GVCViewTitleProtocol>)[self selectedViewController] viewTitleKey];
+		viewTitle = [(id <GVCViewTitleProtocol>)[self selectedViewController] viewTitle];
+	}
+	
+	if ( gvc_IsEmpty(viewTitle) == YES)
+	{
+		viewTitle = GVC_LocalizedClassString(GVC_DEFAULT_VIEW_TITLE, GVC_CLASSNAME(self));
 	}
 	
 	return viewTitle;

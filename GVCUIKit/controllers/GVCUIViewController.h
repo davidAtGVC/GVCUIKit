@@ -10,20 +10,12 @@
 
 @interface GVCUIViewController : UIViewController <GVCViewTitleProtocol>
 
-@property (nonatomic, assign) UIBarStyle navigationBarStyle;
-@property (nonatomic, strong) UIColor *navigationBarTintColor;
-@property (nonatomic, assign) UIStatusBarStyle statusBarStyle;	
-
-@property (nonatomic, assign) BOOL hasViewAppeared;
-@property (nonatomic, assign) BOOL isViewAppearing;
-
 @property (nonatomic, assign) BOOL autoresizesForKeyboard;
 
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet id callbackDelegate;
 
 - (UINavigationBar *)navigationBar;
-- (NSString *)viewTitleKey;
+- (NSString *)viewTitle;
 
 - (IBAction)dismissModalViewController:(id)sender;
 

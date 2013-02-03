@@ -12,35 +12,19 @@
 
 @implementation GVCUIViewController
 
-@synthesize navigationBarStyle;
-@synthesize navigationBarTintColor;
-@synthesize statusBarStyle;	
-
-@synthesize hasViewAppeared;
-@synthesize isViewAppearing;
-
-@synthesize autoresizesForKeyboard;
-@synthesize managedObjectContext;
-@synthesize callbackDelegate;
-
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self != nil)
 	{
-		[self setNavigationBarStyle:UIBarStyleDefault];
-		[self setStatusBarStyle:UIStatusBarStyleDefault];
-		navigationBarTintColor	= nil;
-		hasViewAppeared			= NO;
-		isViewAppearing			= NO;
 		[self setAutoresizesForKeyboard:NO];
 	}
 	return self;
 }
 
-- (NSString *)viewTitleKey
+- (NSString *)viewTitle
 {
-	return GVC_DEFAULT_VIEW_TITLE;
+	return GVC_LocalizedClassString(GVC_DEFAULT_VIEW_TITLE, GVC_CLASSNAME(self));
 }
 
 #pragma mark - UIViewController
@@ -48,10 +32,8 @@
 -(void) viewWillAppear:(BOOL)animated 
 {
 	[super viewWillAppear:animated];
-	isViewAppearing = YES;
 
-	[[[self navigationBar] topItem] setTitle:GVC_LocalizedClassString([self viewTitleKey], GVC_CLASSNAME(self))];
-	if (autoresizesForKeyboard == YES)
+	if ([self autoresizesForKeyboard] == YES)
 	{
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -63,13 +45,12 @@
 -(void) viewDidAppear:(BOOL)animated 
 {
 	[super viewDidAppear:animated];
-	hasViewAppeared = YES;
+	[[[self navigationBar] topItem] setTitle:[self viewTitle]];
 }
 
 -(void) viewWillDisappear:(BOOL)animated 
 {
 	[super viewWillDisappear:animated];
-	isViewAppearing = NO;
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification  object:nil];
@@ -79,7 +60,6 @@
 -(void) viewDidDisappear:(BOOL)animated 
 {
 	[super viewDidDisappear:animated];
-	hasViewAppeared = NO;
 }
 
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
@@ -272,27 +252,6 @@
 
 -(void) keyboardDidDisappear:(BOOL)animated withBounds:(CGRect)bounds 
 {
-}
-
-
-#pragma mark -
-
--(void) viewDidUnload 
-{
-	[super viewDidUnload];
-}
-
--(void) didReceiveMemoryWarning 
-{
-	if ((hasViewAppeared == YES) && (isViewAppearing == NO)) 
-	{
-		[super didReceiveMemoryWarning];
-		hasViewAppeared = NO;
-	}
-	else 
-	{
-		[super didReceiveMemoryWarning];
-	}
 }
 
 @end

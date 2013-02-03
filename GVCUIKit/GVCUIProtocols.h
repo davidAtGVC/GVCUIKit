@@ -17,7 +17,7 @@
 
 
 @protocol GVCViewTitleProtocol <NSObject>
-- (NSString *)viewTitleKey;
+- (NSString *)viewTitle;
 @end
 
 

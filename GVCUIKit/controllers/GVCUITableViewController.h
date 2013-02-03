@@ -18,7 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIView *tableFooterView;
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellTemplate;
 
-- (NSString *)viewTitleKey;
+- (NSString *)viewTitle;
 
 - (IBAction)reload:(id)sender;
 

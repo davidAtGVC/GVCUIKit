@@ -27,9 +27,9 @@
 	return self;
 }
 
-- (NSString *)viewTitleKey
+- (NSString *)viewTitle
 {
-	return GVC_DEFAULT_VIEW_TITLE;
+	return GVC_LocalizedClassString(GVC_DEFAULT_VIEW_TITLE, GVC_CLASSNAME(self));;
 }
 
 - (IBAction)reload:(id)sender
@@ -47,7 +47,7 @@
     [super viewWillAppear:animated];
     
 	UINavigationItem *item = [self navigationItem];
-	[item setTitle:GVC_LocalizedClassString([self viewTitleKey], GVC_CLASSNAME(self))];
+	[item setTitle:[self viewTitle]];
 
     if ([self autoresizesForKeyboard] == YES)
 	{

@@ -20,6 +20,6 @@
 - (IBAction)dismissModalViewController:(id)sender;
 
 /** Passes this message to the current top view controller, if it is a GVCUIViewController */
-- (NSString *)viewTitleKey;
+- (NSString *)viewTitle;
 
 @end
