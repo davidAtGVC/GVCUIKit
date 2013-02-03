@@ -86,7 +86,6 @@
 
 - (IBAction)updateBadgeText:(id)sender 
 {
-    NSLog(@"updateBadgeText :%@", sender);
     if ( [sender isKindOfClass:[UITextField class]] == YES )
     {
         [self setText:[(UITextField *)sender text]];

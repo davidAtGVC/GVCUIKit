@@ -103,6 +103,8 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 	GVC_DBC_FACT_NOT_NIL(object);
 	GVC_DBC_FACT_CONFORMS_TO_PROTOCOL([stack peekObject], @protocol(UIAppearance))
 	
+	GVCLogError(@"Looking for %@ on %@ with %@", property, stack, object);
+
 	GVCInvocation *invoker = [[GVCInvocation alloc] initForTargetClass:[stack peekObject]];
 	id <UIAppearance>appearanceTarget = [self appearanceForStackContext:stack];
 	NSString *regexp = [NSString stringWithFormat:@"^set%@:", [property gvc_StringWithCapitalizedFirstCharacter]];
@@ -111,7 +113,6 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 	NSArray *arguments = [self argumentValues:object forInvocation:invoker propertyName:property];
 	if ( gvc_IsEmpty(arguments) == NO )
 	{
-		GVCLogError(@"Invoking %@ on %@ with %@", [invoker methodSignature], appearanceTarget, arguments);
 		NSInvocation *invocation = [invoker invocationForTarget:appearanceTarget arguments:arguments];
 		[invocation invoke];
 	}
