@@ -38,6 +38,8 @@
 		051B261F1559C8BE001B4377 /* GVCUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051B261D1559C8BE001B4377 /* GVCUITabBarController.m */; };
 		052A74701592B294006497A7 /* GVCColumnContainerCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 052A746E1592B294006497A7 /* GVCColumnContainerCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		052A74711592B294006497A7 /* GVCColumnContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 052A746F1592B294006497A7 /* GVCColumnContainerCell.m */; };
+		053BDF8616BF461400D33687 /* GVCTokenView.h in Headers */ = {isa = PBXBuildFile; fileRef = 053BDF8416BF461400D33687 /* GVCTokenView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		053BDF8716BF461400D33687 /* GVCTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BDF8516BF461400D33687 /* GVCTokenView.m */; };
 		0549F0C4159A512100A93F3A /* UILabel+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0549F0C2159A512100A93F3A /* UILabel+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0549F0C5159A512100A93F3A /* UILabel+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */; };
 		0550C537159B403A00E43AD3 /* UITextView+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -199,6 +201,8 @@
 		051B261D1559C8BE001B4377 /* GVCUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUITabBarController.m; sourceTree = "<group>"; };
 		052A746E1592B294006497A7 /* GVCColumnContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCColumnContainerCell.h; sourceTree = "<group>"; };
 		052A746F1592B294006497A7 /* GVCColumnContainerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCColumnContainerCell.m; sourceTree = "<group>"; };
+		053BDF8416BF461400D33687 /* GVCTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTokenView.h; sourceTree = "<group>"; };
+		053BDF8516BF461400D33687 /* GVCTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCTokenView.m; sourceTree = "<group>"; };
 		0549F0C2159A512100A93F3A /* UILabel+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+GVCUIKit.h"; sourceTree = "<group>"; };
 		0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+GVCUIKit.m"; sourceTree = "<group>"; };
 		0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+GVCUIKit.h"; sourceTree = "<group>"; };
@@ -500,6 +504,8 @@
 		058B64E015005F41007F27A1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				053BDF8416BF461400D33687 /* GVCTokenView.h */,
+				053BDF8516BF461400D33687 /* GVCTokenView.m */,
 				058B65D81500696B007F27A1 /* GVCBadgeView.h */,
 				058B65D91500696B007F27A1 /* GVCBadgeView.m */,
 				058B65DA1500696B007F27A1 /* GVCProgressBarView.h */,
@@ -764,6 +770,7 @@
 				05DCB1E0167F688A0055697D /* GVCAlertView.h in Headers */,
 				056CD8E015A733AD00647244 /* GVCSizedColumn.h in Headers */,
 				0583CB9B16BC1BB200D70E11 /* UINavigationController+GVCUIKit.h in Headers */,
+				053BDF8616BF461400D33687 /* GVCTokenView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,6 +993,7 @@
 				05C2E31E1668604400FDEE0D /* GVCAppearance.m in Sources */,
 				05DCB1E1167F688A0055697D /* GVCAlertView.m in Sources */,
 				0583CB9C16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m in Sources */,
+				053BDF8716BF461400D33687 /* GVCTokenView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

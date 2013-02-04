@@ -25,7 +25,6 @@
     
     if (self != nil)
 	{
-		[self initializeDefaults];
     }
     
     return  self;
@@ -43,8 +42,6 @@
 		[self setSelectedBorderColor:[aDecoder decodeObjectForKey:GVC_PROPERTY(selectedBorderColor)]];
 		[self setTextColor:[aDecoder decodeObjectForKey:GVC_PROPERTY(textColor)]];
 		[self setSelectedTextColor:[aDecoder decodeObjectForKey:GVC_PROPERTY(selectedTextColor)]];
-		
-		[self initializeDefaults];
 	}
 	return self;
 }
@@ -118,6 +115,8 @@
 
 -(void)layoutSubviews
 {
+	[self initializeDefaults];
+
 	[self setAlpha:1.0];
     [[self layer] setMasksToBounds:YES];
     [[self layer] setCornerRadius:(self.bounds.size.height / 2)];
@@ -142,31 +141,54 @@
 
 - (void)handleTapGesture
 {
-	[self setSelected:![self isSelected] animated:YES];
+	BOOL selStatus = [self isSelected];
+	[self setSelected:!selStatus animated:YES];
 }
 
 
 #pragma mark - selection
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-	UIColor *brdr = (selected == YES ? [self selectedBorderColor] : [self borderColor]);
-	UIColor *bkgd = (selected == YES ? [self selectedBgColor] : [self bgColor]);
-	UIColor *txt = (selected == YES ? [self selectedTextColor] : [self textColor]);
+	[self setSelected:selected];
 	if ( animated == YES )
 	{
-		[UIView animateWithDuration:2.0
-						 animations:^{
-							 [[self layer] setBorderColor:[brdr CGColor]];
-							 [self setBackgroundColor:bkgd];
-							 [[self textLabel] setTextColor:txt];
-						 }
-						 completion:nil];
+		if ( selected == YES )
+		{
+			[UIView animateWithDuration:1.0
+							 animations:^{
+								 [[self layer] setBorderColor:[[self selectedBorderColor] CGColor]];
+								 [self setBackgroundColor:[self selectedBgColor]];
+								 [[self textLabel] setTextColor:[self selectedTextColor]];
+							 }
+							 completion:^(BOOL finished){
+							 }];
+		}
+		else
+		{
+			[UIView animateWithDuration:1.0
+							 animations:^{
+								 [[self layer] setBorderColor:[[self borderColor] CGColor]];
+								 [self setBackgroundColor:[self bgColor]];
+								 [[self textLabel] setTextColor:[self textColor]];
+							 }
+							 completion:^(BOOL finished){
+							 }];
+		}
 	}
 	else
 	{
-		[[self layer] setBorderColor:[brdr CGColor]];
-		[self setBackgroundColor:bkgd];
-		[[self textLabel] setTextColor:txt];
+		if ( selected == YES )
+		{
+			[[self layer] setBorderColor:[[self selectedBorderColor] CGColor]];
+			[self setBackgroundColor:[self selectedBgColor]];
+			[[self textLabel] setTextColor:[self selectedTextColor]];
+		}
+		else
+		{
+			[[self layer] setBorderColor:[[self borderColor] CGColor]];
+			[self setBackgroundColor:[self bgColor]];
+			[[self textLabel] setTextColor:[self textColor]];
+		}
 	}
 }
 
