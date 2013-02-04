@@ -70,8 +70,8 @@
 		056CD8DB15A7307F00647244 /* GVCColumnContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 056CD8D915A7307F00647244 /* GVCColumnContainerView.m */; };
 		056CD8E015A733AD00647244 /* GVCSizedColumn.h in Headers */ = {isa = PBXBuildFile; fileRef = 056CD8DE15A733AD00647244 /* GVCSizedColumn.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		056CD8E115A733AD00647244 /* GVCSizedColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 056CD8DF15A733AD00647244 /* GVCSizedColumn.m */; };
-		0583CBE816BC32D900D70E11 /* GVCTokenView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0583CBE616BC32D900D70E11 /* GVCTokenView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0583CBE916BC32D900D70E11 /* GVCTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0583CBE716BC32D900D70E11 /* GVCTokenView.m */; };
+		0583CB9B16BC1BB200D70E11 /* UINavigationController+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0583CB9916BC1BB200D70E11 /* UINavigationController+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0583CB9C16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0583CB9A16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m */; };
 		0585C55115401DFA00659B22 /* NSAttributedString+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0585C55215401DFA00659B22 /* NSAttributedString+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */; };
 		0585C556154028B600659B22 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0585C555154028B600659B22 /* CoreText.framework */; };
@@ -240,8 +240,8 @@
 		056CD8DF15A733AD00647244 /* GVCSizedColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCSizedColumn.m; sourceTree = "<group>"; };
 		0582A15715EAB4980042C09E /* BuildDoxygen.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = BuildDoxygen.sh; sourceTree = "<group>"; };
 		0582A15815EAB4980042C09E /* doxygen.config */ = {isa = PBXFileReference; lastKnownFileType = text; path = doxygen.config; sourceTree = "<group>"; };
-		0583CBE616BC32D900D70E11 /* GVCTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTokenView.h; sourceTree = "<group>"; };
-		0583CBE716BC32D900D70E11 /* GVCTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCTokenView.m; sourceTree = "<group>"; };
+		0583CB9916BC1BB200D70E11 /* UINavigationController+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+GVCUIKit.h"; sourceTree = "<group>"; };
+		0583CB9A16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+GVCUIKit.m"; sourceTree = "<group>"; };
 		0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+GVCUIKit.h"; sourceTree = "<group>"; };
 		0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+GVCUIKit.m"; sourceTree = "<group>"; };
 		0585C555154028B600659B22 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -408,6 +408,8 @@
 		055D8E2714FF058000E85A94 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				0583CB9916BC1BB200D70E11 /* UINavigationController+GVCUIKit.h */,
+				0583CB9A16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m */,
 				055D8E5214FF0A3700E85A94 /* UIColor+GVCUIKit.h */,
 				055D8E5314FF0A3700E85A94 /* UIColor+GVCUIKit.m */,
 				055D8E5414FF0A3700E85A94 /* UIDevice+GVCUIKit.h */,
@@ -510,8 +512,6 @@
 				05E7BA2E155A8024006BA6BE /* GVCMultiTextFieldView.m */,
 				056CD8D815A7307F00647244 /* GVCColumnContainerView.h */,
 				056CD8D915A7307F00647244 /* GVCColumnContainerView.m */,
-				0583CBE616BC32D900D70E11 /* GVCTokenView.h */,
-				0583CBE716BC32D900D70E11 /* GVCTokenView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -763,7 +763,7 @@
 				05C2E31D1668604400FDEE0D /* GVCAppearance.h in Headers */,
 				05DCB1E0167F688A0055697D /* GVCAlertView.h in Headers */,
 				056CD8E015A733AD00647244 /* GVCSizedColumn.h in Headers */,
-				0583CBE816BC32D900D70E11 /* GVCTokenView.h in Headers */,
+				0583CB9B16BC1BB200D70E11 /* UINavigationController+GVCUIKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,7 +985,7 @@
 				056CD8E115A733AD00647244 /* GVCSizedColumn.m in Sources */,
 				05C2E31E1668604400FDEE0D /* GVCAppearance.m in Sources */,
 				05DCB1E1167F688A0055697D /* GVCAlertView.m in Sources */,
-				0583CBE916BC32D900D70E11 /* GVCTokenView.m in Sources */,
+				0583CB9C16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
