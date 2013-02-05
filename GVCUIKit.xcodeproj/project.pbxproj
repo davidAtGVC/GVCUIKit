@@ -122,6 +122,8 @@
 		05CA0B0414F7F69F001C8A68 /* libGVCUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */; };
 		05CA0B0A14F7F69F001C8A68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05CA0B0814F7F69F001C8A68 /* InfoPlist.strings */; };
 		05CA0B0D14F7F6A0001C8A68 /* GVCUIKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA0B0C14F7F6A0001C8A68 /* GVCUIKitTests.m */; };
+		05CB915116C1602300C66046 /* GVCTokenView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05CB914F16C1602300C66046 /* GVCTokenView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05CB915216C1602300C66046 /* GVCTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CB915016C1602300C66046 /* GVCTokenView.m */; };
 		05D00F91155BCBA7009F2837 /* GVCUIViewWithTableController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D00F8F155BCBA7009F2837 /* GVCUIViewWithTableController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05D00F92155BCBA7009F2837 /* GVCUIViewWithTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D00F90155BCBA7009F2837 /* GVCUIViewWithTableController.m */; };
 		05D00FC6155BFE4D009F2837 /* GVCPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D00FC4155BFE4C009F2837 /* GVCPageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -303,6 +305,8 @@
 		05CA0B0914F7F69F001C8A68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05CA0B0B14F7F6A0001C8A68 /* GVCUIKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GVCUIKitTests.h; sourceTree = "<group>"; };
 		05CA0B0C14F7F6A0001C8A68 /* GVCUIKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GVCUIKitTests.m; sourceTree = "<group>"; };
+		05CB914F16C1602300C66046 /* GVCTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTokenView.h; sourceTree = "<group>"; };
+		05CB915016C1602300C66046 /* GVCTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCTokenView.m; sourceTree = "<group>"; };
 		05D00F8F155BCBA7009F2837 /* GVCUIViewWithTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUIViewWithTableController.h; sourceTree = "<group>"; };
 		05D00F90155BCBA7009F2837 /* GVCUIViewWithTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUIViewWithTableController.m; sourceTree = "<group>"; };
 		05D00FC4155BFE4C009F2837 /* GVCPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCPageController.h; sourceTree = "<group>"; };
@@ -500,6 +504,8 @@
 		058B64E015005F41007F27A1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				05CB914F16C1602300C66046 /* GVCTokenView.h */,
+				05CB915016C1602300C66046 /* GVCTokenView.m */,
 				058B65D81500696B007F27A1 /* GVCBadgeView.h */,
 				058B65D91500696B007F27A1 /* GVCBadgeView.m */,
 				058B65DA1500696B007F27A1 /* GVCProgressBarView.h */,
@@ -764,6 +770,7 @@
 				05DCB1E0167F688A0055697D /* GVCAlertView.h in Headers */,
 				056CD8E015A733AD00647244 /* GVCSizedColumn.h in Headers */,
 				0583CB9B16BC1BB200D70E11 /* UINavigationController+GVCUIKit.h in Headers */,
+				05CB915116C1602300C66046 /* GVCTokenView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,6 +993,7 @@
 				05C2E31E1668604400FDEE0D /* GVCAppearance.m in Sources */,
 				05DCB1E1167F688A0055697D /* GVCAlertView.m in Sources */,
 				0583CB9C16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m in Sources */,
+				05CB915216C1602300C66046 /* GVCTokenView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,7 +1080,6 @@
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${TARGET_BUILD_DIR}/usr/local/include/**";
 			};
 			name = Debug;
 		};
@@ -1098,7 +1105,6 @@
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${TARGET_BUILD_DIR}/usr/local/include/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1109,13 +1115,11 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/Headers\"/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "Headers/${TARGET_NAME}";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -1125,13 +1129,11 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/Headers\"/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "Headers/${TARGET_NAME}";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
