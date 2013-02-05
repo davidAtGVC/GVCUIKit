@@ -46,4 +46,4 @@ GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES
 
 GCC_WARN_MISSING_PARENTHESES = YES
 
-HEADER_SEARCH_PATHS = $(inherited) "$(OBJROOT)/UninstalledProducts/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "$(BUILT_PRODUCTS_DIR)/Headers" "$(OBJROOT)/UninstalledProducts/Headers"

@@ -61,4 +61,4 @@ WARNING_CFLAGS = -Wall -Wreceiver-is-weak $(inherited)
 //GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES
 //GCC_GENERATE_TEST_COVERAGE_FILES = YES
 
-HEADER_SEARCH_PATHS = $(inherited) "$(OBJROOT)/UninstalledProducts/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "$(BUILT_PRODUCTS_DIR)/Headers" "$(OBJROOT)/UninstalledProducts/Headers"
