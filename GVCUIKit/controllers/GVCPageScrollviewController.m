@@ -154,7 +154,7 @@
         
         // START:ControlUpdates
         if (firstNeededPageIndex == lastNeededPageIndex) {
-            [pageControl setCurrentPage:firstNeededPageIndex % [self pageCount]];
+            [pageControl setCurrentPage:firstNeededPageIndex % MAX([self pageCount], (NSUInteger)1)];
         }
         // END:ControlUpdates
         
@@ -197,7 +197,7 @@
     CGFloat pageWidth = [[self scrollView] bounds].size.width;
     NSInteger currentPage = floorf(scrollOffset.x / pageWidth);
     
-    NSInteger adjustedPage = currentPage % [self pageCount];
+    NSInteger adjustedPage = currentPage % MAX([self pageCount], (NSUInteger)1);
     NSInteger destinationPage = currentPage + (pageIndex - adjustedPage);
     
     scrollOffset.x = destinationPage * pageWidth;
