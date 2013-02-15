@@ -40,6 +40,8 @@
 		052A74711592B294006497A7 /* GVCColumnContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 052A746F1592B294006497A7 /* GVCColumnContainerCell.m */; };
 		053BDF8616BF461400D33687 /* GVCTokenView.h in Headers */ = {isa = PBXBuildFile; fileRef = 053BDF8416BF461400D33687 /* GVCTokenView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		053BDF8716BF461400D33687 /* GVCTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BDF8516BF461400D33687 /* GVCTokenView.m */; };
+		053BDFF016BF60CE00D33687 /* GVCTokenFieldView.h in Headers */ = {isa = PBXBuildFile; fileRef = 053BDFEE16BF60CD00D33687 /* GVCTokenFieldView.h */; };
+		053BDFF116BF60CE00D33687 /* GVCTokenFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BDFEF16BF60CD00D33687 /* GVCTokenFieldView.m */; };
 		0549F0C4159A512100A93F3A /* UILabel+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0549F0C2159A512100A93F3A /* UILabel+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0549F0C5159A512100A93F3A /* UILabel+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */; };
 		0550C537159B403A00E43AD3 /* UITextView+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,6 +68,11 @@
 		0563F5811537CE0B00BC7D2D /* GVCUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0563F57F1537CE0B00BC7D2D /* GVCUIViewController.m */; };
 		0563F58D1537EBC500BC7D2D /* GVCMultiLineTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0563F58B1537EBC500BC7D2D /* GVCMultiLineTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0563F58E1537EBC500BC7D2D /* GVCMultiLineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0563F58C1537EBC500BC7D2D /* GVCMultiLineTableViewCell.m */; };
+		0565B53D16CE888A00DA7241 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0585C555154028B600659B22 /* CoreText.framework */; };
+		0565B54016CE888A00DA7241 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0565B53E16CE888A00DA7241 /* CFNetwork.framework */; };
+		0565B54116CE888A00DA7241 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0565B53F16CE888A00DA7241 /* CoreGraphics.framework */; };
+		0565B54516CE889200DA7241 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05ABB550153E5CFC00D039F2 /* QuartzCore.framework */; };
+		0565B54716CE889900DA7241 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0565B54616CE889900DA7241 /* Security.framework */; };
 		056A14E4150310B500B50027 /* GVCDictionaryTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 056A14E2150310B500B50027 /* GVCDictionaryTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		056A14E5150310B500B50027 /* GVCDictionaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056A14E3150310B500B50027 /* GVCDictionaryTableViewController.m */; };
 		056CD8DA15A7307F00647244 /* GVCColumnContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 056CD8D815A7307F00647244 /* GVCColumnContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -203,6 +210,8 @@
 		052A746F1592B294006497A7 /* GVCColumnContainerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCColumnContainerCell.m; sourceTree = "<group>"; };
 		053BDF8416BF461400D33687 /* GVCTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTokenView.h; sourceTree = "<group>"; };
 		053BDF8516BF461400D33687 /* GVCTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCTokenView.m; sourceTree = "<group>"; };
+		053BDFEE16BF60CD00D33687 /* GVCTokenFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTokenFieldView.h; sourceTree = "<group>"; };
+		053BDFEF16BF60CD00D33687 /* GVCTokenFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCTokenFieldView.m; sourceTree = "<group>"; };
 		0549F0C2159A512100A93F3A /* UILabel+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+GVCUIKit.h"; sourceTree = "<group>"; };
 		0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+GVCUIKit.m"; sourceTree = "<group>"; };
 		0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+GVCUIKit.h"; sourceTree = "<group>"; };
@@ -236,6 +245,9 @@
 		0563F57F1537CE0B00BC7D2D /* GVCUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUIViewController.m; sourceTree = "<group>"; };
 		0563F58B1537EBC500BC7D2D /* GVCMultiLineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCMultiLineTableViewCell.h; sourceTree = "<group>"; };
 		0563F58C1537EBC500BC7D2D /* GVCMultiLineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCMultiLineTableViewCell.m; sourceTree = "<group>"; };
+		0565B53E16CE888A00DA7241 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0565B53F16CE888A00DA7241 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0565B54616CE889900DA7241 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		056A14E2150310B500B50027 /* GVCDictionaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCDictionaryTableViewController.h; sourceTree = "<group>"; };
 		056A14E3150310B500B50027 /* GVCDictionaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCDictionaryTableViewController.m; sourceTree = "<group>"; };
 		056CD8D815A7307F00647244 /* GVCColumnContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCColumnContainerView.h; sourceTree = "<group>"; };
@@ -356,6 +368,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0565B54716CE889900DA7241 /* Security.framework in Frameworks */,
+				0565B54516CE889200DA7241 /* QuartzCore.framework in Frameworks */,
+				0565B54016CE888A00DA7241 /* CFNetwork.framework in Frameworks */,
+				0565B54116CE888A00DA7241 /* CoreGraphics.framework in Frameworks */,
+				0565B53D16CE888A00DA7241 /* CoreText.framework in Frameworks */,
 				059C617915011B7A00E18973 /* libGVCFoundation.a in Frameworks */,
 				05CA0B0414F7F69F001C8A68 /* libGVCUIKit.a in Frameworks */,
 				05CA0AFE14F7F69F001C8A68 /* SenTestingKit.framework in Frameworks */,
@@ -504,6 +521,8 @@
 		058B64E015005F41007F27A1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				053BDFEE16BF60CD00D33687 /* GVCTokenFieldView.h */,
+				053BDFEF16BF60CD00D33687 /* GVCTokenFieldView.m */,
 				053BDF8416BF461400D33687 /* GVCTokenView.h */,
 				053BDF8516BF461400D33687 /* GVCTokenView.m */,
 				058B65D81500696B007F27A1 /* GVCBadgeView.h */,
@@ -620,6 +639,9 @@
 		05CA0AEE14F7F69E001C8A68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0565B54616CE889900DA7241 /* Security.framework */,
+				0565B53E16CE888A00DA7241 /* CFNetwork.framework */,
+				0565B53F16CE888A00DA7241 /* CoreGraphics.framework */,
 				0585C555154028B600659B22 /* CoreText.framework */,
 				05ABB550153E5CFC00D039F2 /* QuartzCore.framework */,
 				059C617515011B5600E18973 /* CoreData.framework */,
@@ -771,6 +793,7 @@
 				056CD8E015A733AD00647244 /* GVCSizedColumn.h in Headers */,
 				0583CB9B16BC1BB200D70E11 /* UINavigationController+GVCUIKit.h in Headers */,
 				053BDF8616BF461400D33687 /* GVCTokenView.h in Headers */,
+				053BDFF016BF60CE00D33687 /* GVCTokenFieldView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -994,6 +1017,7 @@
 				05DCB1E1167F688A0055697D /* GVCAlertView.m in Sources */,
 				0583CB9C16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m in Sources */,
 				053BDF8716BF461400D33687 /* GVCTokenView.m in Sources */,
+				053BDFF116BF60CE00D33687 /* GVCTokenFieldView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

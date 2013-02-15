@@ -99,6 +99,7 @@
 #import "GVCProgressBarView.h"
 #import "GVCRoundBorderView.h"
 #import "GVCStatusView.h"
+#import "GVCTokenFieldView.h"
 #import "GVCTokenView.h"
 
 #endif // GVCUIKit_h
