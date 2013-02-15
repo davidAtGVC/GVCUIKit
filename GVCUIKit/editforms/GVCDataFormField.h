@@ -19,6 +19,8 @@ typedef enum {
     GVCDataFormFieldType_CUSTOM
 } GVCDataFormFieldType;
 
+/**
+ */
 @interface GVCDataFormField : NSObject
 
 @property (assign, nonatomic) GVCDataFormFieldType type;

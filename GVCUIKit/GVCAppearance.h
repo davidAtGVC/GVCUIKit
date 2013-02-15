@@ -16,7 +16,14 @@
 
 GVC_SINGLETON_HEADER(GVCAppearance);
 
+/**
+ * loads the appearance configuration from [MAIN_BUNDLE]/appearance.json
+ */
 - (void)applyDefaultAppearance;
+
+/**
+ * loads the appearance configuration from provided json data
+ */
 - (void)applyAppearance:(NSData *)jsonData;
 
 @end

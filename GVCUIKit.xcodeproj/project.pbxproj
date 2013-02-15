@@ -953,7 +953,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# build documents using Doxygen\n# ${PROJECT_DIR}/Resources/BuildDoxygen.sh\n\n# build documents using appledocs\n${PROJECT_DIR}/Resources/BuildDocs.sh";
+			shellScript = "# build documents using Doxygen\n# ${PROJECT_DIR}/Resources/BuildDoxygen.sh\n\n# build documents using appledocs\n#${PROJECT_DIR}/Resources/BuildDocs.sh";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
