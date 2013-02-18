@@ -2,7 +2,7 @@
  * GVCTokenView.h
  * 
  * Created by David Aspinall on 2013-02-01. 
- * Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+ * Copyright (c) 2013 Global Village Consulting. All rights reserved.
  *
  */
 

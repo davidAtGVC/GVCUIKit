@@ -2,7 +2,7 @@
  * GVCAppearance.h
  * 
  * Created by David Aspinall on 2012-11-29. 
- * Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+ * Copyright (c) 2012 Global Village Consulting. All rights reserved.
  *
  */
 

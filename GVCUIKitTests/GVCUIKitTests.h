@@ -3,7 +3,7 @@
 //  GVCUIKitTests
 //
 //  Created by David Aspinall on 12-02-24.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Global Village Consulting. All rights reserved.
 //
 
 #import <SenTestingKit/SenTestingKit.h>
