@@ -38,6 +38,8 @@
 		051B261F1559C8BE001B4377 /* GVCUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051B261D1559C8BE001B4377 /* GVCUITabBarController.m */; };
 		052A74701592B294006497A7 /* GVCColumnContainerCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 052A746E1592B294006497A7 /* GVCColumnContainerCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		052A74711592B294006497A7 /* GVCColumnContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 052A746F1592B294006497A7 /* GVCColumnContainerCell.m */; };
+		052FB8B016D57DEF00BB849C /* GVCUISearchBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 052FB8AE16D57DEF00BB849C /* GVCUISearchBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		052FB8B116D57DEF00BB849C /* GVCUISearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 052FB8AF16D57DEF00BB849C /* GVCUISearchBar.m */; };
 		053BDF8616BF461400D33687 /* GVCTokenView.h in Headers */ = {isa = PBXBuildFile; fileRef = 053BDF8416BF461400D33687 /* GVCTokenView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		053BDF8716BF461400D33687 /* GVCTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BDF8516BF461400D33687 /* GVCTokenView.m */; };
 		053BDFF016BF60CE00D33687 /* GVCTokenFieldView.h in Headers */ = {isa = PBXBuildFile; fileRef = 053BDFEE16BF60CD00D33687 /* GVCTokenFieldView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -208,6 +210,8 @@
 		051B261D1559C8BE001B4377 /* GVCUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUITabBarController.m; sourceTree = "<group>"; };
 		052A746E1592B294006497A7 /* GVCColumnContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCColumnContainerCell.h; sourceTree = "<group>"; };
 		052A746F1592B294006497A7 /* GVCColumnContainerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCColumnContainerCell.m; sourceTree = "<group>"; };
+		052FB8AE16D57DEF00BB849C /* GVCUISearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUISearchBar.h; sourceTree = "<group>"; };
+		052FB8AF16D57DEF00BB849C /* GVCUISearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUISearchBar.m; sourceTree = "<group>"; };
 		053BDF8416BF461400D33687 /* GVCTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTokenView.h; sourceTree = "<group>"; };
 		053BDF8516BF461400D33687 /* GVCTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCTokenView.m; sourceTree = "<group>"; };
 		053BDFEE16BF60CD00D33687 /* GVCTokenFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTokenFieldView.h; sourceTree = "<group>"; };
@@ -537,6 +541,8 @@
 				05E7BA2E155A8024006BA6BE /* GVCMultiTextFieldView.m */,
 				056CD8D815A7307F00647244 /* GVCColumnContainerView.h */,
 				056CD8D915A7307F00647244 /* GVCColumnContainerView.m */,
+				052FB8AE16D57DEF00BB849C /* GVCUISearchBar.h */,
+				052FB8AF16D57DEF00BB849C /* GVCUISearchBar.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -794,6 +800,7 @@
 				0583CB9B16BC1BB200D70E11 /* UINavigationController+GVCUIKit.h in Headers */,
 				053BDF8616BF461400D33687 /* GVCTokenView.h in Headers */,
 				053BDFF016BF60CE00D33687 /* GVCTokenFieldView.h in Headers */,
+				052FB8B016D57DEF00BB849C /* GVCUISearchBar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,6 +1025,7 @@
 				0583CB9C16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m in Sources */,
 				053BDF8716BF461400D33687 /* GVCTokenView.m in Sources */,
 				053BDFF116BF60CE00D33687 /* GVCTokenFieldView.m in Sources */,
+				052FB8B116D57DEF00BB849C /* GVCUISearchBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -101,5 +101,6 @@
 #import "GVCStatusView.h"
 #import "GVCTokenFieldView.h"
 #import "GVCTokenView.h"
+#import "GVCUISearchBar.h"
 
 #endif // GVCUIKit_h
