@@ -103,7 +103,7 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 	GVC_DBC_FACT_NOT_NIL(object);
 	GVC_DBC_FACT_CONFORMS_TO_PROTOCOL([stack peekObject], @protocol(UIAppearance))
 	
-	GVCLogError(@"Looking for %@ on %@ with %@", property, stack, object);
+	GVCLogDebug(@"Looking for %@ on %@ with %@", property, stack, object);
 
 	GVCInvocation *invoker = [[GVCInvocation alloc] initForTargetClass:[stack peekObject]];
 	id <UIAppearance>appearanceTarget = [self appearanceForStackContext:stack];
@@ -260,7 +260,7 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 		else if ( [[propertyName lowercaseString] hasSuffix:@"textattributes"] == YES )
 		{
 			// this can result in multiple invocations
-			GVCLogError(@"%@ %@", propertyName, object);
+			GVCLogDebug(@"%@ %@", propertyName, object);
 		}
 	}
 	
