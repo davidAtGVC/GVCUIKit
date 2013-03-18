@@ -61,9 +61,6 @@
 - (void)viewDidAppear:(BOOL)animated 
 {
     [super viewDidAppear:animated];
-
-	// set default title
-	[[self tableView] reloadData];
 }
 
 
