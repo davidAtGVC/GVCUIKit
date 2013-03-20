@@ -19,6 +19,4 @@
 
 + (NSString *)gvc_DefaultCellIdentifier;
 
-- (CGFloat)gvc_heightForCell;
-
 @end

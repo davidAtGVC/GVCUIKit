@@ -113,43 +113,4 @@
 	[[self textView] setFrame:frame];
 }
 
-//- (void)layoutSubviews 
-//{
-//    [super layoutSubviews];
-//	CGSize textLabelSize = CGSizeZero;
-//	if ( [self textLabel] != nil )
-//	{
-//		textLabelSize = [[self textLabel] bounds].size;
-//		textLabelSize.width += 10.0;
-//	}
-//
-//    CGRect contentRect = [self.contentView bounds];
-//	
-//	float boundsX = contentRect.origin.x + textLabelSize.width;
-//	float width = contentRect.size.width;
-//	if(contentRect.origin.x == 0.0) 
-//	{
-//		boundsX = 10.0 + textLabelSize.width;
-//		width -= (20 + textLabelSize.width);
-//	}
-//	
-//	CGRect frame;
-//	CGSize constraints;
-//	constraints.width = width;
-//	constraints.height = 10000000000.0;
-//	
-//	
-//	CGSize size = [textView.text sizeWithFont:textView.font constrainedToSize:constraints];
-//	if(size.height < contentRect.size.height)
-//	{
-//		size.height = contentRect.size.height; 
-//	}
-//	else
-//	{
-//		contentRect.size.height = size.height + 10.0;
-//	}
-//	frame = CGRectMake(boundsX, (contentRect.size.height - size.height)/2, width, size.height);
-//	[textView setFrame:frame];
-//}
-
 @end

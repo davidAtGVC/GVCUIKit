@@ -6,13 +6,17 @@
 //
 
 #import "GVCUITableViewCell.h"
+
 #import "UITableViewCell+GVCUIKit.h"
+#import "UITableView+GVCUIKit.h"
+#import "UIView+GVCUIKit.h"
+#import "NSObject+GVCUIKit.h"
+
+#import <GVCFoundation/GVCFoundation.h>
+
+#define GVC_DEFAULT_FONT_SIZE 14
 
 @implementation GVCUITableViewCell
-
-@synthesize useDarkBackground;
-@synthesize delegate;
-
 
 + (id)cellWithStyle:(UITableViewCellStyle)style forTableView:(UITableView *)tableView 
 {
@@ -25,8 +29,29 @@
     return cell;    
 }
 
++ (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(NSObject *)object
+{
+	id appearanceProxy = [self appearance];
+	if (appearanceProxy != nil)
+	{
+		GVCLogError(@"Appearance %@", appearanceProxy);
+		GVCLogError(@"Appearance Font %@", [appearanceProxy font]);
+		GVCLogError(@"Appearance UILabel %@", [appearanceProxy textLabel]);
+		
+	}
+	
+	UIFont *font = [UIFont boldSystemFontOfSize:GVC_DEFAULT_FONT_SIZE];
+	CGFloat margin = [tableView gvc_tableCellMargin];
+	CGFloat width = [tableView gvc_frameWidth] - (margin * 2);
+	
+	CGSize labelTextSize = [[object gvc_tableCellTitle] sizeWithFont:font constrainedToSize:CGSizeMake(75, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+	CGSize detailTextSize = [[object gvc_tableCellDetail] sizeWithFont:font constrainedToSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+	
+	return MAX(detailTextSize.height, labelTextSize.height) + (20);
+}
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier 
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -35,32 +60,10 @@
     return self;
 }
 
-- (BOOL)canBecomeFirstResponder
-{
-    return YES;
-}
-
-- (void)setUseDarkBackground:(BOOL)flag
-{
-    if ((flag != useDarkBackground) || (self.backgroundView == nil)) 
-	{
-        useDarkBackground = flag;
-		
-		UIColor *lightColor = [UIColor colorWithRed:0.612 green:0.616 blue:0.624 alpha:1.000];
-		UIColor *darkColor = [UIColor colorWithRed:0.521 green:0.526 blue:0.538 alpha:1.000];
-		
-		[self setBackgroundColor:(useDarkBackground ? darkColor : lightColor)];
-    }
-}
-
 - (void)prepareForReuse 
 {
     [super prepareForReuse];
-}
-
-- (CGFloat)gvc_heightForCell
-{
-    return [super gvc_heightForCell];
+//	[self setObject:nil];
 }
 
 @end

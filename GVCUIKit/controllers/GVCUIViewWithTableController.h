@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GVCUIViewController.h"
 
-@interface GVCUIViewWithTableController : GVCUIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface GVCUIViewWithTableController : GVCUIViewController <GVCTableViewDataSourceProtocol, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)reload:(id)sender;

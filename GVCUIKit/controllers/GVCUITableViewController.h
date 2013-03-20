@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "GVCUIProtocols.h"
 
-@interface GVCUITableViewController : UITableViewController <UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, GVCViewTitleProtocol>
+@interface GVCUITableViewController : UITableViewController <UINavigationControllerDelegate, UITableViewDelegate, GVCTableViewDataSourceProtocol, GVCViewTitleProtocol>
 
 @property (weak, nonatomic) IBOutlet id callbackDelegate;
 

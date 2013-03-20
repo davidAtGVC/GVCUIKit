@@ -12,7 +12,7 @@
 
 @end
 
-@interface GVCDatePickerTableViewController : GVCUIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface GVCDatePickerTableViewController : GVCUIViewController <UITableViewDelegate, GVCTableViewDataSourceProtocol>
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UITableView  *gvcTableView;;

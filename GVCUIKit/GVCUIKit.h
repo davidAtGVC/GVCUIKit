@@ -10,6 +10,7 @@
  * Additions 
  */
 #import "NSAttributedString+GVCUIKit.h"
+#import "NSObject+GVCUIKit.h"
 #import "UIColor+GVCUIKit.h"
 #import "UIDevice+GVCUIKit.h"
 #import "UIImage+GVCUIKit.h"
@@ -18,6 +19,7 @@
 #import "UITabBar+GVCUIKit.h"
 #import "UITableView+GVCUIKit.h"
 #import "UITableViewCell+GVCUIKit.h"
+#import "UITableViewController+GVCUIKit.h"
 #import "UITextView+GVCUIKit.h"
 #import "UIView+GVCUIKit.h"
 #import "UIViewController+GVCUIKit.h"

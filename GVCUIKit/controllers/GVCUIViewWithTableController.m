@@ -6,13 +6,15 @@
  *
  */
 
-#import "GVCUIViewWithTableController.h"
-#import "UITableViewCell+GVCUIKit.h"
 #import <GVCFoundation/GVCFoundation.h>
 
-@implementation GVCUIViewWithTableController
+#import "GVCUIViewWithTableController.h"
+#import "GVCUITableViewCell.h"
+#import "GVCUIProtocols.h"
 
-@synthesize tableView;
+#import "UITableViewCell+GVCUIKit.h"
+
+@implementation GVCUIViewWithTableController
 
 - (IBAction)reload:(id)sender
 {
@@ -118,52 +120,60 @@
 }
 
 
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tv commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath 
- {
- 
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tv deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tv moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tv canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//- (CGFloat)tableView:(UITableView*)tv heightForRowAtIndexPath:(NSIndexPath*)indexPath
 //{
-//	if ( [cell isKindOfClass:[GVCUITableViewCell class]] == YES )
+//	CGFloat height = 0.0;
+//	id <UITableViewDataSource> dataSource = [tv dataSource];
+//	
+//	if ((dataSource != nil) && ([dataSource conformsToProtocol:@protocol(GVCTableViewDataSourceProtocol)] == YES))
 //	{
-//		[(GVCUITableViewCell *)cell setUseDarkBackground:([indexPath row] % 2 == 0)];
+//		id object = [(id <GVCTableViewDataSourceProtocol>)dataSource tableView:tv objectForRowAtIndexPath:indexPath];
+//		Class cls = [(id <GVCTableViewDataSourceProtocol>)dataSource tableView:tv cellClassForObject:object];
+//		
+//		if ( cls != nil )
+//		{
+//			height = [cls tableView:tv rowHeightForObject:object];
+//		}
 //	}
+//	
+//	return (height > 44.0) ? height : 44.0;
 //}
 
-- (CGFloat)tableView:(UITableView*)tv heightForRowAtIndexPath:(NSIndexPath*)indexPath 
+#pragma mark - GVCTableViewDataSourceProtocol
+/*
+ Each row of the table is represented by a single object
+ */
+- (NSArray *)tableView:(UITableView *)tableView rowsForSection:(NSUInteger)section
 {
-	UITableViewCell *cell = [self tableView:tv cellForRowAtIndexPath:indexPath];
-    return [cell gvc_heightForCell];
+	return nil;
 }
 
+
+- (id)tableView:(UITableView*)tableView objectForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+	return nil;
+}
+
+- (NSIndexPath*)tableView:(UITableView*)tableView indexPathForObject:(id)object
+{
+	NSIndexPath *indexPath = nil;
+	NSInteger sectionCount = [self numberOfSectionsInTableView:tableView];
+	for ( NSInteger section = 0; section < sectionCount && indexPath == nil; section ++)
+	{
+		NSArray *rows = [self tableView:tableView rowsForSection:section];
+		NSUInteger rowIndex = [rows indexOfObject:object];
+		if ( rowIndex != NSNotFound )
+		{
+			indexPath = [NSIndexPath indexPathForRow:rowIndex inSection:section];
+		}
+	}
+	return indexPath;
+}
+
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object
+{
+	return [GVCUITableViewCell class];
+}
 
 
 @end

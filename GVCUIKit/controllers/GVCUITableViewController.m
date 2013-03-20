@@ -7,16 +7,12 @@
 
 #import "GVCUITableViewController.h"
 #import "GVCUITableViewCell.h"
-#import "UITableViewCell+GVCUIKit.h"
 #import "GVCUIKitFunctions.h"
+#import "GVCUIProtocols.h"
+
+#import "UITableViewCell+GVCUIKit.h"
 
 @implementation GVCUITableViewController
-
-@synthesize callbackDelegate;
-@synthesize tableHeaderView;
-@synthesize tableFooterView;
-@synthesize cellTemplate;
-@synthesize autoresizesForKeyboard;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,9 +42,6 @@
 {
     [super viewWillAppear:animated];
     
-	UINavigationItem *item = [self navigationItem];
-	[item setTitle:[self viewTitle]];
-
     if ([self autoresizesForKeyboard] == YES)
 	{
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -60,7 +53,11 @@
 }
 - (void)viewDidAppear:(BOOL)animated 
 {
-    [super viewDidAppear:animated];
+	UINavigationBar *navBar = [self navigationBar];
+	UINavigationItem *navItem = [navBar topItem];
+	[navItem setTitle:[self viewTitle]];
+	
+	[super viewDidAppear:animated];
 }
 
 
@@ -78,17 +75,24 @@
 {
     [super viewDidLoad];
 
-	if (tableHeaderView != nil) 
+	if ([self tableHeaderView] != nil)
 	{
-        [[self tableView] setTableHeaderView:tableHeaderView];
+        [[self tableView] setTableHeaderView:[self tableHeaderView]];
     }
 	
-	if (tableFooterView != nil) 
+	if ([self tableFooterView] != nil) 
 	{
-        [[self tableView] setTableFooterView:tableFooterView];
+        [[self tableView] setTableFooterView:[self tableFooterView]];
     }
 //	[[self tableView] setAutoresizesSubviews:YES];
 }
+
+- (UINavigationBar *)navigationBar
+{
+	UINavigationController *navController = [self navigationController];
+	return [navController navigationBar];
+}
+
 
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
 {
@@ -280,52 +284,62 @@
  }
 
 
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tv commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath 
- {
- 
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tv deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tv moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tv canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 //{
-//	if ( [cell isKindOfClass:[GVCUITableViewCell class]] == YES )
+//	CGFloat height = 0.0;
+//	id <UITableViewDataSource> dataSource = [tableView dataSource];
+//	
+//	if ((dataSource != nil) && ([dataSource conformsToProtocol:@protocol(GVCTableViewDataSourceProtocol)] == YES))
 //	{
-//		[(GVCUITableViewCell *)cell setUseDarkBackground:([indexPath row] % 2 == 0)];
+//		id object = [(id <GVCTableViewDataSourceProtocol>)dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
+//		Class cls = [(id <GVCTableViewDataSourceProtocol>)dataSource tableView:tableView cellClassForObject:object];
+//		
+//		if ( cls != nil )
+//		{
+//			height = [cls tableView:tableView rowHeightForObject:object];
+//		}
 //	}
+//	
+//	return (height > 44.0) ? height : [super tableView:tableView heightForRowAtIndexPath:indexPath];
 //}
 
-//- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath 
-//{
-////	UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-////    return [cell gvc_heightForCell];
-//}
+#pragma mark - GVCTableViewDataSourceProtocol
+/*
+ Each row of the table is represented by a single object
+ */
+- (NSArray *)tableView:(UITableView *)tableView rowsForSection:(NSUInteger)section
+{
+	return nil;
+}
 
+- (id)tableView:(UITableView*)tableView objectForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+	return nil;
+}
+
+- (NSIndexPath*)tableView:(UITableView*)tableView indexPathForObject:(id)object
+{
+	NSIndexPath *indexPath = nil;
+	NSInteger sectionCount = [self numberOfSectionsInTableView:tableView];
+	for ( NSInteger section = 0; section < sectionCount && indexPath == nil; section ++)
+	{
+		NSArray *rows = [self tableView:tableView rowsForSection:section];
+		NSUInteger rowIndex = [rows indexOfObject:object];
+		if ( rowIndex != NSNotFound )
+		{
+			indexPath = [NSIndexPath indexPathForRow:rowIndex inSection:section];
+		}
+	}
+	return indexPath;
+}
+
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object
+{
+	return [GVCUITableViewCell class];
+}
+
+
+#pragma mark - nib/xib cell loading
 - (UITableViewCell *)dequeueOrLoadReusableCellFromClass:(Class)cellClass forTable:(UITableView *)tv withIdentifier:(NSString *)identifier
 {
 	UITableViewCell *cell = [self dequeueOrLoadReusableCellFromNib:NSStringFromClass(cellClass) forTable:tv withIdentifier:identifier];
@@ -339,7 +353,7 @@
     if (cell == nil) 
 	{
         [[NSBundle mainBundle] loadNibNamed:cellNibName owner:self options:nil];
-        cell = cellTemplate;
+        cell = [self cellTemplate];
     }
 	
 	GVC_ASSERT( cell != nil, @"Could not find cellTemplate in %@", cellNibName );

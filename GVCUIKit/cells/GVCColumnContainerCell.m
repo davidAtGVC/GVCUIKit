@@ -216,15 +216,4 @@
     }
 }
 
-- (CGFloat)gvc_heightForCell
-{
-    CGFloat height = MAX(44.0, [[self contentView] bounds].size.height);
-    NSArray *columnViews = [[self contentView] subviews];
-    for ( UIView *aview in columnViews )
-    {
-        height = MAX([aview gvc_heightForCell], height);
-    }
-    return height;
-}
-
 @end

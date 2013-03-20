@@ -120,14 +120,4 @@
 	}
 }
 
-- (CGFloat)gvc_heightForCell
-{
-    CGFloat height = MAX(100.0, [super gvc_heightForCell]);
-    if ([self textView] != nil )
-    {
-        height = MAX([[self textView] gvc_heightForCell], height);
-    }
-    return height;
-}
-
 @end

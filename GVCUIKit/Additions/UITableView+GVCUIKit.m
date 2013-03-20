@@ -29,4 +29,14 @@
 	}
 }
 
+- (CGFloat)gvc_tableCellMargin
+{
+	if ([self style] == UITableViewStyleGrouped)
+	{
+		return 10.0;
+	}
+
+	return 0;
+}
+
 @end

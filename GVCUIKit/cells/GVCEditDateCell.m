@@ -25,13 +25,16 @@
     return self;
 }
 
-- (void)prepareForReuse 
+- (void)layoutSubviews
 {
-    [super prepareForReuse];
+	[super layoutSubviews];
+	
+	CGSize textLabelSize = CGSizeZero;
+	if ( [self textLabel] != nil )
+	{
+		textLabelSize = [[self textLabel] bounds].size;
+		textLabelSize.width += 10.0;
+	}
 }
 
-- (CGFloat)gvc_heightForCell
-{
-    return [super gvc_heightForCell];
-}
 @end

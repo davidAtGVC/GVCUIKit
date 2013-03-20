@@ -13,4 +13,10 @@
 - (void)gvc_scrollToTop:(BOOL)animated;
 - (void)gvc_scrollToBottom:(BOOL)animated;
 
+/**
+ * Calculates the default table cell margin based on the table style
+ * @returns cell margin as a CGFloat
+ */
+- (CGFloat)gvc_tableCellMargin;
+
 @end

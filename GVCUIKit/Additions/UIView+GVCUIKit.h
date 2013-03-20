@@ -21,6 +21,28 @@
 - (void)gvc_drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color;
 - (void)gvc_drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)rad borderWidth:(CGFloat)thickness color:(UIColor*)color borderColor:(UIColor*)border;
 
-- (CGFloat)gvc_heightForCell;
+/**
+ * Adjust the cell width.  This is a convenience for view.frame.size.width
+ * @returns frame width
+ */
+- (CGFloat)gvc_frameWidth;
+
+/**
+ * Adjust the cell width.  This is a convenience for view.frame.size.width
+ * @param width to change the frame
+ */
+- (void)gvc_setFrameWidth:(CGFloat)width;
+
+/**
+ * Adjust the cell width.  This is a convenience for view.frame.size.width
+ * @returns frame height
+ */
+- (CGFloat)gvc_frameHeight;
+
+/**
+ * Adjust the cell width.  This is a convenience for view.frame.size.width
+ * @param height to change the frame
+ */
+- (void)gvc_setFrameHeight:(CGFloat)height;
 
 @end

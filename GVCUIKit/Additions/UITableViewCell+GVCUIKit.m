@@ -8,6 +8,7 @@
 
 #import "UITableViewCell+GVCUIKit.h"
 #import "UILabel+GVCUIKit.h"
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation UITableViewCell (GVCUIKit)
 
@@ -37,22 +38,6 @@
 + (NSString *)gvc_DefaultCellIdentifier 
 {
     return NSStringFromClass([self class]);
-}
-
-- (CGFloat)gvc_heightForCell
-{
-    CGFloat height = 44.0;
-    UILabel *tLabel = [self textLabel];
-    UILabel *dLabel = [self detailTextLabel];
-    if ((tLabel != nil) && ([tLabel numberOfLines] != 1))
-    {
-        height = MAX([tLabel gvc_heightForCell], height);
-    }
-    if ((dLabel != nil) && ([dLabel numberOfLines] != 1))
-    {
-        height = MAX([dLabel gvc_heightForCell], height);
-    }
-    return height;
 }
 
 @end

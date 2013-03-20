@@ -12,17 +12,9 @@
 
 @implementation GVCDatePickerTableViewController
 
-@synthesize datePicker;
-@synthesize labelKey;
-@synthesize detailKey;
-@synthesize currentDate;
-@synthesize gvcTableView;
-@synthesize minimumDate;
-@synthesize maximumDate;
-
 - (IBAction)dateChanged:sender
 {
-	[self setCurrentDate:[datePicker date]];
+	[self setCurrentDate:[[self datePicker] date]];
 	if ( [self callbackDelegate] != nil )
 	{
 		[[self callbackDelegate] setValue:[self currentDate] forKey:[self labelKey]];
@@ -46,21 +38,21 @@
     [theDatePicker setDatePickerMode:UIDatePickerModeDate];
     [self setDatePicker:theDatePicker];
 	
-    [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
-    [[self view] addSubview:datePicker];
+    [[self datePicker] addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+    [[self view] addSubview:[self datePicker]];
 	[[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated 
 {
-    if (currentDate != nil)
-        [self.datePicker setDate:currentDate animated:YES];	
+    if ([self currentDate] != nil)
+        [[self datePicker] setDate:[self currentDate] animated:YES];
     else 
-        [self.datePicker setDate:[NSDate date] animated:YES];
+        [[self datePicker] setDate:[NSDate date] animated:YES];
 	
-	[datePicker sizeToFit];
-	[datePicker setMinimumDate:[self minimumDate]];
-	[datePicker setMaximumDate:[self maximumDate]];
+	[[self datePicker] sizeToFit];
+	[[self datePicker] setMinimumDate:[self minimumDate]];
+	[[self datePicker] setMaximumDate:[self maximumDate]];
 
     [[self gvcTableView] reloadData];
 	[self setHidesBottomBarWhenPushed:YES];
@@ -98,11 +90,34 @@
 	
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
-	[[cell textLabel] setText:GVC_LocalizedString(labelKey, labelKey)];
-	[[cell detailTextLabel] setText:[formatter stringFromDate:[self.datePicker date]]];
+	[[cell textLabel] setText:GVC_LocalizedString([self labelKey], [self labelKey])];
+	[[cell detailTextLabel] setText:[formatter stringFromDate:[[self datePicker] date]]];
     
     return cell;
 }
+
+#pragma mark - GVCTableViewDataSourceProtocol
+
+- (NSArray *)tableView:(UITableView *)tableView rowsForSection:(NSUInteger)section
+{
+	return ([[self datePicker] date] != nil ? @[[[self datePicker] date]] : [NSArray array]);
+}
+
+- (id)tableView:(UITableView*)tableView objectForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+	return [[self datePicker] date];
+}
+
+- (NSIndexPath*)tableView:(UITableView*)tableView indexPathForObject:(id)object
+{
+	return (object != nil ? [NSIndexPath indexPathForItem:1 inSection:1] : nil);
+}
+
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id)object
+{
+	return [GVCUITableViewCell class];
+}
+
 
 @end
 

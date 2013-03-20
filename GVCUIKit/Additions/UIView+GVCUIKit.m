@@ -93,9 +93,29 @@
 	CGContextDrawPath(context, kCGPathStroke);
 }
 
-- (CGFloat)gvc_heightForCell
+
+- (CGFloat)gvc_frameWidth
 {
-    return [self bounds].size.height;
+	return [self frame].size.width;
+}
+
+- (void)gvc_setFrameWidth:(CGFloat)width
+{
+	CGRect frame = [self frame];
+	frame.size.width = width;
+	[self setFrame:frame];
+}
+
+- (CGFloat)gvc_frameHeight
+{
+	return [self frame].size.height;
+}
+
+- (void)gvc_setFrameHeight:(CGFloat)height
+{
+	CGRect frame = [self frame];
+	frame.size.height = height;
+	[self setFrame:frame];
 }
 
 @end
