@@ -44,6 +44,10 @@
 		053BDF8716BF461400D33687 /* GVCTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BDF8516BF461400D33687 /* GVCTokenView.m */; };
 		053BDFF016BF60CE00D33687 /* GVCTokenFieldView.h in Headers */ = {isa = PBXBuildFile; fileRef = 053BDFEE16BF60CD00D33687 /* GVCTokenFieldView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		053BDFF116BF60CE00D33687 /* GVCTokenFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 053BDFEF16BF60CD00D33687 /* GVCTokenFieldView.m */; };
+		05484A3416F96954003395AE /* NSObject+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 05484A3016F96954003395AE /* NSObject+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05484A3516F96954003395AE /* NSObject+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 05484A3116F96954003395AE /* NSObject+GVCUIKit.m */; };
+		05484A3616F96954003395AE /* UITableViewController+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 05484A3216F96954003395AE /* UITableViewController+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05484A3716F96954003395AE /* UITableViewController+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 05484A3316F96954003395AE /* UITableViewController+GVCUIKit.m */; };
 		0549F0C4159A512100A93F3A /* UILabel+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0549F0C2159A512100A93F3A /* UILabel+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0549F0C5159A512100A93F3A /* UILabel+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */; };
 		0550C537159B403A00E43AD3 /* UITextView+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -216,6 +220,10 @@
 		053BDF8516BF461400D33687 /* GVCTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCTokenView.m; sourceTree = "<group>"; };
 		053BDFEE16BF60CD00D33687 /* GVCTokenFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTokenFieldView.h; sourceTree = "<group>"; };
 		053BDFEF16BF60CD00D33687 /* GVCTokenFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCTokenFieldView.m; sourceTree = "<group>"; };
+		05484A3016F96954003395AE /* NSObject+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GVCUIKit.h"; sourceTree = "<group>"; };
+		05484A3116F96954003395AE /* NSObject+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GVCUIKit.m"; sourceTree = "<group>"; };
+		05484A3216F96954003395AE /* UITableViewController+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+GVCUIKit.h"; sourceTree = "<group>"; };
+		05484A3316F96954003395AE /* UITableViewController+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+GVCUIKit.m"; sourceTree = "<group>"; };
 		0549F0C2159A512100A93F3A /* UILabel+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+GVCUIKit.h"; sourceTree = "<group>"; };
 		0549F0C3159A512100A93F3A /* UILabel+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+GVCUIKit.m"; sourceTree = "<group>"; };
 		0550C535159B403A00E43AD3 /* UITextView+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+GVCUIKit.h"; sourceTree = "<group>"; };
@@ -433,6 +441,10 @@
 		055D8E2714FF058000E85A94 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				05484A3016F96954003395AE /* NSObject+GVCUIKit.h */,
+				05484A3116F96954003395AE /* NSObject+GVCUIKit.m */,
+				05484A3216F96954003395AE /* UITableViewController+GVCUIKit.h */,
+				05484A3316F96954003395AE /* UITableViewController+GVCUIKit.m */,
 				0583CB9916BC1BB200D70E11 /* UINavigationController+GVCUIKit.h */,
 				0583CB9A16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m */,
 				055D8E5214FF0A3700E85A94 /* UIColor+GVCUIKit.h */,
@@ -800,6 +812,8 @@
 				0583CB9B16BC1BB200D70E11 /* UINavigationController+GVCUIKit.h in Headers */,
 				053BDF8616BF461400D33687 /* GVCTokenView.h in Headers */,
 				053BDFF016BF60CE00D33687 /* GVCTokenFieldView.h in Headers */,
+				05484A3416F96954003395AE /* NSObject+GVCUIKit.h in Headers */,
+				05484A3616F96954003395AE /* UITableViewController+GVCUIKit.h in Headers */,
 				052FB8B016D57DEF00BB849C /* GVCUISearchBar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1026,6 +1040,8 @@
 				053BDF8716BF461400D33687 /* GVCTokenView.m in Sources */,
 				053BDFF116BF60CE00D33687 /* GVCTokenFieldView.m in Sources */,
 				052FB8B116D57DEF00BB849C /* GVCUISearchBar.m in Sources */,
+				05484A3516F96954003395AE /* NSObject+GVCUIKit.m in Sources */,
+				05484A3716F96954003395AE /* UITableViewController+GVCUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
