@@ -30,11 +30,6 @@
 	return dynamicSize.height;
 }
 
-- (CGFloat)gvc_heightForCell
-{
-	return [self gvc_heightForText];
-}
-
 - (CGFloat)gvc_heightForText
 {
     CGFloat height = 0.0;

@@ -12,5 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
+- (void)prepareTextView;
+
 @end
 

@@ -22,19 +22,26 @@
     self = [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:reuseIdentifier];
     if (self != nil)
     {
-        [self setTextView:[[UITextView alloc] initWithFrame:CGRectZero]];
-        [[self textView] setFont:[UIFont boldSystemFontOfSize:14.0]];
-        [[self textView] setDelegate:self];
-        [[self contentView] addSubview:[self textView]];
+		[self prepareTextView];
     }
     return self;
 }
 
+- (void)prepareTextView
+{
+	if ( [self textView] == nil )
+	{
+		[self setTextView:[[UITextView alloc] initWithFrame:CGRectZero]];
+		[[self contentView] addSubview:[self textView]];
+	}
+	[[self textView] setFont:[UIFont boldSystemFontOfSize:14.0]];
+	[[self textView] setDelegate:self];
+}
 
-- (void)layoutSubviews 
+- (void)layoutSubviews
 {
     [super layoutSubviews];
-	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
+	CGRect r = CGRectInset(self.contentView.bounds, 8, 0);
     if ( [self textLabel] != nil )
 	{
         CGSize textLabelSize = [[self textLabel] bounds].size;
@@ -76,8 +83,19 @@
 
 #pragma mark Text Field
 //- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+- (BOOL)textView:(UITextView *)txtView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+	NSString *newtext = [[txtView text] stringByReplacingCharactersInRange:range withString:text];
+	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCell:textChangedTo:)])
+	{
+		[[self delegate] gvcEditCell:self textChangedTo:newtext];
+	}
+	
+	if ( [self dataChangeBlock] != nil )
+	{
+		self.dataChangeBlock(newtext);
+	}
+
 	return YES;
 }
 
@@ -102,13 +120,22 @@
 	}
 }
 
+- (void)textViewDidChange:(UITextView *)txtView
+{
+	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCell:textChangedTo:)])
+	{
+		[[self delegate] gvcEditCell:self textChangedTo:[txtView text]];
+	}
+	
+	if ( [self dataChangeBlock] != nil )
+	{
+		self.dataChangeBlock([txtView text]);
+	}
+}
+
 // saving here occurs both on return key and changing away
 - (void)textViewDidEndEditing:(UITextView *)txtView
 {
-    //	((UITableView*)[self superview]).scrollEnabled = YES;
-    UITableView *tv = (UITableView *) [self superview];
-    [tv scrollToRowAtIndexPath:[tv indexPathForCell:self] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    
 	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCell:textChangedTo:)])
 	{
 		[[self delegate] gvcEditCell:self textChangedTo:[txtView text]];

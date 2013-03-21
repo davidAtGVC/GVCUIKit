@@ -29,8 +29,6 @@
  */
 + (CGFloat)gvc_heightForText:(NSString *)text width:(CGFloat)width forFont:(UIFont *)font andLinebreak:(NSLineBreakMode)mode;
 
-- (CGFloat)gvc_heightForCell;
-
 - (CGFloat)gvc_heightForText;
 
 /** UI Appearance method 
