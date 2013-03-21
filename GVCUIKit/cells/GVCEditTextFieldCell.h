@@ -25,6 +25,11 @@
 - (UITextAutocorrectionType)autocorrectionType;
 - (void)setAutocorrectionType:(UITextAutocorrectionType)kt;
 
+/**
+ Method to create a UITextField for the cell, allowing for subclasses to use different UITextfields rather than the default one
+ */
+-(void) prepareTextField;
+
 @end
 
 //@protocol GVCEditTextFieldCellDelegate <NSObject>

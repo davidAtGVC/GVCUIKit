@@ -21,23 +21,32 @@
         // Initialization code
 		[[self textLabel] setAdjustsFontSizeToFitWidth:YES];
 		[[self textLabel] setMinimumFontSize:10];
-		
-		textField = [[UITextField alloc] initWithFrame:CGRectZero];
-		textField.backgroundColor = [UIColor whiteColor];
-		textField.textColor = [UIColor colorWithRed:12850./65535 green:20303./65535 blue:34181./65535 alpha:1.0];
-		textField.font = [UIFont systemFontOfSize:18];
-		[textField setAdjustsFontSizeToFitWidth:YES];
-		[textField setMinimumFontSize:12];
-        [textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-        [textField setClearButtonMode:UITextFieldViewModeWhileEditing];
-		textField.autocorrectionType = UITextAutocorrectionTypeNo;
-		textField.keyboardType = UIKeyboardTypeDefault;	// use the default type input method (entire keyboard)
-		textField.returnKeyType = UIReturnKeyDone;
-		
-		textField.delegate = self;
-		[self.contentView addSubview:textField];
-    }
+		[self prepareTextField];
+     }
+    
     return self;
+}
+
+-(void) prepareTextField
+{
+    if ([self textField] == nil)
+    {
+        [self setTextField:[[UITextField alloc] initWithFrame:CGRectZero]];
+		[[self contentView] addSubview:textField];
+    }
+    
+    [[self textField] setBackgroundColor:[UIColor whiteColor]];
+    [[self textField] setTextColor:[UIColor colorWithRed:12850./65535 green:20303./65535 blue:34181./65535 alpha:1.0]];
+    [[self textField] setFont:[UIFont systemFontOfSize:18]];
+    [[self textField] setAdjustsFontSizeToFitWidth:YES];
+    [[self textField] setMinimumFontSize:12];
+    [[self textField] setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+    [[self textField] setClearButtonMode:UITextFieldViewModeWhileEditing];
+    [[self textField] setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [[self textField] setKeyboardType:UIKeyboardTypeDefault];	// use the default type input method (entire keyboard)
+    [[self textField] setReturnKeyType:UIReturnKeyDone];
+    [[self textField] setDelegate:self];
+    
 }
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
