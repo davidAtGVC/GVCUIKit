@@ -21,28 +21,41 @@
 - (void)gvc_drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color;
 - (void)gvc_drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)rad borderWidth:(CGFloat)thickness color:(UIColor*)color borderColor:(UIColor*)border;
 
+
 /**
- * Adjust the cell width.  This is a convenience for view.frame.size.width
+ * This is a convenience for view.frame.size
+ * @returns frame size
+ */
+@property (nonatomic) CGSize gvc_frameSize;
+
+/**
+ * This is a convenience for view.frame.origin
+ * @returns frame origin
+ */
+@property (nonatomic) CGPoint gvc_frameOrigin;
+
+/**
+ * This is a convenience for view.frame.origin.x
+ * @returns frame origin x
+ */
+@property (nonatomic) CGFloat gvc_frameX;
+
+/**
+ * This is a convenience for view.frame.origin.y
+ * @returns frame origin y
+ */
+@property (nonatomic) CGFloat gvc_frameY;
+
+/**
+ * Adjust the view width.  This is a convenience for view.frame.size.width
  * @returns frame width
  */
-- (CGFloat)gvc_frameWidth;
+@property (nonatomic) CGFloat gvc_frameWidth;
 
 /**
- * Adjust the cell width.  This is a convenience for view.frame.size.width
- * @param width to change the frame
- */
-- (void)gvc_setFrameWidth:(CGFloat)width;
-
-/**
- * Adjust the cell width.  This is a convenience for view.frame.size.width
+ * Adjust the view width.  This is a convenience for view.frame.size.width
  * @returns frame height
  */
-- (CGFloat)gvc_frameHeight;
-
-/**
- * Adjust the cell width.  This is a convenience for view.frame.size.width
- * @param height to change the frame
- */
-- (void)gvc_setFrameHeight:(CGFloat)height;
+@property (nonatomic) CGFloat gvc_frameHeight;
 
 @end

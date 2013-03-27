@@ -93,6 +93,53 @@
 	CGContextDrawPath(context, kCGPathStroke);
 }
 
+#pragma mark - Frame 
+- (CGSize)gvc_frameSize
+{
+	return [self frame].size;
+}
+
+- (void)gvc_setFrameSize:(CGSize)size
+{
+	CGPoint origin = [self frame].origin;
+	[self setFrame:CGRectMake(origin.x, origin.y, size.width, size.height)];
+}
+
+- (CGPoint)gvc_frameOrigin
+{
+	return [self frame].origin;
+}
+
+- (void)gvc_setFrameOrigin:(CGPoint)point
+{
+	CGSize size = [self frame].size;
+	[self setFrame:CGRectMake(point.x, point.y, size.width, size.height)];
+}
+
+- (CGFloat)gvc_frameX
+{
+	return [self frame].origin.x;
+}
+
+- (void)gvc_setFrameX:(CGFloat)x
+{
+	CGRect frame = [self frame];
+	frame.origin.x = x;
+	[self setFrame:frame];
+}
+
+- (CGFloat)gvc_frameY
+{
+	return [self frame].origin.y;
+}
+
+- (void)gvc_setFrameY:(CGFloat)y
+{
+	CGRect frame = [self frame];
+	frame.origin.y = y;
+	[self setFrame:frame];
+}
+
 
 - (CGFloat)gvc_frameWidth
 {
