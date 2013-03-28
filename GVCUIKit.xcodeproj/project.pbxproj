@@ -32,6 +32,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		05158BE71703C2170079DB42 /* GVCStackedViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05158BE51703C2170079DB42 /* GVCStackedViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05158BE81703C2170079DB42 /* GVCStackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05158BE61703C2170079DB42 /* GVCStackedViewController.m */; };
 		051B26181559859C001B4377 /* GVCUINavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 051B26161559859C001B4377 /* GVCUINavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		051B26191559859C001B4377 /* GVCUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051B26171559859C001B4377 /* GVCUINavigationController.m */; };
 		051B261E1559C8BE001B4377 /* GVCUITabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 051B261C1559C8BD001B4377 /* GVCUITabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -208,6 +210,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05158BE51703C2170079DB42 /* GVCStackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCStackedViewController.h; sourceTree = "<group>"; };
+		05158BE61703C2170079DB42 /* GVCStackedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCStackedViewController.m; sourceTree = "<group>"; };
 		051B26161559859C001B4377 /* GVCUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUINavigationController.h; sourceTree = "<group>"; };
 		051B26171559859C001B4377 /* GVCUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUINavigationController.m; sourceTree = "<group>"; };
 		051B261C1559C8BD001B4377 /* GVCUITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUITabBarController.h; sourceTree = "<group>"; };
@@ -521,6 +525,8 @@
 				05D00FC9155BFE6D009F2837 /* GVCPageScrollviewController.m */,
 				05BA45291590CF7700F5AF5A /* GVCUIContainerViewController.h */,
 				05BA452A1590CF7700F5AF5A /* GVCUIContainerViewController.m */,
+				05158BE51703C2170079DB42 /* GVCStackedViewController.h */,
+				05158BE61703C2170079DB42 /* GVCStackedViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -815,6 +821,7 @@
 				05484A3416F96954003395AE /* NSObject+GVCUIKit.h in Headers */,
 				05484A3616F96954003395AE /* UITableViewController+GVCUIKit.h in Headers */,
 				052FB8B016D57DEF00BB849C /* GVCUISearchBar.h in Headers */,
+				05158BE71703C2170079DB42 /* GVCStackedViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,6 +1049,7 @@
 				052FB8B116D57DEF00BB849C /* GVCUISearchBar.m in Sources */,
 				05484A3516F96954003395AE /* NSObject+GVCUIKit.m in Sources */,
 				05484A3716F96954003395AE /* UITableViewController+GVCUIKit.m in Sources */,
+				05158BE81703C2170079DB42 /* GVCStackedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

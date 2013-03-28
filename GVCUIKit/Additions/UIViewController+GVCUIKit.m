@@ -8,6 +8,8 @@
 
 #import "UIViewController+GVCUIKit.h"
 
+#import "GVCStackedViewController.h"
+
 /**
  * 
  */
@@ -33,6 +35,26 @@
 			[target loadDynamicContentForIndexPaths: [(UITableView *)scrollView indexPathsForVisibleRows]];
 		}
 	}
+}
+
+- (GVCStackedViewController *)gvc_stackedViewController
+{
+	GVCStackedViewController *stackContainer = nil;
+	
+	if ( [self isKindOfClass:[GVCStackedViewController class]] == YES)
+	{
+		stackContainer = (GVCStackedViewController *)self;
+	}
+	else
+	{
+		UIViewController *parent = [self parentViewController];
+		if ((parent != nil) && (parent != [parent parentViewController]))
+		{
+			stackContainer = [parent gvc_stackedViewController];
+		}
+	}
+	
+    return stackContainer;
 }
 
 

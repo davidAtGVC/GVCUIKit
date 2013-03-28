@@ -7,6 +7,7 @@
  */
 
 #import "UIView+GVCUIKit.h"
+#import <QuartzCore/QuartzCore.h>
 #import <GVCFoundation/GVCFoundation.h>
 
 @implementation UIView (GVCUIKit)
@@ -93,13 +94,43 @@
 	CGContextDrawPath(context, kCGPathStroke);
 }
 
+- (void)gvc_showLeftShadow:(BOOL)showing withOpacity:(float)opaque
+{
+	CALayer  *layer = [self layer];
+	layer.shadowOpacity = (showing == YES ? opaque : 0.0f);
+	
+	if (showing == YES)
+	{
+		layer.shadowColor = [UIColor blackColor].CGColor;
+		layer.cornerRadius = 4.0f;
+		layer.shadowRadius = 4.0f;
+		layer.masksToBounds = NO;
+		layer.shadowPath = [UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
+	}
+}
+
+- (void)gvc_showRightShadow:(BOOL)showing withOpacity:(float)opaque
+{
+	CALayer  *layer = [self layer];
+	layer.shadowOpacity = (showing == YES ? opaque : 0.0f);
+	
+	if (showing == YES)
+	{
+		layer.shadowColor = [UIColor blackColor].CGColor;
+		layer.cornerRadius = 4.0f;
+		layer.shadowRadius = 4.0f;
+		layer.masksToBounds = NO;
+		layer.shadowPath = [UIBezierPath bezierPathWithRect:layer.bounds].CGPath;
+	}
+}
+
 #pragma mark - Frame 
 - (CGSize)gvc_frameSize
 {
 	return [self frame].size;
 }
 
-- (void)gvc_setFrameSize:(CGSize)size
+- (void)setGvc_frameSize:(CGSize)size
 {
 	CGPoint origin = [self frame].origin;
 	[self setFrame:CGRectMake(origin.x, origin.y, size.width, size.height)];
@@ -110,7 +141,7 @@
 	return [self frame].origin;
 }
 
-- (void)gvc_setFrameOrigin:(CGPoint)point
+- (void)setGvc_frameOrigin:(CGPoint)point
 {
 	CGSize size = [self frame].size;
 	[self setFrame:CGRectMake(point.x, point.y, size.width, size.height)];
@@ -121,7 +152,7 @@
 	return [self frame].origin.x;
 }
 
-- (void)gvc_setFrameX:(CGFloat)x
+- (void)setGvc_frameX:(CGFloat)x
 {
 	CGRect frame = [self frame];
 	frame.origin.x = x;
@@ -133,7 +164,7 @@
 	return [self frame].origin.y;
 }
 
-- (void)gvc_setFrameY:(CGFloat)y
+- (void)setGvc_frameY:(CGFloat)y
 {
 	CGRect frame = [self frame];
 	frame.origin.y = y;
@@ -146,7 +177,7 @@
 	return [self frame].size.width;
 }
 
-- (void)gvc_setFrameWidth:(CGFloat)width
+- (void)setGvc_frameWidth:(CGFloat)width
 {
 	CGRect frame = [self frame];
 	frame.size.width = width;
@@ -158,7 +189,7 @@
 	return [self frame].size.height;
 }
 
-- (void)gvc_setFrameHeight:(CGFloat)height
+- (void)setGvc_frameHeight:(CGFloat)height
 {
 	CGRect frame = [self frame];
 	frame.size.height = height;

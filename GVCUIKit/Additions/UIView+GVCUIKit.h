@@ -21,6 +21,11 @@
 - (void)gvc_drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color;
 - (void)gvc_drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)rad borderWidth:(CGFloat)thickness color:(UIColor*)color borderColor:(UIColor*)border;
 
+/**
+ * draws a simple shadow under the view
+ */
+- (void)gvc_showLeftShadow:(BOOL)showing withOpacity:(float)opaque;
+- (void)gvc_showRightShadow:(BOOL)showing withOpacity:(float)opaque;
 
 /**
  * This is a convenience for view.frame.size

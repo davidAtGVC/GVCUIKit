@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class GVCStackedViewController;
 
 @protocol UITableViewDynamicContentController
 // passes array of index paths.
@@ -15,5 +16,8 @@
 @end
 
 @interface UIViewController (GVCUIKit)
+
+// The nearest parent in the view controller hierarchy that is a stack view controller.
+@property (nonatomic, weak, readonly) GVCStackedViewController *gvc_stackedViewController;
 
 @end
