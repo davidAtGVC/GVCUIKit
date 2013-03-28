@@ -25,10 +25,6 @@ GVC_DEFINE_STRVALUE(LEFT_SEGUE_ID, leftSegue);
 GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 
 @interface GVCStackedViewController ()
-
-@property (nonatomic, assign) CGPoint panGestureOrigin;
-@property (nonatomic, assign) CGFloat panGestureVelocity;
-
 @property (nonatomic, strong, readwrite) UIViewController *leftViewController;
 @property (nonatomic, strong, readwrite) UIViewController *rootViewController;
 @property (nonatomic, strong, readwrite) UIViewController *rightViewController;
@@ -36,7 +32,8 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 @property (nonatomic, assign) GVCStackedViewControllerVisible state;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
-
+@property (nonatomic, assign) CGPoint panGestureOrigin;
+@property (nonatomic, assign) CGFloat panGestureVelocity;
 @end
 
 @implementation GVCStackedViewController
@@ -133,6 +130,15 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 	
 	CGRect bounds = [[self view] bounds];
 	[[[self rootViewController] view] setFrame:CGRectMake(0.0, 0.0, bounds.size.width, bounds.size.height)];
+
+	if ([self tapGesture] == nil)
+	{
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
+        [tap setDelegate:self];
+        [[self view] addGestureRecognizer:tap];
+        [tap setEnabled:NO];
+        [self setTapGesture:tap];
+    }
 }
 
 #pragma mark - child view controllers
@@ -360,6 +366,7 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
+	BOOL isValid = NO;
     if (gestureRecognizer == [self panGesture])
 	{
         UIPanGestureRecognizer *panGesture = (UIPanGestureRecognizer*)gestureRecognizer;
@@ -367,28 +374,30 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 		CGPoint velocity = [panGesture velocityInView:[self view]];
         if ((velocity.x < 600) && (sqrt(translation.x * translation.x) / sqrt(translation.y * translation.y) > 1))
 		{
-            return YES;
+            isValid = YES;
         }
-        
-        return NO;
     }
-    
-    if (gestureRecognizer == [self tapGesture])
+	else if ( gestureRecognizer == [self tapGesture])
 	{
-		// tap gesture is only good in the side menus
-		if ( [self rootViewController] != nil)
-		{
-			if (([self state] == GVCStackedViewControllerVisible_LEFT) || ([self state] == GVCStackedViewControllerVisible_RIGHT))
-			{
-				return CGRectContainsPoint([[[self rootViewController] view] bounds], [gestureRecognizer locationInView:[self view]]);
-			}
-        }
-        
-        return NO;
-    }
+		isValid = CGRectContainsPoint([[[self rootViewController] view] frame], [gestureRecognizer locationInView:[self view]]);
+	}
+
+    return isValid;
 	
-    return YES;
-	
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gesture shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other
+{
+    return (gesture == [self tapGesture]);
+}
+
+
+- (void)tapGesture:(id)sender
+{
+	[[self tapGesture] setEnabled:NO];
+	[self showRootPanel:^(BOOL completed) {
+		// nothing
+	}];
 }
 
 #pragma mark - Pan Gestures
@@ -409,6 +418,7 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 	[[[self leftViewController] view] setFrame:CGRectMake(0.0, 0.0, [self leftVisibleWidth], bounds.size.height)];
 	[[[self leftViewController] view] setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
 	[[self view] sendSubviewToBack:[[self leftViewController] view]];
+	[[self tapGesture] setEnabled:YES];
 
 	[UIView animateWithDuration:DEFAULT_ANIMATION_DURATION delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		[[[self leftViewController] view] setHidden:NO];
@@ -436,6 +446,7 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 	
 	[[[self rightViewController] view] setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
 	[[self view] sendSubviewToBack:[[self rightViewController] view]];
+	[[self tapGesture] setEnabled:YES];
 
 	[UIView animateWithDuration:DEFAULT_ANIMATION_DURATION delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		[[[self rightViewController] view] setHidden:NO];
@@ -459,6 +470,7 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 	}
 	[[[self rootViewController] view] setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
 	[[[self rootViewController] view] setHidden:NO];
+	[[self tapGesture] setEnabled:NO];
 
 	[UIView animateWithDuration:DEFAULT_ANIMATION_DURATION delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		CGRect bounds = [[self view] bounds];
