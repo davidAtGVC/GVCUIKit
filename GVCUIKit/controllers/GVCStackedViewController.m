@@ -33,7 +33,7 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, assign) CGPoint panGestureOrigin;
-@property (nonatomic, assign) CGFloat panGestureVelocity;
+@property (nonatomic, assign) GVCStackedViewControllerVisible panningState;
 @end
 
 @implementation GVCStackedViewController
@@ -133,7 +133,7 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 
 	if ([self tapGesture] == nil)
 	{
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(performTapGesture:)];
         [tap setDelegate:self];
         [[self view] addGestureRecognizer:tap];
         [tap setEnabled:NO];
@@ -214,12 +214,13 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 		}
 		
 		[self placeButtonsOnRootView];
+		[self placePanGestureOnRootView];
         [[self view] bringSubviewToFront:[_rootViewController view]];
 		
-        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panRootView:)];
-        [pan setDelegate:(id<UIGestureRecognizerDelegate>)self];
-        [[_rootViewController view] addGestureRecognizer:pan];
-		[self setPanGesture:pan];
+//        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(performPanGesture:)];
+//        [pan setDelegate:(id<UIGestureRecognizerDelegate>)self];
+//        [[_rootViewController view] addGestureRecognizer:pan];
+//		[self setPanGesture:pan];
 	}
 }
 
@@ -361,6 +362,22 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 	}
 }
 
+- (void)placePanGestureOnRootView
+{
+	//        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(performPanGesture:)];
+	//        [pan setDelegate:(id<UIGestureRecognizerDelegate>)self];
+	//        [[_rootViewController view] addGestureRecognizer:pan];
+	//		[self setPanGesture:pan];
+
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(performPanGesture:)];
+    [panGesture setDelegate:self];
+//    [panGesture setMaximumNumberOfTouches:1];
+//    [panGesture setMinimumNumberOfTouches:1];
+	[self setPanGesture:panGesture];
+	
+    [[[self rootViewController] view] addGestureRecognizer:[self panGesture]];
+}
+
 
 #pragma mark - Gesture Recognizer Delegate
 
@@ -370,12 +387,24 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
     if (gestureRecognizer == [self panGesture])
 	{
         UIPanGestureRecognizer *panGesture = (UIPanGestureRecognizer*)gestureRecognizer;
-        CGPoint translation = [panGesture translationInView:[self view]];
-		CGPoint velocity = [panGesture velocityInView:[self view]];
-        if ((velocity.x < 600) && (sqrt(translation.x * translation.x) / sqrt(translation.y * translation.y) > 1))
+        CGPoint translate = [panGesture translationInView:[[self rootViewController] view]];
+        if (translate.x < 0)
 		{
-            isValid = YES;
+			// pan right is only allowed if the right controller is set
+            isValid = ([self state] == GVCStackedViewControllerVisible_LEFT) || ([self rightViewController] != nil);
         }
+		else if (translate.x > 0)
+		{
+			// pan left is only allowed if the left controller is set
+            isValid = ([self state] == GVCStackedViewControllerVisible_RIGHT) || ([self leftViewController] != nil);
+        }
+		else
+		{
+//			BOOL possible = translate.x != 0 && ((fabsf(translate.y) / fabsf(translate.x)) < 1.0f);
+//			if (possible && ((translate.x > 0 && self.leftPanel) || (translate.x < 0 && self.rightPanel))) {
+//				return YES;
+//			}
+		}
     }
 	else if ( gestureRecognizer == [self tapGesture])
 	{
@@ -391,8 +420,9 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
     return (gesture == [self tapGesture]);
 }
 
+#pragma mark - Gestures
 
-- (void)tapGesture:(id)sender
+- (void)performTapGesture:(UIGestureRecognizer *)gesture
 {
 	[[self tapGesture] setEnabled:NO];
 	[self showRootPanel:^(BOOL completed) {
@@ -400,40 +430,138 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 	}];
 }
 
-#pragma mark - Pan Gestures
-
-- (void)panRootView:(UIGestureRecognizer *)sender
+- (void)performPanGesture:(UIGestureRecognizer *)gesture
 {
+	UIPanGestureRecognizer *panGesture = (UIPanGestureRecognizer *)gesture;
+	
+    UIView *panningView = [panGesture view];
+    UIView *rootView = [[self rootViewController] view];
+	CGRect bounds = [[self view] bounds];
+
+	if ([panGesture state] == UIGestureRecognizerStateBegan)
+	{
+		CGPoint translation = [panGesture translationInView:[self view]];
+		[self setPanGestureOrigin:[rootView gvc_frameOrigin]];
+		
+		// default is unchanged state
+		[self setPanningState:[self state]];
+	}
+
+	if ([panGesture velocityInView:panningView].x > 0)
+	{
+		if ( [self state] == GVCStackedViewControllerVisible_RIGHT)
+		{
+			// if right is visible, then the taget is ROOT
+			[self setPanningState:GVCStackedViewControllerVisible_ROOT];
+		}
+		else
+		{
+			[self setPanningState:GVCStackedViewControllerVisible_LEFT];
+			[self loadLeftPanel];
+		}
+	}
+	else
+	{
+		if ( [self state] == GVCStackedViewControllerVisible_LEFT)
+		{
+			// if left is visible, then the taget is ROOT
+			[self setPanningState:GVCStackedViewControllerVisible_ROOT];
+		}
+		else
+		{
+			[self setPanningState:GVCStackedViewControllerVisible_RIGHT];
+			[self loadRightPanel];
+		}
+	}
+	
+	CGPoint translation = [panGesture translationInView:[self view]];
+	CGRect rootFrame = [rootView frame];
+	CGFloat newX = [self panGestureOrigin].x + translation.x;
+	if ((newX > 0.0) && ([self leftViewController] == nil))
+	{
+		newX = rootFrame.origin.x;
+	}
+	else
+	{
+		[[[self rootViewController] view] gvc_showLeftShadow:YES withOpacity:0.8];
+	}
+	
+	if ((newX < 0.0) && ([self rightViewController] == nil))
+	{
+		newX = rootFrame.origin.x;
+	}
+	else
+	{
+		[[[self rootViewController] view] gvc_showRightShadow:YES withOpacity:0.8];
+	}
+	
+	[rootView setFrame:CGRectMake(newX, 0.0f, rootFrame.size.width, rootFrame.size.height)];
+			
+	if ([panGesture state] == UIGestureRecognizerStateEnded)
+	{
+		CGFloat minimum = floorf(bounds.size.width * 0.15f);
+		
+		if ([self panningState] == GVCStackedViewControllerVisible_RIGHT)
+		{
+			if (((-1 * translation.x) > minimum ) && ([self rightViewController] != nil))
+			{
+				[self showRightPanel:nil];
+			}
+			else
+			{
+				[self showRootPanel:nil];
+			}
+		}
+		else if ([self panningState] == GVCStackedViewControllerVisible_LEFT)
+		{
+			if ((translation.x > minimum) && ([self leftViewController] != nil))
+			{
+				[self showLeftPanel:nil];
+			}
+			else
+			{
+				[self showRootPanel:nil];
+			}
+		}
+		else
+		{
+			[self showRootPanel:nil];
+		}
+	}
+
+	if ([panGesture state] == UIGestureRecognizerStateCancelled)
+	{
+		if ( [self state] == GVCStackedViewControllerVisible_LEFT)
+		{
+			[self showLeftPanel:nil];
+		}
+		else if ( [self state] == GVCStackedViewControllerVisible_RIGHT)
+		{
+			[self showRightPanel:nil];
+		}
+		else
+		{
+			[self showRootPanel:nil];
+		}
+	}
 }
 
 #pragma mark - show and hide
-- (void)showLeftPanel:(void (^)(BOOL completed))completion
+- (void)loadLeftPanel
 {
 	if ( [[[self leftViewController] view] superview] == nil )
 	{
 		[[self view] addSubview:[[self leftViewController] view]];
 	}
-
+	
 	CGRect bounds = [[self view] bounds];
 	[[[self leftViewController] view] setFrame:CGRectMake(0.0, 0.0, [self leftVisibleWidth], bounds.size.height)];
 	[[[self leftViewController] view] setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
 	[[self view] sendSubviewToBack:[[self leftViewController] view]];
-	[[self tapGesture] setEnabled:YES];
-
-	[UIView animateWithDuration:DEFAULT_ANIMATION_DURATION delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		[[[self leftViewController] view] setHidden:NO];
-
-		CGFloat menuSize = [self leftVisibleWidth];
-		[[[self rootViewController] view] gvc_showLeftShadow:YES withOpacity:0.8];
-		[[[self rootViewController] view] setFrame:CGRectMake(menuSize, 0.0, bounds.size.width, bounds.size.height)];
-	} completion:^(BOOL finished) {
-		[self setState:GVCStackedViewControllerVisible_LEFT];
-		if (completion) {
-            completion(finished);
-        }
-	}];
+	[[[self leftViewController] view] setHidden:NO];
 }
-- (void)showRightPanel:(void (^)(BOOL completed))completion
+
+- (void)loadRightPanel
 {
 	if ( [[[self rightViewController] view] superview] == nil )
 	{
@@ -446,11 +574,35 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 	
 	[[[self rightViewController] view] setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
 	[[self view] sendSubviewToBack:[[self rightViewController] view]];
+	[[[self rightViewController] view] setHidden:NO];
+}
+
+- (void)showLeftPanel:(void (^)(BOOL completed))completion
+{
+	[self loadLeftPanel];
+	[[self tapGesture] setEnabled:YES];
+
+	[UIView animateWithDuration:DEFAULT_ANIMATION_DURATION delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		CGRect bounds = [[self view] bounds];
+		CGFloat menuSize = [self leftVisibleWidth];
+		[[[self rootViewController] view] gvc_showLeftShadow:YES withOpacity:0.8];
+		[[[self rootViewController] view] setFrame:CGRectMake(menuSize, 0.0, bounds.size.width, bounds.size.height)];
+	} completion:^(BOOL finished) {
+		[self setState:GVCStackedViewControllerVisible_LEFT];
+		if (completion) {
+            completion(finished);
+        }
+	}];
+}
+- (void)showRightPanel:(void (^)(BOOL completed))completion
+{
+	[self loadRightPanel];
 	[[self tapGesture] setEnabled:YES];
 
 	[UIView animateWithDuration:DEFAULT_ANIMATION_DURATION delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		[[[self rightViewController] view] setHidden:NO];
 
+		CGRect bounds = [[self view] bounds];
 		CGFloat menuSize = (-1 * [self rightVisibleWidth]);
 		[[[self rootViewController] view] gvc_showRightShadow:YES withOpacity:0.8];
 		[[[self rootViewController] view] setFrame:CGRectMake(menuSize, 0.0, bounds.size.width, bounds.size.height)];
