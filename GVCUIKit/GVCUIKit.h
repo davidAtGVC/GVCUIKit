@@ -98,6 +98,7 @@
  */
 #import "GVCBadgeView.h"
 #import "GVCColumnContainerView.h"
+#import "GVCLayoutView.h"
 #import "GVCMultiTextFieldView.h"
 #import "GVCProgressBarView.h"
 #import "GVCRoundBorderView.h"
