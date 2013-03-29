@@ -25,6 +25,7 @@ GVC_DEFINE_STRVALUE(LEFT_SEGUE_ID, leftSegue);
 GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 
 @interface GVCStackedViewController ()
+@property (nonatomic, copy) GVCStackedViewSegueBlock segueBlock;
 @property (nonatomic, strong, readwrite) UIViewController *leftViewController;
 @property (nonatomic, strong, readwrite) UIViewController *rootViewController;
 @property (nonatomic, strong, readwrite) UIViewController *rightViewController;
@@ -440,7 +441,7 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 
 	if ([panGesture state] == UIGestureRecognizerStateBegan)
 	{
-		CGPoint translation = [panGesture translationInView:[self view]];
+//		CGPoint translation = [panGesture translationInView:[self view]];
 		[self setPanGestureOrigin:[rootView gvc_frameOrigin]];
 		
 		// default is unchanged state
@@ -689,6 +690,21 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 	}
 }
 
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender prepareBlock:(GVCStackedViewSegueBlock)block
+{
+	[self setSegueBlock:block];
+	[self performSegueWithIdentifier:identifier sender:sender];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ( [self segueBlock] != nil )
+	{
+		GVCStackedViewSegueBlock block = [self segueBlock];
+		block(segue, sender);
+		[self setSegueBlock:nil];
+	}
+}
 
 @end
 

@@ -16,6 +16,12 @@ GVC_DEFINE_EXTERN_STR(LEFT_SEGUE_ID);
 /** defaultSegue */
 GVC_DEFINE_EXTERN_STR(DEFAULT_SEGUE_ID);
 
+/**
+ * Operation block declaration is used for the start and finished operation blocks
+ * @param operation the operation that has started or finished
+ */
+typedef void (^GVCStackedViewSegueBlock)(UIStoryboardSegue *segue, id sender);
+
 
 /** The stacked view controller supports 3 sub-view controllers.  The root and 2 hidden views on the left and right sides */
 @interface GVCStackedViewController : GVCUIViewController <UIGestureRecognizerDelegate>
@@ -23,6 +29,9 @@ GVC_DEFINE_EXTERN_STR(DEFAULT_SEGUE_ID);
 @property (nonatomic, strong, readonly) UIViewController *leftViewController;
 @property (nonatomic, strong, readonly) UIViewController *rootViewController;
 @property (nonatomic, strong, readonly) UIViewController *rightViewController;
+
+/** Performs the segue, executes the block during the prepareForSegue: method */
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender prepareBlock:(GVCStackedViewSegueBlock)block;
 
 /**
  * Width values may be a percentage (0.0 - 0.8) or a fixed width (60.0 - 80% bounds)
