@@ -29,7 +29,7 @@
         [(id <GVCUIModalViewControllerModalDismiss>)[self delegate] willDismissModalController];
     }
         
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSString *)viewTitle
