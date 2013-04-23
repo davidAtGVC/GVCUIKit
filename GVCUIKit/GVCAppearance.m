@@ -98,13 +98,15 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 
 - (void)applyAppearanceProperty:(NSString *)property value:(NSObject *)object stackContext:(GVCStack *)stack
 {
-	GVC_DBC_FACT([[NSCharacterSet uppercaseLetterCharacterSet] characterIsMember:[property characterAtIndex:0]] == NO);
-	GVC_DBC_FACT_NOT_NIL([stack peekObject]);
-	GVC_DBC_FACT_NOT_NIL(object);
-	GVC_DBC_FACT_CONFORMS_TO_PROTOCOL([stack peekObject], @protocol(UIAppearance))
-	
 	GVCLogDebug(@"Looking for %@ on %@ with %@", property, stack, object);
-
+	GVC_DBC_REQUIRE(
+					GVC_DBC_FACT([[NSCharacterSet uppercaseLetterCharacterSet] characterIsMember:[property characterAtIndex:0]] == NO);
+					GVC_DBC_FACT_NOT_NIL([stack peekObject]);
+					GVC_DBC_FACT_NOT_NIL(object);
+					GVC_DBC_FACT_CONFORMS_TO_PROTOCOL([stack peekObject], @protocol(UIAppearance))
+					)
+	
+	// implementation
 	GVCInvocation *invoker = [[GVCInvocation alloc] initForTargetClass:[stack peekObject]];
 	id <UIAppearance>appearanceTarget = [self appearanceForStackContext:stack];
 	NSString *regexp = [NSString stringWithFormat:@"^set%@:", [property gvc_StringWithCapitalizedFirstCharacter]];
@@ -116,6 +118,8 @@ GVC_SINGLETON_CLASS(GVCAppearance);
 		NSInvocation *invocation = [invoker invocationForTarget:appearanceTarget arguments:arguments];
 		[invocation invoke];
 	}
+	
+	GVC_DBC_ENSURE()
 }
 
 - (NSArray *)colorArgumentValues:(NSObject *)object
