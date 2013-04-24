@@ -30,11 +30,10 @@
     return self;
 }
 
-//- (void)viewDidLoad
-//{
-//    [super viewDidLoad];
-//	// Do any additional setup after loading the view.
-//}
+- (NSString *)viewTitle
+{
+	return [[self form] name];
+}
 
 - (void)viewDidUnload
 {
@@ -47,7 +46,6 @@
 {
     [self setAutoresizesForKeyboard:YES];
     [super viewWillAppear:animated];
-    [[GVC_STRONG_REF(UINavigationBar, [self navBar]) topItem] setTitle:[[self form] name]];
 }
 
 - (IBAction)saveAction:(id)sender 
@@ -176,7 +174,14 @@
 				[[cell detailTextLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				
 				[[cell textLabel] setText:[question prompt]];
-				[[cell detailTextLabel] setText:[value submittedValue]];
+				if ( gvc_IsEmpty([value submittedValue]) == NO)
+				{
+					[[cell detailTextLabel] setText:[value submittedValue]];
+				}
+				else
+				{
+					[[cell detailTextLabel] setText:@"choice"];
+				}
 				break;
 			}
 				
@@ -222,6 +227,9 @@
     else
     {
         cell = [UITableViewCell gvc_CellForTableView:tv];
+		[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
+		[[cell textLabel] setText:[indexPath description]];
+
     }
     
     return cell;
