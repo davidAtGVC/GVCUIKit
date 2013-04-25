@@ -60,22 +60,10 @@
 
 - (IBAction)saveAction:(id)sender 
 {
-//    [[self formSubmission] setUpdatedDate:[NSDate date]];
-//    GVCCoreDataUIAppDelegate *appDel = [[UIApplication sharedApplication] delegate];
-//    [appDel saveContext];
-    [self dismissModalViewController:sender];
 }
 
 - (IBAction)cancelAction:(id)sender
 {
-//    if ( [[self formSubmission] isInserted] == YES )
-//    {
-//        [[[self formSubmission] managedObjectContext] deleteObject:[self formSubmission]];
-//        GVCCoreDataUIAppDelegate *appDel = [[UIApplication sharedApplication] delegate];
-//        [appDel saveContext];
-//    }
-
-    [self dismissModalViewController:sender];    
 }
 
 #pragma mark - form protocol
