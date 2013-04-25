@@ -190,11 +190,7 @@
 				[[cell detailTextLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				
 				[[cell textLabel] setText:[question prompt]];
-				if ( gvc_IsEmpty([value submittedValue]) == NO)
-				{
-					id <GVCFormQuestionChoice>choice = [value submittedValue];
-					[[cell detailTextLabel] setText:[choice prompt]];
-				}
+				[[cell detailTextLabel] setText:[value displayValue]];
 				break;
 			}
 				
@@ -205,8 +201,7 @@
 				[[cell textLabel] setNumberOfLines:0];
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				
-				NSDate *date = [value submittedValue];
-				[[cell detailTextLabel] setText:[date gvc_FormattedDate:NSDateFormatterMediumStyle]];
+				[[cell detailTextLabel] setText:[value displayValue]];
 				
 				[(GVCUITableViewCell *)cell setDelegate:self];
 				[(GVCEditCell *)cell setEditPath:indexPath];
@@ -219,7 +214,7 @@
 				
 				[[cell textLabel] setText:[question prompt]];
 				[[cell textLabel] setNumberOfLines:1];
-				[[(GVCEditTextFieldCell *)cell textField] setText:[value submittedValue]];
+				[[(GVCEditTextFieldCell *)cell textField] setText:[value displayValue]];
 				
 				[(GVCUITableViewCell *)cell setDelegate:self];
 				[(GVCEditCell *)cell setEditPath:indexPath];
@@ -326,7 +321,7 @@
 		else
 		{
 			id <GVCFormSubmissionValue>value = [[self formSubmission] valueForQuestion:question];
-			NSString *detailString = [[value submittedValue] description];
+			NSString *detailString = [value displayValue];
 			
 			CGSize titleSize = [titleString sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(67, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
 			CGSize detailSize = [detailString sizeWithFont:[UIFont systemFontOfSize:18] constrainedToSize:CGSizeMake(400, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
