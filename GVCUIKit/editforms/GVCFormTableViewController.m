@@ -46,6 +46,16 @@
 {
     [self setAutoresizesForKeyboard:YES];
     [super viewWillAppear:animated];
+	
+	if ( [self navigationController] != nil )
+	{
+		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:GVC_SAVE_LABEL style:UIBarButtonItemStyleBordered target:self action:@selector(saveAction:)];
+		[saveButton setStyle:UIBarButtonItemStyleDone];
+		[[self navigationItem] setRightBarButtonItem:saveButton];
+		
+		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:GVC_CANCEL_LABEL style:UIBarButtonItemStyleBordered target:self action:@selector(cancelAction:)];
+		[[self navigationItem] setLeftBarButtonItem:cancelButton];
+	}
 }
 
 - (IBAction)saveAction:(id)sender 

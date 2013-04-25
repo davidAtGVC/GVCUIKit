@@ -10,7 +10,6 @@
 #import <GVCFoundation/GVCFoundation.h>
 #import "GVCUIViewWithTableController.h"
 #import "GVCUIDatePickerViewController.h"
-#import "GVCFormEntryProtocols.h"
 #import "GVCUIProtocols.h"
 
 @interface GVCFormTableViewController : GVCUIViewWithTableController  <GVCUIDatePickerCallbackProtocol, GVCDismissPopoverProtocol>

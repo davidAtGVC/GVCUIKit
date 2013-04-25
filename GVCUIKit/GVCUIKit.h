@@ -73,20 +73,8 @@
 #import "GVCDataFormField.h"
 #import "GVCDataFormModel.h"
 #import "GVCDataFormSection.h"
-#import "GVCFormEntryProtocols.h"
 #import "GVCFormOptionSelectionTableViewController.h"
 #import "GVCFormTableViewController.h"
-
-/* 
- * editforms model 
- */
-#import "GVCXMLFormLabelModel.h"
-#import "GVCXMLFormModel.h"
-#import "GVCXMLFormModelDigester.h"
-#import "GVCXMLFormNode.h"
-#import "GVCXMLFormOptionModel.h"
-#import "GVCXMLFormQuestionModel.h"
-#import "GVCXMLFormSectionModel.h"
 
 /* 
  * layers 

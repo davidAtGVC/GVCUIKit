@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 #import <GVCFoundation/GVCFoundation.h>
 #import "GVCUITableViewController.h"
-#import "GVCFormEntryProtocols.h"
 #import "GVCUIProtocols.h"
 
 @interface GVCFormOptionSelectionTableViewController : GVCUITableViewController
