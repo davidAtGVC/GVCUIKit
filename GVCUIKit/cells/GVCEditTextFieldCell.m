@@ -99,6 +99,7 @@
 
 - (void)layoutSubviews
 {
+	[self prepareTextField];
 	[super layoutSubviews];
 	
     CGRect contentRect = [self.contentView bounds];
@@ -122,8 +123,19 @@
 }
 
 #pragma mark Text Field
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (BOOL)textField:(UITextField *)txtField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+	NSString *newtext = [[txtField text] stringByReplacingCharactersInRange:range withString:string];
+	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCell:textChangedTo:)])
+	{
+		[[self delegate] gvcEditCell:self textChangedTo:newtext];
+	}
+	
+	if ( [self dataChangeBlock] != nil )
+	{
+		self.dataChangeBlock(newtext);
+	}
+	
 	return YES;
 }
 

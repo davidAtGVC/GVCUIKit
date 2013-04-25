@@ -41,6 +41,8 @@
 
 - (void)layoutSubviews
 {
+	[self prepareTextView];
+
     [super layoutSubviews];
 	CGRect r = CGRectInset(self.contentView.bounds, 8, 0);
     if ( [self textLabel] != nil )
@@ -83,7 +85,6 @@
 }
 
 #pragma mark Text Field
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 - (BOOL)textView:(UITextView *)txtView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
 	NSString *newtext = [[txtView text] stringByReplacingCharactersInRange:range withString:text];
