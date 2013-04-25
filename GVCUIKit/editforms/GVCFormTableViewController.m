@@ -12,6 +12,7 @@
 #import "GVCEditDateCell.h"
 #import "GVCEditTextFieldCell.h"
 #import "GVCEditTextViewCell.h"
+#import "GVCSwitchCell.h"
 
 #import "UITableViewCell+GVCUIKit.h"
 
@@ -76,8 +77,11 @@
 	}
 }
 
+#pragma mark - Actions
 - (IBAction)saveAction:(id)sender 
 {
+	id <GVCFormSubmission>sub = [self formSubmission];
+	GVCLogError(@"Saving %@", sub);
 }
 
 - (IBAction)cancelAction:(id)sender
@@ -159,8 +163,11 @@
 				[[cell textLabel] setNumberOfLines:0];
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				[[(GVCEditTextFieldCell *)cell textField] setText:[value submittedValue]];
-				
-				[(GVCUITableViewCell *)cell setDelegate:self];
+				[(GVCEditTextFieldCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+					[value setSubmittedValue:updatedValue];
+				}];
+
+//				[(GVCUITableViewCell *)cell setDelegate:self];
 				[(GVCEditCell *)cell setEditPath:indexPath];
 
 				break;
@@ -168,18 +175,41 @@
 
 			case GVCFormQuestion_Type_MULTILINE_TEXT:
 			{
-				cell = [GVCEditTextViewCell gvc_CellWithStyle:UITableViewCellStyleDefault forTableView:tv];
+				cell = [GVCEditTextViewCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
 				[[cell textLabel] setText:[question prompt]];
 				[[cell textLabel] setNumberOfLines:0];
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				
 				[[(GVCEditTextViewCell *)cell textView] setText:[value submittedValue]];
-				
-				[(GVCUITableViewCell *)cell setDelegate:self];
+				[(GVCEditTextViewCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+					[value setSubmittedValue:updatedValue];
+				}];
+
+//				[(GVCUITableViewCell *)cell setDelegate:self];
 				[(GVCEditCell *)cell setEditPath:indexPath];
 				break;
 			}
+
+			case GVCFormQuestion_Type_BOOLEAN:
+			{
+				cell = [GVCSwitchCell gvc_CellWithStyle:UITableViewCellStyleValue1 forTableView:tv];
 				
+				[[cell detailTextLabel] setText:[question prompt]];
+				[[cell detailTextLabel] setNumberOfLines:0];
+				[[cell detailTextLabel] setLineBreakMode:NSLineBreakByWordWrapping];
+				[[cell detailTextLabel] setLineBreakMode:NSLineBreakByWordWrapping];
+
+				[(GVCSwitchCell *)cell setSwitchValue:([value submittedValue] != nil)];
+				[(GVCSwitchCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+					[value setSubmittedValue:updatedValue];
+				}];
+				
+//				[(GVCUITableViewCell *)cell setDelegate:self];
+				[(GVCEditCell *)cell setEditPath:indexPath];
+				
+				break;
+			}
+
 			case GVCFormQuestion_Type_CHOICE:
 			case GVCFormQuestion_Type_MULTI_CHOICE:
 			{
@@ -202,8 +232,11 @@
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				
 				[[cell detailTextLabel] setText:[value displayValue]];
-				
-				[(GVCUITableViewCell *)cell setDelegate:self];
+				[(GVCSwitchCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+					[value setSubmittedValue:updatedValue];
+				}];
+
+				//				[(GVCUITableViewCell *)cell setDelegate:self];
 				[(GVCEditCell *)cell setEditPath:indexPath];
 				break;
 			}
@@ -215,8 +248,11 @@
 				[[cell textLabel] setText:[question prompt]];
 				[[cell textLabel] setNumberOfLines:1];
 				[[(GVCEditTextFieldCell *)cell textField] setText:[value displayValue]];
-				
-				[(GVCUITableViewCell *)cell setDelegate:self];
+				[(GVCSwitchCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+					[value setSubmittedValue:updatedValue];
+				}];
+
+//				[(GVCUITableViewCell *)cell setDelegate:self];
 				[(GVCEditCell *)cell setEditPath:indexPath];
 
 				break;
@@ -314,6 +350,11 @@
     {
 		NSString *titleString = [question prompt];
 		if ( [question entryType] == GVCFormQuestion_Type_NOTATION )
+		{
+			CGSize titleSize = [titleString sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:CGSizeMake(400, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+			height = MAX( height, titleSize.height);
+		}
+		else if ( [question entryType] == GVCFormQuestion_Type_BOOLEAN )
 		{
 			CGSize titleSize = [titleString sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:CGSizeMake(400, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
 			height = MAX( height, titleSize.height);

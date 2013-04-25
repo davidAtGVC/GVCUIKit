@@ -36,7 +36,7 @@
     }
     
     [[self textField] setBackgroundColor:[UIColor whiteColor]];
-    [[self textField] setTextColor:[UIColor colorWithRed:12850./65535 green:20303./65535 blue:34181./65535 alpha:1.0]];
+    [[self textField] setTextColor:[UIColor colorWithRed:0.318 green:0.439 blue:0.569 alpha:1.000]];
     [[self textField] setFont:[UIFont systemFontOfSize:18]];
     [[self textField] setAdjustsFontSizeToFitWidth:YES];
     [[self textField] setMinimumFontSize:12];
