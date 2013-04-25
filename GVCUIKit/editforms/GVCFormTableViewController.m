@@ -192,11 +192,8 @@
 				[[cell textLabel] setText:[question prompt]];
 				if ( gvc_IsEmpty([value submittedValue]) == NO)
 				{
-					[[cell detailTextLabel] setText:[value submittedValue]];
-				}
-				else
-				{
-					[[cell detailTextLabel] setText:@"choice"];
+					id <GVCFormQuestionChoice>choice = [value submittedValue];
+					[[cell detailTextLabel] setText:[choice prompt]];
 				}
 				break;
 			}
@@ -307,7 +304,6 @@
             CGRect rect = [[tv superview] convertRect:cellRect fromView:tv];
             [[self popover] presentPopoverFromRect:rect inView:[tv superview] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }
-
     }
     
     [tv deselectRowAtIndexPath:indexPath animated:YES];
