@@ -26,6 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self != nil) 
     {
+		[self setShowDefaultFormButtons:YES];
     }
     return self;
 }
@@ -37,9 +38,21 @@
 
 - (void)viewDidUnload
 {
-    [self setNavBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (UIBarButtonItem *)defaultSaveButton
+{
+	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:GVC_SAVE_LABEL style:UIBarButtonItemStyleBordered target:self action:@selector(saveAction:)];
+	[saveButton setStyle:UIBarButtonItemStyleDone];
+	return saveButton;
+}
+
+- (UIBarButtonItem *)defaultCancelButton
+{
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:GVC_CANCEL_LABEL style:UIBarButtonItemStyleBordered target:self action:@selector(cancelAction:)];
+	return button;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -47,14 +60,19 @@
     [self setAutoresizesForKeyboard:YES];
     [super viewWillAppear:animated];
 	
-	if ( [self navigationController] != nil )
+	if (([self showDefaultFormButtons] == YES) && ([self navigationController] != nil))
 	{
-		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:GVC_SAVE_LABEL style:UIBarButtonItemStyleBordered target:self action:@selector(saveAction:)];
-		[saveButton setStyle:UIBarButtonItemStyleDone];
-		[[self navigationItem] setRightBarButtonItem:saveButton];
+		UIBarButtonItem *saveButton = [self defaultSaveButton];
+		if ( saveButton != nil )
+		{
+			[[self navigationItem] setRightBarButtonItem:saveButton];
+		}
 		
-		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:GVC_CANCEL_LABEL style:UIBarButtonItemStyleBordered target:self action:@selector(cancelAction:)];
-		[[self navigationItem] setLeftBarButtonItem:cancelButton];
+		UIBarButtonItem *cancelButton = [self defaultCancelButton];
+		if ( cancelButton != nil )
+		{
+			[[self navigationItem] setLeftBarButtonItem:cancelButton];
+		}
 	}
 }
 

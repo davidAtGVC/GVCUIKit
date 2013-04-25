@@ -18,11 +18,14 @@
 - (id <GVCForm>)form;
 
 @property (strong, nonatomic) id <GVCFormSubmission> formSubmission;
+@property (assign, nonatomic) BOOL showDefaultFormButtons;
+
+- (UIBarButtonItem *)defaultSaveButton;
+- (UIBarButtonItem *)defaultCancelButton;
 
 - (IBAction)saveAction:(id)sender;
 - (IBAction)cancelAction:(id)sender;
 
 @property (strong, nonatomic) UIPopoverController *popover;
-@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @end
