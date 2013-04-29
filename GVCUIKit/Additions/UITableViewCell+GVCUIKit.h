@@ -11,12 +11,5 @@
 
 @interface UITableViewCell (GVCUIKit)
 
-+ (id)gvc_CellWithStyle:(UITableViewCellStyle)style forTableView:(UITableView *)tableView;
-
-+ (id)gvc_CellForTableView:(UITableView *)tv;
-
-+ (UITableViewCellStyle)gvc_DefaultCellStyle;
-
-+ (NSString *)gvc_DefaultCellIdentifier;
 
 @end

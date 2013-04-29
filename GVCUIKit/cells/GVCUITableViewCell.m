@@ -18,17 +18,6 @@
 
 @implementation GVCUITableViewCell
 
-+ (id)cellWithStyle:(UITableViewCellStyle)style forTableView:(UITableView *)tableView 
-{
-    NSString *cellIdentifier = [self gvc_DefaultCellIdentifier];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) 
-    {
-        cell = [[self alloc] initWithStyle:style reuseIdentifier:cellIdentifier];
-    }
-    return cell;    
-}
-
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(NSObject *)object
 {
 	id appearanceProxy = [self appearance];

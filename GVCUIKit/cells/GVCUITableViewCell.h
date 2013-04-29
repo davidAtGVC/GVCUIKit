@@ -12,6 +12,4 @@
 @property (assign,nonatomic) BOOL useDarkBackground;
 @property (strong,nonatomic) id delegate;
 
-+ (id)cellWithStyle:(UITableViewCellStyle)style forTableView:(UITableView *)tableView;
-
 @end

@@ -66,7 +66,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [UITableViewCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
+	static NSString *FormOptionIdentifier = @"FormOptionIdentifier";
+	
+	UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:FormOptionIdentifier];
+	if (cell == nil)
+	{
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:FormOptionIdentifier];
+	}
+
     NSArray *options = [[self question] choiceArray];
     id <GVCFormQuestionChoice>opt = [options objectAtIndex:[indexPath row]];
 

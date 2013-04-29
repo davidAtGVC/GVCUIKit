@@ -149,6 +149,15 @@
 {
     UITableViewCell *cell = nil;
     
+	static NSString *DefaultCellIdentifier = @"DefaultCellIdentifier";
+	static NSString *GVCUITableViewCellIdent = @"GVCUITableViewCellIdent";
+	static NSString *GVCUITableViewCellIdentNotation = @"GVCUITableViewCellIdentNotation";
+	static NSString *GVCEditTextViewCellIdent = @"GVCEditTextViewCellIdent";
+	static NSString *GVCEditTextFieldCellIdent = @"GVCEditTextFieldCellIdent";
+	static NSString *GVCSwitchCellIdent = @"GVCSwitchCellIdent";
+	static NSString *GVCEditDateCellIdent = @"GVCEditDateCellIdent";
+	
+
     id <GVCFormQuestion>question = [self questionAtIndexPath:indexPath];
     id <GVCFormSubmissionValue>value = [[self formSubmission] valueForQuestion:question];
     if (question != nil )
@@ -157,7 +166,11 @@
 		{
 			case GVCFormQuestion_Type_TEXT:
 			{
-				cell = [GVCEditTextFieldCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
+				cell = [tv dequeueReusableCellWithIdentifier:GVCEditTextFieldCellIdent];
+				if (cell == nil)
+				{
+					cell = [[GVCEditTextFieldCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:GVCEditTextFieldCellIdent];
+				}
 				
 				[[cell textLabel] setText:[question prompt]];
 				[[cell textLabel] setNumberOfLines:0];
@@ -175,7 +188,11 @@
 
 			case GVCFormQuestion_Type_MULTILINE_TEXT:
 			{
-				cell = [GVCEditTextViewCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
+				cell = [tv dequeueReusableCellWithIdentifier:GVCEditTextViewCellIdent];
+				if (cell == nil)
+				{
+					cell = [[GVCEditTextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:GVCEditTextViewCellIdent];
+				}
 				[[cell textLabel] setText:[question prompt]];
 				[[cell textLabel] setNumberOfLines:0];
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
@@ -192,7 +209,11 @@
 
 			case GVCFormQuestion_Type_BOOLEAN:
 			{
-				cell = [GVCSwitchCell gvc_CellWithStyle:UITableViewCellStyleValue1 forTableView:tv];
+				cell = [tv dequeueReusableCellWithIdentifier:GVCSwitchCellIdent];
+				if (cell == nil)
+				{
+					cell = [[GVCSwitchCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:GVCSwitchCellIdent];
+				}
 				
 				[[cell detailTextLabel] setText:[question prompt]];
 				[[cell detailTextLabel] setNumberOfLines:0];
@@ -213,7 +234,12 @@
 			case GVCFormQuestion_Type_CHOICE:
 			case GVCFormQuestion_Type_MULTI_CHOICE:
 			{
-				cell = [GVCUITableViewCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
+				cell = [tv dequeueReusableCellWithIdentifier:GVCUITableViewCellIdent];
+				if (cell == nil)
+				{
+					cell = [[GVCUITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:GVCUITableViewCellIdent];
+				}
+
 				[[cell textLabel] setNumberOfLines:0];
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				[[cell detailTextLabel] setNumberOfLines:0];
@@ -226,7 +252,12 @@
 				
 			case GVCFormQuestion_Type_DATE:
 			{
-				cell = [GVCEditDateCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
+				cell = [tv dequeueReusableCellWithIdentifier:GVCEditDateCellIdent];
+				if (cell == nil)
+				{
+					cell = [[GVCEditDateCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:GVCEditDateCellIdent];
+				}
+
 				[[cell textLabel] setText:[question prompt]];
 				[[cell textLabel] setNumberOfLines:0];
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
@@ -236,14 +267,17 @@
 					[value setSubmittedValue:updatedValue];
 				}];
 
-				//				[(GVCUITableViewCell *)cell setDelegate:self];
 				[(GVCEditCell *)cell setEditPath:indexPath];
 				break;
 			}
 				
 			case GVCFormQuestion_Type_NUMBER:
 			{
-				cell = [GVCEditTextFieldCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
+				cell = [tv dequeueReusableCellWithIdentifier:GVCEditTextFieldCellIdent];
+				if (cell == nil)
+				{
+					cell = [[GVCEditTextFieldCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:GVCEditTextFieldCellIdent];
+				}
 				
 				[[cell textLabel] setText:[question prompt]];
 				[[cell textLabel] setNumberOfLines:1];
@@ -252,7 +286,6 @@
 					[value setSubmittedValue:updatedValue];
 				}];
 
-//				[(GVCUITableViewCell *)cell setDelegate:self];
 				[(GVCEditCell *)cell setEditPath:indexPath];
 
 				break;
@@ -261,7 +294,11 @@
 			default:
 			case GVCFormQuestion_Type_NOTATION:
 			{
-				cell = [GVCUITableViewCell gvc_CellWithStyle:UITableViewCellStyleDefault forTableView:tv];
+				cell = [tv dequeueReusableCellWithIdentifier:GVCUITableViewCellIdentNotation];
+				if (cell == nil)
+				{
+					cell = [[GVCUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:GVCUITableViewCellIdentNotation];
+				}
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				[[cell textLabel] setText:[question prompt]];
 				break;
@@ -270,10 +307,13 @@
     }
     else
     {
-        cell = [UITableViewCell gvc_CellForTableView:tv];
+		cell = [tv dequeueReusableCellWithIdentifier:DefaultCellIdentifier];
+		if (cell == nil)
+		{
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DefaultCellIdentifier];
+		}
 		[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 		[[cell textLabel] setText:[indexPath description]];
-
     }
     
     return cell;

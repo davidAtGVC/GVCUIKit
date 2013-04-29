@@ -82,7 +82,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath  
 {
-    UITableViewCell *cell = [GVCUITableViewCell gvc_CellWithStyle:UITableViewCellStyleValue2 forTableView:tv];
+	static NSString *DateCellIdentifier = @"DateCellIdentifier";
+	
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:DateCellIdentifier forIndexPath:indexPath];
+	if (cell == nil)
+	{
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:DateCellIdentifier];
+	}
+
     [[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
     [[cell textLabel] setNumberOfLines:0];
     [[cell detailTextLabel] setLineBreakMode:NSLineBreakByWordWrapping];
