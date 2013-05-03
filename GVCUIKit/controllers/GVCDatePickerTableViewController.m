@@ -84,7 +84,7 @@
 {
 	static NSString *DateCellIdentifier = @"DateCellIdentifier";
 	
-    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:DateCellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:DateCellIdentifier];
 	if (cell == nil)
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:DateCellIdentifier];
