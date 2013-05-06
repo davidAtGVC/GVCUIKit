@@ -52,9 +52,9 @@
 //	{
 //		[delegate daBooleanCellSwitched:self];
 //	}
-	if ( [self dataChangeBlock] != nil )
+	if ( [self dataEndBlock] != nil )
 	{
-		self.dataChangeBlock([NSNumber numberWithBool:[self switchValue]]);
+		self.dataEndBlock([NSNumber numberWithBool:[self switchValue]]);
 	}
 }
 

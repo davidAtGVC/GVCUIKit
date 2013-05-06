@@ -176,7 +176,7 @@
 				[[cell textLabel] setNumberOfLines:0];
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				[[(GVCEditTextFieldCell *)cell textField] setText:[value submittedValue]];
-				[(GVCEditTextFieldCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+				[(GVCEditTextFieldCell *)cell setDataEndBlock:^(NSObject *updatedValue){
 					[value setSubmittedValue:updatedValue];
 				}];
 
@@ -198,7 +198,7 @@
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				
 				[[(GVCEditTextViewCell *)cell textView] setText:[value submittedValue]];
-				[(GVCEditTextViewCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+				[(GVCEditTextViewCell *)cell setDataEndBlock:^(NSObject *updatedValue){
 					[value setSubmittedValue:updatedValue];
 				}];
 
@@ -221,7 +221,7 @@
 				[[cell detailTextLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 
 				[(GVCSwitchCell *)cell setSwitchValue:([value submittedValue] != nil)];
-				[(GVCSwitchCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+				[(GVCSwitchCell *)cell setDataEndBlock:^(NSObject *updatedValue){
 					[value setSubmittedValue:updatedValue];
 				}];
 				
@@ -263,7 +263,7 @@
 				[[cell textLabel] setLineBreakMode:NSLineBreakByWordWrapping];
 				
 				[[cell detailTextLabel] setText:[value displayValue]];
-				[(GVCSwitchCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+				[(GVCSwitchCell *)cell setDataEndBlock:^(NSObject *updatedValue){
 					[value setSubmittedValue:updatedValue];
 				}];
 
@@ -282,7 +282,7 @@
 				[[cell textLabel] setText:[question prompt]];
 				[[cell textLabel] setNumberOfLines:1];
 				[[(GVCEditTextFieldCell *)cell textField] setText:[value displayValue]];
-				[(GVCSwitchCell *)cell setDataChangeBlock:^(NSObject *updatedValue){
+				[(GVCSwitchCell *)cell setDataEndBlock:^(NSObject *updatedValue){
 					[value setSubmittedValue:updatedValue];
 				}];
 

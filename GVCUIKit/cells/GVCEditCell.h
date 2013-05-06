@@ -11,7 +11,9 @@
 /**
  * Alternate method to update values using blocks instead of delgates
  */
-typedef void (^GVCEditCellChangedBlock)(NSObject *updatedValue);
+typedef void (^GVCEditCellEditingEndedBlock)(NSObject *updatedValue);
+typedef BOOL (^GVCEditCellWillChangeBlock)(NSObject *oldValue, NSObject *updatedValue);
+typedef void (^GVCEditCellDidChangeBlock)(NSObject *updatedValue);
 
 @interface GVCEditCell : GVCUITableViewCell
 
@@ -20,7 +22,9 @@ typedef void (^GVCEditCellChangedBlock)(NSObject *updatedValue);
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
-@property (readwrite, copy) GVCEditCellChangedBlock dataChangeBlock;
+@property (readwrite, copy) GVCEditCellWillChangeBlock willChangeBlock;
+@property (readwrite, copy) GVCEditCellDidChangeBlock didChangeBlock;
+@property (readwrite, copy) GVCEditCellEditingEndedBlock dataEndBlock;
 
 @end
 

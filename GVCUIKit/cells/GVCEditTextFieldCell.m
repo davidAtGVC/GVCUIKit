@@ -125,18 +125,14 @@
 #pragma mark Text Field
 - (BOOL)textField:(UITextField *)txtField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+	BOOL changeOK = YES;
 	NSString *newtext = [[txtField text] stringByReplacingCharactersInRange:range withString:string];
-	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCell:textChangedTo:)])
+	if ( [self willChangeBlock] != nil )
 	{
-		[[self delegate] gvcEditCell:self textChangedTo:newtext];
+		changeOK = self.willChangeBlock([txtField text], newtext);
 	}
 	
-	if ( [self dataChangeBlock] != nil )
-	{
-		self.dataChangeBlock(newtext);
-	}
-	
-	return YES;
+	return changeOK;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)atextField
@@ -186,9 +182,9 @@
 		[[self delegate] gvcEditCell:self textChangedTo:[txtField text]];
 	}
 	
-	if ( [self dataChangeBlock] != nil )
+	if ( [self dataEndBlock] != nil )
 	{
-		self.dataChangeBlock([txtField text]);
+		self.dataEndBlock([txtField text]);
 	}
 }
 
