@@ -45,7 +45,6 @@ typedef void (^GVCStackedViewSegueBlock)(UIStoryboardSegue *segue, id sender);
 
 @end
 
-
 /**
  * storyboard segue to connect the container to the side scenes.  Must be leftSegue or rightSegue as identifers
  */

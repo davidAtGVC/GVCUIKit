@@ -111,6 +111,7 @@
 {
     BOOL success = NO;
     
+	[self setAutoresizesSubviews:NO];
     NSArray *columnViews = [self subviews];
     if ([[self widths] count] != [columnViews count])
     {

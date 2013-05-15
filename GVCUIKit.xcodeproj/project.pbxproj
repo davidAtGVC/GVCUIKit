@@ -87,6 +87,8 @@
 		056CD8DB15A7307F00647244 /* GVCColumnContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 056CD8D915A7307F00647244 /* GVCColumnContainerView.m */; };
 		056CD8E015A733AD00647244 /* GVCSizedColumn.h in Headers */ = {isa = PBXBuildFile; fileRef = 056CD8DE15A733AD00647244 /* GVCSizedColumn.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		056CD8E115A733AD00647244 /* GVCSizedColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 056CD8DF15A733AD00647244 /* GVCSizedColumn.m */; };
+		0572C2F91743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0572C2F71743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0572C2FA1743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0572C2F81743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.m */; };
 		0583CB9B16BC1BB200D70E11 /* UINavigationController+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0583CB9916BC1BB200D70E11 /* UINavigationController+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0583CB9C16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0583CB9A16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m */; };
 		0585C55115401DFA00659B22 /* NSAttributedString+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -276,6 +278,8 @@
 		056CD8D915A7307F00647244 /* GVCColumnContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCColumnContainerView.m; sourceTree = "<group>"; };
 		056CD8DE15A733AD00647244 /* GVCSizedColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCSizedColumn.h; sourceTree = "<group>"; };
 		056CD8DF15A733AD00647244 /* GVCSizedColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCSizedColumn.m; sourceTree = "<group>"; };
+		0572C2F71743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboard+GVCUIKit.h"; sourceTree = "<group>"; };
+		0572C2F81743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboard+GVCUIKit.m"; sourceTree = "<group>"; };
 		0582A15715EAB4980042C09E /* BuildDoxygen.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = BuildDoxygen.sh; sourceTree = "<group>"; };
 		0582A15815EAB4980042C09E /* doxygen.config */ = {isa = PBXFileReference; lastKnownFileType = text; path = doxygen.config; sourceTree = "<group>"; };
 		0583CB9916BC1BB200D70E11 /* UINavigationController+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+GVCUIKit.h"; sourceTree = "<group>"; };
@@ -485,6 +489,8 @@
 				0550C536159B403A00E43AD3 /* UITextView+GVCUIKit.m */,
 				05B1454C159E372900702FB4 /* UITableView+GVCUIKit.h */,
 				05B1454D159E372900702FB4 /* UITableView+GVCUIKit.m */,
+				0572C2F71743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.h */,
+				0572C2F81743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -843,6 +849,7 @@
 				05C6F004170546AD0054D990 /* GVCLayoutView.h in Headers */,
 				0594BB861718B3C800784D7A /* GVCFormOptionSelectionTableViewController.h in Headers */,
 				0594BB881718B3C800784D7A /* GVCFormTableViewController.h in Headers */,
+				0572C2F91743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1074,6 +1081,7 @@
 				05C6F005170546AD0054D990 /* GVCLayoutView.m in Sources */,
 				0594BB851718B3C800784D7A /* GVCFormOptionSelectionTableViewController.m in Sources */,
 				0594BB871718B3C800784D7A /* GVCFormTableViewController.m in Sources */,
+				0572C2FA1743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

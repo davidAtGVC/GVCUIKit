@@ -339,25 +339,25 @@
 }
 
 
-#pragma mark - nib/xib cell loading
-- (UITableViewCell *)dequeueOrLoadReusableCellFromClass:(Class)cellClass forTable:(UITableView *)tv withIdentifier:(NSString *)identifier
-{
-	UITableViewCell *cell = [self dequeueOrLoadReusableCellFromNib:NSStringFromClass(cellClass) forTable:tv withIdentifier:identifier];
-	GVC_ASSERT( [cell isKindOfClass:cellClass], @"Wrong class %@ should be %@", GVC_CLASSNAME(cell), NSStringFromClass(cellClass));
-	return cell;
-}
-
-- (UITableViewCell *)dequeueOrLoadReusableCellFromNib:(NSString *)cellNibName forTable:(UITableView *)tv withIdentifier:(NSString *)identifier
-{
-	UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) 
-	{
-        [[NSBundle mainBundle] loadNibNamed:cellNibName owner:self options:nil];
-        cell = [self cellTemplate];
-    }
-	
-	GVC_ASSERT( cell != nil, @"Could not find cellTemplate in %@", cellNibName );
-	
-	return cell;
-}
+//#pragma mark - nib/xib cell loading
+//- (UITableViewCell *)dequeueOrLoadReusableCellFromClass:(Class)cellClass forTable:(UITableView *)tv withIdentifier:(NSString *)identifier
+//{
+//	UITableViewCell *cell = [self dequeueOrLoadReusableCellFromNib:NSStringFromClass(cellClass) forTable:tv withIdentifier:identifier];
+//	GVC_ASSERT( [cell isKindOfClass:cellClass], @"Wrong class %@ should be %@", GVC_CLASSNAME(cell), NSStringFromClass(cellClass));
+//	return cell;
+//}
+//
+//- (UITableViewCell *)dequeueOrLoadReusableCellFromNib:(NSString *)cellNibName forTable:(UITableView *)tv withIdentifier:(NSString *)identifier
+//{
+//	UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:identifier];
+//    if (cell == nil) 
+//	{
+//        [[NSBundle mainBundle] loadNibNamed:cellNibName owner:self options:nil];
+//        cell = [self cellTemplate];
+//    }
+//	
+//	GVC_ASSERT( cell != nil, @"Could not find cellTemplate in %@", cellNibName );
+//	
+//	return cell;
+//}
 @end

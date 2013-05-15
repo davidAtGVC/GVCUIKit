@@ -16,6 +16,7 @@
 #import "UIImage+GVCUIKit.h"
 #import "UILabel+GVCUIKit.h"
 #import "UINavigationController+GVCUIKit.h"
+#import "UIStoryboard+GVCUIKit.h"
 #import "UITabBar+GVCUIKit.h"
 #import "UITableView+GVCUIKit.h"
 #import "UITableViewCell+GVCUIKit.h"
