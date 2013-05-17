@@ -117,6 +117,48 @@
     return [questionArray objectAtIndex:[indexPath row]];
 }
 
+- (NSIndexPath *)indexPathForQuestion:(id <GVCFormQuestion>)question inSection:(NSInteger)section
+{
+	GVC_DBC_REQUIRE(
+					GVC_DBC_FACT_NOT_NIL(question);
+					GVC_DBC_FACT(section >= 0);
+					GVC_DBC_FACT(section < (NSInteger)[[self sections] count]);
+					)
+	
+	// implementation
+	NSIndexPath *path = nil;
+	id<GVCFormSection> formSection = [[self sections] objectAtIndex:section];
+	NSArray *entries = [self entriesPassingConditionsSection:formSection];
+	NSInteger row = [entries indexOfObject:question];
+	
+	if ( row != NSNotFound )
+	{
+		path = [NSIndexPath indexPathForItem:row inSection:section];
+	}
+	
+	GVC_DBC_ENSURE(
+				   )
+	return path;
+}
+
+- (NSIndexPath *)indexPathForQuestion:(id <GVCFormQuestion>)question
+{
+	GVC_DBC_REQUIRE(
+					GVC_DBC_FACT_NOT_NIL(question);
+					)
+
+	NSIndexPath *path = nil;
+	for (NSInteger section = 0; (path == nil) && (section < (NSInteger)[[self sections] count]); section++)
+	{
+		path = [self indexPathForQuestion:question inSection:section];
+	}
+
+	GVC_DBC_ENSURE(
+	)
+
+	return path;
+}
+
 - (NSArray *)entriesPassingConditionsSection:(id <GVCFormSection>)sect
 {
     return [sect entriesPassingAllConditions:[self formSubmission]];
@@ -143,9 +185,41 @@
     return [[self entriesPassingConditionsSection:sect] count];
 }
 
+- (void)tableview:(UITableView *)tv addRows:(NSNumber *)number afterQuestion:(id <GVCFormQuestion>)question
+{
+	GVC_DBC_REQUIRE(
+					GVC_DBC_FACT_NOT_NIL(tv);
+					GVC_DBC_FACT_NOT_NIL(question);
+					GVC_DBC_FACT(number != 0);
+					)
+	
+	// implementation
+	NSIndexPath *path = [self indexPathForQuestion:question];
+	NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:[number integerValue]];
+	NSInteger total = ABS([number integerValue]);
+	for ( NSInteger i = 1; i <= total; i++)
+	{
+		[indexPaths addObject:[NSIndexPath indexPathForItem:([path row] + i) inSection:[path section]]];
+	}
+	
+	[tv beginUpdates];
+	if ( [number integerValue] > 0)
+	{
+		[tv insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+	}
+	else if ( [number integerValue] < 0 )
+	{
+		[tv deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+	}
+	[tv endUpdates];
+	
+	GVC_DBC_ENSURE(
+				   )
+}
+
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
     
@@ -231,23 +305,9 @@
 						[value setSubmittedValue:updatedValue];
 						NSInteger afterRows = [[sect entriesPassingAllConditions:[self formSubmission]] count];
 						
-						NSInteger total = ABS(afterRows - beforeRows);
-						NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:total];
-						for ( NSInteger i = 1; i <= total; i++)
-						{
-							[indexPaths addObject:[NSIndexPath indexPathForItem:([indexPath row] + i) inSection:section]];
-						}
-
-						[tv beginUpdates];
-						if ( beforeRows < afterRows)
-						{
-							[tv insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-						}
-						else
-						{
-							[tv deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-						}
-						[tv endUpdates];
+						dispatch_async(dispatch_get_main_queue(), ^{
+							[self tableview:tv addRows:[NSNumber numberWithInteger:(afterRows - beforeRows)] afterQuestion:question];
+						});
 					}
 					else
 					{
