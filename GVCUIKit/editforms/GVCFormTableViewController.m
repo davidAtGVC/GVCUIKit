@@ -80,8 +80,7 @@
 #pragma mark - Actions
 - (IBAction)saveAction:(id)sender 
 {
-	id <GVCFormSubmission>sub = [self formSubmission];
-	GVCLogError(@"Saving %@", sub);
+	[[self view] endEditing:YES];
 }
 
 - (IBAction)cancelAction:(id)sender
