@@ -195,7 +195,7 @@
 	
 	// implementation
 	NSIndexPath *path = [self indexPathForQuestion:question];
-	NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:[number integerValue]];
+	NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:10];
 	NSInteger total = ABS([number integerValue]);
 	for ( NSInteger i = 1; i <= total; i++)
 	{
