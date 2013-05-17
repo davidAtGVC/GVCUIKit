@@ -222,10 +222,39 @@
 
 				[(GVCSwitchCell *)cell setSwitchValue:([value submittedValue] != nil)];
 				[(GVCSwitchCell *)cell setDataEndBlock:^(NSObject *updatedValue){
-					[value setSubmittedValue:updatedValue];
+					if ([question isConditionQuestion] == YES)
+					{
+						NSInteger section = [indexPath section];
+						id <GVCFormSection> sect = [[self sections] objectAtIndex:section];
+
+						NSInteger beforeRows = [[sect entriesPassingAllConditions:[self formSubmission]] count];
+						[value setSubmittedValue:updatedValue];
+						NSInteger afterRows = [[sect entriesPassingAllConditions:[self formSubmission]] count];
+						
+						NSInteger total = ABS(afterRows - beforeRows);
+						NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:total];
+						for ( NSInteger i = 1; i <= total; i++)
+						{
+							[indexPaths addObject:[NSIndexPath indexPathForItem:([indexPath row] + i) inSection:section]];
+						}
+
+						[tv beginUpdates];
+						if ( beforeRows < afterRows)
+						{
+							[tv insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+						}
+						else
+						{
+							[tv deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+						}
+						[tv endUpdates];
+					}
+					else
+					{
+						[value setSubmittedValue:updatedValue];
+					}
 				}];
 				
-//				[(GVCUITableViewCell *)cell setDelegate:self];
 				[(GVCEditCell *)cell setEditPath:indexPath];
 				
 				break;
