@@ -484,7 +484,7 @@
 		}
 		else if ( [question entryType] == GVCFormQuestion_Type_BOOLEAN )
 		{
-			CGSize titleSize = [titleString sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:CGSizeMake(400, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+			CGSize titleSize = [titleString sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:CGSizeMake(300, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
 			height = MAX( height, titleSize.height);
 		}
 		else
