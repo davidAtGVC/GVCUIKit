@@ -32,6 +32,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0504FAFE174C17C3005773A1 /* GVCImageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0504FAFC174C17C3005773A1 /* GVCImageCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0504FAFF174C17C3005773A1 /* GVCImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0504FAFD174C17C3005773A1 /* GVCImageCell.m */; };
 		05158BE71703C2170079DB42 /* GVCStackedViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05158BE51703C2170079DB42 /* GVCStackedViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05158BE81703C2170079DB42 /* GVCStackedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05158BE61703C2170079DB42 /* GVCStackedViewController.m */; };
 		051B26181559859C001B4377 /* GVCUINavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 051B26161559859C001B4377 /* GVCUINavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -218,6 +220,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0504FAFC174C17C3005773A1 /* GVCImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCImageCell.h; sourceTree = "<group>"; };
+		0504FAFD174C17C3005773A1 /* GVCImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCImageCell.m; sourceTree = "<group>"; };
 		05158BE51703C2170079DB42 /* GVCStackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCStackedViewController.h; sourceTree = "<group>"; };
 		05158BE61703C2170079DB42 /* GVCStackedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCStackedViewController.m; sourceTree = "<group>"; };
 		051B26161559859C001B4377 /* GVCUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUINavigationController.h; sourceTree = "<group>"; };
@@ -516,6 +520,8 @@
 				05BA45701590F3F000F5AF5A /* GVCSwitchCell.m */,
 				052A746E1592B294006497A7 /* GVCColumnContainerCell.h */,
 				052A746F1592B294006497A7 /* GVCColumnContainerCell.m */,
+				0504FAFC174C17C3005773A1 /* GVCImageCell.h */,
+				0504FAFD174C17C3005773A1 /* GVCImageCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -850,6 +856,7 @@
 				0594BB861718B3C800784D7A /* GVCFormOptionSelectionTableViewController.h in Headers */,
 				0594BB881718B3C800784D7A /* GVCFormTableViewController.h in Headers */,
 				0572C2F91743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.h in Headers */,
+				0504FAFE174C17C3005773A1 /* GVCImageCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1089,7 @@
 				0594BB851718B3C800784D7A /* GVCFormOptionSelectionTableViewController.m in Sources */,
 				0594BB871718B3C800784D7A /* GVCFormTableViewController.m in Sources */,
 				0572C2FA1743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.m in Sources */,
+				0504FAFF174C17C3005773A1 /* GVCImageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

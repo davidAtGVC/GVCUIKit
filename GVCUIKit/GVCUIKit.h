@@ -44,6 +44,7 @@
 #import "GVCEditDateCell.h"
 #import "GVCEditTextFieldCell.h"
 #import "GVCEditTextViewCell.h"
+#import "GVCImageCell.h"
 #import "GVCMultiLineTableViewCell.h"
 #import "GVCSwitchCell.h"
 #import "GVCUITableViewCell.h"
