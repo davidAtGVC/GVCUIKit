@@ -199,6 +199,12 @@
 		
 		[(UIScrollView *)[self view] setContentInset:e];
 		[(UIScrollView *)[self view] setScrollIndicatorInsets:e];
+        
+        NSIndexPath *idxPath = [[self tableView] indexPathForSelectedRow];
+        if ( idxPath != nil )
+        {
+            [[self tableView] scrollToRowAtIndexPath:idxPath atScrollPosition:UITableViewScrollPositionMiddle animated:animated];
+        }
 	}
 }
 

@@ -465,8 +465,8 @@
         }
     }
     
-    [tv deselectRowAtIndexPath:indexPath animated:YES];
-    return nil;
+//    [tv deselectRowAtIndexPath:indexPath animated:YES];
+    return indexPath;
 }
 
 
