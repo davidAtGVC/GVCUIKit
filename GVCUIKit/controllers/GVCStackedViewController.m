@@ -146,82 +146,43 @@ GVC_DEFINE_STRVALUE(DEFAULT_SEGUE_ID, defaultSegue);
 
 - (void)setRootViewController:(UIViewController *)newRootController
 {
-	UIViewController *previousRoot = [self rootViewController];
-	_rootViewController = newRootController;
-	
-	if ( _rootViewController != nil)
+	if (_rootViewController != nil)
 	{
-		switch ([self state])
-		{
-			case GVCStackedViewControllerVisible_LEFT:
-			{
-				[self setState:GVCStackedViewControllerVisible_ROOT];
-				[UIView animateWithDuration:0.2f animations:^{
-					// move the previous view offscreen
-					[[previousRoot view] setGvc_frameX:[[self view] gvc_frameWidth]];
-				} completion:^(__unused BOOL finished) {
-					[previousRoot willMoveToParentViewController:nil];
-					[[previousRoot view] removeFromSuperview];
-					[previousRoot removeFromParentViewController];
-					
-					[_rootViewController willMoveToParentViewController:self];
-					[self addChildViewController:_rootViewController];
-					[[self view] addSubview:[_rootViewController view]];
-					[_rootViewController didMoveToParentViewController:self];
-					
-					[self showRootPanel:nil];
-				}];
+		[_rootViewController willMoveToParentViewController:nil];
+		[self addChildViewController:newRootController];
+
+		[self showRootPanel:^(BOOL completed) {
+			void(^transitionCompletion)(BOOL finished) = ^(BOOL finished) {
+				[_rootViewController removeFromParentViewController];
+				[newRootController didMoveToParentViewController:self];
+				_rootViewController = newRootController;
 				
-				break;
-			}
-				
-			case GVCStackedViewControllerVisible_RIGHT:
-			{
-				[self setState:GVCStackedViewControllerVisible_ROOT];
-				[UIView animateWithDuration:0.2f animations:^{
-					// move the previous view offscreen
-					[[previousRoot view] setGvc_frameX:( -1 * [[self view] gvc_frameWidth])];
-				} completion:^(__unused BOOL finished) {
-					[previousRoot willMoveToParentViewController:nil];
-					[[previousRoot view] removeFromSuperview];
-					[previousRoot removeFromParentViewController];
-					
-					[_rootViewController willMoveToParentViewController:self];
-					[self addChildViewController:_rootViewController];
-					[[self view] addSubview:[_rootViewController view]];
-					[_rootViewController didMoveToParentViewController:self];
-					
-					[self showRootPanel:nil];
-				}];
-				
-				break;
-			}
-				
-			case GVCStackedViewControllerVisible_ROOT:
-			default:
-			{
-				[previousRoot willMoveToParentViewController:nil];
-				[[previousRoot view] removeFromSuperview];
-				[previousRoot removeFromParentViewController];
-				
-				[_rootViewController willMoveToParentViewController:self];
-				[self addChildViewController:_rootViewController];
-				[[self view] addSubview:[_rootViewController view]];
-				[_rootViewController didMoveToParentViewController:self];
-				
-				[self showRootPanel:nil];
-				break;
-			}
-		}
+				[self placeButtonsOnRootView];
+				[self placePanGestureOnRootView];
+				[[self view] bringSubviewToFront:[_rootViewController view]];
+			};
+			
+			[self transitionFromViewController:_rootViewController
+							  toViewController:newRootController
+									  duration:0.2
+									   options:UIViewAnimationOptionTransitionCrossDissolve
+									animations:nil
+									completion:transitionCompletion];
+		}];
+	}
+	else
+	{
+		_rootViewController = newRootController;
 		
-		[self placeButtonsOnRootView];
-		[self placePanGestureOnRootView];
-        [[self view] bringSubviewToFront:[_rootViewController view]];
-		
-//        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(performPanGesture:)];
-//        [pan setDelegate:(id<UIGestureRecognizerDelegate>)self];
-//        [[_rootViewController view] addGestureRecognizer:pan];
-//		[self setPanGesture:pan];
+		[self addChildViewController:_rootViewController];
+		[[self view] addSubview:[_rootViewController view]];
+		[_rootViewController didMoveToParentViewController:self];
+
+		[self showRootPanel:^(BOOL completed) {
+			[self placeButtonsOnRootView];
+			[self placePanGestureOnRootView];
+			[[self view] bringSubviewToFront:[_rootViewController view]];
+		}];
 	}
 }
 
