@@ -36,6 +36,13 @@
 #import "GVCUIProtocols.h"
 
 /* 
+ * calendar 
+ */
+#import "GVCCalendarViewController.h"
+#import "GVCYearCalendarCollectionViewLayout.h"
+#import "GVCYearCalendarViewController.h"
+
+/* 
  * cells 
  */
 #import "GVCButtonCell.h"
@@ -56,6 +63,7 @@
 #import "GVCPageController.h"
 #import "GVCPageScrollviewController.h"
 #import "GVCStackedViewController.h"
+#import "GVCUICollectionViewController.h"
 #import "GVCUIContainerViewController.h"
 #import "GVCUIDatePickerViewController.h"
 #import "GVCUINavigationController.h"
