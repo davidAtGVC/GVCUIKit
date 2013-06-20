@@ -41,6 +41,8 @@
 #import "GVCCalendarViewController.h"
 #import "GVCYearCalendarCollectionViewLayout.h"
 #import "GVCYearCalendarViewController.h"
+#import "GVCYearCollectionReusableView.h"
+#import "GVCYearCollectionViewCell.h"
 
 /* 
  * cells 

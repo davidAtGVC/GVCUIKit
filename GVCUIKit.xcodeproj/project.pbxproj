@@ -177,6 +177,10 @@
 		05E091E41594EDF000C6B1A0 /* GVCPinLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E091E21594EDF000C6B1A0 /* GVCPinLockViewController.m */; };
 		05E091E71594EE0C00C6B1A0 /* GVCLoginLockViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05E091E51594EE0C00C6B1A0 /* GVCLoginLockViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05E091E81594EE0C00C6B1A0 /* GVCLoginLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E091E61594EE0C00C6B1A0 /* GVCLoginLockViewController.m */; };
+		05E192F517734D650031A92D /* GVCYearCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05E192F317734D650031A92D /* GVCYearCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05E192F617734D650031A92D /* GVCYearCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E192F417734D650031A92D /* GVCYearCollectionViewCell.m */; };
+		05E192FC17734DC90031A92D /* GVCYearCollectionReusableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05E192FA17734DC90031A92D /* GVCYearCollectionReusableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05E192FD17734DC90031A92D /* GVCYearCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E192FB17734DC90031A92D /* GVCYearCollectionReusableView.m */; };
 		05E7BA2F155A8024006BA6BE /* GVCMultiTextFieldView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05E7BA2D155A8024006BA6BE /* GVCMultiTextFieldView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05E7BA30155A8024006BA6BE /* GVCMultiTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E7BA2E155A8024006BA6BE /* GVCMultiTextFieldView.m */; };
 		05F6477D15385E0100EFF492 /* GVCEditTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05F6477B15385E0100EFF492 /* GVCEditTextFieldCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -391,6 +395,10 @@
 		05E091E21594EDF000C6B1A0 /* GVCPinLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCPinLockViewController.m; sourceTree = "<group>"; };
 		05E091E51594EE0C00C6B1A0 /* GVCLoginLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCLoginLockViewController.h; sourceTree = "<group>"; };
 		05E091E61594EE0C00C6B1A0 /* GVCLoginLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCLoginLockViewController.m; sourceTree = "<group>"; };
+		05E192F317734D650031A92D /* GVCYearCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCYearCollectionViewCell.h; sourceTree = "<group>"; };
+		05E192F417734D650031A92D /* GVCYearCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCYearCollectionViewCell.m; sourceTree = "<group>"; };
+		05E192FA17734DC90031A92D /* GVCYearCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCYearCollectionReusableView.h; sourceTree = "<group>"; };
+		05E192FB17734DC90031A92D /* GVCYearCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCYearCollectionReusableView.m; sourceTree = "<group>"; };
 		05E7BA2D155A8024006BA6BE /* GVCMultiTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCMultiTextFieldView.h; sourceTree = "<group>"; };
 		05E7BA2E155A8024006BA6BE /* GVCMultiTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCMultiTextFieldView.m; sourceTree = "<group>"; };
 		05F6477B15385E0100EFF492 /* GVCEditTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCEditTextFieldCell.h; sourceTree = "<group>"; };
@@ -696,6 +704,10 @@
 				05BE6ED6176762ED00A1D3C9 /* GVCYearCalendarViewController.m */,
 				05BE6EE31767DDC800A1D3C9 /* GVCCalendarViewController.h */,
 				05BE6EE41767DDC800A1D3C9 /* GVCCalendarViewController.m */,
+				05E192F317734D650031A92D /* GVCYearCollectionViewCell.h */,
+				05E192F417734D650031A92D /* GVCYearCollectionViewCell.m */,
+				05E192FA17734DC90031A92D /* GVCYearCollectionReusableView.h */,
+				05E192FB17734DC90031A92D /* GVCYearCollectionReusableView.m */,
 			);
 			path = calendar;
 			sourceTree = "<group>";
@@ -893,6 +905,8 @@
 				05BE6ED7176762ED00A1D3C9 /* GVCYearCalendarViewController.h in Headers */,
 				05BE6EE11767DD8900A1D3C9 /* GVCUICollectionViewController.h in Headers */,
 				05BE6EE51767DDC900A1D3C9 /* GVCCalendarViewController.h in Headers */,
+				05E192F517734D650031A92D /* GVCYearCollectionViewCell.h in Headers */,
+				05E192FC17734DC90031A92D /* GVCYearCollectionReusableView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1130,6 +1144,8 @@
 				05BE6ED8176762ED00A1D3C9 /* GVCYearCalendarViewController.m in Sources */,
 				05BE6EE21767DD8900A1D3C9 /* GVCUICollectionViewController.m in Sources */,
 				05BE6EE61767DDC900A1D3C9 /* GVCCalendarViewController.m in Sources */,
+				05E192F617734D650031A92D /* GVCYearCollectionViewCell.m in Sources */,
+				05E192FD17734DC90031A92D /* GVCYearCollectionReusableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

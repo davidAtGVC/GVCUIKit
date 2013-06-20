@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GVCUICollectionViewController : UICollectionViewController
+@interface GVCUICollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
