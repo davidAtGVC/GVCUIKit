@@ -65,6 +65,26 @@
 #import "GVCUIViewWithTableController.h"
 
 /* 
+ * controllers collectionview 
+ */
+#import "GVCPagedGridCollectionLayout.h"
+#import "GVCPagedGridCollectionViewController.h"
+#import "GVCUICollectionViewController.h"
+
+/* 
+ * controllers collectionview calendar 
+ */
+#import "GVCCalendarViewController.h"
+#import "GVCDaysMonthView.h"
+#import "GVCMonthCalendarCollectionViewController.h"
+#import "GVCMonthCollectionReusableView.h"
+#import "GVCMonthCollectionViewCell.h"
+#import "GVCYearCalendarCollectionViewLayout.h"
+#import "GVCYearCalendarViewController.h"
+#import "GVCYearCollectionReusableView.h"
+#import "GVCYearCollectionViewCell.h"
+
+/* 
  * controls 
  */
 #import "GVCAlertView.h"

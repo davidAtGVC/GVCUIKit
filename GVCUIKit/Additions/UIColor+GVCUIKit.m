@@ -212,5 +212,14 @@ void GVC_HSL2RGB(float h, float s, float l, float* outR, float* outG, float* out
 	return color;
 }
 
++ (UIColor *)gvc_randomColor;
+{
+	CGFloat red = (arc4random() % 256) / 255.f;
+	CGFloat green = (arc4random() % 256) / 255.f;
+	CGFloat blue = (arc4random() % 256) / 255.f;
+	
+	return [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+}
+
 
 @end
