@@ -36,15 +36,6 @@
 #import "GVCUIProtocols.h"
 
 /* 
- * calendar 
- */
-#import "GVCCalendarViewController.h"
-#import "GVCYearCalendarCollectionViewLayout.h"
-#import "GVCYearCalendarViewController.h"
-#import "GVCYearCollectionReusableView.h"
-#import "GVCYearCollectionViewCell.h"
-
-/* 
  * cells 
  */
 #import "GVCButtonCell.h"
@@ -65,7 +56,6 @@
 #import "GVCPageController.h"
 #import "GVCPageScrollviewController.h"
 #import "GVCStackedViewController.h"
-#import "GVCUICollectionViewController.h"
 #import "GVCUIContainerViewController.h"
 #import "GVCUIDatePickerViewController.h"
 #import "GVCUINavigationController.h"
@@ -73,6 +63,26 @@
 #import "GVCUITableViewController.h"
 #import "GVCUIViewController.h"
 #import "GVCUIViewWithTableController.h"
+
+/* 
+ * controllers collectionview 
+ */
+#import "GVCPagedGridCollectionLayout.h"
+#import "GVCPagedGridCollectionViewController.h"
+#import "GVCUICollectionViewController.h"
+
+/* 
+ * controllers collectionview calendar 
+ */
+#import "GVCCalendarViewController.h"
+#import "GVCDaysMonthView.h"
+#import "GVCMonthCalendarCollectionViewController.h"
+#import "GVCMonthCollectionReusableView.h"
+#import "GVCMonthCollectionViewCell.h"
+#import "GVCYearCalendarCollectionViewLayout.h"
+#import "GVCYearCalendarViewController.h"
+#import "GVCYearCollectionReusableView.h"
+#import "GVCYearCollectionViewCell.h"
 
 /* 
  * controls 

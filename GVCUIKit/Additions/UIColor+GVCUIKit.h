@@ -34,6 +34,8 @@
 /** convert a color name like 'red' into [UIColor redColor] */
 + (UIColor *)gvc_ColorForColorName:(NSString *)colorString;
 
+/** sometimes you just need a bunch of colors that are different */
++ (UIColor *)gvc_randomColor;
 @end
 
 void GVC_RGB2HSL(float r, float g, float b, float* outH, float *outS, float *outV);
