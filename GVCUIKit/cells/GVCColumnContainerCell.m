@@ -60,7 +60,7 @@
     [label setFont:[UIFont boldSystemFontOfSize:14]];
     [label setTextColor:[UIColor blackColor]];
     [label setHighlightedTextColor:[UIColor whiteColor]];
-    [label setTextAlignment:UITextAlignmentLeft];
+    [label setTextAlignment:NSTextAlignmentLeft];
     [label setAdjustsFontSizeToFitWidth:YES];
     [label setBaselineAdjustment:UIBaselineAdjustmentNone];
 

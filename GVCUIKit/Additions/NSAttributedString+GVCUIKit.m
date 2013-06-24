@@ -15,13 +15,13 @@
     CTTextAlignment ctAlign = kCTNaturalTextAlignment;
     switch (alignment) 
     {
-		case UITextAlignmentLeft:
+		case NSTextAlignmentLeft:
             ctAlign = kCTLeftTextAlignment;
             break;
-		case UITextAlignmentCenter:
+		case NSTextAlignmentCenter:
             ctAlign = kCTCenterTextAlignment;
             break;
-		case UITextAlignmentRight:
+		case NSTextAlignmentRight:
             ctAlign = kCTRightTextAlignment;
             break;
         default: 
@@ -38,19 +38,19 @@
 		case NSLineBreakByWordWrapping:
             ctMode = kCTLineBreakByWordWrapping;
             break;
-		case UILineBreakModeCharacterWrap:
+		case NSLineBreakByCharWrapping:
             ctMode = kCTLineBreakByCharWrapping;
             break;
-		case UILineBreakModeClip:
+		case NSLineBreakByClipping:
             ctMode = kCTLineBreakByClipping;
             break;
-		case UILineBreakModeHeadTruncation:
+		case NSLineBreakByTruncatingHead:
             ctMode = kCTLineBreakByTruncatingHead;
             break;
-		case UILineBreakModeTailTruncation:
+		case NSLineBreakByTruncatingTail:
             ctMode = kCTLineBreakByTruncatingTail;
             break;
-		case UILineBreakModeMiddleTruncation:
+		case NSLineBreakByTruncatingMiddle:
             ctMode = kCTLineBreakByTruncatingMiddle;
             break;
 		default: 
