@@ -10,7 +10,7 @@
 
 @implementation NSAttributedString (GVCUIKit)
 
-+ (CTTextAlignment)gvc_CTTextAlignmentFromUITextAlignment:(UITextAlignment)alignment 
++ (CTTextAlignment)gvc_CTTextAlignmentFromNSTextAlignment:(NSTextAlignment)alignment
 {
     CTTextAlignment ctAlign = kCTNaturalTextAlignment;
     switch (alignment) 
@@ -30,7 +30,7 @@
     return ctAlign;
 }
 
-+ (CTLineBreakMode)gvc_CTTextLineBreakModeFromUILineBreakMode:(UILineBreakMode)lineBreakMode 
++ (CTLineBreakMode)gvc_CTTextLineBreakModeFromNSLineBreakMode:(NSLineBreakMode)lineBreakMode
 {
     CTLineBreakMode ctMode = kCTLineBreakByWordWrapping;
 	switch (lineBreakMode) 
@@ -83,15 +83,15 @@
 
 @implementation NSMutableAttributedString (GVCUIKit)
 
-- (void)gvc_setTextAlignment:(UITextAlignment)align lineBreakMode:(UILineBreakMode)mode
+- (void)gvc_setTextAlignment:(NSTextAlignment)align lineBreakMode:(NSLineBreakMode)mode
 {
     [self gvc_setTextAlignment:align lineBreakMode:mode range:NSMakeRange(0, [self length])];
 
 }
-- (void)gvc_setTextAlignment:(UITextAlignment)align lineBreakMode:(UILineBreakMode)mode range:(NSRange)range
+- (void)gvc_setTextAlignment:(NSTextAlignment)align lineBreakMode:(NSLineBreakMode)mode range:(NSRange)range
 {
-    CTTextAlignment textAlignment = [NSAttributedString gvc_CTTextAlignmentFromUITextAlignment:align];
-    CTLineBreakMode lineBreak = [NSAttributedString gvc_CTTextLineBreakModeFromUILineBreakMode:mode];
+    CTTextAlignment textAlignment = [NSAttributedString gvc_CTTextAlignmentFromNSTextAlignment:align];
+    CTLineBreakMode lineBreak = [NSAttributedString gvc_CTTextLineBreakModeFromNSLineBreakMode:mode];
    
     CTParagraphStyleSetting paragraphStyles[2] = 
     {
@@ -153,7 +153,7 @@
     return attributedString;
 }
 
-+ (NSMutableAttributedString *)gvc_MutableAttributed:(NSString *)str font:(UIFont *)font color:(UIColor *)colr alignment:(UITextAlignment)align lineBreakMode:(UILineBreakMode)mode
++ (NSMutableAttributedString *)gvc_MutableAttributed:(NSString *)str font:(UIFont *)font color:(UIColor *)colr alignment:(NSTextAlignment)align lineBreakMode:(NSLineBreakMode)mode
 {
     GVC_ASSERT(str != nil, @"String cannot be nil");
     GVC_ASSERT(font != nil, @"Font cannot be nil");
