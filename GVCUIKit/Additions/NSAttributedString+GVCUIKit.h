@@ -11,8 +11,8 @@
 
 @interface NSAttributedString (GVCUIKit)
 
-+ (CTTextAlignment)gvc_CTTextAlignmentFromUITextAlignment:(UITextAlignment)alignment;
-+ (CTLineBreakMode)gvc_CTTextLineBreakModeFromUILineBreakMode:(UILineBreakMode)lineBreakMode;
++ (CTTextAlignment)gvc_CTTextAlignmentFromNSTextAlignment:(NSTextAlignment)alignment;
++ (CTLineBreakMode)gvc_CTTextLineBreakModeFromNSLineBreakMode:(NSLineBreakMode)lineBreakMode;
 
 - (CGSize)gvc_sizeConstrainedToWidth:(CGFloat)width;
 
@@ -22,10 +22,10 @@
 @interface NSMutableAttributedString (GVCUIKit)
 
 + (NSMutableAttributedString *)gvc_MutableAttributedStringFromUILabel:(UILabel *)label;
-+ (NSMutableAttributedString *)gvc_MutableAttributed:(NSString *)str font:(UIFont *)font color:(UIColor *)colr alignment:(UITextAlignment)align lineBreakMode:(UILineBreakMode)mode;
++ (NSMutableAttributedString *)gvc_MutableAttributed:(NSString *)str font:(UIFont *)font color:(UIColor *)colr alignment:(NSTextAlignment)align lineBreakMode:(NSLineBreakMode)mode;
 
-- (void)gvc_setTextAlignment:(UITextAlignment)align lineBreakMode:(UILineBreakMode)mode;
-- (void)gvc_setTextAlignment:(UITextAlignment)align lineBreakMode:(UILineBreakMode)mode range:(NSRange)range;
+- (void)gvc_setTextAlignment:(NSTextAlignment)align lineBreakMode:(NSLineBreakMode)mode;
+- (void)gvc_setTextAlignment:(NSTextAlignment)align lineBreakMode:(NSLineBreakMode)mode range:(NSRange)range;
 
 - (void)gvc_setTextColor:(UIColor *)color range:(NSRange)range;
 - (void)gvc_setTextColor:(UIColor *)color;

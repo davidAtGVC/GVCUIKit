@@ -35,7 +35,7 @@
 		textView.font = [UIFont boldSystemFontOfSize:14];
 		textView.textColor = [UIColor blackColor];
 		textView.text = [NSString gvc_EmptyString];
-		textView.textAlignment = UITextAlignmentLeft;
+		textView.textAlignment = NSTextAlignmentLeft;
 		textView.lineBreakMode = NSLineBreakByWordWrapping;
 		textView.numberOfLines = 0;
 		
