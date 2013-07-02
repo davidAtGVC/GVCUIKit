@@ -11,6 +11,7 @@
 #import "GVCUIViewWithTableController.h"
 #import "GVCUITableViewCell.h"
 #import "GVCUIProtocols.h"
+#import "GVCLockViewManager.h"
 
 #import "UITableViewCell+GVCUIKit.h"
 
@@ -30,10 +31,10 @@
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
     [super viewDidLoad];
-//	[[self tableView] setAutoresizesSubviews:YES];
+	[[GVCLockViewManager sharedGVCLockViewManager] registerViewControllerIfModal:self];
 }
 
 -(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 

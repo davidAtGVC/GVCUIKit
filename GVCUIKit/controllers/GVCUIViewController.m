@@ -1,6 +1,7 @@
 
 #import "GVCUIViewController.h"
 #import "GVCUIKitFunctions.h"
+#import "GVCLockViewManager.h"
 
 @interface GVCUIViewController ()
 -(void) keyboardWillShow:(NSNotification *)notification;
@@ -60,6 +61,12 @@
 -(void) viewDidDisappear:(BOOL)animated 
 {
 	[super viewDidDisappear:animated];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	[[GVCLockViewManager sharedGVCLockViewManager] registerViewControllerIfModal:self];
 }
 
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 

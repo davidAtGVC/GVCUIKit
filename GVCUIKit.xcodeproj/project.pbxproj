@@ -161,6 +161,8 @@
 		05D576241538B6B000BE1135 /* GVCEditDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D576221538B6B000BE1135 /* GVCEditDateCell.m */; };
 		05D576291538BA6F00BE1135 /* GVCButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D576271538BA6F00BE1135 /* GVCButtonCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05D5762A1538BA6F00BE1135 /* GVCButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D576281538BA6F00BE1135 /* GVCButtonCell.m */; };
+		05D8D6CC177DE2390007F9A9 /* GVCLockViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 05D8D6CA177DE2390007F9A9 /* GVCLockViewManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05D8D6CD177DE2390007F9A9 /* GVCLockViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D8D6CB177DE2390007F9A9 /* GVCLockViewManager.m */; };
 		05DCB1E0167F688A0055697D /* GVCAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05DCB1DE167F688A0055697D /* GVCAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05DCB1E1167F688A0055697D /* GVCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DCB1DF167F688A0055697D /* GVCAlertView.m */; };
 		05E091DF1594EDBD00C6B1A0 /* GVCLockViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05E091DD1594EDBD00C6B1A0 /* GVCLockViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -391,6 +393,8 @@
 		05D576221538B6B000BE1135 /* GVCEditDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCEditDateCell.m; sourceTree = "<group>"; };
 		05D576271538BA6F00BE1135 /* GVCButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCButtonCell.h; sourceTree = "<group>"; };
 		05D576281538BA6F00BE1135 /* GVCButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCButtonCell.m; sourceTree = "<group>"; };
+		05D8D6CA177DE2390007F9A9 /* GVCLockViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCLockViewManager.h; sourceTree = "<group>"; };
+		05D8D6CB177DE2390007F9A9 /* GVCLockViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCLockViewManager.m; sourceTree = "<group>"; };
 		05DCB1DE167F688A0055697D /* GVCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCAlertView.h; sourceTree = "<group>"; };
 		05DCB1DF167F688A0055697D /* GVCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCAlertView.m; sourceTree = "<group>"; };
 		05E091DD1594EDBD00C6B1A0 /* GVCLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCLockViewController.h; sourceTree = "<group>"; };
@@ -829,6 +833,8 @@
 				05E091E21594EDF000C6B1A0 /* GVCPinLockViewController.m */,
 				05E091E51594EE0C00C6B1A0 /* GVCLoginLockViewController.h */,
 				05E091E61594EE0C00C6B1A0 /* GVCLoginLockViewController.m */,
+				05D8D6CA177DE2390007F9A9 /* GVCLockViewManager.h */,
+				05D8D6CB177DE2390007F9A9 /* GVCLockViewManager.m */,
 			);
 			path = security;
 			sourceTree = "<group>";
@@ -965,6 +971,7 @@
 				05E193381773A0CC0031A92D /* GVCMonthCalendarCollectionViewController.h in Headers */,
 				05E1933C1773A3320031A92D /* GVCMonthCollectionViewCell.h in Headers */,
 				05E193411773A5F30031A92D /* GVCMonthCollectionReusableView.h in Headers */,
+				05D8D6CC177DE2390007F9A9 /* GVCLockViewManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,6 +1217,7 @@
 				05E193391773A0CC0031A92D /* GVCMonthCalendarCollectionViewController.m in Sources */,
 				05E1933D1773A3320031A92D /* GVCMonthCollectionViewCell.m in Sources */,
 				05E193421773A5F30031A92D /* GVCMonthCollectionReusableView.m in Sources */,
+				05D8D6CD177DE2390007F9A9 /* GVCLockViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
