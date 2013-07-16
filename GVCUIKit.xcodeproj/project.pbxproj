@@ -74,6 +74,7 @@
 		055D8E6814FF0A3700E85A94 /* UIViewController+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 055D8E5C14FF0A3700E85A94 /* UIViewController+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		055D8E6914FF0A3700E85A94 /* UIViewController+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 055D8E5D14FF0A3700E85A94 /* UIViewController+GVCUIKit.m */; };
 		055E7287159514D700C8DCC4 /* GVCUIProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 055E7286159514D700C8DCC4 /* GVCUIProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		056072DE17957D7E00444C16 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056072DD17957D7E00444C16 /* SystemConfiguration.framework */; };
 		0563F5801537CE0B00BC7D2D /* GVCUIViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0563F57E1537CE0B00BC7D2D /* GVCUIViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0563F5811537CE0B00BC7D2D /* GVCUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0563F57F1537CE0B00BC7D2D /* GVCUIViewController.m */; };
 		0563F58D1537EBC500BC7D2D /* GVCMultiLineTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0563F58B1537EBC500BC7D2D /* GVCMultiLineTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -295,6 +296,7 @@
 		055D8E5C14FF0A3700E85A94 /* UIViewController+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+GVCUIKit.h"; sourceTree = "<group>"; };
 		055D8E5D14FF0A3700E85A94 /* UIViewController+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+GVCUIKit.m"; sourceTree = "<group>"; };
 		055E7286159514D700C8DCC4 /* GVCUIProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUIProtocols.h; sourceTree = "<group>"; };
+		056072DD17957D7E00444C16 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0563F57E1537CE0B00BC7D2D /* GVCUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUIViewController.h; sourceTree = "<group>"; };
 		0563F57F1537CE0B00BC7D2D /* GVCUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUIViewController.m; sourceTree = "<group>"; };
 		0563F58B1537EBC500BC7D2D /* GVCMultiLineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCMultiLineTableViewCell.h; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056072DE17957D7E00444C16 /* SystemConfiguration.framework in Frameworks */,
 				0565B54716CE889900DA7241 /* Security.framework in Frameworks */,
 				0565B54516CE889200DA7241 /* QuartzCore.framework in Frameworks */,
 				0565B54016CE888A00DA7241 /* CFNetwork.framework in Frameworks */,
@@ -725,7 +728,6 @@
 		05CA0AE114F7F69E001C8A68 = {
 			isa = PBXGroup;
 			children = (
-				059C616615011AFF00E18973 /* GVCFoundation.xcodeproj */,
 				05CA0AF114F7F69E001C8A68 /* GVCUIKit */,
 				05CA0B0514F7F69F001C8A68 /* GVCUIKitTests */,
 				0554498714F7F9C500ABB310 /* Resources */,
@@ -746,6 +748,8 @@
 		05CA0AEE14F7F69E001C8A68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				059C616615011AFF00E18973 /* GVCFoundation.xcodeproj */,
+				056072DD17957D7E00444C16 /* SystemConfiguration.framework */,
 				0565B54616CE889900DA7241 /* Security.framework */,
 				0565B53E16CE888A00DA7241 /* CFNetwork.framework */,
 				0565B53F16CE888A00DA7241 /* CoreGraphics.framework */,
