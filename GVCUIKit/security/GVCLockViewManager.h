@@ -29,7 +29,7 @@ GVC_SINGLETON_HEADER(GVCLockViewManager);
 - (GVCLockViewManager_TYPE)lockType;
 
 /** This block should load and initialize the view controller that will perform the login.  The manager will present it */
-@property (readwrite, copy) GVCLockViewManager_ShowLoginBlock loginViewControllerBlock;
+@property (copy, nonatomic) GVCLockViewManager_ShowLoginBlock loginViewControllerBlock;
 
 
 - (void)forceLoginViewForActiveApplication;
