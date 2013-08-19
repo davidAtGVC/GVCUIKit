@@ -9,6 +9,7 @@
 #import "GVCUITableViewCell.h"
 #import "GVCUIKitFunctions.h"
 #import "GVCUIProtocols.h"
+#import "GVCLockViewManager.h"
 
 #import "UITableViewCell+GVCUIKit.h"
 
@@ -84,7 +85,8 @@
 	{
         [[self tableView] setTableFooterView:[self tableFooterView]];
     }
-//	[[self tableView] setAutoresizesSubviews:YES];
+
+	[[GVCLockViewManager sharedGVCLockViewManager] registerViewControllerIfModal:self];
 }
 
 - (UINavigationBar *)navigationBar

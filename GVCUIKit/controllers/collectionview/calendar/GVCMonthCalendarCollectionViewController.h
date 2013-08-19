@@ -18,6 +18,6 @@ typedef void (^GVCMonthCalendarCollectionViewControllerBlock)(NSDate *selectedDa
 
 @property (strong, nonatomic) NSDate *date;
 
-@property (readwrite, copy) GVCMonthCalendarCollectionViewControllerBlock selectedDateBlock;
+@property (copy, nonatomic) GVCMonthCalendarCollectionViewControllerBlock selectedDateBlock;
 
 @end

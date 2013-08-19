@@ -131,6 +131,7 @@
  * security 
  */
 #import "GVCLockViewController.h"
+#import "GVCLockViewManager.h"
 #import "GVCLoginLockViewController.h"
 #import "GVCPinLockViewController.h"
 

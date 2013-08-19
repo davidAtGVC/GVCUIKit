@@ -34,7 +34,7 @@ typedef void (^GVCUIDatePickerBlock)(NSDate *selectedDate);
 
 @property (strong, nonatomic) NSString *callbackKey;
 
-@property (readwrite, copy) GVCUIDatePickerBlock dateChangeBlock;
+@property (copy, nonatomic) GVCUIDatePickerBlock dateChangeBlock;
 
 - (IBAction)dateChanged:sender;
 

@@ -22,12 +22,12 @@ typedef enum {
 
 - (id)initForMode:(GVCLockViewControllerMode)mode nibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 
-@property (readwrite, copy) GVCLockViewBlock successBlock;
-@property (readwrite, copy) GVCLockViewBlock failBlock;
+@property (copy, nonatomic) GVCLockViewBlock successBlock;
+@property (copy, nonatomic) GVCLockViewBlock failBlock;
 
-@property (nonatomic, weak) IBOutlet UILabel *statusLabel;
-@property (nonatomic, strong) NSError *lastError;
-@property (nonatomic, assign) GVCLockViewControllerMode lockMode;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (strong, nonatomic) NSError *lastError;
+@property (assign, nonatomic) GVCLockViewControllerMode lockMode;
 
 - (IBAction)loginAction:(id)sender;
 - (IBAction)cancelAction:(id)sender;

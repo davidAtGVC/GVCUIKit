@@ -22,9 +22,9 @@ typedef void (^GVCEditCellDidChangeBlock)(NSObject *updatedValue);
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
-@property (readwrite, copy) GVCEditCellWillChangeBlock willChangeBlock;
-@property (readwrite, copy) GVCEditCellDidChangeBlock didChangeBlock;
-@property (readwrite, copy) GVCEditCellEditingEndedBlock dataEndBlock;
+@property (copy, nonatomic) GVCEditCellWillChangeBlock willChangeBlock;
+@property (copy, nonatomic) GVCEditCellDidChangeBlock didChangeBlock;
+@property (copy, nonatomic) GVCEditCellEditingEndedBlock dataEndBlock;
 
 @end
 

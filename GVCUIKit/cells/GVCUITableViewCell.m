@@ -20,14 +20,14 @@
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(NSObject *)object
 {
-	id appearanceProxy = [self appearance];
-	if (appearanceProxy != nil)
-	{
-		GVCLogError(@"Appearance %@", appearanceProxy);
-		GVCLogError(@"Appearance Font %@", [appearanceProxy font]);
-		GVCLogError(@"Appearance UILabel %@", [appearanceProxy textLabel]);
-		
-	}
+//	id appearanceProxy = [self appearance];
+//	if (appearanceProxy != nil)
+//	{
+//		GVCLogError(@"Appearance %@", appearanceProxy);
+//		GVCLogError(@"Appearance Font %@", [appearanceProxy font]);
+//		GVCLogError(@"Appearance UILabel %@", [appearanceProxy textLabel]);
+//		
+//	}
 	
 	UIFont *font = [UIFont boldSystemFontOfSize:GVC_DEFAULT_FONT_SIZE];
 	CGFloat margin = [tableView gvc_tableCellMargin];
