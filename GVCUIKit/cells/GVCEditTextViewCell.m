@@ -109,9 +109,6 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)txtView
 {
-    UITableView *tv = (UITableView *) [self superview];
-    [tv selectRowAtIndexPath:[tv indexPathForCell:self] animated:YES scrollPosition:UITableViewScrollPositionTop];
-    
 	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCellDidBeginEditing:)])
 	{
 		[[self delegate] gvcEditCellDidBeginEditing:self];

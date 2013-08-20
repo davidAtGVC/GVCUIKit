@@ -28,25 +28,6 @@
     return CGRectMake(floorf(rect.origin.x), floorf(rect.origin.y), floorf(rect.size.width), floorf(rect.size.height));
 }
 
-- (CGRect)gvc_rectForString:(NSString *)contents atOrigin:(CGPoint)origin constrainedToSize:(CGSize)constrainedSize forFont:(UIFont *)font
-{
-	GVC_ASSERT( (origin.x >= 0.0) && (origin.y >= 0.0), @"Origin point is invalid" );
-	GVC_ASSERT( font != nil, @"Unable to calculate string size without a valid font" );
-	
-	CGFloat x = origin.x;
-	CGFloat y = origin.y;
-	CGFloat width = 0.0;
-	CGFloat height = 0.0;
-	
-	if ( gvc_IsEmpty(contents) == NO)
-	{
-		CGSize textSize = [contents sizeWithFont:font constrainedToSize:constrainedSize lineBreakMode:NSLineBreakByWordWrapping];
-		width = textSize.width;
-		height = textSize.height + 2.0;			
-	}
-	return CGRectMake(x, y, width, height);
-}
-
 - (void)gvc_addRoundRectangleToContext:(CGContextRef)context inRect:(CGRect)rect withRadius:(CGFloat)radius
 {
 	CGRect rrect = [UIView gvc_SharpenRect:rect];

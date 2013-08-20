@@ -10,16 +10,5 @@
 
 @implementation UITextView (GVCUIKit)
 
-- (CGFloat)gvc_heightForText;
-{
-    CGFloat height = 0.0;
-    CGFloat boundWidth = [self bounds].size.width;
-    if (boundWidth > 0.0)
-    {
-        CGSize size = [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(boundWidth, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-        height = MAX(size.height + 12, height);
-    }
-    return height;
-}
 
 @end

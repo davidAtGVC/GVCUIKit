@@ -50,9 +50,6 @@
 	for(int i = 0; i < textFieldCount; i++)
 	{
 		UITextField *textField = [[UITextField alloc] initWithFrame:CGRectZero];
-		textField.backgroundColor = [UIColor whiteColor];
-		textField.font = [UIFont systemFontOfSize:16];
-		textField.textColor = [UIColor colorWithRed:58.0/255.0 green:86.0/255.0 blue:138.0/255.0 alpha:1.0];
 		textField.delegate = self;
 		textField.returnKeyType = UIReturnKeyDone;
 		textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -177,10 +174,14 @@
 		for(i = 0; i < count; ++i)
 		{
 			UITextField *textField = [[self multiTextFields] objectAtIndex:i];
-			
-			float thisWidth = avaliableWidth * [[_widths objectAtIndex:i] floatValue];
+#ifdef __IPHONE_7_0
+			CGSize textSize = [@"Ig" sizeWithAttributes:@{NSFontAttributeName:textField.font}];
+#else
 			CGSize textSize = [@"Ig" sizeWithFont:textField.font];
 			textSize.height = 31;
+#endif
+			
+			float thisWidth = avaliableWidth * [[_widths objectAtIndex:i] floatValue];
 			frame = CGRectMake(xoffset, (height - textSize.height)/2, thisWidth, textSize.height);
 			[textField setFrame:frame];
 			xoffset += TITLE_LEFT_OFFSET + thisWidth;

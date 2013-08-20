@@ -35,9 +35,9 @@
 		[[self contentView] addSubview:textField];
     }
     
-    [[self textField] setBackgroundColor:[UIColor whiteColor]];
-    [[self textField] setTextColor:[UIColor colorWithRed:0.318 green:0.439 blue:0.569 alpha:1.000]];
-    [[self textField] setFont:[UIFont systemFontOfSize:18]];
+//    [[self textField] setBackgroundColor:[UIColor whiteColor]];
+//    [[self textField] setTextColor:[UIColor colorWithRed:0.318 green:0.439 blue:0.569 alpha:1.000]];
+//    [[self textField] setFont:[UIFont systemFontOfSize:18]];
     [[self textField] setAdjustsFontSizeToFitWidth:YES];
     [[self textField] setMinimumFontSize:12];
     [[self textField] setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
@@ -46,7 +46,6 @@
     [[self textField] setKeyboardType:UIKeyboardTypeDefault];	// use the default type input method (entire keyboard)
     [[self textField] setReturnKeyType:UIReturnKeyDone];
     [[self textField] setDelegate:self];
-    
 }
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
@@ -160,9 +159,9 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    UITableView *tv = (UITableView *) [self superview];
-    [tv selectRowAtIndexPath:[tv indexPathForCell:self] animated:YES scrollPosition:UITableViewScrollPositionTop];
-
+//    UITableView *tv = (UITableView *) [self superview];
+//    [tv selectRowAtIndexPath:[tv indexPathForCell:self] animated:YES scrollPosition:UITableViewScrollPositionTop];
+//
 	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCellDidBeginEditing:)])
 	{
 		[[self delegate] gvcEditCellDidBeginEditing:self];
@@ -173,8 +172,8 @@
 - (void)textFieldDidEndEditing:(UITextField *)txtField
 {
 //	((UITableView*)[self superview]).scrollEnabled = YES;
-    UITableView *tv = (UITableView *) [self superview];
-    [tv scrollToRowAtIndexPath:[tv indexPathForCell:self] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//    UITableView *tv = (UITableView *) [self superview];
+//    [tv scrollToRowAtIndexPath:[tv indexPathForCell:self] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 
 	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCell:textChangedTo:)])
 	{

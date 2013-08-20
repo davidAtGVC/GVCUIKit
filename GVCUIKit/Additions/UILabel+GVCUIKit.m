@@ -11,37 +11,6 @@
 
 @implementation UILabel (GVCUIKit)
 
-+ (CGFloat)gvc_heightForText:(NSString *)text width:(CGFloat)width forFont:(UIFont *)font
-{
-	return [self gvc_heightForText:text width:width forFont:font andLinebreak:NSLineBreakByWordWrapping];
-}
-
-+ (CGFloat)gvc_heightForText:(NSString *)text width:(CGFloat)width forFont:(UIFont *)font andLinebreak:(NSLineBreakMode)mode
-{
-	if (text == nil)
-		GVC_ASSERT_NOT_NIL(text);
-	GVC_ASSERT_NOT_NIL(font);
-
-	if ( width <= 0.0 )
-		width = 9999;
-
-	CGSize maximumSize = CGSizeMake(width, 9999);
-	CGSize dynamicSize = [text sizeWithFont:font constrainedToSize:maximumSize lineBreakMode:mode];
-	return dynamicSize.height;
-}
-
-- (CGFloat)gvc_heightForText
-{
-    CGFloat height = 0.0;
-	if (gvc_IsEmpty([self text]) == NO)
-	{
-		CGFloat frameWidth = [self frame].size.width;
-		height = [UILabel gvc_heightForText:[self text] width:frameWidth forFont:[self font] andLinebreak:[self lineBreakMode]];
-	}
-    return height;
-}
-
-
 - (void)gvc_setTextAttributes:(NSDictionary *)attributes
 {
     UIFont *font = [attributes objectForKey:UITextAttributeFont];

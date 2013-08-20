@@ -59,8 +59,13 @@
 			[self setTextFont:[UIFont boldSystemFontOfSize:13.]];
 		}
 
+#ifdef __IPHONE_7_0
+		CGSize badgeTextSize = [text sizeWithAttributes:@{NSFontAttributeName:textFont}];
+#else
 		CGSize badgeTextSize = [text sizeWithFont:textFont];
-		CGRect badgeViewFrame = CGRectIntegral(CGRectMake(MAX(rect.size.width - badgeTextSize.width - 14, 0), 
+#endif
+
+		CGRect badgeViewFrame = CGRectIntegral(CGRectMake(MAX(rect.size.width - badgeTextSize.width - 14, 0),
 										   (rect.size.height - badgeTextSize.height - 4) / 2, 
 										   MIN(badgeTextSize.width + 14, rect.size.width), 
 										   MIN(badgeTextSize.height + 4, rect.size.height)));

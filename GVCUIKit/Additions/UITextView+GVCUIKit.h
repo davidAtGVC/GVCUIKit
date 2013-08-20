@@ -10,6 +10,5 @@
 
 @interface UITextView (GVCUIKit)
 
-- (CGFloat)gvc_heightForText;
 
 @end

@@ -18,28 +18,6 @@
 
 @implementation GVCUITableViewCell
 
-+ (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(NSObject *)object
-{
-//	id appearanceProxy = [self appearance];
-//	if (appearanceProxy != nil)
-//	{
-//		GVCLogError(@"Appearance %@", appearanceProxy);
-//		GVCLogError(@"Appearance Font %@", [appearanceProxy font]);
-//		GVCLogError(@"Appearance UILabel %@", [appearanceProxy textLabel]);
-//		
-//	}
-	
-	UIFont *font = [UIFont boldSystemFontOfSize:GVC_DEFAULT_FONT_SIZE];
-	CGFloat margin = [tableView gvc_tableCellMargin];
-	CGFloat width = [tableView gvc_frameWidth] - (margin * 2);
-	
-	CGSize labelTextSize = [[object gvc_tableCellTitle] sizeWithFont:font constrainedToSize:CGSizeMake(75, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-	CGSize detailTextSize = [[object gvc_tableCellDetail] sizeWithFont:font constrainedToSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-	
-	return MAX(detailTextSize.height, labelTextSize.height) + (20);
-}
-
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
