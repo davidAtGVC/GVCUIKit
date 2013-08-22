@@ -97,6 +97,8 @@
 		0585C55115401DFA00659B22 /* NSAttributedString+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0585C55215401DFA00659B22 /* NSAttributedString+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */; };
 		0585C556154028B600659B22 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0585C555154028B600659B22 /* CoreText.framework */; };
+		05892B3117C45BD200E611BB /* GVCSlideViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05892B2F17C45BD200E611BB /* GVCSlideViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05892B3217C45BD200E611BB /* GVCSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05892B3017C45BD200E611BB /* GVCSlideViewController.m */; };
 		058B64E115005F41007F27A1 /* GVCUIApplicationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 058B64DD15005F40007F27A1 /* GVCUIApplicationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		058B64E215005F41007F27A1 /* GVCUIApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 058B64DE15005F40007F27A1 /* GVCUIApplicationDelegate.m */; };
 		058B65DE1500696B007F27A1 /* GVCBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 058B65D81500696B007F27A1 /* GVCBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -337,6 +339,8 @@
 		0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+GVCUIKit.h"; sourceTree = "<group>"; };
 		0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+GVCUIKit.m"; sourceTree = "<group>"; };
 		0585C555154028B600659B22 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		05892B2F17C45BD200E611BB /* GVCSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCSlideViewController.h; sourceTree = "<group>"; };
+		05892B3017C45BD200E611BB /* GVCSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCSlideViewController.m; sourceTree = "<group>"; };
 		058B64DD15005F40007F27A1 /* GVCUIApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUIApplicationDelegate.h; sourceTree = "<group>"; };
 		058B64DE15005F40007F27A1 /* GVCUIApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUIApplicationDelegate.m; sourceTree = "<group>"; };
 		058B65D81500696B007F27A1 /* GVCBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCBadgeView.h; sourceTree = "<group>"; };
@@ -644,6 +648,8 @@
 				05BA452A1590CF7700F5AF5A /* GVCUIContainerViewController.m */,
 				05158BE51703C2170079DB42 /* GVCStackedViewController.h */,
 				05158BE61703C2170079DB42 /* GVCStackedViewController.m */,
+				05892B2F17C45BD200E611BB /* GVCSlideViewController.h */,
+				05892B3017C45BD200E611BB /* GVCSlideViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -1017,6 +1023,7 @@
 				05E091E31594EDF000C6B1A0 /* GVCPinLockViewController.h in Headers */,
 				05E091E71594EE0C00C6B1A0 /* GVCLoginLockViewController.h in Headers */,
 				05A5C21E17C2869C00C56935 /* GVCCalendarDayHeaderView.h in Headers */,
+				05892B3117C45BD200E611BB /* GVCSlideViewController.h in Headers */,
 				052A74701592B294006497A7 /* GVCColumnContainerCell.h in Headers */,
 				05A5C23717C286E800C56935 /* GVCCalendarGridLayout.h in Headers */,
 				0549F0C4159A512100A93F3A /* UILabel+GVCUIKit.h in Headers */,
@@ -1291,6 +1298,7 @@
 				0594BB851718B3C800784D7A /* GVCFormOptionSelectionTableViewController.m in Sources */,
 				0594BB871718B3C800784D7A /* GVCFormTableViewController.m in Sources */,
 				05A5C23817C286E800C56935 /* GVCCalendarGridLayout.m in Sources */,
+				05892B3217C45BD200E611BB /* GVCSlideViewController.m in Sources */,
 				0572C2FA1743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.m in Sources */,
 				05A5C22317C2869C00C56935 /* GVCCalendarTimeRowView.m in Sources */,
 				0504FAFF174C17C3005773A1 /* GVCImageCell.m in Sources */,

@@ -68,4 +68,7 @@
 
 - (UIImage *)gvc_cropToRect:(CGRect)rect;
 
+/** creates a dynamic vector image of the hamburger control */
++ (UIImage *)gvc_hamburgerControlImage;
+
 @end

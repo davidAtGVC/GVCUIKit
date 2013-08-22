@@ -69,6 +69,7 @@
 #import "GVCDatePickerTableViewController.h"
 #import "GVCPageController.h"
 #import "GVCPageScrollviewController.h"
+#import "GVCSlideViewController.h"
 #import "GVCStackedViewController.h"
 #import "GVCUIContainerViewController.h"
 #import "GVCUIDatePickerViewController.h"
