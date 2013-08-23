@@ -21,7 +21,7 @@ GVC_DEFINE_EXTERN_STR(STACKED_DEFAULT_SEGUE_ID);
 typedef void (^GVCStackedViewSegueBlock)(UIStoryboardSegue *segue, id sender);
 
 
-@interface GVCStackedViewController : GVCUIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>
+@interface GVCStackedViewController : GVCUIViewController <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong, readonly) UIViewController *menuViewController;
 @property (assign, nonatomic) CGFloat menuViewWidth;
