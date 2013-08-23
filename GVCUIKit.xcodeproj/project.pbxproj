@@ -97,6 +97,8 @@
 		0585C55115401DFA00659B22 /* NSAttributedString+GVCUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0585C55215401DFA00659B22 /* NSAttributedString+GVCUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */; };
 		0585C556154028B600659B22 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0585C555154028B600659B22 /* CoreText.framework */; };
+		05892B3117C45BD200E611BB /* GVCSlideViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05892B2F17C45BD200E611BB /* GVCSlideViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05892B3217C45BD200E611BB /* GVCSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05892B3017C45BD200E611BB /* GVCSlideViewController.m */; };
 		058B64E115005F41007F27A1 /* GVCUIApplicationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 058B64DD15005F40007F27A1 /* GVCUIApplicationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		058B64E215005F41007F27A1 /* GVCUIApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 058B64DE15005F40007F27A1 /* GVCUIApplicationDelegate.m */; };
 		058B65DE1500696B007F27A1 /* GVCBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 058B65D81500696B007F27A1 /* GVCBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -117,6 +119,24 @@
 		059C61901502894B00E18973 /* GVCUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C618E1502894B00E18973 /* GVCUITableViewController.m */; };
 		059C619315028A2000E18973 /* GVCUITableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 059C619115028A2000E18973 /* GVCUITableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		059C619415028A2000E18973 /* GVCUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C619215028A2000E18973 /* GVCUITableViewCell.m */; };
+		05A5C21E17C2869C00C56935 /* GVCCalendarDayHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A5C21217C2869C00C56935 /* GVCCalendarDayHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05A5C21F17C2869C00C56935 /* GVCCalendarDayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5C21317C2869C00C56935 /* GVCCalendarDayHeaderView.m */; };
+		05A5C22017C2869C00C56935 /* GVCCalendarEventViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A5C21417C2869C00C56935 /* GVCCalendarEventViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05A5C22117C2869C00C56935 /* GVCCalendarEventViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5C21517C2869C00C56935 /* GVCCalendarEventViewCell.m */; };
+		05A5C22217C2869C00C56935 /* GVCCalendarTimeRowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A5C21617C2869C00C56935 /* GVCCalendarTimeRowView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05A5C22317C2869C00C56935 /* GVCCalendarTimeRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5C21717C2869C00C56935 /* GVCCalendarTimeRowView.m */; };
+		05A5C22417C2869C00C56935 /* GVCBorderedReusableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A5C21817C2869C00C56935 /* GVCBorderedReusableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05A5C22517C2869C00C56935 /* GVCBorderedReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5C21917C2869C00C56935 /* GVCBorderedReusableView.m */; };
+		05A5C22617C2869C00C56935 /* GVCGridlineReusableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A5C21A17C2869C00C56935 /* GVCGridlineReusableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05A5C22717C2869C00C56935 /* GVCGridlineReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5C21B17C2869C00C56935 /* GVCGridlineReusableView.m */; };
+		05A5C22817C2869C00C56935 /* GVCHighlightedTextReusableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A5C21C17C2869C00C56935 /* GVCHighlightedTextReusableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05A5C22917C2869C00C56935 /* GVCHighlightedTextReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5C21D17C2869C00C56935 /* GVCHighlightedTextReusableView.m */; };
+		05A5C23317C286E800C56935 /* GVCCalendarDayEventCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A5C22D17C286E800C56935 /* GVCCalendarDayEventCollectionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05A5C23417C286E800C56935 /* GVCCalendarDayEventCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5C22E17C286E800C56935 /* GVCCalendarDayEventCollectionViewController.m */; };
+		05A5C23517C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A5C22F17C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05A5C23617C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5C23017C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.m */; };
+		05A5C23717C286E800C56935 /* GVCCalendarGridLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A5C23117C286E800C56935 /* GVCCalendarGridLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05A5C23817C286E800C56935 /* GVCCalendarGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5C23217C286E800C56935 /* GVCCalendarGridLayout.m */; };
 		05ABB548153E45E500D039F2 /* GVCProgressBarLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 05ABB544153E45E500D039F2 /* GVCProgressBarLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05ABB549153E45E500D039F2 /* GVCProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05ABB545153E45E500D039F2 /* GVCProgressBarLayer.m */; };
 		05ABB54A153E45E500D039F2 /* GVCTextLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 05ABB546153E45E500D039F2 /* GVCTextLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -319,6 +339,8 @@
 		0585C54F15401DFA00659B22 /* NSAttributedString+GVCUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+GVCUIKit.h"; sourceTree = "<group>"; };
 		0585C55015401DFA00659B22 /* NSAttributedString+GVCUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+GVCUIKit.m"; sourceTree = "<group>"; };
 		0585C555154028B600659B22 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		05892B2F17C45BD200E611BB /* GVCSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCSlideViewController.h; sourceTree = "<group>"; };
+		05892B3017C45BD200E611BB /* GVCSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCSlideViewController.m; sourceTree = "<group>"; };
 		058B64DD15005F40007F27A1 /* GVCUIApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUIApplicationDelegate.h; sourceTree = "<group>"; };
 		058B64DE15005F40007F27A1 /* GVCUIApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUIApplicationDelegate.m; sourceTree = "<group>"; };
 		058B65D81500696B007F27A1 /* GVCBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCBadgeView.h; sourceTree = "<group>"; };
@@ -347,6 +369,24 @@
 		059C618E1502894B00E18973 /* GVCUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUITableViewController.m; sourceTree = "<group>"; };
 		059C619115028A2000E18973 /* GVCUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCUITableViewCell.h; sourceTree = "<group>"; };
 		059C619215028A2000E18973 /* GVCUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCUITableViewCell.m; sourceTree = "<group>"; };
+		05A5C21217C2869C00C56935 /* GVCCalendarDayHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCCalendarDayHeaderView.h; sourceTree = "<group>"; };
+		05A5C21317C2869C00C56935 /* GVCCalendarDayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCCalendarDayHeaderView.m; sourceTree = "<group>"; };
+		05A5C21417C2869C00C56935 /* GVCCalendarEventViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCCalendarEventViewCell.h; sourceTree = "<group>"; };
+		05A5C21517C2869C00C56935 /* GVCCalendarEventViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCCalendarEventViewCell.m; sourceTree = "<group>"; };
+		05A5C21617C2869C00C56935 /* GVCCalendarTimeRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCCalendarTimeRowView.h; sourceTree = "<group>"; };
+		05A5C21717C2869C00C56935 /* GVCCalendarTimeRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCCalendarTimeRowView.m; sourceTree = "<group>"; };
+		05A5C21817C2869C00C56935 /* GVCBorderedReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCBorderedReusableView.h; sourceTree = "<group>"; };
+		05A5C21917C2869C00C56935 /* GVCBorderedReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCBorderedReusableView.m; sourceTree = "<group>"; };
+		05A5C21A17C2869C00C56935 /* GVCGridlineReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCGridlineReusableView.h; sourceTree = "<group>"; };
+		05A5C21B17C2869C00C56935 /* GVCGridlineReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCGridlineReusableView.m; sourceTree = "<group>"; };
+		05A5C21C17C2869C00C56935 /* GVCHighlightedTextReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCHighlightedTextReusableView.h; sourceTree = "<group>"; };
+		05A5C21D17C2869C00C56935 /* GVCHighlightedTextReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCHighlightedTextReusableView.m; sourceTree = "<group>"; };
+		05A5C22D17C286E800C56935 /* GVCCalendarDayEventCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCCalendarDayEventCollectionViewController.h; sourceTree = "<group>"; };
+		05A5C22E17C286E800C56935 /* GVCCalendarDayEventCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCCalendarDayEventCollectionViewController.m; sourceTree = "<group>"; };
+		05A5C22F17C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCCalendarDayEventCollectionViewLayout.h; sourceTree = "<group>"; };
+		05A5C23017C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCCalendarDayEventCollectionViewLayout.m; sourceTree = "<group>"; };
+		05A5C23117C286E800C56935 /* GVCCalendarGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCCalendarGridLayout.h; sourceTree = "<group>"; };
+		05A5C23217C286E800C56935 /* GVCCalendarGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCCalendarGridLayout.m; sourceTree = "<group>"; };
 		05ABB544153E45E500D039F2 /* GVCProgressBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCProgressBarLayer.h; sourceTree = "<group>"; };
 		05ABB545153E45E500D039F2 /* GVCProgressBarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCProgressBarLayer.m; sourceTree = "<group>"; };
 		05ABB546153E45E500D039F2 /* GVCTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCTextLayer.h; sourceTree = "<group>"; };
@@ -557,6 +597,7 @@
 		058B64DB15005F40007F27A1 /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				05A5C21017C2869C00C56935 /* collection */,
 				059C619115028A2000E18973 /* GVCUITableViewCell.h */,
 				059C619215028A2000E18973 /* GVCUITableViewCell.m */,
 				05F6478115385E2A00EFF492 /* GVCEditCell.h */,
@@ -607,6 +648,8 @@
 				05BA452A1590CF7700F5AF5A /* GVCUIContainerViewController.m */,
 				05158BE51703C2170079DB42 /* GVCStackedViewController.h */,
 				05158BE61703C2170079DB42 /* GVCStackedViewController.m */,
+				05892B2F17C45BD200E611BB /* GVCSlideViewController.h */,
+				05892B3017C45BD200E611BB /* GVCSlideViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -693,6 +736,33 @@
 				059C617115011AFF00E18973 /* GVCFoundationTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		05A5C21017C2869C00C56935 /* collection */ = {
+			isa = PBXGroup;
+			children = (
+				05A5C21117C2869C00C56935 /* calendar */,
+				05A5C21817C2869C00C56935 /* GVCBorderedReusableView.h */,
+				05A5C21917C2869C00C56935 /* GVCBorderedReusableView.m */,
+				05A5C21A17C2869C00C56935 /* GVCGridlineReusableView.h */,
+				05A5C21B17C2869C00C56935 /* GVCGridlineReusableView.m */,
+				05A5C21C17C2869C00C56935 /* GVCHighlightedTextReusableView.h */,
+				05A5C21D17C2869C00C56935 /* GVCHighlightedTextReusableView.m */,
+			);
+			path = collection;
+			sourceTree = "<group>";
+		};
+		05A5C21117C2869C00C56935 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				05A5C21217C2869C00C56935 /* GVCCalendarDayHeaderView.h */,
+				05A5C21317C2869C00C56935 /* GVCCalendarDayHeaderView.m */,
+				05A5C21417C2869C00C56935 /* GVCCalendarEventViewCell.h */,
+				05A5C21517C2869C00C56935 /* GVCCalendarEventViewCell.m */,
+				05A5C21617C2869C00C56935 /* GVCCalendarTimeRowView.h */,
+				05A5C21717C2869C00C56935 /* GVCCalendarTimeRowView.m */,
+			);
+			path = calendar;
 			sourceTree = "<group>";
 		};
 		05ABB543153E44C600D039F2 /* layers */ = {
@@ -860,6 +930,12 @@
 		05E1930D17738C260031A92D /* calendar */ = {
 			isa = PBXGroup;
 			children = (
+				05A5C22D17C286E800C56935 /* GVCCalendarDayEventCollectionViewController.h */,
+				05A5C22E17C286E800C56935 /* GVCCalendarDayEventCollectionViewController.m */,
+				05A5C22F17C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.h */,
+				05A5C23017C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.m */,
+				05A5C23117C286E800C56935 /* GVCCalendarGridLayout.h */,
+				05A5C23217C286E800C56935 /* GVCCalendarGridLayout.m */,
 				05E1930E17738C260031A92D /* GVCCalendarViewController.h */,
 				05E1930F17738C260031A92D /* GVCCalendarViewController.m */,
 				05E1931017738C260031A92D /* GVCYearCalendarCollectionViewLayout.h */,
@@ -909,9 +985,11 @@
 				059C618F1502894B00E18973 /* GVCUITableViewController.h in Headers */,
 				059C619315028A2000E18973 /* GVCUITableViewCell.h in Headers */,
 				056A14E4150310B500B50027 /* GVCDictionaryTableViewController.h in Headers */,
+				05A5C23517C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.h in Headers */,
 				055D8E6614FF0A3700E85A94 /* UIView+GVCUIKit.h in Headers */,
 				055D8E6814FF0A3700E85A94 /* UIViewController+GVCUIKit.h in Headers */,
 				0563F58D1537EBC500BC7D2D /* GVCMultiLineTableViewCell.h in Headers */,
+				05A5C22417C2869C00C56935 /* GVCBorderedReusableView.h in Headers */,
 				0563F5801537CE0B00BC7D2D /* GVCUIViewController.h in Headers */,
 				05F6478C153860D100EFF492 /* GVCDatePickerTableViewController.h in Headers */,
 				05F6478315385E2A00EFF492 /* GVCEditCell.h in Headers */,
@@ -936,12 +1014,18 @@
 				05BA45711590F3F000F5AF5A /* GVCSwitchCell.h in Headers */,
 				05BA45751590F98D00F5AF5A /* GVCEditTextViewCell.h in Headers */,
 				05BA4582159100A600F5AF5A /* GVCDataFormField.h in Headers */,
+				05A5C23317C286E800C56935 /* GVCCalendarDayEventCollectionViewController.h in Headers */,
 				05BA4584159100A600F5AF5A /* GVCDataFormModel.h in Headers */,
+				05A5C22217C2869C00C56935 /* GVCCalendarTimeRowView.h in Headers */,
 				05BA4586159100A600F5AF5A /* GVCDataFormSection.h in Headers */,
+				05A5C22617C2869C00C56935 /* GVCGridlineReusableView.h in Headers */,
 				05E091DF1594EDBD00C6B1A0 /* GVCLockViewController.h in Headers */,
 				05E091E31594EDF000C6B1A0 /* GVCPinLockViewController.h in Headers */,
 				05E091E71594EE0C00C6B1A0 /* GVCLoginLockViewController.h in Headers */,
+				05A5C21E17C2869C00C56935 /* GVCCalendarDayHeaderView.h in Headers */,
+				05892B3117C45BD200E611BB /* GVCSlideViewController.h in Headers */,
 				052A74701592B294006497A7 /* GVCColumnContainerCell.h in Headers */,
+				05A5C23717C286E800C56935 /* GVCCalendarGridLayout.h in Headers */,
 				0549F0C4159A512100A93F3A /* UILabel+GVCUIKit.h in Headers */,
 				0550C537159B403A00E43AD3 /* UITextView+GVCUIKit.h in Headers */,
 				05B1454E159E372900702FB4 /* UITableView+GVCUIKit.h in Headers */,
@@ -972,7 +1056,9 @@
 				05E1932A17738CFC0031A92D /* GVCPagedGridCollectionLayout.h in Headers */,
 				05E1933417739E7C0031A92D /* GVCDaysMonthView.h in Headers */,
 				05E193301773940B0031A92D /* GVCPagedGridCollectionViewController.h in Headers */,
+				05A5C22817C2869C00C56935 /* GVCHighlightedTextReusableView.h in Headers */,
 				05E193381773A0CC0031A92D /* GVCMonthCalendarCollectionViewController.h in Headers */,
+				05A5C22017C2869C00C56935 /* GVCCalendarEventViewCell.h in Headers */,
 				05E1933C1773A3320031A92D /* GVCMonthCollectionViewCell.h in Headers */,
 				05E193411773A5F30031A92D /* GVCMonthCollectionReusableView.h in Headers */,
 				05D8D6CC177DE2390007F9A9 /* GVCLockViewManager.h in Headers */,
@@ -1146,6 +1232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				055D8E5F14FF0A3700E85A94 /* UIColor+GVCUIKit.m in Sources */,
+				05A5C23417C286E800C56935 /* GVCCalendarDayEventCollectionViewController.m in Sources */,
 				055D8E6114FF0A3700E85A94 /* UIDevice+GVCUIKit.m in Sources */,
 				055D8E6314FF0A3700E85A94 /* UIImage+GVCUIKit.m in Sources */,
 				055D8E6514FF0A3700E85A94 /* UITabBar+GVCUIKit.m in Sources */,
@@ -1183,6 +1270,7 @@
 				05BA45721590F3F000F5AF5A /* GVCSwitchCell.m in Sources */,
 				05BA45761590F98D00F5AF5A /* GVCEditTextViewCell.m in Sources */,
 				05BA4583159100A600F5AF5A /* GVCDataFormField.m in Sources */,
+				05A5C22517C2869C00C56935 /* GVCBorderedReusableView.m in Sources */,
 				05BA4585159100A600F5AF5A /* GVCDataFormModel.m in Sources */,
 				05BA4587159100A600F5AF5A /* GVCDataFormSection.m in Sources */,
 				052A74711592B294006497A7 /* GVCColumnContainerCell.m in Sources */,
@@ -1193,8 +1281,10 @@
 				0550C538159B403A00E43AD3 /* UITextView+GVCUIKit.m in Sources */,
 				05B1454F159E372900702FB4 /* UITableView+GVCUIKit.m in Sources */,
 				05D3163415A0E3AF00042460 /* GVCUIKitFunctions.m in Sources */,
+				05A5C23617C286E800C56935 /* GVCCalendarDayEventCollectionViewLayout.m in Sources */,
 				056CD8DB15A7307F00647244 /* GVCColumnContainerView.m in Sources */,
 				056CD8E115A733AD00647244 /* GVCSizedColumn.m in Sources */,
+				05A5C22917C2869C00C56935 /* GVCHighlightedTextReusableView.m in Sources */,
 				05C2E31E1668604400FDEE0D /* GVCAppearance.m in Sources */,
 				05DCB1E1167F688A0055697D /* GVCAlertView.m in Sources */,
 				0583CB9C16BC1BB200D70E11 /* UINavigationController+GVCUIKit.m in Sources */,
@@ -1207,11 +1297,16 @@
 				05C6F005170546AD0054D990 /* GVCLayoutView.m in Sources */,
 				0594BB851718B3C800784D7A /* GVCFormOptionSelectionTableViewController.m in Sources */,
 				0594BB871718B3C800784D7A /* GVCFormTableViewController.m in Sources */,
+				05A5C23817C286E800C56935 /* GVCCalendarGridLayout.m in Sources */,
+				05892B3217C45BD200E611BB /* GVCSlideViewController.m in Sources */,
 				0572C2FA1743EB5A00BB8A1F /* UIStoryboard+GVCUIKit.m in Sources */,
+				05A5C22317C2869C00C56935 /* GVCCalendarTimeRowView.m in Sources */,
 				0504FAFF174C17C3005773A1 /* GVCImageCell.m in Sources */,
 				05E1931B17738C260031A92D /* GVCCalendarViewController.m in Sources */,
 				05E1931D17738C260031A92D /* GVCYearCalendarCollectionViewLayout.m in Sources */,
+				05A5C22117C2869C00C56935 /* GVCCalendarEventViewCell.m in Sources */,
 				05E1931F17738C260031A92D /* GVCYearCalendarViewController.m in Sources */,
+				05A5C22717C2869C00C56935 /* GVCGridlineReusableView.m in Sources */,
 				05E1932117738C260031A92D /* GVCYearCollectionReusableView.m in Sources */,
 				05E1932317738C260031A92D /* GVCYearCollectionViewCell.m in Sources */,
 				05E1932517738C260031A92D /* GVCUICollectionViewController.m in Sources */,
@@ -1222,6 +1317,7 @@
 				05E1933D1773A3320031A92D /* GVCMonthCollectionViewCell.m in Sources */,
 				05E193421773A5F30031A92D /* GVCMonthCollectionReusableView.m in Sources */,
 				05D8D6CD177DE2390007F9A9 /* GVCLockViewManager.m in Sources */,
+				05A5C21F17C2869C00C56935 /* GVCCalendarDayHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

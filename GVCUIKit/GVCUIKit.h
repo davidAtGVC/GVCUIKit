@@ -50,11 +50,26 @@
 #import "GVCUITableViewCell.h"
 
 /* 
+ * cells collection 
+ */
+#import "GVCBorderedReusableView.h"
+#import "GVCGridlineReusableView.h"
+#import "GVCHighlightedTextReusableView.h"
+
+/* 
+ * cells collection calendar 
+ */
+#import "GVCCalendarDayHeaderView.h"
+#import "GVCCalendarEventViewCell.h"
+#import "GVCCalendarTimeRowView.h"
+
+/* 
  * controllers 
  */
 #import "GVCDatePickerTableViewController.h"
 #import "GVCPageController.h"
 #import "GVCPageScrollviewController.h"
+#import "GVCSlideViewController.h"
 #import "GVCStackedViewController.h"
 #import "GVCUIContainerViewController.h"
 #import "GVCUIDatePickerViewController.h"
@@ -74,6 +89,9 @@
 /* 
  * controllers collectionview calendar 
  */
+#import "GVCCalendarDayEventCollectionViewController.h"
+#import "GVCCalendarDayEventCollectionViewLayout.h"
+#import "GVCCalendarGridLayout.h"
 #import "GVCCalendarViewController.h"
 #import "GVCDaysMonthView.h"
 #import "GVCMonthCalendarCollectionViewController.h"
