@@ -221,4 +221,10 @@
 }
 
 
+- (NSString *)gvc_base64PNG
+{
+    NSData *data = UIImagePNGRepresentation(self);
+    return [data gvc_base64Encoded];
+}
+
 @end

@@ -71,4 +71,7 @@
 /** creates a dynamic vector image of the hamburger control */
 + (UIImage *)gvc_hamburgerControlImage;
 
+/** generates a Base64 encoding of the PNG image */
+- (NSString *)gvc_base64PNG;
+
 @end
