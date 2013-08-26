@@ -10,35 +10,14 @@
 
 @implementation GVCEditCell
 
-@synthesize editPath;
-@synthesize canSelectCell;
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self != nil) 
 	{
-        // Initialization code
-		self.accessoryType = UITableViewCellAccessoryNone;
-		[self setCanSelectCell:NO];
-
     }
     return self;
 }
-
-- (void)setCanSelectCell:(BOOL)value
-{
-    if (value == YES)
-	{
-        self.selectionStyle = UITableViewCellSelectionStyleBlue;
-    }
-	else
-	{
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    canSelectCell = value;
-}
-
 
 - (void)prepareForReuse 
 {

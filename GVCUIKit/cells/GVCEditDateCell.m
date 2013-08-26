@@ -20,7 +20,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self != nil)
 	{
-		[self setCanSelectCell:YES];
+//		[self setCanSelectCell:YES];
     }
     return self;
 }

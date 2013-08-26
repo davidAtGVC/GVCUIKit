@@ -18,7 +18,6 @@ typedef void (^GVCEditCellDidChangeBlock)(NSObject *updatedValue);
 @interface GVCEditCell : GVCUITableViewCell
 
 @property (strong, nonatomic) NSIndexPath *editPath;
-@property (nonatomic, assign) BOOL canSelectCell;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
