@@ -10,5 +10,23 @@
 
 @implementation UITextView (GVCUIKit)
 
+- (CGRect)gvc_rectForSelectedText
+{
+	UITextRange *selectionRange = [self selectedTextRange];
+	NSArray *selectionRects = [self selectionRectsForRange:selectionRange];
+	CGRect completeRect = CGRectNull;
+	for (UITextSelectionRect *selectionRect in selectionRects)
+	{
+		if (CGRectIsNull(completeRect) == YES)
+		{
+			completeRect = selectionRect.rect;
+		}
+		else
+		{
+			completeRect = CGRectUnion(completeRect,selectionRect.rect);
+		}
+	}
+	return completeRect;
+}
 
 @end

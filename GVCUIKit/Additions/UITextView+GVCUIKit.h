@@ -10,5 +10,9 @@
 
 @interface UITextView (GVCUIKit)
 
+/**
+ * Returns the rect of the currently selected text.  If the text line wraps then it returns the union of all selected text.  Tries to place the rect in the centre of the selection for popup or menu display
+ */
+- (CGRect)gvc_rectForSelectedText;
 
 @end

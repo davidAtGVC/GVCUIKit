@@ -15,8 +15,6 @@
 
 @implementation GVCEditTextViewCell
 
-@synthesize textView;
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:reuseIdentifier];
