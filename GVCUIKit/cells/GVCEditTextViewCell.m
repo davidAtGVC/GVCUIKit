@@ -32,7 +32,6 @@
 		[self setTextView:[[UITextView alloc] initWithFrame:CGRectZero]];
 		[[self contentView] addSubview:[self textView]];
 	}
-	[[self textView] setFont:[UIFont boldSystemFontOfSize:14.0]];
 	[[self textView] setTextColor:[UIColor colorWithRed:0.318 green:0.439 blue:0.569 alpha:1.000]];
 	[[self textView] setDelegate:self];
 }
