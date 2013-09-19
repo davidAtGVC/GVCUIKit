@@ -454,8 +454,7 @@
             
             [nextNav setFormValue:value];
             [nextNav setCallbackDelegate:self];
-//            [nextNav setCallbackKey:[question keyword]];
-            
+
             [self setPopover:pop];
             [[self popover] setPopoverContentSize:CGSizeMake(320, 220)];
             
@@ -465,7 +464,6 @@
         }
     }
     
-//    [tv deselectRowAtIndexPath:indexPath animated:YES];
     return indexPath;
 }
 
@@ -473,33 +471,35 @@
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	CGFloat height = [tv rowHeight];
+    CGFloat tvWidth = [tv contentSize].width;
+	CGFloat tvLeftWidth = floorf(tvWidth * 0.1);
+	NSString *text = nil;
+	NSString *detailsText = nil;
+
     id <GVCFormQuestion>question = [self questionAtIndexPath:indexPath];
     if (question != nil)
     {
-		NSString *titleString = [question prompt];
-		if ( [question entryType] == GVCFormQuestion_Type_NOTATION )
-		{
-			CGSize titleSize = [titleString sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:CGSizeMake(400, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-			height = MAX( height, titleSize.height);
-		}
-		else if ( [question entryType] == GVCFormQuestion_Type_BOOLEAN )
-		{
-			CGSize titleSize = [titleString sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:CGSizeMake(300, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-			height = MAX( height, titleSize.height);
-		}
-		else
+		text = [question prompt];
+		if (( [question entryType] != GVCFormQuestion_Type_NOTATION ) && ( [question entryType] != GVCFormQuestion_Type_BOOLEAN ))
 		{
 			id <GVCFormSubmissionValue>value = [[self formSubmission] valueForQuestion:question];
-			NSString *detailString = [value displayValue];
-			
-			CGSize titleSize = [titleString sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(67, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-			CGSize detailSize = [detailString sizeWithFont:[UIFont systemFontOfSize:18] constrainedToSize:CGSizeMake(400, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-			
-			height = MAX( detailSize.height, titleSize.height);
+			detailsText = [value displayValue];
 		}
-
 	}
-	return MAX( [tv rowHeight], height);
+
+	if ( gvc_IsEmpty(text) == NO )
+	{
+		CGRect leftRect = [text boundingRectWithSize:CGSizeMake(tvLeftWidth, MAXFLOAT) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]} context:nil];
+		height = MAX(height, CGRectGetHeight( leftRect ));
+	}
+
+	if ( gvc_IsEmpty(detailsText) == NO)
+	{
+		CGRect rightRect = [detailsText boundingRectWithSize:CGSizeMake((tvWidth - tvLeftWidth), MAXFLOAT) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleBody]} context:nil];
+		height = MAX(height, CGRectGetHeight( rightRect ));
+	}
+
+	return height;
 }
 
 #pragma mark - Callbacks

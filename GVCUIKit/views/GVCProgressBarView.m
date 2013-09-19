@@ -8,12 +8,9 @@
 
 #import "GVCProgressBarView.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import <GVCFoundation/GVCFoundation.h>
 
 @implementation GVCProgressBarView
-
-@synthesize progress;
-@synthesize barProgressColor;
 
 + (GVCProgressBarView *)standardWhiteProgressView
 {
@@ -34,7 +31,7 @@
     self = [super initWithFrame:frame];
     if (self) 
 	{
-		progress = 0;
+		[self setProgress:0];
 		[self setBackgroundColor:[UIColor clearColor]];
 		[self setBarProgressColor:[UIColor whiteColor]];
     }
@@ -49,9 +46,9 @@
 	if ((localp > 0.0) && (localp < 0.08))
 		localp = 0.08;
 
-	if (localp != progress)
+	if (localp != _progress)
 	{
-		progress = localp;
+		_progress = localp;
 		[self setNeedsDisplay];
 	}
 }
@@ -66,7 +63,11 @@
 - (void) drawRect:(CGRect)rect borderRadius:(CGFloat)rad borderWidth:(CGFloat)thickness barRadius:(CGFloat)barRadius barInset:(CGFloat)barInset
 {
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	
+	if ( context == nil )
+	{
+		GVCLogError(@"Graphic context is nil");
+	}
+
 	CGRect rrect = CGRectInset(rect,thickness, thickness);
 	CGFloat radius = rad;
 	
@@ -81,7 +82,7 @@
 	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
 	CGContextClosePath(context);
 	// CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
-	CGContextSetStrokeColorWithColor(context, [barProgressColor CGColor]);
+	CGContextSetStrokeColorWithColor(context, [[self barProgressColor] CGColor]);
 	CGContextSetLineWidth(context, thickness);
 	CGContextDrawPath(context, kCGPathStroke);
 
@@ -98,7 +99,7 @@
 	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
 	CGContextClosePath(context);
 	// CGContextSetRGBFillColor(context,1, 1, 1, 1);
-	CGContextSetFillColorWithColor( context, [barProgressColor CGColor] );
+	CGContextSetFillColorWithColor( context, [[self barProgressColor] CGColor] );
 	
 	CGContextDrawPath(context, kCGPathFill);
 }

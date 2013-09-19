@@ -10,9 +10,6 @@
 
 @implementation GVCEditTextFieldCell
 
-@synthesize textField;
-@synthesize isSecure;
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -20,7 +17,6 @@
 	{
         // Initialization code
 		[[self textLabel] setAdjustsFontSizeToFitWidth:YES];
-		[[self textLabel] setMinimumFontSize:10];
 		[self prepareTextField];
      }
     
@@ -32,7 +28,7 @@
     if ([self textField] == nil)
     {
         [self setTextField:[[UITextField alloc] initWithFrame:CGRectZero]];
-		[[self contentView] addSubview:textField];
+		[[self contentView] addSubview:[self textField]];
     }
     
 //    [[self textField] setBackgroundColor:[UIColor whiteColor]];
@@ -55,37 +51,37 @@
 
 - (void)setIsSecure:(BOOL)val
 {
-	isSecure = val;
-	[textField setSecureTextEntry:isSecure];
+	_isSecure = val;
+	[[self textField] setSecureTextEntry:_isSecure];
 }
 
 - (UIKeyboardType)keyboardType
 {
-	return [textField keyboardType];
+	return [[self textField] keyboardType];
 }
 - (void)setKeyboardType:(UIKeyboardType)kt
 {
-	[textField setKeyboardType:kt];
+	[[self textField] setKeyboardType:kt];
 }
 
 - (UITextAutocapitalizationType)autocapitalizationType
 {
-	return [textField autocapitalizationType];
+	return [[self textField] autocapitalizationType];
 }
 
 - (void)setAutocapitalizationType:(UITextAutocapitalizationType)kt
 {
-	[textField setAutocapitalizationType:kt];
+	[[self textField] setAutocapitalizationType:kt];
 }
 
 - (UITextAutocorrectionType)autocorrectionType
 {
-	return [textField autocorrectionType];
+	return [[self textField] autocorrectionType];
 }
 
 - (void)setAutocorrectionType:(UITextAutocorrectionType)kt
 {
-	[textField setAutocorrectionType:kt];
+	[[self textField] setAutocorrectionType:kt];
 }
 
 - (void)prepareForReuse 
@@ -118,7 +114,7 @@
 	}
 	
 	CGRect frame = CGRectMake(boundsX, 0, width, contentRect.size.height);
-	[textField setFrame:frame];
+	[[self textField] setFrame:frame];
 }
 
 #pragma mark Text Field
@@ -137,7 +133,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)atextField
 {
 	// on return key we send away the keyboard
-    [textField resignFirstResponder];
+    [[self textField] resignFirstResponder];
 	BOOL should = YES;
 	if (([self delegate] != nil) && [[self delegate] respondsToSelector:@selector(gvcEditCellShouldReturn:)])
 	{

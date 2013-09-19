@@ -14,12 +14,6 @@
 
 @implementation GVCLockViewController
 
-@synthesize statusLabel;
-@synthesize lastError;
-@synthesize successBlock;
-@synthesize failBlock;
-@synthesize lockMode;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     return [self initForMode:GVCLockViewControllerMode_UNLOCK nibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -49,7 +43,7 @@
 
 - (IBAction)loginAction:(id)sender 
 {
-    if ( self.successBlock != nil )
+    if ( [self successBlock] != nil )
     {
         self.successBlock(nil);
     }
@@ -57,7 +51,7 @@
 
 - (IBAction)cancelAction:(id)sender
 {
-    if ( self.failBlock != nil )
+    if ( [self failBlock] != nil )
     {
         self.failBlock([self lastError]);
     }

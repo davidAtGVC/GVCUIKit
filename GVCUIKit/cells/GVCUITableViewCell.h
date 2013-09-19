@@ -9,7 +9,6 @@
 
 @interface GVCUITableViewCell : UITableViewCell
 
-@property (assign,nonatomic) BOOL useDarkBackground;
 @property (strong,nonatomic) id delegate;
 
 @end

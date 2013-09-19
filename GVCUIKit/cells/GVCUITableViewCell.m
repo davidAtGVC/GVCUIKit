@@ -14,8 +14,6 @@
 
 #import <GVCFoundation/GVCFoundation.h>
 
-#define GVC_DEFAULT_FONT_SIZE 14
-
 @implementation GVCUITableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -30,7 +28,6 @@
 - (void)prepareForReuse 
 {
     [super prepareForReuse];
-//	[self setObject:nil];
 }
 
 @end

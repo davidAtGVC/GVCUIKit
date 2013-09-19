@@ -291,26 +291,6 @@
 	 return NO;
  }
 
-
-//- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
-//{
-//	CGFloat height = 0.0;
-//	id <UITableViewDataSource> dataSource = [tableView dataSource];
-//	
-//	if ((dataSource != nil) && ([dataSource conformsToProtocol:@protocol(GVCTableViewDataSourceProtocol)] == YES))
-//	{
-//		id object = [(id <GVCTableViewDataSourceProtocol>)dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
-//		Class cls = [(id <GVCTableViewDataSourceProtocol>)dataSource tableView:tableView cellClassForObject:object];
-//		
-//		if ( cls != nil )
-//		{
-//			height = [cls tableView:tableView rowHeightForObject:object];
-//		}
-//	}
-//	
-//	return (height > 44.0) ? height : [super tableView:tableView heightForRowAtIndexPath:indexPath];
-//}
-
 #pragma mark - GVCTableViewDataSourceProtocol
 /*
  Each row of the table is represented by a single object
