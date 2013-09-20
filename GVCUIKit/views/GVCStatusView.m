@@ -44,7 +44,7 @@ static float MIN_W = 160.0;
         [[self messageLayer] setBackgroundColor:[UIColor clearColor].CGColor];
         [[self messageLayer] setForegroundColor:[UIColor whiteColor].CGColor];
 
-		UIFont *systemBoldFont = [UIFont boldSystemFontOfSize:14];
+		UIFont *systemBoldFont = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
         [[self messageLayer] setFont:(CGFontRef)systemBoldFont];
         
         [[self messageLayer] setFontSize:14];
@@ -64,9 +64,9 @@ static float MIN_W = 160.0;
         [self setImageLayer:[[CALayer alloc] init]];
 		[[self imageLayer] setAnchorPoint:CGPointMake(0, 0)];
 		[[self layer] addSublayer:[self imageLayer]];
-        
+
         [self setBorderColor:[UIColor lightGrayColor]];
-        [self setContentColor:[UIColor blueColor]];
+        [self setContentColor:[UIColor colorWithRed:0.012 green:0.537 blue:0.875 alpha:1.000]];
         [self setAlpha:0.0];
     }
 	
@@ -83,9 +83,7 @@ static float MIN_W = 160.0;
     
     if ( [self currentItem] != nil )
     {
-        //CGSize messageSize = [[currentItem message] sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(MIN_W, MIN_H) lineBreakMode:NSLineBreakByWordWrapping];
-        NSAttributedString *attrString = [NSMutableAttributedString gvc_MutableAttributed:[[self currentItem] message] font:[UIFont boldSystemFontOfSize:14] color:[UIColor whiteColor] alignment:NSTextAlignmentLeft lineBreakMode:NSLineBreakByWordWrapping];
-        CGSize messageSize = [attrString gvc_sizeConstrainedToWidth:MIN_W];
+		CGRect msgRect = [[[self currentItem] message] boundingRectWithSize:CGSizeMake(MIN_W, MAXFLOAT) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]} context:nil];
         CGSize accessorySize = CGSizeZero;
         CGSize itemSize = CGSizeZero;
         
@@ -150,45 +148,45 @@ static float MIN_W = 160.0;
         
         switch ([[self currentItem] accessoryPosition]) {
             case GVC_StatusItemPosition_LEFT:
-                itemSize = CGSizeMake(accessorySize.width + messageSize.width + ACCESSOR_MARGIN + BOX_MARGIN, 
-                                      MAX(accessorySize.height,messageSize.height) + BOX_MARGIN);
+                itemSize = CGSizeMake(accessorySize.width +  msgRect.size.width + ACCESSOR_MARGIN + BOX_MARGIN,
+                                      MAX(accessorySize.height, msgRect.size.height) + BOX_MARGIN);
                 itemSize = CGSizeMake(MAX(itemSize.width, MIN_W), MAX(itemSize.height, MIN_H));
                 
                 accessoryRect = CGRectMake(BOX_MARGIN / 2, BOX_MARGIN / 2, accessorySize.width, accessorySize.height);
-                messageRect = CGRectMake((BOX_MARGIN / 2) + accessorySize.width + ACCESSOR_MARGIN, BOX_MARGIN / 2, messageSize.width, messageSize.height);
+                messageRect = CGRectMake((BOX_MARGIN / 2) + accessorySize.width + ACCESSOR_MARGIN, BOX_MARGIN / 2, msgRect.size.width, msgRect.size.height);
                 break;
             case GVC_StatusItemPosition_RIGHT:
-                itemSize = CGSizeMake(accessorySize.width + messageSize.width + ACCESSOR_MARGIN + BOX_MARGIN, 
-                                      MAX(accessorySize.height,messageSize.height) + BOX_MARGIN);
+                itemSize = CGSizeMake(accessorySize.width + msgRect.size.width + ACCESSOR_MARGIN + BOX_MARGIN,
+                                      MAX(accessorySize.height,msgRect.size.height) + BOX_MARGIN);
                 itemSize = CGSizeMake(MAX(itemSize.width, MIN_W), MAX(itemSize.height, MIN_H));
                 
-                messageRect = CGRectMake(BOX_MARGIN / 2, BOX_MARGIN / 2, messageSize.width, messageSize.height);
-                accessoryRect = CGRectMake(BOX_MARGIN / 2 + messageSize.width + ACCESSOR_MARGIN, BOX_MARGIN / 2, accessorySize.width, accessorySize.height);
+                messageRect = CGRectMake(BOX_MARGIN / 2, BOX_MARGIN / 2, msgRect.size.width, msgRect.size.height);
+                accessoryRect = CGRectMake(BOX_MARGIN / 2 + msgRect.size.width + ACCESSOR_MARGIN, BOX_MARGIN / 2, accessorySize.width, accessorySize.height);
                 break;
                 
             case GVC_StatusItemPosition_TOP:
-                itemSize = CGSizeMake(MAX(accessorySize.width, messageSize.width) + BOX_MARGIN, 
-                                      accessorySize.height + messageSize.height + ACCESSOR_MARGIN + BOX_MARGIN);
+                itemSize = CGSizeMake(MAX(accessorySize.width, msgRect.size.width) + BOX_MARGIN,
+                                      accessorySize.height + msgRect.size.height + ACCESSOR_MARGIN + BOX_MARGIN);
                 itemSize = CGSizeMake(MAX(itemSize.width, MIN_W), MAX(itemSize.height, MIN_H));
                 
                 accessoryRect = CGRectMake((itemSize.width - accessorySize.width) / 2,
                                            BOX_MARGIN / 2,
                                            accessorySize.width, accessorySize.height);
-                messageRect = CGRectMake((itemSize.width - messageSize.width) / 2,
+                messageRect = CGRectMake((itemSize.width - msgRect.size.width) / 2,
                                          BOX_MARGIN / 2 + ACCESSOR_MARGIN + accessorySize.height,
-                                         messageSize.width, messageSize.height);
+                                         msgRect.size.width, msgRect.size.height);
                 break;
             case GVC_StatusItemPosition_BOTTOM:
             default:
-                itemSize = CGSizeMake(MAX(accessorySize.width, messageSize.width) + BOX_MARGIN, 
-                                      accessorySize.height + messageSize.height + ACCESSOR_MARGIN + BOX_MARGIN);
+                itemSize = CGSizeMake(MAX(accessorySize.width, msgRect.size.width) + BOX_MARGIN,
+                                      accessorySize.height + msgRect.size.height + ACCESSOR_MARGIN + BOX_MARGIN);
                 itemSize = CGSizeMake(MAX(itemSize.width, MIN_W), MAX(itemSize.height, MIN_H));
                 
-                messageRect = CGRectMake((itemSize.width - messageSize.width) / 2,
+                messageRect = CGRectMake((itemSize.width - msgRect.size.width) / 2,
                                          BOX_MARGIN / 2,
-                                         messageSize.width, messageSize.height);
+                                         msgRect.size.width, msgRect.size.height);
                 accessoryRect = CGRectMake((itemSize.width - accessorySize.width) / 2,
-                                           BOX_MARGIN / 2 + ACCESSOR_MARGIN + messageSize.height,
+                                           BOX_MARGIN / 2 + ACCESSOR_MARGIN + msgRect.size.height,
                                            accessorySize.width, accessorySize.height);
                 break;
         }
@@ -292,29 +290,14 @@ static float MIN_W = 160.0;
 
 - (void)drawRect:(CGRect)rect 
 {
-//	[self gvc_drawRoundRectangleInRect:rect withRadius:[self cornerRadius] borderWidth:[self borderWidth] color:[self contentColor] borderColor:[self borderColor]];
-    
     [super drawRect:rect];
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect rrect = [UIView gvc_SharpenRect:CGRectInset(rect, [self borderWidth]-1, [self borderWidth]-1)];
-
     CGContextSaveGState(context);
+    CGRect rrect = [UIView gvc_SharpenRect:CGRectInset(rect, [self borderWidth]-1, [self borderWidth]-1)];
     [self gvc_addRoundRectangleToContext:context inRect:rrect withRadius:[self cornerRadius]];
     CGContextClip(context);
-    
-    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-    UIColor *shineMinor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
-    NSArray *colors = [NSArray arrayWithObjects:(id)[self contentColor].CGColor, (id)shineMinor.CGColor, nil];
-    CGFloat locations[2] = { 0.0, 1.0 };
-    
-    CGGradientRef gradient = CGGradientCreateWithColors(space, (__bridge CFArrayRef)colors, locations);
-    CGPoint start = CGPointMake(0, rrect.origin.y);
-    CGPoint end = CGPointMake(0, rrect.origin.y+(rrect.size.height/3));
-    CGContextDrawLinearGradient (context, gradient, start, end, 0);
-    
-    CGColorSpaceRelease(space);
-    CGGradientRelease(gradient);
+
     CGContextRestoreGState(context);
 }
 
