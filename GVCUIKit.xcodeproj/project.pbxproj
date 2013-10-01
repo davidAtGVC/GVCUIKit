@@ -324,6 +324,7 @@
 		0565B53E16CE888A00DA7241 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0565B53F16CE888A00DA7241 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0565B54616CE889900DA7241 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		05665CBD17FB40B400A16838 /* GVCDebugTest.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = GVCDebugTest.xcconfig; sourceTree = "<group>"; };
 		056A14E2150310B500B50027 /* GVCDictionaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCDictionaryTableViewController.h; sourceTree = "<group>"; };
 		056A14E3150310B500B50027 /* GVCDictionaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GVCDictionaryTableViewController.m; sourceTree = "<group>"; };
 		056CD8D815A7307F00647244 /* GVCColumnContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GVCColumnContainerView.h; sourceTree = "<group>"; };
@@ -518,6 +519,7 @@
 		0554498714F7F9C500ABB310 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05665CBD17FB40B400A16838 /* GVCDebugTest.xcconfig */,
 				0554498814F7F9C500ABB310 /* BuildKitHeader.sh */,
 				0582A15715EAB4980042C09E /* BuildDoxygen.sh */,
 				059939C81605103F0020BDD9 /* BuildDocs.sh */,
@@ -1113,7 +1115,7 @@
 		05CA0AE314F7F69E001C8A68 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 05CA0AE614F7F69E001C8A68 /* Build configuration list for PBXProject "GVCUIKit" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1361,14 +1363,15 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0588D44116CB377300D61997 /* Squish */ = {
+		0588D44116CB377300D61997 /* DebugTest */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0554498A14F7F9C500ABB310 /* GVCDebug.xcconfig */;
+			baseConfigurationReference = 05665CBD17FB40B400A16838 /* GVCDebugTest.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1384,16 +1387,18 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Squish;
+			name = DebugTest;
 		};
-		0588D44216CB377300D61997 /* Squish */ = {
+		0588D44216CB377300D61997 /* DebugTest */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
@@ -1405,9 +1410,9 @@
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SKIP_INSTALL = YES;
 			};
-			name = Squish;
+			name = DebugTest;
 		};
-		0588D44316CB377300D61997 /* Squish */ = {
+		0588D44316CB377300D61997 /* DebugTest */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1420,21 +1425,21 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
-			name = Squish;
+			name = DebugTest;
 		};
-		0588D44416CB377300D61997 /* Squish */ = {
+		0588D44416CB377300D61997 /* DebugTest */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
-			name = Squish;
+			name = DebugTest;
 		};
-		0588D44516CB377300D61997 /* Squish */ = {
+		0588D44516CB377300D61997 /* DebugTest */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
-			name = Squish;
+			name = DebugTest;
 		};
 		059939C516050FF60020BDD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1455,9 +1460,10 @@
 			baseConfigurationReference = 0554498A14F7F9C500ABB310 /* GVCDebug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1473,9 +1479,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1487,9 +1496,10 @@
 			baseConfigurationReference = 0554498B14F7F9C500ABB310 /* GVCRelease.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1498,7 +1508,9 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
@@ -1587,7 +1599,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				059939C516050FF60020BDD9 /* Debug */,
-				0588D44516CB377300D61997 /* Squish */,
+				0588D44516CB377300D61997 /* DebugTest */,
 				059939C616050FF60020BDD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1597,7 +1609,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05CA0B0E14F7F6A0001C8A68 /* Debug */,
-				0588D44116CB377300D61997 /* Squish */,
+				0588D44116CB377300D61997 /* DebugTest */,
 				05CA0B0F14F7F6A0001C8A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1607,7 +1619,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05CA0B1114F7F6A0001C8A68 /* Debug */,
-				0588D44216CB377300D61997 /* Squish */,
+				0588D44216CB377300D61997 /* DebugTest */,
 				05CA0B1214F7F6A0001C8A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1617,7 +1629,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05CA0B1414F7F6A0001C8A68 /* Debug */,
-				0588D44316CB377300D61997 /* Squish */,
+				0588D44316CB377300D61997 /* DebugTest */,
 				05CA0B1514F7F6A0001C8A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1627,7 +1639,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05F94D0F15EAB5530066BF2E /* Debug */,
-				0588D44416CB377300D61997 /* Squish */,
+				0588D44416CB377300D61997 /* DebugTest */,
 				05F94D1015EAB5530066BF2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
