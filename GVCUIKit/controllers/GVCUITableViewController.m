@@ -108,7 +108,6 @@
 
 -(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation 
 {
-    [self reload:nil];
 	return [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
