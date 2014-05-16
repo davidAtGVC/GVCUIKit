@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Global Village Consulting. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface GVCUIKitTests : SenTestCase
+@interface GVCUIKitTests : XCTestCase
 
 @end

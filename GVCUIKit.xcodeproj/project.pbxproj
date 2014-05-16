@@ -165,7 +165,6 @@
 		05C6F004170546AD0054D990 /* GVCLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C6F002170546AD0054D990 /* GVCLayoutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05C6F005170546AD0054D990 /* GVCLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C6F003170546AD0054D990 /* GVCLayoutView.m */; };
 		05CA0AF014F7F69E001C8A68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEF14F7F69E001C8A68 /* Foundation.framework */; };
-		05CA0AFE14F7F69F001C8A68 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AFD14F7F69F001C8A68 /* SenTestingKit.framework */; };
 		05CA0B0114F7F69F001C8A68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEF14F7F69E001C8A68 /* Foundation.framework */; };
 		05CA0B0414F7F69F001C8A68 /* libGVCUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */; };
 		05CA0B0A14F7F69F001C8A68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05CA0B0814F7F69F001C8A68 /* InfoPlist.strings */; };
@@ -418,8 +417,7 @@
 		05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGVCUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CA0AEF14F7F69E001C8A68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05CA0AF314F7F69E001C8A68 /* GVCUIKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GVCUIKit-Prefix.pch"; sourceTree = "<group>"; };
-		05CA0AFC14F7F69F001C8A68 /* GVCUIKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GVCUIKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		05CA0AFD14F7F69F001C8A68 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		05CA0AFC14F7F69F001C8A68 /* GVCUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GVCUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CA0B0714F7F69F001C8A68 /* GVCUIKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GVCUIKitTests-Info.plist"; sourceTree = "<group>"; };
 		05CA0B0914F7F69F001C8A68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05CA0B0B14F7F6A0001C8A68 /* GVCUIKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GVCUIKitTests.h; sourceTree = "<group>"; };
@@ -507,7 +505,6 @@
 				0565B53D16CE888A00DA7241 /* CoreText.framework in Frameworks */,
 				059C617915011B7A00E18973 /* libGVCFoundation.a in Frameworks */,
 				05CA0B0414F7F69F001C8A68 /* libGVCUIKit.a in Frameworks */,
-				05CA0AFE14F7F69F001C8A68 /* SenTestingKit.framework in Frameworks */,
 				05CA0B0114F7F69F001C8A68 /* Foundation.framework in Frameworks */,
 				059C618A15011C7300E18973 /* UIKit.framework in Frameworks */,
 			);
@@ -735,7 +732,7 @@
 			isa = PBXGroup;
 			children = (
 				059C616F15011AFF00E18973 /* libGVCFoundation.a */,
-				059C617115011AFF00E18973 /* GVCFoundationTests.octest */,
+				059C617115011AFF00E18973 /* GVCFoundationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -812,7 +809,7 @@
 			isa = PBXGroup;
 			children = (
 				05CA0AEC14F7F69E001C8A68 /* libGVCUIKit.a */,
-				05CA0AFC14F7F69F001C8A68 /* GVCUIKitTests.octest */,
+				05CA0AFC14F7F69F001C8A68 /* GVCUIKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -830,7 +827,6 @@
 				059C617515011B5600E18973 /* CoreData.framework */,
 				059C617615011B5600E18973 /* UIKit.framework */,
 				05CA0AEF14F7F69E001C8A68 /* Foundation.framework */,
-				05CA0AFD14F7F69F001C8A68 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1106,8 +1102,8 @@
 			);
 			name = GVCUIKitTests;
 			productName = GVCUIKitTests;
-			productReference = 05CA0AFC14F7F69F001C8A68 /* GVCUIKitTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 05CA0AFC14F7F69F001C8A68 /* GVCUIKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1152,7 +1148,7 @@
 			remoteRef = 059C616E15011AFF00E18973 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		059C617115011AFF00E18973 /* GVCFoundationTests.octest */ = {
+		059C617115011AFF00E18973 /* GVCFoundationTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GVCFoundationTests.xctest;
@@ -1418,13 +1414,12 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
 				INFOPLIST_FILE = "GVCUIKitTests/GVCUIKitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = DebugTest;
 		};
@@ -1554,13 +1549,12 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
 				INFOPLIST_FILE = "GVCUIKitTests/GVCUIKitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1569,13 +1563,12 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GVCUIKit/GVCUIKit-Prefix.pch";
 				INFOPLIST_FILE = "GVCUIKitTests/GVCUIKitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
