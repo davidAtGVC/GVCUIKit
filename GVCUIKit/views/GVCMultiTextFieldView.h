@@ -18,8 +18,8 @@
 
 - (id)initWithFrame:(CGRect)frame textFieldCount:(int)textFieldCount;
 
-- (void)setTextFieldCount:(int)textFieldCount;
-- (int)textFieldCount;
+- (void)setTextFieldCount:(NSUInteger)textFieldCount;
+- (NSUInteger)textFieldCount;
 
 - (UITextField *)textFieldAtIndex:(int)index;
 

@@ -127,12 +127,12 @@ GVC_DEFINE_STR(MONTH_DAY_HEADER_IDENTIFIER);
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GVCMonthCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MONTH_DAY_CELL_IDENTIFIER forIndexPath:indexPath];
-	int day = [indexPath row] - [self firstDayIndent];
+	long day = [indexPath row] - [self firstDayIndent];
 	
 	[cell setBackgroundColor:[UIColor gvc_randomColor]];
 	if (day >= 0)
 	{
-		[[cell dayLabel] setText:GVC_SPRINTF(@"%d", (day + 1))];
+		[[cell dayLabel] setText:GVC_SPRINTF(@"%@", @(day + 1))];
 	}
 	return cell;
 }

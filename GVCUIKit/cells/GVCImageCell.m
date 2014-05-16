@@ -28,15 +28,9 @@
 
 - (void)displayImage:(UIImage *)image
 {
-	if ( [self imageView] == nil )
-	{
-		[self setImageView:[[UIImageView alloc] initWithFrame:[[self contentView] bounds]]];
-		[[self imageView] setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-		[[self imageView] setContentMode:(UIViewContentModeCenter)];
-		[[self imageView] setClipsToBounds:YES];
-		[[self contentView] addSubview:[self imageView]];
-	}
-	
+    [[self imageView] setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    [[self imageView] setContentMode:(UIViewContentModeCenter)];
+    [[self imageView] setClipsToBounds:YES];
 	[[self imageView] setImage:image];
 }
 

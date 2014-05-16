@@ -75,7 +75,7 @@
 	static NSString *CalendarCellIdentifier = @"yearCell";
 	
     GVCYearCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CalendarCellIdentifier forIndexPath:indexPath];
-	[GVC_STRONG_REF(UILabel, [cell yearLabel]) setText:GVC_SPRINTF(@"%d", ([self focusYear] + [indexPath row]))];
+	[GVC_STRONG_REF(UILabel, [cell yearLabel]) setText:GVC_SPRINTF(@"%@", @([self focusYear] + [indexPath row]))];
 	[cell gvc_showLeftShadow:YES withOpacity:0.6];
 
 	CGFloat sz = [[GVC_STRONG_REF(UILabel, [cell yearLabel]) font] pointSize];

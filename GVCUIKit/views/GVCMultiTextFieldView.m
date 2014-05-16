@@ -43,11 +43,11 @@
     return self;
 }
 
-- (void)setTextFieldCount:(int)textFieldCount
+- (void)setTextFieldCount:(NSUInteger)textFieldCount
 {
 	GVC_ASSERT(textFieldCount > 0, @"Text Field Count must be greater then 0");
 	[self setMultiTextFields:[NSMutableArray arrayWithCapacity:textFieldCount]];
-	for(int i = 0; i < textFieldCount; i++)
+	for(NSUInteger i = 0; i < textFieldCount; i++)
 	{
 		UITextField *textField = [[UITextField alloc] initWithFrame:CGRectZero];
 		textField.delegate = self;
@@ -60,7 +60,7 @@
 	}
 }
 
-- (int)textFieldCount
+- (NSUInteger)textFieldCount
 {
 	return [[self multiTextFields] count];
 }
@@ -168,9 +168,9 @@
 		float height = contentRect.size.height;
 		CGRect frame;
 		
-		int count = [[self multiTextFields] count];
+		NSUInteger count = [[self multiTextFields] count];
 		float avaliableWidth = width - (count == 0 ? 0 : (TITLE_LEFT_OFFSET * (count - 1)));
-		int i;
+		NSUInteger i;
 		for(i = 0; i < count; ++i)
 		{
 			UITextField *textField = [[self multiTextFields] objectAtIndex:i];

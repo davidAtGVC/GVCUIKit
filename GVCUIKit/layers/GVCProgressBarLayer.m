@@ -38,7 +38,7 @@
 	return self;
 }
 
-- (void) setProgress:(float)p
+- (void) setProgress:(CGFloat)p
 {
 	float maxP = MAX(0.0, p);
 	p = MIN(maxP, 1.0);

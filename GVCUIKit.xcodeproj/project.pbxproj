@@ -1115,6 +1115,7 @@
 		05CA0AE314F7F69E001C8A68 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 05CA0AE614F7F69E001C8A68 /* Build configuration list for PBXProject "GVCUIKit" */;
@@ -1154,7 +1155,7 @@
 		059C617115011AFF00E18973 /* GVCFoundationTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = GVCFoundationTests.octest;
+			path = GVCFoundationTests.xctest;
 			remoteRef = 059C617015011AFF00E18973 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

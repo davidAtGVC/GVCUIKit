@@ -11,8 +11,6 @@
 
 @interface GVCImageCell : GVCUITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
-
 - (void)displayImage:(UIImage *)image;
 
 @end

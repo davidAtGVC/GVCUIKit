@@ -126,7 +126,7 @@ GVC_DEFINE_STRVALUE( GVCDictionaryTableViewController_id, ident);
 	{
 		NSArray *rows = [self rowsForSectionName:section];
 		NSInteger count = [rows count];
-		ident = GVC_SPRINTF(@"%@_%d", section, count+1);
+		ident = GVC_SPRINTF(@"%@_%@", section, @(count+1));
 	}
 	[row setObject:ident forKey:GVCDictionaryTableViewController_id];
 

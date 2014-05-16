@@ -39,6 +39,6 @@
 
 - (NSString *)description
 {
-    return GVC_SPRINTF(@"%@ (%d) %f %@", [super description], [self columnIndex], [self sizePercentage], [self columnView]);
+    return GVC_SPRINTF(@"%@ (%@) %f %@", [super description], @([self columnIndex]), [self sizePercentage], [self columnView]);
 }
 @end
