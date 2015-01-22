@@ -84,7 +84,7 @@
 		
 		CGContextSaveGState(context);	
 		CGContextSetBlendMode(context, kCGBlendModeClear);
-		[text drawInRect:CGRectInset(badgeViewFrame, 7, 2) withFont:textFont];
+        [text drawInRect:CGRectInset(badgeViewFrame, 7, 2) withAttributes:@{NSFontAttributeName: textFont}];
 		CGContextRestoreGState(context);
 	}
 }

@@ -38,16 +38,14 @@ GVC_DEFINE_STRVALUE(GVCCalendarDayHeaderView_IDENTIFIER, GVCCalendarDayHeaderVie
 
 		CGRect frame = [[self titleLabel] frame];
 		NSString *dateLabel = [date gvc_FormattedDate:(NSDateFormatterLongStyle)];
-		CGSize textSize = [dateLabel sizeWithFont:[[self titleLabel] font]];
-		if ( textSize.width > frame.size.width )
+        CGRect rect = [dateLabel boundingRectWithSize:frame.size options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[[self titleLabel] font]} context:nil];
+		if ( rect.size.width > frame.size.width )
 		{
 			dateLabel = [date gvc_FormattedDate:(NSDateFormatterMediumStyle)];
-			textSize = [dateLabel sizeWithFont:[[self titleLabel] font]];
-			if ( textSize.width > frame.size.width )
+			rect = [dateLabel boundingRectWithSize:frame.size options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[[self titleLabel] font]} context:nil];
+			if ( rect.size.width > frame.size.width )
 			{
 				dateLabel = [date gvc_FormattedDate:(NSDateFormatterShortStyle)];
-				
-				// textSize = [dateLabel sizeWithFont:[[self titleLabel] font]];
 			}
 		}
 		[[self titleLabel] setText:dateLabel];

@@ -70,7 +70,7 @@ GVC_DEFINE_STR(MONTH_DAY_HEADER_IDENTIFIER);
 	_date = date;
 	
 	NSCalendar *cal = [NSCalendar currentCalendar];
-	NSDateComponents *comps = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:[date gvc_dateAdjustedToStartOfMonth]];
+	NSDateComponents *comps = [cal components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday) fromDate:[date gvc_dateAdjustedToStartOfMonth]];
 	[self setFirstDayIndent:(comps.weekday - 1)];
 
 	if ( [[self view] isKindOfClass:[UICollectionView class]] == YES)
@@ -82,7 +82,7 @@ GVC_DEFINE_STR(MONTH_DAY_HEADER_IDENTIFIER);
 - (NSDate *)dateForIndexPath:(NSIndexPath *)indexPath
 {
     NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *dcomp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[self date]];
+    NSDateComponents *dcomp = [cal components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[self date]];
     dcomp.day = (indexPath.row - [self firstDayIndent] + 1);
     return [cal dateFromComponents:dcomp];
 }

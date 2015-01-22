@@ -45,14 +45,14 @@
 
 - (UIBarButtonItem *)defaultSaveButton
 {
-	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:GVC_SAVE_LABEL style:UIBarButtonItemStyleBordered target:self action:@selector(saveAction:)];
+	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:GVC_SAVE_LABEL style:UIBarButtonItemStylePlain target:self action:@selector(saveAction:)];
 	[saveButton setStyle:UIBarButtonItemStyleDone];
 	return saveButton;
 }
 
 - (UIBarButtonItem *)defaultCancelButton
 {
-	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:GVC_CANCEL_LABEL style:UIBarButtonItemStyleBordered target:self action:@selector(cancelAction:)];
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:GVC_CANCEL_LABEL style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction:)];
 	return button;
 }
 

@@ -74,11 +74,9 @@
 
 + (CGFloat)heightForWidth:(CGFloat)width withText:(NSString *)text
 {
-	CGSize constraints;
-	constraints.width = width;
-	constraints.height = 10000000000.0;
-	CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:constraints];
-	return(size.height > 44 ? size.height + 10.0 : 44);
+    CGRect msgRect = [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]} context:nil];
+
+	return(msgRect.size.height > 44 ? msgRect.size.height + 10.0 : 44);
 }
 
 - (void)prepareForReuse 

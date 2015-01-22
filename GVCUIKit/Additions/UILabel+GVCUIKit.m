@@ -13,25 +13,25 @@
 
 - (void)gvc_setTextAttributes:(NSDictionary *)attributes
 {
-    UIFont *font = [attributes objectForKey:UITextAttributeFont];
+    UIFont *font = [attributes objectForKey:NSFontAttributeName];
     if (font != nil)
 	{
         [self setFont:font];
     }
 	
-    UIColor *textColor = [attributes objectForKey:UITextAttributeTextColor];
-    if (textColor != nil)
-	{
-        [self setTextColor:textColor];
-    }
+//    UIColor *textColor = [attributes objectForKey:UITextAttributeTextColor];
+//    if (textColor != nil)
+//	{
+//        [self setTextColor:textColor];
+//    }
+//	
+//    UIColor *textShadowColor = [attributes objectForKey:UITextAttributeTextShadowColor];
+//    if (textShadowColor != nil)
+//	{
+//		[self setShadowColor:textShadowColor];
+//    }
 	
-    UIColor *textShadowColor = [attributes objectForKey:UITextAttributeTextShadowColor];
-    if (textShadowColor != nil)
-	{
-		[self setShadowColor:textShadowColor];
-    }
-	
-    NSValue *shadowOffsetValue = [attributes objectForKey:UITextAttributeTextShadowOffset];
+    NSValue *shadowOffsetValue = [attributes objectForKey:NSBaselineOffsetAttributeName];
     if (shadowOffsetValue != nil)
 	{
         UIOffset shadowOffset = [shadowOffsetValue UIOffsetValue];

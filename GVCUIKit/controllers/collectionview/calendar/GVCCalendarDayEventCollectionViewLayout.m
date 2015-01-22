@@ -139,7 +139,7 @@ NSUInteger const GVCCalendarDayEventCollectionMinimumBackgroundZ = 0.0;
 //                
 //                CGFloat endHourY;
 //                if (itemEndTime.day != itemStartTime.day) {
-//                    endHourY = (([[NSCalendar currentCalendar] maximumRangeOfUnit:NSHourCalendarUnit].length - earliestHour) * self.hourHeight) + ((itemEndTime.hour) * self.hourHeight);
+//                    endHourY = (([[NSCalendar currentCalendar] maximumRangeOfUnit:NSCalendarUnitHour].length - earliestHour) * self.hourHeight) + ((itemEndTime.hour) * self.hourHeight);
 //                } else {
 //                    endHourY = ((itemEndTime.hour - earliestHour) * self.hourHeight);
 //                }
@@ -440,7 +440,7 @@ NSUInteger const GVCCalendarDayEventCollectionMinimumBackgroundZ = 0.0;
         NSInteger earliestHour = [self earliestHour];
         NSInteger latestHour = [self latestHourForSection:section];
         CGFloat sectionColumnHeight = 0.0;
-        if ((earliestHour != NSUndefinedDateComponent) && (latestHour != NSUndefinedDateComponent)) {
+        if ((earliestHour != NSDateComponentUndefined) && (latestHour != NSDateComponentUndefined)) {
             sectionColumnHeight = (self.hourHeight * (latestHour - earliestHour));
         }
         
@@ -472,7 +472,7 @@ NSUInteger const GVCCalendarDayEventCollectionMinimumBackgroundZ = 0.0;
     NSInteger earliestHour = [self earliestHourForSection:section];
     NSInteger latestHour = [self latestHourForSection:section];
     
-    if ((earliestHour != NSUndefinedDateComponent) && (latestHour != NSUndefinedDateComponent)) {
+    if ((earliestHour != NSDateComponentUndefined) && (latestHour != NSDateComponentUndefined)) {
         return (self.hourHeight * (latestHour - earliestHour));
     }
 	return 0.0;
@@ -527,7 +527,7 @@ NSUInteger const GVCCalendarDayEventCollectionMinimumBackgroundZ = 0.0;
     for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++)
 	{
         CGFloat sectionEarliestHour = [self earliestHourForSection:section];
-        if ((sectionEarliestHour < earliestHour) && (sectionEarliestHour != NSUndefinedDateComponent))
+        if ((sectionEarliestHour < earliestHour) && (sectionEarliestHour != NSDateComponentUndefined))
 		{
             earliestHour = sectionEarliestHour;
         }
@@ -545,7 +545,7 @@ NSUInteger const GVCCalendarDayEventCollectionMinimumBackgroundZ = 0.0;
     for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++)
 	{
         CGFloat sectionLatestHour = [self latestHourForSection:section];
-        if ((sectionLatestHour > latestHour) && (sectionLatestHour != NSUndefinedDateComponent))
+        if ((sectionLatestHour > latestHour) && (sectionLatestHour != NSDateComponentUndefined))
 		{
             latestHour = sectionLatestHour;
         }
@@ -590,7 +590,7 @@ NSUInteger const GVCCalendarDayEventCollectionMinimumBackgroundZ = 0.0;
 //        }
 //		else
 //		{
-//            itemEndTimeHour = [[NSCalendar currentCalendar] maximumRangeOfUnit:NSHourCalendarUnit].length + (itemEndTime.hour + ((itemEndTime.minute > 0) ? 1 : 0));;
+//            itemEndTimeHour = [[NSCalendar currentCalendar] maximumRangeOfUnit:NSCalendarUnitHour].length + (itemEndTime.hour + ((itemEndTime.minute > 0) ? 1 : 0));;
 //        }
 //        if (itemEndTimeHour > latestHour)
 //		{
@@ -615,7 +615,7 @@ NSUInteger const GVCCalendarDayEventCollectionMinimumBackgroundZ = 0.0;
 	{
 		NSDate *date = [del collectionView:self.collectionView layout:self dayForSection:section];
 		date = [date gvc_dateAdjustedToStartOfDay];
-		dayDateComponents = [[NSCalendar currentCalendar] components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSEraCalendarUnit) fromDate:date];
+		dayDateComponents = [[NSCalendar currentCalendar] components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra) fromDate:date];
 	}
     return dayDateComponents;
 }
@@ -627,7 +627,7 @@ NSUInteger const GVCCalendarDayEventCollectionMinimumBackgroundZ = 0.0;
 	if (del != nil)
 	{
 		NSDate *date = [del collectionView:self.collectionView layout:self startTimeForItemAtIndexPath:indexPath];
-		itemStartTimeDateComponents = [[NSCalendar currentCalendar] components:(NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+		itemStartTimeDateComponents = [[NSCalendar currentCalendar] components:(NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
 	}
 	return itemStartTimeDateComponents;
 }
@@ -639,7 +639,7 @@ NSUInteger const GVCCalendarDayEventCollectionMinimumBackgroundZ = 0.0;
 	if (del != nil)
 	{
 		NSDate *date = [del collectionView:self.collectionView layout:self endTimeForItemAtIndexPath:indexPath];
-		itemEndTime = [[NSCalendar currentCalendar] components:(NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+		itemEndTime = [[NSCalendar currentCalendar] components:(NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
 	}
     return itemEndTime;
 }

@@ -38,7 +38,7 @@ GVC_DEFINE_STRVALUE(GVCCalendarTimeRowView_IDENTIFIER, GVCCalendarTimeRowView);
 {
 	if ( time != nil )
 	{
-		if ( [time gvc_isDate:[NSDate date] matchingComponents:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit)] == YES)
+		if ( [time gvc_isDate:[NSDate date] matchingComponents:(NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour)] == YES)
 		{
 			// today and the hour current
 			[[self titleLabel] setTextColor:[self highlightTextColor]];
@@ -46,8 +46,8 @@ GVC_DEFINE_STRVALUE(GVCCalendarTimeRowView_IDENTIFIER, GVCCalendarTimeRowView);
 		
 		CGRect frame = [[self titleLabel] frame];
 		NSString *timeLabel = [time gvc_FormattedTime:(NSDateFormatterMediumStyle)];
-		CGSize textSize = [timeLabel sizeWithFont:[[self titleLabel] font]];
-		if ( textSize.width > frame.size.width )
+        CGRect msgRect = [timeLabel boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[[self titleLabel] font]} context:nil];
+		if ( msgRect.size.width > frame.size.width )
 		{
 			timeLabel = [time gvc_FormattedDate:(NSDateFormatterShortStyle)];
 		}

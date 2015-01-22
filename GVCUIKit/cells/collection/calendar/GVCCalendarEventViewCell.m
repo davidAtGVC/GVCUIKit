@@ -59,25 +59,25 @@ GVC_DEFINE_STRVALUE(GVCCalendarEventViewCell_IDENTIFIER, GVCCalendarEventViewCel
     CGFloat contentWidth = (CGRectGetWidth(frame) - padding.left - padding.right);
     
     CGSize maxTimeSize = CGSizeMake(contentWidth, CGRectGetHeight(frame) - padding.top - padding.bottom);
-    CGSize timeSize = [[[self timeLabel] text] sizeWithFont:[[self timeLabel] font] constrainedToSize:maxTimeSize lineBreakMode:[[self timeLabel] lineBreakMode]];
+    CGRect timeRect = [[[self timeLabel] text] boundingRectWithSize:maxTimeSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[[self timeLabel] font]} context:nil];
     CGRect timeFrame = [[self timeLabel] frame];
-    timeFrame.size = timeSize;
+    timeFrame.size = timeRect.size;
     timeFrame.origin.x = padding.left;
     timeFrame.origin.y = padding.top;
     [[self timeLabel] setFrame:timeFrame];
 	
     CGSize maxTitleSize = CGSizeMake(contentWidth, CGRectGetHeight(frame) - (CGRectGetMaxY(timeFrame) + contentMargin) - padding.bottom);
-    CGSize titleSize = [[[self titleLabel] text] sizeWithFont:[[self titleLabel] font] constrainedToSize:maxTitleSize lineBreakMode:[[self titleLabel] lineBreakMode]];
+    CGRect titleRect = [[[self titleLabel] text] boundingRectWithSize:maxTitleSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[[self titleLabel] font]} context:nil];
     CGRect titleFrame = [[self titleLabel] frame];
-    titleFrame.size = titleSize;
+    titleFrame.size = titleRect.size;
     titleFrame.origin.x = padding.left;
     titleFrame.origin.y = (CGRectGetMaxY(timeFrame) + contentMargin);
     [[self titleLabel] setFrame:timeFrame];
     
     CGSize maxNoteSize = CGSizeMake(contentWidth, CGRectGetHeight(frame) - (CGRectGetMaxY(titleFrame) + contentMargin) - padding.bottom);
-    CGSize noteSize = [[[self noteLabel] text] sizeWithFont:[[self noteLabel] font] constrainedToSize:maxNoteSize lineBreakMode:[[self noteLabel] lineBreakMode]];
+    CGRect noteRect = [[[self noteLabel] text] boundingRectWithSize:maxNoteSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[[self noteLabel] font]} context:nil];
     CGRect noteFrame = [[self noteLabel] frame];
-    noteFrame.size = noteSize;
+    noteFrame.size = noteRect.size;
     noteFrame.origin.x = padding.left;
     noteFrame.origin.y = (CGRectGetMaxY(titleFrame) + contentMargin);
     [[self noteLabel] setFrame:noteFrame];

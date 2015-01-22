@@ -54,16 +54,6 @@ GVC_DEFINE_STRVALUE( GVCDictionaryTableViewController_id, ident);
 		[self setDemoData:[NSMutableDictionary dictionaryWithCapacity:1]];
 }
 
-- (void)didReceiveMemoryWarning 
-{
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-}
-
-- (void)viewDidUnload 
-{
-}
-
 #pragma mark - demo data
 - (NSArray *)sectionNames
 {
